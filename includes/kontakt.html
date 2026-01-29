@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - F.C. Inter Mainz</title>
+    <link rel="icon" type="image/png" href="../800x800.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-primary-blue { background-color: #003366; }
+        .text-primary-blue { color: #003366; }
+        .bg-primary-red { background-color: #d70000; }
+        .text-primary-red { color: #d70000; }
+        .border-primary-red { border-color: #d70000; }
+        
+        #submit-btn:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <a href="../index.html" class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
+                <img src="../800x800.png" alt="Wappen" class="h-10 mr-3">
+                F.C. Inter Mainz
+            </a>
+            <div class="hidden lg:block">
+                <a href="../index.html" class="text-white hover:text-primary-red px-4 transition font-semibold">Zurück zur Startseite</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-32 pb-12 bg-white text-center">
+        <h1 class="text-4xl font-black text-primary-blue uppercase tracking-tighter">Kontaktieren Sie uns</h1>
+        <p class="text-gray-600 mt-2">Haben Sie Fragen? Wir sind für Sie da.</p>
+    </div>
+
+    <main class="container mx-auto pb-20 px-4">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="md:col-span-1 space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-primary-red">
+                    <h3 class="font-bold text-primary-blue mb-2">Anschrift</h3>
+                    <p class="text-sm text-gray-600">Musterstraße 45<br>55116 Mainz, Deutschland</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-primary-blue">
+                    <h3 class="font-bold text-primary-blue mb-2">E-Mail</h3>
+                    <p class="text-sm text-gray-600">info@fc-inter-mainz.de</p>
+                </div>
+                <div class="bg-red-50 p-6 rounded-xl border border-red-100">
+                    <p class="text-xs text-red-800 font-medium italic">
+                        Hinweis: Für Probetrainings nutzen Sie bitte das spezifische Formular "Mitglied werden".
+                    </p>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 bg-white rounded-xl shadow-2xl p-8 border border-gray-100">
+                <form id="contact-form" class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Vorname *</label>
+                            <input type="text" name="vorname" required 
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Nachname *</label>
+                            <input type="text" name="name" required 
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-500 mb-1">E-Mail *</label>
+                        <input type="email" name="email" required 
+                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition"
+                            placeholder="ihre@mail.de">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Anliegen / Betreff</label>
+                        <select name="betreff" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition">
+                            <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+                            <option value="Sponsoring">Sponsoring</option>
+                            <option value="Presse">Presse</option>
+                            <option value="Sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Nachricht *</label>
+                        <textarea name="message" required rows="5"
+                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition"
+                            placeholder="Wie können wir Ihnen helfen?"></textarea>
+                    </div>
+
+                    <div class="flex items-start bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center h-5">
+                            <input id="privacy-check" type="checkbox" required
+                                class="h-4 w-4 text-primary-blue border-gray-300 rounded cursor-pointer">
+                        </div>
+                        <div class="ml-3 text-xs leading-relaxed">
+                            <label for="privacy-check" class="text-gray-700">
+                                Ich habe die <a href="/InterMainz/includes/datenschutzbestimmung.html" class="text-primary-blue font-bold underline">Datenschutzbestimmungen</a> gelesen und erkläre mich damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens gespeichert werden.
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit-btn" disabled
+                        class="w-full bg-primary-blue hover:bg-blue-900 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1 uppercase tracking-widest">
+                        Nachricht absenden
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 py-8 text-center text-sm">
+        <p>&copy; 2026 F.C. Inter Mainz | <a href="impressum.html" class="hover:text-white">Impressum</a></p>
+    </footer>
+
+    <script>
+        const privacyCheck = document.getElementById('privacy-check');
+        const submitBtn = document.getElementById('submit-btn');
+        const form = document.getElementById('contact-form');
+
+        privacyCheck.addEventListener('change', function() {
+            submitBtn.disabled = !this.checked;
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+             // Enviar datos al PHP mediante fetch
+        fetch('php/kontaktFormularSaveInDB.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.saveStatus) {
+                alert('Vielen Dank! Deine Anfrage wurde erfolgreich gespeichert.');
+                form.reset(); // Limpiar formulario
+                submitBtn.disabled = true; // Volver a deshabilitar
+            } else {
+                alert('Fehler: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Es gab ein Problem beim Senden der Anfrage.');
+        });
+        });
+
+    </script>
+</body>
+</html>
