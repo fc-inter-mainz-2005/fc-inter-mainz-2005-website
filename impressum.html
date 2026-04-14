@@ -1,18 +1,74 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum - F.C. Inter Mainz</title>
     <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .bg-primary-blue { background-color: #003366; }
-        .text-primary-blue { color: #003366; }
-        .bg-primary-red { background-color: #d70000; }
-        .text-primary-red { color: #d70000; }
+        /* 1. Fuente Variable: Todos los grosores normales (100 al 900) */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+
+        /* 2. Fuente Variable: Todos los grosores en cursiva/itálica */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+
+        /* Aplicar la fuente a todo el cuerpo de la web */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Colores del F.C. Inter Mainz */
+        .bg-primary-blue {
+            background-color: #003366;
+        }
+
+        .text-primary-blue {
+            color: #003366;
+        }
+
+        .bg-primary-red {
+            background-color: #d70000;
+        }
+
+        .text-primary-red {
+            color: #d70000;
+        }
+
+        .border-primary-red {
+            border-color: #d70000;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 </head>
+
 <body class="bg-gray-50 font-sans leading-normal tracking-normal text-gray-800">
 
     <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
@@ -20,7 +76,7 @@
             <a href="index.html"
                 class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
                 <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
-                F.C. Inter Mainz
+                F.C. Inter Mainz 2005
             </a>
 
             <div class="block lg:hidden">
@@ -54,7 +110,7 @@
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="#veranstaltungen">Veranstaltungen</a>
+                            href="#fotogalerie">Fotogalerie</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
@@ -108,31 +164,45 @@
                 </section>
 
                 <section class="space-y-6 bg-gray-50 p-6 rounded-lg border border-gray-100">
-                    <h2 class="text-2xl font-black text-gray-800 border-b border-gray-200 pb-2 mb-4">Haftungs­ausschluss</h2>
-                    
+                    <h2 class="text-2xl font-black text-gray-800 border-b border-gray-200 pb-2 mb-4">Haftungs­ausschluss
+                    </h2>
+
                     <div>
                         <h3 class="font-bold text-gray-800 text-sm">Haftung für eigene Inhalte</h3>
                         <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                            Gemäß § 7 Abs. 1 TMG sind wir als Dienstanbieter für die eigenen redaktionellen Inhalte auf dieser Webseite nach den allgemeinen Gesetzen verantwortlich. Entsprechend den §§ 8 bis 10 TMG besteht jedoch keine Verpflichtung, gespeicherte oder übermittelte fremde Informationen permanent zu überwachen. Sollten uns konkrete Rechtsverletzungen bekannt werden, entfernen wir die entsprechenden Inhalte unverzüglich.
+                            Gemäß § 7 Abs. 1 TMG sind wir als Dienstanbieter für die eigenen redaktionellen Inhalte auf
+                            dieser Webseite nach den allgemeinen Gesetzen verantwortlich. Entsprechend den §§ 8 bis 10
+                            TMG besteht jedoch keine Verpflichtung, gespeicherte oder übermittelte fremde Informationen
+                            permanent zu überwachen. Sollten uns konkrete Rechtsverletzungen bekannt werden, entfernen
+                            wir die entsprechenden Inhalte unverzüglich.
                         </p>
                     </div>
 
                     <div>
                         <h3 class="font-bold text-gray-800 text-sm">Haftung für externe Links</h3>
                         <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                            Unsere Webseite enthält Verknüpfungen zu Webseiten Dritter. Da wir auf deren aktuelle und zukünftige Gestaltung sowie Inhalte keinerlei Einfluss haben, können wir hierfür keine Gewähr übernehmen. Verantwortlich ist stets der jeweilige Betreiber der verlinkten Seite. Sobald uns Rechtsverstöße auf verlinkten Seiten bekannt werden, werden wir derartige Links umgehend löschen.
+                            Unsere Webseite enthält Verknüpfungen zu Webseiten Dritter. Da wir auf deren aktuelle und
+                            zukünftige Gestaltung sowie Inhalte keinerlei Einfluss haben, können wir hierfür keine
+                            Gewähr übernehmen. Verantwortlich ist stets der jeweilige Betreiber der verlinkten Seite.
+                            Sobald uns Rechtsverstöße auf verlinkten Seiten bekannt werden, werden wir derartige Links
+                            umgehend löschen.
                         </p>
                     </div>
 
                     <div>
                         <h3 class="font-bold text-gray-800 text-sm">Urheberrechtsschutz</h3>
                         <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                            Die auf dieser Webseite veröffentlichten Inhalte, Texte, Bilder und Werke unterliegen dem deutschen Urheberrecht. Jede Art der Vervielfältigung, Bearbeitung oder Verwertung außerhalb der gesetzlichen Grenzen bedarf der vorherigen schriftlichen Zustimmung des Vereins. Downloads oder Kopien sind ausschließlich für den privaten, nicht-kommerziellen Gebrauch gestattet. Bei Bekanntwerden von Urheberrechtsverletzungen bitten wir um einen Hinweis, um diese umgehend zu entfernen.
+                            Die auf dieser Webseite veröffentlichten Inhalte, Texte, Bilder und Werke unterliegen dem
+                            deutschen Urheberrecht. Jede Art der Vervielfältigung, Bearbeitung oder Verwertung außerhalb
+                            der gesetzlichen Grenzen bedarf der vorherigen schriftlichen Zustimmung des Vereins.
+                            Downloads oder Kopien sind ausschließlich für den privaten, nicht-kommerziellen Gebrauch
+                            gestattet. Bei Bekanntwerden von Urheberrechtsverletzungen bitten wir um einen Hinweis, um
+                            diese umgehend zu entfernen.
                         </p>
                     </div>
                 </section>
             </div>
-            
+
             <div class="mt-8 text-center text-sm text-gray-500 border-t pt-4">
                 <p>Dieses Impressum gilt auch für unsere Social-Media-Profile (Facebook, Instagram).</p>
             </div>
@@ -202,4 +272,5 @@
 
 
 </body>
+
 </html>

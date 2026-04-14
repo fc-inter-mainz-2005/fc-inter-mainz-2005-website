@@ -6,11 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F.C. Inter Mainz - Offizielle Website</title>
     <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript" src="https://www.fussball.de/widgets.js">
     </script>
     <style>
-        /* Farben basierend auf dem Vereinswappen */
+        /* 1. Fuente Variable: Todos los grosores normales (100 al 900) */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+
+        /* 2. Fuente Variable: Todos los grosores en cursiva/itálica */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+
+        /* Aplicar la fuente a todo el cuerpo de la web */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Colores del F.C. Inter Mainz */
         .bg-primary-blue {
             background-color: #003366;
         }
@@ -35,6 +58,17 @@
             scroll-behavior: smooth;
         }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 </head>
 
 <body class="bg-gray-50 font-sans leading-normal tracking-normal">
@@ -44,7 +78,7 @@
             <a href="index.html"
                 class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
                 <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
-                F.C. Inter Mainz
+                F.C. Inter Mainz 2005
             </a>
 
             <div class="block lg:hidden">
@@ -78,7 +112,7 @@
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="#veranstaltungen">Veranstaltungen</a>
+                            href="#fotogalerie">Fotogalerie</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
@@ -97,7 +131,8 @@
             </div>
             <div class="relative container mx-auto py-24 px-6 text-center md:text-left">
                 <h1 class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter">Leidenschaft. Gemeinschaft.
-                    <span class="text-primary-red">Fussball.</span></h1>
+                    <span class="text-primary-red">Fussball.</span>
+                </h1>
                 <p class="text-xl md:text-2xl mb-8 max-w-2xl">Willkommen beim F.C. Inter Mainz. Dein Verein im Herzen
                     von Mainz. Wir stehen für sportlichen Ehrgeiz und sozialen Zusammenhalt.</p>
                 <div class="flex flex-col md:flex-row gap-4">
@@ -213,32 +248,151 @@
             <div id="veranstaltungen">
                 <h2 class="text-3xl font-bold text-primary-blue mb-6 border-l-4 border-primary-red pl-4">Kommende
                     Termine</h2>
-                <div class="bg-white border rounded-lg overflow-hidden">
-                    <div class="flex items-center p-4 border-b">
-                        <div class="bg-primary-blue text-white p-3 rounded text-center min-w-[70px]">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
+
+                    <div class="flex items-center p-4 border-b cursor-pointer hover:bg-gray-50 transition group"
+                        onclick="openModal('modal-sommerfest')">
+                        <div
+                            class="bg-primary-blue text-white p-3 rounded text-center min-w-[70px] group-hover:scale-105 transition transform">
                             <span class="block text-xl font-bold leading-none">15</span>
                             <span class="text-xs uppercase">Juni</span>
                         </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Großes Sommerfest</h4>
+                        <div class="ml-4 flex-grow">
+                            <h4 class="font-bold text-primary-blue group-hover:text-primary-red transition">Großes
+                                Sommerfest</h4>
                             <p class="text-sm text-gray-500">Ab 14:00 Uhr auf dem Vereinsgelände</p>
                         </div>
+                        <div class="text-gray-300 group-hover:text-primary-red transition pr-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
                     </div>
-                    <div class="flex items-center p-4 border-b">
-                        <div class="bg-gray-200 text-gray-700 p-3 rounded text-center min-w-[70px]">
+
+                    <div class="flex items-center p-4 cursor-pointer hover:bg-gray-50 transition group"
+                        onclick="openModal('modal-jhv')">
+                        <div
+                            class="bg-gray-200 text-gray-700 p-3 rounded text-center min-w-[70px] group-hover:scale-105 transition transform">
                             <span class="block text-xl font-bold leading-none">02</span>
                             <span class="text-xs uppercase">Juli</span>
                         </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Jahreshauptversammlung</h4>
+                        <div class="ml-4 flex-grow">
+                            <h4 class="font-bold text-gray-800 group-hover:text-primary-red transition">
+                                Jahreshauptversammlung</h4>
                             <p class="text-sm text-gray-500">Einlass ab 19:00 Uhr im Clubhaus</p>
                         </div>
+                        <div class="text-gray-300 group-hover:text-primary-red transition pr-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
     </main>
+
+    <div id="modal-sommerfest" class="fixed inset-0 z-[100] hidden items-center justify-center">
+        <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm transition-opacity"
+            onclick="closeModal('modal-sommerfest')"></div>
+
+        <div
+            class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-4 z-10 overflow-hidden transform transition-all relative">
+            <button onclick="closeModal('modal-sommerfest')"
+                class="absolute top-4 right-4 bg-white/70 hover:bg-white text-gray-900 rounded-full p-2 transition z-20 shadow">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="h-48 bg-primary-blue relative">
+                <img src="https://images.unsplash.com/photo-1555244406-953e5e9bce54?q=80&w=800&auto=format&fit=crop"
+                    alt="Sommerfest" class="w-full h-full object-cover opacity-80">
+                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 to-transparent p-6">
+                    <span
+                        class="bg-primary-red text-white text-xs font-bold uppercase px-2 py-1 rounded mb-2 inline-block">15.
+                        Juni 2026</span>
+                    <h3 class="text-2xl font-black text-white leading-tight">Großes Sommerfest</h3>
+                </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <p class="text-gray-600 text-sm leading-relaxed">Feiere mit uns den Abschluss einer grandiosen Saison!
+                    Es gibt Grillfleisch, kühle Getränke, eine Hüpfburg für die Kleinen und ein DJ sorgt für die
+                    musikalische Untermalung.</p>
+
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 flex items-start space-x-3 text-sm">
+                    <span class="text-primary-red text-lg">📍</span>
+                    <p class="text-gray-700 font-semibold">Vereinsgelände F.C. Inter Mainz<br><span
+                            class="text-gray-500 font-normal">Musterstraße 45, 55116 Mainz</span></p>
+                </div>
+
+                <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+                    <a href="https://instagram.com" target="_blank"
+                        class="flex items-center text-sm font-bold text-pink-600 hover:text-pink-800 transition">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                        Post ansehen
+                    </a>
+                    <button onclick="closeModal('modal-sommerfest')"
+                        class="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-bold py-2 px-4 rounded transition">
+                        Schließen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-jhv" class="fixed inset-0 z-[100] hidden items-center justify-center">
+        <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm transition-opacity"
+            onclick="closeModal('modal-jhv')"></div>
+
+        <div
+            class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-4 z-10 overflow-hidden transform transition-all relative border-t-8 border-primary-blue">
+            <button onclick="closeModal('modal-jhv')"
+                class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full p-2 transition z-20">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="p-8 pt-10">
+                <span
+                    class="bg-gray-200 text-gray-700 text-xs font-bold uppercase px-2 py-1 rounded mb-3 inline-block">02.
+                    Juli 2026</span>
+                <h3 class="text-2xl font-black text-primary-blue leading-tight mb-4">Jahreshauptversammlung</h3>
+
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Liebe Mitglieder, hiermit laden wir euch herzlich
+                    zur diesjährigen JHV ein. Wichtige Themen wie die Neuwahlen des Vorstands und die Finanzplanung
+                    stehen auf der Agenda.</p>
+
+                <ul class="text-sm text-gray-600 list-disc ml-5 mb-8 space-y-1">
+                    <li>Rückblick auf die abgelaufene Saison</li>
+                    <li>Kassenbericht der Schatzmeister</li>
+                    <li>Neuwahlen der Abteilungsverantwortlichen</li>
+                </ul>
+
+                <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+                    <a href="kontakt.html"
+                        class="text-sm font-bold text-primary-blue hover:text-primary-red transition underline">
+                        Fragen vorab einreichen?
+                    </a>
+                    <button onclick="closeModal('modal-jhv')"
+                        class="bg-primary-blue hover:bg-blue-900 text-white text-sm font-bold py-2 px-5 rounded transition">
+                        Verstanden
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer id="kontakt" class="bg-primary-blue text-white pt-16 pb-8">
         <div class="container mx-auto px-6">
@@ -309,6 +463,22 @@
         btn.addEventListener('click', () => {
             nav.classList.toggle('hidden');
         });
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // Bloquea el scroll de la página de fondo
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            // Restaura el scroll de la página
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 

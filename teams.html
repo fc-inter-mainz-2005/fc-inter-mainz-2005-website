@@ -1,20 +1,74 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unsere Teams - F.C. Inter Mainz</title>
     <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .bg-primary-blue { background-color: #003366; }
-        .text-primary-blue { color: #003366; }
-        .bg-primary-red { background-color: #d70000; }
-        .text-primary-red { color: #d70000; }
-        .border-primary-red { border-color: #d70000; }
-        html { scroll-behavior: smooth; }
+        /* 1. Fuente Variable: Todos los grosores normales (100 al 900) */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+
+        /* 2. Fuente Variable: Todos los grosores en cursiva/itálica */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+
+        /* Aplicar la fuente a todo el cuerpo de la web */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Colores del F.C. Inter Mainz */
+        .bg-primary-blue {
+            background-color: #003366;
+        }
+
+        .text-primary-blue {
+            color: #003366;
+        }
+
+        .bg-primary-red {
+            background-color: #d70000;
+        }
+
+        .text-primary-red {
+            color: #d70000;
+        }
+
+        .border-primary-red {
+            border-color: #d70000;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 </head>
+
 <body class="bg-gray-50 font-sans leading-normal tracking-normal text-gray-800">
 
     <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
@@ -22,7 +76,7 @@
             <a href="index.html"
                 class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
                 <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
-                F.C. Inter Mainz
+                F.C. Inter Mainz 2005
             </a>
 
             <div class="block lg:hidden">
@@ -56,7 +110,7 @@
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="#veranstaltungen">Veranstaltungen</a>
+                            href="#fotogalerie">Fotogalerie</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
@@ -68,10 +122,12 @@
     </nav>
 
     <header class="pt-32 pb-12 bg-white text-center border-b shadow-sm">
-        <h1 class="text-4xl md:text-5xl font-black text-primary-blue uppercase tracking-tighter">Unsere Mannschaften</h1>
+        <h1 class="text-4xl md:text-5xl font-black text-primary-blue uppercase tracking-tighter">Unsere Mannschaften
+        </h1>
         <div class="h-1 w-24 bg-primary-red mx-auto mt-4"></div>
-        <p class="text-gray-500 mt-4 max-w-2xl mx-auto px-4 italic">Zusammenhalt, Leidenschaft und Erfolg auf dem Platz.</p>
-        
+        <p class="text-gray-500 mt-4 max-w-2xl mx-auto px-4 italic">Zusammenhalt, Leidenschaft und Erfolg auf dem Platz.
+        </p>
+
         <div class="mt-8 flex justify-center space-x-4 text-xs font-bold uppercase">
             <a href="#inter-i" class="text-primary-blue hover:text-primary-red transition">Inter Mainz I</a>
             <span>|</span>
@@ -89,27 +145,33 @@
                 <div class="flex-grow h-px bg-gray-200 ml-6"></div>
                 <span class="ml-4 text-xs font-bold bg-primary-red text-white px-3 py-1 rounded">B-Klasse</span>
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-2 hover:shadow-xl">
+
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 lg:gap-6">
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
                     <div class="aspect-[3/4] bg-gray-200 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=400&h=533&auto=format&fit=crop" alt="Spieler" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=400&h=533&auto=format&fit=crop"
+                            alt="Spieler"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-lg text-gray-800 leading-tight">Max Mustermann</h3>
-                        <p class="text-primary-red text-xs font-black uppercase mt-1">Torwart</p>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Max Mustermann</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Torwart</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-2 hover:shadow-xl">
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
                     <div class="aspect-[3/4] bg-gray-200 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&h=533&auto=format&fit=crop" alt="Spieler" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&h=533&auto=format&fit=crop"
+                            alt="Spieler"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-lg text-gray-800 leading-tight">Lukas Schmidt</h3>
-                        <p class="text-primary-red text-xs font-black uppercase mt-1">Verteidigung</p>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Lukas Schmidt</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Verteidigung</p>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
 
         <section id="inter-ii" class="mb-24">
@@ -118,20 +180,86 @@
                 <div class="flex-grow h-px bg-gray-200 ml-6"></div>
                 <span class="ml-4 text-xs font-bold bg-gray-400 text-white px-3 py-1 rounded">C-Klasse</span>
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-2">
+
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 lg:gap-6">
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
                     <div class="aspect-[3/4] bg-gray-300"></div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-lg text-gray-800">Julian Weber</h3>
-                        <p class="text-primary-red text-xs font-black uppercase mt-1">Mittelfeld</p>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Julian Weber</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Mittelfeld</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-2">
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
                     <div class="aspect-[3/4] bg-gray-300"></div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-lg text-gray-800">Marco Reus</h3>
-                        <p class="text-primary-red text-xs font-black uppercase mt-1">Stürmer</p>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-300"></div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Marco Reus</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Stürmer</p>
                     </div>
                 </div>
             </div>
@@ -143,15 +271,97 @@
                 <div class="flex-grow h-px bg-gray-200 ml-6"></div>
                 <span class="ml-4 text-xs font-bold bg-primary-blue text-white px-3 py-1 rounded">Freizeit</span>
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-2">
+
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 lg:gap-6">
+
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
                     <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
-                        <img src="800x800.png" class="h-20 opacity-20" alt="Placeholder">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-bold text-lg text-gray-800">Santy Ballabriga</h3>
-                        <p class="text-primary-red text-xs font-black uppercase mt-1">Kapitän / Vorstand</p>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <div class="aspect-[3/4] bg-gray-200 flex items-center justify-center">
+                        <img src="800x800.png" class="h-12 opacity-20" alt="Placeholder">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="font-bold text-sm text-gray-800 leading-tight">Santy Ballabriga</h3>
+                        <p class="text-primary-red text-[10px] font-black uppercase mt-1">Vorstand</p>
                     </div>
                 </div>
             </div>
@@ -163,20 +373,20 @@
         <div class="container mx-auto px-6 text-center">
             <img src="800x800.png" alt="Logo" class="h-16 mx-auto mb-6">
             <p class="text-gray-400 text-sm mb-8">F.C. Inter Mainz – Leidenschaft auf und neben dem Platz.</p>
-            
+
             <div class="border-t border-gray-800 pt-8 text-gray-500 text-xs flex flex-col items-center">
                 <p>&copy; 2026 F.C. Inter Mainz. Alle Rechte vorbehalten.</p>
                 <div class="mt-4 space-x-4">
                     <a href="impressum.html" class="hover:text-white transition font-semibold">Impressum</a>
                     <span class="text-gray-700">|</span>
-                    <a href="includes/datenschutzbestimmung.html" class="hover:text-white transition font-semibold">Datenschutzerklärung</a>
+                    <a href="datenschutzbestimmung.html"
+                        class="hover:text-white transition font-semibold">Datenschutzerklärung</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Toggle para menú móvil
         const btn = document.getElementById('nav-toggle');
         const nav = document.getElementById('nav-content');
         btn.addEventListener('click', () => {
@@ -184,4 +394,5 @@
         });
     </script>
 </body>
+
 </html>

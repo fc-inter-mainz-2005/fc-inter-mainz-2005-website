@@ -1,19 +1,74 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unsere Geschichte - F.C. Inter Mainz</title>
     <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .bg-primary-blue { background-color: #003366; }
-        .text-primary-blue { color: #003366; }
-        .bg-primary-red { background-color: #d70000; }
-        .text-primary-red { color: #d70000; }
-        .border-primary-red { border-color: #d70000; }
+        /* 1. Fuente Variable: Todos los grosores normales (100 al 900) */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+
+        /* 2. Fuente Variable: Todos los grosores en cursiva/itálica */
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+
+        /* Aplicar la fuente a todo el cuerpo de la web */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Colores del F.C. Inter Mainz */
+        .bg-primary-blue {
+            background-color: #003366;
+        }
+
+        .text-primary-blue {
+            color: #003366;
+        }
+
+        .bg-primary-red {
+            background-color: #d70000;
+        }
+
+        .text-primary-red {
+            color: #d70000;
+        }
+
+        .border-primary-red {
+            border-color: #d70000;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 </head>
+
 <body class="bg-gray-50 font-sans leading-normal tracking-normal text-gray-800">
 
     <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
@@ -21,7 +76,7 @@
             <a href="index.html"
                 class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
                 <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
-                F.C. Inter Mainz
+                F.C. Inter Mainz 2005
             </a>
 
             <div class="block lg:hidden">
@@ -55,7 +110,7 @@
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="#veranstaltungen">Veranstaltungen</a>
+                            href="#fotogalerie">Fotogalerie</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
@@ -69,44 +124,60 @@
     <header class="pt-32 pb-12 bg-white text-center border-b shadow-sm">
         <h1 class="text-4xl md:text-5xl font-black text-primary-blue uppercase tracking-tighter">Unsere Geschichte</h1>
         <div class="h-1 w-24 bg-primary-red mx-auto mt-4"></div>
-        <p class="text-gray-500 mt-4 max-w-2xl mx-auto px-4">Von der Gründung bis heute: Ein Verein, eine Leidenschaft, eine Familie.</p>
+        <p class="text-gray-500 mt-4 max-w-2xl mx-auto px-4">Von der Gründung bis heute: Ein Verein, eine Leidenschaft,
+            eine Familie.</p>
     </header>
 
     <main class="container mx-auto py-16 px-4 max-w-5xl">
-        
+
         <div class="flex flex-col md:flex-row items-center gap-12 mb-20">
             <div class="md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1518605368461-1e1e38ce8058?q=80&w=800&auto=format&fit=crop" alt="Historisches Bild 1" class="rounded-xl shadow-2xl border-4 border-white">
+                <img src="https://images.unsplash.com/photo-1518605368461-1e1e38ce8058?q=80&w=800&auto=format&fit=crop"
+                    alt="Historisches Bild 1" class="rounded-xl shadow-2xl border-4 border-white">
             </div>
             <div class="md:w-1/2">
                 <span class="text-primary-red font-black text-6xl opacity-20 absolute -ml-6 -mt-8">2005</span>
                 <h2 class="text-3xl font-bold text-primary-blue mb-4 relative">Die Gründung</h2>
-                <p class="text-gray-600 mb-4 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p class="text-gray-600 leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="text-gray-600 mb-4 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p class="text-gray-600 leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
 
         <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-20">
             <div class="md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop" alt="Historisches Bild 2" class="rounded-xl shadow-2xl border-4 border-white">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop"
+                    alt="Historisches Bild 2" class="rounded-xl shadow-2xl border-4 border-white">
             </div>
             <div class="md:w-1/2">
                 <span class="text-primary-red font-black text-6xl opacity-20 absolute -ml-6 -mt-8">2012</span>
                 <h2 class="text-3xl font-bold text-primary-blue mb-4 relative">Aufstieg & Wachstum</h2>
-                <p class="text-gray-600 mb-4 leading-relaxed">Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.</p>
-                <p class="text-gray-600 leading-relaxed">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>
+                <p class="text-gray-600 mb-4 leading-relaxed">Curabitur pretium tincidunt lacus. Nulla gravida orci a
+                    odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis
+                    sollicitudin mauris. Integer in mauris eu nibh euismod gravida.</p>
+                <p class="text-gray-600 leading-relaxed">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec
+                    consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales
+                    sit amet, nisi.</p>
             </div>
         </div>
 
         <div class="flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop" alt="Historisches Bild 3" class="rounded-xl shadow-2xl border-4 border-white">
+                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop"
+                    alt="Historisches Bild 3" class="rounded-xl shadow-2xl border-4 border-white">
             </div>
             <div class="md:w-1/2">
                 <span class="text-primary-red font-black text-6xl opacity-20 absolute -ml-6 -mt-8">Heute</span>
                 <h2 class="text-3xl font-bold text-primary-blue mb-4 relative">Der moderne F.C. Inter Mainz</h2>
-                <p class="text-gray-600 mb-4 leading-relaxed">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
-                <p class="text-gray-600 leading-relaxed">Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.</p>
+                <p class="text-gray-600 mb-4 leading-relaxed">Pellentesque habitant morbi tristique senectus et netus et
+                    malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit
+                    amet, ante. Donec eu libero sit amet quam egestas semper.</p>
+                <p class="text-gray-600 leading-relaxed">Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                    Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo
+                    vitae, ornare sit amet, wisi.</p>
             </div>
         </div>
 
@@ -175,4 +246,5 @@
 
 
 </body>
+
 </html>
