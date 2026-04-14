@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzbestimmungen - F.C. Inter Mainz</title>
-    <link rel="icon" type="image/png" href="../800x800.png">
+    <link rel="icon" type="image/png" href="800x800.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .bg-primary-blue { background-color: #003366; }
@@ -17,14 +17,52 @@
 <body class="bg-gray-50 font-sans leading-normal tracking-normal text-gray-800">
 
     <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
-        <div class="container mx-auto flex items-center justify-between">
-            <a href="../index.html" class="flex items-center text-white font-bold text-xl">
-                <img src="../800x800.png" alt="Wappen" class="h-10 mr-3">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <a href="index.html"
+                class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
+                <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
                 F.C. Inter Mainz
             </a>
-            <a href="mitgliedWerden.html" class="text-white hover:text-primary-red transition text-sm font-semibold">
-                ← Zurück zum Formular
-            </a>
+
+            <div class="block lg:hidden">
+                <button id="nav-toggle"
+                    class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-gray-300 hover:border-gray-300">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0"
+                id="nav-content">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
+                            href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
+                            href="vorstand.html">Vorstand</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
+                            href="geschichte.html">Geschichte</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
+                            href="teams.html">Teams</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
+                            href="#veranstaltungen">Veranstaltungen</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
+                            href="kontakt.html">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -105,9 +143,67 @@
         </div>
     </main>
 
-    <footer class="bg-primary-blue text-white py-8 text-center text-sm">
-        <p>&copy; 2026 F.C. Inter Mainz | Datenschutzbestimmungen Stand Januar 2026</p>
+    <footer id="kontakt" class="bg-primary-blue text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center mb-6">
+                        <img src="800x800.png" alt="Wappen" class="h-12 mr-3">
+                        <span class="text-2xl font-bold">Inter Mainz</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">F.C. Inter Mainz – Dein Fußballverein für alle Generationen in der
+                        Landeshauptstadt Mainz.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Navigation</h4>
+                    <ul class="text-gray-400 space-y-3">
+                        <li><a href="#" class="hover:text-white transition">Startseite</a></li>
+                        <li><a href="#vorstand" class="hover:text-white transition">Vorstand</a></li>
+                        <li><a href="#" class="hover:text-white transition">Mannschaften</a></li>
+                        <li><a href="#veranstaltungen" class="hover:text-white transition">Termine</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Kontakt</h4>
+                    <ul class="text-gray-400 space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <span class="mr-2">📍</span> Vereinsgelände Mainz<br>Musterstraße 45, 55116 Mainz
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">📧</span> info@intermainz.de
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">📞</span> +49 06131 000000
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Social Media</h4>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-primary-red transition">FB</a>
+                        <a href="#"
+                            class="w-10 h-10 bg-pink-700 rounded-full flex items-center justify-center hover:bg-primary-red transition">IG</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs flex flex-col items-center">
+                <p>&copy; 2026 F.C. Inter Mainz. Alle Rechte vorbehalten. Erstellt mit Leidenschaft für den Mainzer
+                    Fußball.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="impressum.html" class="hover:text-white transition font-semibold">Impressum</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="datenschutzbestimmung.html"
+                        class="hover:text-white transition font-semibold">Datenschutzerklärung</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
 
 </body>
 </html>
