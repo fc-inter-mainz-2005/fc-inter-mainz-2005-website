@@ -292,6 +292,14 @@
         const privacyCheck = document.getElementById('privacy-check');
         const submitBtn = document.getElementById('submit-btn');
         const form = document.getElementById('contact-form');
+        const btn = document.getElementById('nav-toggle');
+        const nav = document.getElementById('nav-content');
+
+        if (btn && nav) {
+            btn.addEventListener('click', () => {
+                nav.classList.toggle('hidden');
+            });
+        }
 
         privacyCheck.addEventListener('change', function () {
             submitBtn.disabled = !this.checked;

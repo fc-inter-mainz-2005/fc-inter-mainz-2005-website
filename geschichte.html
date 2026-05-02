@@ -255,6 +255,16 @@
         </div>
     </footer>
 
+    <script>
+        const btn = document.getElementById('nav-toggle');
+        const nav = document.getElementById('nav-content');
+
+        if (btn && nav) {
+            btn.addEventListener('click', () => {
+                nav.classList.toggle('hidden');
+            });
+        }
+    </script>
 
 </body>
 
