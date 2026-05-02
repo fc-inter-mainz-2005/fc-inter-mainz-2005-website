@@ -121,12 +121,22 @@
     </nav>
 
     <header class="pt-20">
-        <div class="relative bg-primary-blue text-white overflow-hidden">
-            <div class="absolute inset-0 opacity-30">
-                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000" alt="Fußballplatz"
-                    class="w-full h-full object-cover">
+        <div class="relative bg-primary-blue text-white overflow-hidden h-[500px]"> <!-- Mantenemos una altura fija para evitar saltos -->
+            
+            <!-- Contenedor del Carrusel de Imágenes -->
+            <div id="hero-slider" class="absolute inset-0 opacity-40">
+                <!-- Imagen 1 (Activa por defecto) -->
+                <img src="InterMainz1.jpeg" alt="F.C. Inter Mainz Team"
+                    class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100">
+                
+                <!-- Imagen 2 (Oculta) -->
+                <img src="InterMainz2.jpeg" alt="Fußballplatz"
+                    class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0">
+                
             </div>
-            <div class="relative container mx-auto py-24 px-6 text-center md:text-left">
+
+            <!-- Contenido del Banner (Texto y Botones) -->
+            <div class="relative container mx-auto py-24 px-6 text-center md:text-left h-full flex flex-col justify-center">
                 <h1 class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter">Leidenschaft. Gemeinschaft.
                     <span class="text-primary-red">Fussball.</span>
                 </h1>
@@ -150,38 +160,37 @@
             <h2 class="text-3xl font-bold text-primary-blue mb-8 border-l-4 border-primary-red pl-4">Letztes
                 Spielergebnis</h2>
             <div class="fussballde_widget" data-id="616905ca-b7ca-4644-9e09-10958c32bc43" data-type="team-matches"
-                style="width: 100%"></div>
-            <div
-                class="bg-white p-8 rounded-xl shadow-sm border flex flex-col md:flex-row justify-around items-center gap-8">
-                <div class="text-center">
-                    <img src="800x800.png" alt="Inter Mainz" class="h-24 mx-auto mb-2">
-                    <p class="font-bold text-xl">F.C. Inter Mainz</p>
-                    <span class="text-gray-500">B-Klasse</span>
-                </div>
-                <div class="text-center">
-                    <div class="text-6xl font-black text-primary-blue mb-2">3 : 1</div>
-                    <div class="bg-primary-red text-white px-3 py-1 rounded-full text-sm font-bold uppercase">Heimsieg
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div
-                        class="h-24 w-24 bg-gray-200 rounded-full mx-auto mb-2 flex items-center justify-center text-gray-400 font-bold">
-                        Gegner</div>
-                    <p class="font-bold text-xl">Gegner S.V.</p>
-                    <span class="text-gray-500">20. Mai 2024</span>
-                </div>
+                style="width: 100%">
             </div>
         </section>
 
         <section class="mb-20 py-10">
             <h2 class="text-center text-gray-400 font-bold uppercase tracking-widest mb-10 text-sm">Unsere offiziellen
                 Partner & Sponsoren</h2>
-            <div
-                class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center opacity-70 grayscale hover:grayscale-0 transition duration-500">
-                <div class="text-center italic font-serif text-xl">El Burro Restaurant</div>
-                <div class="text-center font-bold text-2xl tracking-tighter">ZIBERI</div>
-                <div class="text-center font-black text-primary-red text-2xl">GENERALI</div>
-                <div class="text-center font-semibold text-blue-900 leading-tight">Deutsches<br>Vermögensberatung</div>
+            
+            <!-- Contenedor del Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center">
+                
+                <!-- 1. El Burro -->
+                <a href="https://el-burro.de/" target="_blank" rel="noopener noreferrer" class="flex justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500 cursor-pointer">
+                    <img src="elburro.jpg" alt="El Burro Restaurant" class="max-h-24 w-auto object-contain">
+                </a>
+
+                <!-- 2. ZIBERI -->
+                <a href="https://ziberi.eu/" target="_blank" rel="noopener noreferrer" class="flex justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500 cursor-pointer">
+                    <img src="ziberi.png" alt="Ziberi Projekt- & Wohnbau" class="max-h-16 w-auto object-contain">
+                </a>
+
+                <!-- 3. GENERALI -->
+                <a href="https://www.generali.de/" target="_blank" rel="noopener noreferrer" class="flex justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500 cursor-pointer">
+                    <img src="generali.png" alt="Generali" class="max-h-16 w-auto object-contain">
+                </a>
+
+                <!-- 4. Deutsches Vermögensberatung -->
+                <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener noreferrer" class="flex justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500 cursor-pointer">
+                    <div class="text-center font-semibold text-blue-900 leading-tight">Deutsches<br>Vermögensberatung</div>
+                </a>
+
             </div>
         </section>
 
@@ -326,7 +335,7 @@
                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 flex items-start space-x-3 text-sm">
                     <span class="text-primary-red text-lg">📍</span>
                     <p class="text-gray-700 font-semibold">Vereinsgelände F.C. Inter Mainz<br><span
-                            class="text-gray-500 font-normal">Musterstraße 45, 55116 Mainz</span></p>
+                            class="text-gray-500 font-normal">Albert-Stohr-Straße 50, 55128 Mainz</span></p>
                 </div>
 
                 <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
@@ -417,7 +426,7 @@
                     <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Kontakt</h4>
                     <ul class="text-gray-400 space-y-3 text-sm">
                         <li class="flex items-start">
-                            <span class="mr-2">📍</span> Vereinsgelände Mainz<br>Musterstraße 45, 55116 Mainz
+                            <span class="mr-2">📍</span>Bezirkssportanlage Mainz<br>Albert-Stohr-Straße 50, 55128 Mainz
                         </li>
                         <li class="flex items-center">
                             <span class="mr-2">📧</span> info@intermainz.de
@@ -431,10 +440,25 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Social Media</h4>
                     <div class="flex space-x-4">
-                        <a href="#"
-                            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-primary-red transition">FB</a>
-                        <a href="https://www.instagram.com/fc_inter_mainz/"
-                            class="w-10 h-10 bg-pink-700 rounded-full flex items-center justify-center hover:bg-primary-red transition">IG</a>
+                        
+                        <!-- Facebook (Reemplaza el # por el link de tu página de FB) -->
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
+                            <!-- Logo SVG de Facebook -->
+                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
+                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
+                            </svg>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                            class="w-10 h-10 bg-pink-700 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
+                            <!-- Logo SVG de Instagram -->
+                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                        </a>
+                        
                     </div>
                 </div>
             </div>
@@ -476,6 +500,30 @@
             // Restaura el scroll de la página
             document.body.style.overflow = 'auto';
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.slider-img');
+            let currentIndex = 0;
+            const timeInterval = 5000; // Tiempo en milisegundos (5000 = 5 segundos)
+
+            function nextImage() {
+                // Ocultar la imagen actual
+                images[currentIndex].classList.remove('opacity-100');
+                images[currentIndex].classList.add('opacity-0');
+
+                // Calcular el índice de la siguiente imagen
+                currentIndex = (currentIndex + 1) % images.length;
+
+                // Mostrar la nueva imagen
+                images[currentIndex].classList.remove('opacity-0');
+                images[currentIndex].classList.add('opacity-100');
+            }
+
+            // Iniciar el intervalo solo si hay más de una imagen
+            if (images.length > 1) {
+                setInterval(nextImage, timeInterval);
+            }
+        });
     </script>
 </body>
 
