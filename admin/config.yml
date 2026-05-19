@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "images"
+public_folder: "/images"
+collections:
+  - name: "termine"
+    label: "Kommende Termine"
+    folder: "/"
+    file: "events.json"
+    fields:
+      - label: "Eventos"
+        name: "events"
+        widget: "list"
+        fields:
+          - {label: "Tag (Nummer)", name: "date_num", widget: "string"}
+          - {label: "Monat", name: "date_mo", widget: "string"}
+          - {label: "Titel", name: "name", widget: "string"}
+          - {label: "Details", name: "meta", widget: "string"}
+          - {label: "Modal ID", name: "modal_id", widget: "string"}

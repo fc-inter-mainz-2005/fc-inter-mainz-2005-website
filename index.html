@@ -960,10 +960,13 @@
             <span class="section-divider"></span>
         </div>
         <div class="reveal reveal-delay-1">
-            <div class="fussballde_widget" data-id="616905ca-b7ca-4644-9e09-10958c32bc43" data-type="team-matches" style="width:100%"></div>
-        </div>
-    </div>
-</section>
+            <div class="fussballde_widget" data-id="616905ca-b7ca-4644-9e09-10958c32bc43" data-type="team-matches"
+                style="width:100%"></div>
+            </div>
+            <div class="fussballde_widget" data-id="a56da618-0868-4795-89c4-6d0672f5dec3" data-type="team-matches"
+                style="width: 100%"></div>
+            </div>
+            </section>
 
 <section>
     <div class="section-inner">
@@ -1021,83 +1024,35 @@
             </div>
         </div>
     </div>
-</section>
-
-<section>
-    <div class="section-inner">
-        <div class="news-events">
-            <div>
-                <div class="section-header reveal">
-                    <p class="section-eyebrow">Neuigkeiten</p>
-                    <h2 class="section-title">Aktuelle News</h2>
-                    <span class="section-divider"></span>
-                </div>
-                <div class="space">
-                    <article class="news-article reveal reveal-delay-1">
-                        <div class="news-thumb"><div class="news-thumb-inner" style="background:linear-gradient(135deg,#0a1f44,#1a3a73)"></div></div>
-                        <div>
-                            <div class="news-tag">Verein</div>
-                            <div class="news-headline">Neuer Trikotsatz für die B-Klasse präsentiert</div>
-                            <div class="news-excerpt">Dank unserer Sponsoren laufen wir nächste Woche in neuem Glanz auf...</div>
-                        </div>
-                    </article>
-                    <article class="news-article reveal reveal-delay-2" style="margin-top:8px">
-                        <div class="news-thumb"><div class="news-thumb-inner" style="background:linear-gradient(135deg,#cc0000,#660000)"></div></div>
-                        <div>
-                            <div class="news-tag">Erfolg</div>
-                            <div class="news-headline">Ü32 erreicht das Halbfinale im Kreispokal</div>
-                            <div class="news-excerpt">Nach einem spannenden Elfmeterschießen steht unsere Ü32 unter den Top 4...</div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <div id="veranstaltungen">
-                <div class="section-header reveal">
-                    <p class="section-eyebrow">Kalender</p>
-                    <h2 class="section-title">Kommende Termine</h2>
-                    <span class="section-divider"></span>
-                </div>
-                <div class="event-item reveal reveal-delay-1" onclick="openModal('modal-sommerfest')">
-                    <div class="event-date">
-                        <div class="event-date-num">18</div>
-                        <div class="event-date-mo">Juli</div>
+    </section>
+    
+    <section>
+        <div class="section-inner">
+            <div class="news-events">
+    
+                <div id="veranstaltungen">
+                    <div class="section-header reveal">
+                        <p class="section-eyebrow">Kalender</p>
+                        <h2 class="section-title">Kommende Termine</h2>
+                        <span class="section-divider"></span>
                     </div>
-                    <div>
-                        <div class="event-name">Großes Sommerfest</div>
-                        <div class="event-meta">Ab 14:00 Uhr · Alte Ziegelei</div>
-                    </div>
-                    <div class="event-arrow">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                    </div>
-                </div>
-                <div class="event-item reveal reveal-delay-2" onclick="openModal('modal-jhv')">
-                    <div class="event-date" style="background:var(--blue-light)">
-                        <div class="event-date-num">24</div>
-                        <div class="event-date-mo">Mai</div>
-                    </div>
-                    <div>
-                        <div class="event-name">Saisonfinale und Grill</div>
-                        <div class="event-meta">Ende der Saison 2024/25</div>
-                    </div>
-                    <div class="event-arrow">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    <div id="event-list" class="space-y-4">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="800x800.png" alt="Inter Mainz Wappen">
-                <div class="footer-brand-name">F.C. Inter Mainz</div>
-                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.</p>
-            </div>
-            <div class="footer-col">
+    </section>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="800x800.png" alt="Inter Mainz Wappen">
+                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                        Gegründet 2005 mit Leidenschaft.</p>
+                </div>
+                <div class="footer-col">
                 <h4>Navigation</h4>
                 <ul>
                     <li><a href="index.html">Startseite</a></li>
@@ -1347,6 +1302,30 @@ document.addEventListener('keydown', e => {
     }, { threshold: 0.12 });
     els.forEach(el => observer.observe(el));
 })();
+
+
+fetch('events.json')
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById('event-list');
+            data.events.forEach((event, index) => {
+                const html = `
+                <div class="event-item reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}" onclick="openModal('${event.modal_id}')">
+                    <div class="event-date" ${index === 1 ? 'style="background:var(--blue-light)"' : ''}>
+                        <div class="event-date-num">${event.date_num}</div>
+                        <div class="event-date-mo">${event.date_mo}</div>
+                    </div>
+                    <div>
+                        <div class="event-name">${event.name}</div>
+                        <div class="event-meta">${event.meta}</div>
+                    </div>
+                    <div class="event-arrow">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </div>
+                </div>`;
+                list.innerHTML += html;
+            });
+        });
 </script>
 </body>
 </html>
