@@ -142,7 +142,13 @@
 
         .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
         .section-eyebrow { font-size: 0.8rem; letter-spacing: 4px; color: var(--red); margin-bottom: 16px; display: inline-block; }
-        .team-title { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--white); letter-spacing: 1px; margin: 0; }
+        .team-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem); /* Reducimos el tamaño mínimo en móviles */
+            word-break: break-word; /* Fuerza el quiebre si la palabra es demasiado larga */
+            -webkit-hyphens: auto;  /* Soporte para guiones automáticos en iOS/Android */
+            hyphens: auto;
+            line-height: 1.1;       /* Asegura que no se solapen las líneas si se parte */
+        }
         
         .vorstand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
         .vorstand-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
