@@ -4,334 +4,817 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt - F.C. Inter Mainz</title>
+    <title>Kontakt – F.C. Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
+
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
+        /* ── FUENTES LOCALES INTER ── */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
             font-weight: 100 900;
             font-style: normal;
+            font-display: block;
         }
 
-        /* 2. Fuente Variable: Todos los grosores en cursiva/itálica */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
             font-weight: 100 900;
             font-style: italic;
+            font-display: block;
         }
 
-        /* Aplicar la fuente a todo el cuerpo de la web */
+        :root {
+            --blue:        #0a1f44;
+            --blue-mid:    #0d2a5c;
+            --blue-light:  #1a3a73;
+            --red:         #cc0000;
+            --red-bright:  #ff1a1a;
+            --white:       #f0f4ff;
+            --gray:        #8899bb;
+            --card-bg:     rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
         body {
+            background-color: var(--blue);
+            color: var(--white);
             font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
         }
 
-        /* Colores del F.C. Inter Mainz */
-        .bg-primary-blue {
-            background-color: #003366;
+        /* Títulos impactantes */
+        .nav-logo span,
+        .section-eyebrow,
+        .section-title,
+        .footer-brand-name,
+        .footer-col h4,
+        .mobile-nav a {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
-        .text-primary-blue {
-            color: #003366;
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--blue); }
+        ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+        /* ── CANVAS BACKGROUND ── */
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.12;
         }
 
-        .bg-primary-red {
-            background-color: #d70000;
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 0 5%;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s, box-shadow 0.4s;
+            background: rgba(8, 18, 40, 0.98);
+            box-shadow: 0 1px 0 rgba(204, 0, 0, 0.4);
         }
 
-        .text-primary-red {
-            color: #d70000;
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo img {
+            height: 46px;
+            filter: drop-shadow(0 0 8px rgba(204, 0, 0, 0.5));
+            transition: transform 0.3s;
+        }
+        .nav-logo:hover img { transform: scale(1.08) rotate(-3deg); }
+        .nav-logo span {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            text-shadow: 0 0 20px rgba(204, 0, 0, 0.4);
         }
 
-        .border-primary-red {
-            border-color: #d70000;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(240, 244, 255, 0.75);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            border-radius: 4px;
+            transition: color 0.25s, background 0.25s;
+            position: relative;
+        }
+        .nav-links a.active { color: var(--white); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px; left: 14px; right: 14px;
+            height: 2px;
+            background: var(--red);
+            transform: scaleX(0);
+            transition: transform 0.25s;
+            border-radius: 2px;
+        }
+        .nav-links a.active::after { transform: scaleX(1); }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
+            color: var(--white) !important;
+            border-radius: 50px !important; /* Forma de píldora */
+            padding: 8px 20px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4); /* Resplandor rojo */
+            transition: all 0.3s ease !important;
+            display: inline-flex !important;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
+            background: linear-gradient(135deg, #ff1a1a 0%, #ff4d4d 100%) !important;
         }
 
-        #submit-btn:disabled {
-            background-color: #9ca3af;
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 26px; height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        /* ── MOBILE NAV ── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 101;
+            background: rgba(8, 18, 40, 0.99);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            font-size: 2.4rem;
+            letter-spacing: 4px;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .mobile-nav a:hover { color: var(--red); }
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px; right: 5%;
+            background: none; border: none;
+            cursor: pointer; color: var(--white);
+        }
+        .mobile-nav-close svg { width: 28px; height: 28px; stroke: currentColor; }
+
+        /* ── SHARED SECTION STYLES ── */
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        .section-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--red);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        /* ── CONTACT INFO CARDS ── */
+        .info-card {
+            background: #1e3360;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 14px;
+            padding: 24px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .info-card:hover {
+            border-color: rgba(204, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+        .info-card-icon {
+            width: 42px; height: 42px;
+            background: rgba(204, 0, 0, 0.15);
+            border: 1px solid rgba(204, 0, 0, 0.3);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+        }
+        .info-card-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 6px;
+        }
+        .info-card-text {
+            font-size: 0.88rem;
+            color: #c8d5ed;
+            line-height: 1.65;
+        }
+        .info-card-text a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .info-card-text a:hover { color: var(--red); }
+
+        .hint-card {
+            background: rgba(204, 0, 0, 0.1);
+            border: 1px solid rgba(204, 0, 0, 0.28);
+            border-radius: 14px;
+            padding: 20px 22px;
+        }
+        .hint-card p {
+            font-size: 0.78rem;
+            color: rgba(240, 195, 195, 0.9);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* ── FORM ── */
+        .form-card {
+            background: #1e3360;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b0c0dd;
+            margin-bottom: 8px;
+        }
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 13px 16px;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 8px;
+            color: #f0f4ff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+            appearance: none;
+        }
+        .form-input::placeholder,
+        .form-textarea::placeholder { color: rgba(176,192,221,0.55); }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: rgba(204,0,0,0.65);
+            background: rgba(255,255,255,0.14);
+            box-shadow: 0 0 0 3px rgba(204,0,0,0.12);
+        }
+        .form-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b0c0dd' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+        .form-select option {
+            background: #1e3360;
+            color: #f0f4ff;
+        }
+        .form-textarea { resize: vertical; min-height: 140px; }
+        .form-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin: 4px 0;
+        }
+        .privacy-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .privacy-box input[type="checkbox"] {
+            width: 17px; height: 17px;
+            margin-top: 1px;
+            flex-shrink: 0;
+            accent-color: var(--red);
+            cursor: pointer;
+        }
+        .privacy-box label {
+            font-size: 0.78rem;
+            color: #b0c0dd;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+        .privacy-box label a {
+            color: #dce6f7;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: rgba(204,0,0,0.4);
+            transition: color 0.2s;
+        }
+        .privacy-box label a:hover { color: var(--red); }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px 32px;
+            background: var(--red);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 24px rgba(204, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit:hover:not(:disabled) {
+            background: var(--red-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(204, 0, 0, 0.55);
+        }
+        .btn-submit:disabled {
+            background: rgba(136, 153, 187, 0.25);
+            color: rgba(136, 153, 187, 0.6);
             cursor: not-allowed;
-            transform: none;
+            box-shadow: none;
         }
 
-        html {
-            scroll-behavior: smooth;
+        /* ── FOOTER ── */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: #060e1f;
+            border-top: 1px solid rgba(204, 0, 0, 0.3);
+            margin-top: 40px;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 8% 32px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        @media(max-width:900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+        @media(max-width:540px) { .footer-grid { grid-template-columns: 1fr; } }
+        .footer-brand img {
+            height: 52px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 10px rgba(204, 0, 0, 0.35));
+        }
+        .footer-brand-name { font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 12px; }
+        .footer-brand-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.7; }
+        .footer-col h4 { font-size: 1.05rem; letter-spacing: 2px; color: var(--red); margin-bottom: 18px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul a, .footer-col p {
+            font-size: 0.82rem; color: var(--gray);
+            text-decoration: none; transition: color 0.2s; line-height: 1.6;
+        }
+        .footer-col ul a:hover { color: var(--white); }
+        .footer-social { display: flex; gap: 10px; margin-top: 4px; }
+        .footer-social a {
+            width: 40px; height: 40px; border-radius: 8px;
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+        .footer-social a:hover {
+            background: var(--red); border-color: var(--red); transform: translateY(-3px);
+        }
+        .footer-social svg { width: 18px; height: 18px; fill: var(--white); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px;
+            font-size: 0.75rem; color: rgba(136, 153, 187, 0.6);
+        }
+        .footer-bottom a {
+            color: rgba(136, 153, 187, 0.6); text-decoration: none; transition: color 0.2s;
+        }
+        .footer-bottom a:hover { color: var(--white); }
+
+        /* ── ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        @media(max-width:768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .form-card { padding: 24px; }
         }
     </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
 </head>
 
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<body>
 
-    <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
-        <div class="container mx-auto flex flex-wrap items-center justify-between">
-            <a href="index.html"
-                class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
-                <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
-                F.C. Inter Mainz 2005
+<canvas id="bg-canvas"></canvas>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav id="navbar">
+    <a href="index.html" class="nav-logo">
+        <img src="800x800.png" alt="Inter Mainz Wappen">
+        <span>Inter Mainz</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="geschichte.html">Geschichte</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="vorstand.html">Vorstand</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        <li>
+            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                Online-Shop
             </a>
+        </li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
 
-            <div class="block lg:hidden">
-                <button id="nav-toggle"
-                    class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-gray-300 hover:border-gray-300">
-                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                    </svg>
-                </button>
-            </div>
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
+        <svg fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+    <a href="geschichte.html">Geschichte</a>
+    <a href="teams.html">Teams</a>
+    <a href="vorstand.html">Vorstand</a>
+    <a href="kontakt.html" style="color: var(--red);">Kontakt</a>
+    <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
+</div>
 
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0"
-                id="nav-content">
-                <ul class="list-reset lg:flex justify-end flex-1 items-center">
-
-
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="geschichte.html">Geschichte</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="teams.html">Teams</a>
-                    </li>
-                                        <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="vorstand.html">Vorstand</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="kontakt.html">Kontakt</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="pt-32 pb-12 bg-white text-center">
-        <h1 class="text-4xl font-black text-primary-blue uppercase tracking-tighter">Kontaktieren Sie uns</h1>
-        <p class="text-gray-600 mt-2">Haben Sie Fragen? Wir sind für Sie da.</p>
+<!-- ═══════════════════════ PAGE HEADER ═══════════════════════ -->
+<header class="pt-40 pb-16 relative z-10 text-center">
+    <div class="container mx-auto px-6">
+        <p class="section-eyebrow reveal">Schreib uns</p>
+        <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-6 reveal reveal-delay-1">
+            Kontakt<span style="color:var(--red)">ieren</span> Sie uns
+        </h1>
+        <div class="h-1 w-24 mx-auto reveal reveal-delay-2" style="background:var(--red); border-radius:2px;"></div>
+        <p class="mt-6 text-sm reveal reveal-delay-3" style="color:var(--gray); max-width:420px; margin-left:auto; margin-right:auto; line-height:1.7;">
+            Haben Sie Fragen zum Verein, zu Probetrainings oder zu Sponsoring? Wir freuen uns von Ihnen zu hören.
+        </p>
     </div>
+</header>
 
-    <main class="container mx-auto pb-20 px-4">
-        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+<main class="relative z-10 pb-24">
+    <div class="section-inner">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
 
-            <div class="md:col-span-1 space-y-6">
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-primary-red">
-                    <h3 class="font-bold text-primary-blue mb-2">Anschrift</h3>
-                    <p class="text-sm text-gray-600">Albert-Stohr-Straße 50<br> 55128 Mainz, Deutschland</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-primary-blue">
-                    <h3 class="font-bold text-primary-blue mb-2">E-Mail</h3>
-                    <p class="text-sm text-gray-600">info@fc-inter-mainz.de</p>
-                </div>
-                <div class="bg-red-50 p-6 rounded-xl border border-red-100">
-                    <p class="text-xs text-red-800 font-medium italic">
-                        Hinweis: Für Probetrainings nutzen Sie bitte das spezifische Formular "Anmeldung Probetraining".
+            <!-- ── LEFT: Info Cards ── -->
+            <div class="md:col-span-1 flex flex-col gap-5">
+
+                <div class="info-card reveal">
+                    <div class="info-card-icon">📍</div>
+                    <div class="info-card-title">Anschrift</div>
+                    <p class="info-card-text">
+                        Bezirkssportanlage Mainz<br>
+                        Albert-Stohr-Straße 50<br>
+                        55128 Mainz, Deutschland
                     </p>
                 </div>
+
+                <div class="info-card reveal reveal-delay-1">
+                    <div class="info-card-icon">📧</div>
+                    <div class="info-card-title">E-Mail</div>
+                    <p class="info-card-text">
+                        <a href="mailto:info@fc-inter-mainz.de">info@fc-inter-mainz.de</a>
+                    </p>
+                </div>
+
+                <div class="info-card reveal reveal-delay-2">
+                    <div class="info-card-icon">📱</div>
+                    <div class="info-card-title">Social Media</div>
+                    <p class="info-card-text" style="margin-bottom:14px;">Folgt uns auf Instagram für aktuelle News und Spielberichte.</p>
+                    <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener"
+                       style="display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; font-weight:700; color:var(--white); text-decoration:none; background:rgba(255,255,255,0.06); border:1px solid var(--card-border); border-radius:8px; padding:9px 14px; transition:background 0.25s, border-color 0.25s;"
+                       onmouseover="this.style.borderColor='rgba(204,0,0,0.4)'; this.style.background='rgba(204,0,0,0.1)'"
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.background='rgba(255,255,255,0.06)'">
+                        <svg width="16" height="16" fill="var(--white)" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        @fc_inter_mainz
+                    </a>
+                </div>
+
+                
+
             </div>
 
-            <div class="md:col-span-2 bg-white rounded-xl shadow-2xl p-8 border border-gray-100">
-                <form id="contact-form" class="space-y-5">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div>
-                            <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Vorname *</label>
-                            <input type="text" name="vorname" required
-                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition">
+            <!-- ── RIGHT: Contact Form ── -->
+            <div class="md:col-span-2 reveal reveal-delay-1">
+                <div class="form-card">
+                    <form id="contact-form" novalidate>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label class="form-label" for="vorname">Vorname *</label>
+                                <input id="vorname" type="text" name="vorname" required
+                                    class="form-input" placeholder="Max">
+                            </div>
+                            <div>
+                                <label class="form-label" for="name">Nachname *</label>
+                                <input id="name" type="text" name="name" required
+                                    class="form-input" placeholder="Mustermann">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Nachname *</label>
-                            <input type="text" name="name" required
-                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition">
+
+                        <div class="mb-5">
+                            <label class="form-label" for="email">E-Mail *</label>
+                            <input id="email" type="email" name="email" required
+                                class="form-input" placeholder="ihre@mail.de">
                         </div>
-                    </div>
 
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-gray-500 mb-1">E-Mail *</label>
-                        <input type="email" name="email" required
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition"
-                            placeholder="ihre@mail.de">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Anliegen / Betreff</label>
-                        <select name="betreff"
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition">
-                            <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
-                            <option value="Sponsoring">Sponsoring</option>
-                            <option value="Presse">Presse</option>
-                            <option value="Sonstiges">Sonstiges</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Nachricht *</label>
-                        <textarea name="message" required rows="5"
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition"
-                            placeholder="Wie können wir Ihnen helfen?"></textarea>
-                    </div>
-
-                    <div class="flex items-start bg-blue-50 p-4 rounded-lg">
-                        <div class="flex items-center h-5">
-                            <input id="privacy-check" type="checkbox" required
-                                class="h-4 w-4 text-primary-blue border-gray-300 rounded cursor-pointer">
+                        <div class="mb-5">
+                            <label class="form-label" for="betreff">Anliegen / Betreff</label>
+                            <select id="betreff" name="betreff" class="form-select">
+                                <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+                                <option value="Probetraining">Probetraining</option>
+                                <option value="Sponsoring">Sponsoring</option>
+                                <option value="Presse">Presse</option>
+                                <option value="Sonstiges">Sonstiges</option>
+                            </select>
                         </div>
-                        <div class="ml-3 text-xs leading-relaxed">
-                            <label for="privacy-check" class="text-gray-700">
-                                Ich habe die <a href="datenschutzbestimmung.html"
-                                    class="text-primary-blue font-bold underline">Datenschutzbestimmungen</a> gelesen
-                                und erkläre mich damit einverstanden, dass meine Daten zur Bearbeitung meines Anliegens
-                                gespeichert werden.
+
+                        <div class="mb-6">
+                            <label class="form-label" for="message">Nachricht *</label>
+                            <textarea id="message" name="message" required
+                                class="form-textarea" placeholder="Wie können wir Ihnen helfen?"></textarea>
+                        </div>
+
+                        <hr class="form-divider mb-6">
+
+                        <div class="privacy-box mb-6">
+                            <input id="privacy-check" type="checkbox" required>
+                            <label for="privacy-check">
+                                Ich habe die
+                                <a href="datenschutzbestimmung.html">Datenschutzbestimmungen</a>
+                                gelesen und erkläre mich damit einverstanden, dass meine Daten zur
+                                Bearbeitung meines Anliegens gespeichert werden.
                             </label>
                         </div>
-                    </div>
 
-                    <button type="submit" id="submit-btn" disabled
-                        class="w-full bg-primary-blue hover:bg-blue-900 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1 uppercase tracking-widest">
-                        Nachricht absenden
-                    </button>
-                </form>
+                        <button type="submit" id="submit-btn" class="btn-submit" disabled>
+                            Nachricht absenden
+                        </button>
+                    </form>
+                </div>
             </div>
+
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer id="kontakt" class="bg-primary-blue text-white pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center mb-6">
-                        <img src="800x800.png" alt="Wappen" class="h-12 mr-3">
-                        <span class="text-2xl font-bold">Inter Mainz</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">F.C. Inter Mainz – Dein Fußballverein für alle Generationen in der
-                        Landeshauptstadt Mainz.</p>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Navigation</h4>
-                    <ul class="text-gray-400 space-y-3">
-                        <li><a href="#" class="hover:text-white transition">Startseite</a></li>
-                        <li><a href="#vorstand" class="hover:text-white transition">Vorstand</a></li>
-                        <li><a href="#" class="hover:text-white transition">Mannschaften</a></li>
-                        <li><a href="#veranstaltungen" class="hover:text-white transition">Termine</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Kontakt</h4>
-                    <ul class="text-gray-400 space-y-3 text-sm">
-                        <li class="flex items-start">
-                            <span class="mr-2">📍</span>Bezirkssportanlage Mainz<br>Albert-Stohr-Straße 50, 55128 Mainz
-                        </li>
-                        <li class="flex items-center">
-                            <span class="mr-2">📧</span> info@intermainz.de
-                        </li>
-                        <li class="flex items-center">
-                            <span class="mr-2">📞</span> +49 06131 000000
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Social Media</h4>
-                    <div class="flex space-x-4">
-                        
-                        <!-- Facebook (Reemplaza el # por el link de tu página de FB) -->
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
-                            <!-- Logo SVG de Facebook -->
-                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
-                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
-                            </svg>
-                        </a>
-                        
-                        <!-- Instagram -->
-                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                            class="w-10 h-10 bg-pink-700 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
-                            <!-- Logo SVG de Instagram -->
-                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                            </svg>
-                        </a>
-                        
-                    </div>
-                </div>
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="800x800.png" alt="Inter Mainz Wappen">
+                <div class="footer-brand-name">F.C. Inter Mainz</div>
+                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.</p>
             </div>
-
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs flex flex-col items-center">
-                <p>&copy; 2026 F.C. Inter Mainz. Alle Rechte vorbehalten. Erstellt mit Leidenschaft für den Mainzer
-                    Fußball.</p>
-                <div class="mt-4 space-x-4">
-                    <a href="impressum.html" class="hover:text-white transition font-semibold">Impressum</a>
-                    <span class="text-gray-700">|</span>
-                    <a href="datenschutzbestimmung.html"
-                        class="hover:text-white transition font-semibold">Datenschutzerklärung</a>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="geschichte.html">Geschichte</a></li>
+                    <li><a href="teams.html">Mannschaften</a></li>
+                    <li><a href="vorstand.html">Vorstand</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                <br>
+                <p>📧 info@intermainz.de</p>
+                <br>
+                <p>📞 +49 06131 000000</p>
+            </div>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <div class="footer-social">
+                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+            <div style="display:flex;gap:20px">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        const privacyCheck = document.getElementById('privacy-check');
-        const submitBtn = document.getElementById('submit-btn');
-        const form = document.getElementById('contact-form');
-        const btn = document.getElementById('nav-toggle');
-        const nav = document.getElementById('nav-content');
+<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+<script>
+    /* ─ Canvas animated background ─ */
+    (function () {
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        resize();
+        window.addEventListener('resize', resize);
 
-        if (btn && nav) {
-            btn.addEventListener('click', () => {
-                nav.classList.toggle('hidden');
-            });
+        const shapes = Array.from({ length: 15 }, () => ({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            r: 12 + Math.random() * 28,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.25,
+            rot: Math.random() * Math.PI * 2,
+            vrot: (Math.random() - 0.5) * 0.004,
+            type: Math.random() > 0.5 ? 'hex' : 'logo',
+            alpha: 0.08 + Math.random() * 0.25
+        }));
+
+        const shieldPath = new Path2D();
+        const s = 0.9;
+        shieldPath.moveTo(0, -s); shieldPath.lineTo(s * 0.75, -s * 0.6);
+        shieldPath.lineTo(s * 0.75, s * 0.3);
+        shieldPath.quadraticCurveTo(s * 0.75, s * 1.0, 0, s * 1.2);
+        shieldPath.quadraticCurveTo(-s * 0.75, s * 1.0, -s * 0.75, s * 0.3);
+        shieldPath.lineTo(-s * 0.75, -s * 0.6); shieldPath.closePath();
+
+        const hexPath = new Path2D();
+        for (let i = 0; i < 6; i++) {
+            const a = (Math.PI / 3) * i;
+            if (i === 0) hexPath.moveTo(Math.cos(a), Math.sin(a));
+            else hexPath.lineTo(Math.cos(a), Math.sin(a));
         }
+        hexPath.closePath();
 
-        privacyCheck.addEventListener('change', function () {
-            submitBtn.disabled = !this.checked;
-        });
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            shapes.forEach(shape => {
+                shape.x += shape.vx; shape.y += shape.vy; shape.rot += shape.vrot;
+                if (shape.x < -80) shape.x = W + 80;
+                if (shape.x > W + 80) shape.x = -80;
+                if (shape.y < -80) shape.y = H + 80;
+                if (shape.y > H + 80) shape.y = -80;
+                ctx.save();
+                ctx.translate(shape.x, shape.y); ctx.rotate(shape.rot); ctx.scale(shape.r, shape.r);
+                ctx.globalAlpha = shape.alpha; ctx.lineWidth = 1.5 / shape.r;
+                if (shape.type === 'logo') { ctx.strokeStyle = '#cc0000'; ctx.stroke(shieldPath); }
+                else { ctx.strokeStyle = '#1a3a73'; ctx.stroke(hexPath); }
+                ctx.restore();
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
 
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
+    /* ─ Mobile nav ─ */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-close');
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
-            const formData = new FormData(form);
+    /* ─ Scroll reveal ─ */
+    (function () {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
 
-            // Enviar datos al PHP mediante fetch
-            fetch('php/kontaktFormularSaveInDB.php', {
-                method: 'POST',
-                body: formData
+    /* ─ Form logic ─ */
+    const privacyCheck = document.getElementById('privacy-check');
+    const submitBtn = document.getElementById('submit-btn');
+    const form = document.getElementById('contact-form');
+
+    privacyCheck.addEventListener('change', function () {
+        submitBtn.disabled = !this.checked;
+    });
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 018-8v8H4z"/></svg> Wird gesendet…`;
+
+        fetch('php/kontaktFormularSaveInDB.php', { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.saveStatus) {
+                    submitBtn.innerHTML = `✓ Erfolgreich gesendet`;
+                    submitBtn.style.background = '#166534';
+                    form.reset();
+                    setTimeout(() => {
+                        submitBtn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Nachricht absenden`;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = true;
+                    }, 4000);
+                } else {
+                    alert('Fehler: ' + data.message);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Nachricht absenden`;
+                }
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.saveStatus) {
-                        alert('Vielen Dank! Deine Anfrage wurde erfolgreich gespeichert.');
-                        form.reset(); // Limpiar formulario
-                        submitBtn.disabled = true; // Volver a deshabilitar
-                    } else {
-                        alert('Fehler: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Es gab ein Problem beim Senden der Anfrage.');
-                });
-        });
-
-    </script>
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Es gab ein Problem beim Senden der Anfrage.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Nachricht absenden`;
+            });
+    });
+</script>
 </body>
-
 </html>
