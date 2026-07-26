@@ -1,289 +1,307 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum - F.C. Inter Mainz</title>
+    <title>Impressum – F.C. Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 1. Fuente Variable: Todos los grosores normales (100 al 900) */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
-            font-weight: 100 900;
-            font-style: normal;
+            font-weight: 100 900; font-style: normal; font-display: block;
         }
-
-        /* 2. Fuente Variable: Todos los grosores en cursiva/itálica */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
-            font-weight: 100 900;
-            font-style: italic;
+            font-weight: 100 900; font-style: italic; font-display: block;
         }
-
-        /* Aplicar la fuente a todo el cuerpo de la web */
-        body {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --blue: #0a1f44; --blue-mid: #0d2a5c; --blue-light: #1a3a73;
+            --red: #cc0000; --red-bright: #ff1a1a;
+            --white: #f0f4ff; --gray: #8899bb;
+            --card-bg: rgba(255,255,255,0.04); --card-border: rgba(255,255,255,0.08);
         }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--blue); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 400; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--blue); }
+        ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
 
-        /* Colores del F.C. Inter Mainz */
-        .bg-primary-blue {
-            background-color: #003366;
-        }
+        #bg-canvas { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:0.12; }
 
-        .text-primary-blue {
-            color: #003366;
-        }
+        /* NAV */
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:0 5%; height:72px; display:flex; align-items:center; justify-content:space-between; background:rgba(8,18,40,0.98); box-shadow:0 1px 0 rgba(204,0,0,0.4); }
+        .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+        .nav-logo img { height:46px; filter:drop-shadow(0 0 8px rgba(204,0,0,0.5)); transition:transform 0.3s; }
+        .nav-logo:hover img { transform:scale(1.08) rotate(-3deg); }
+        .nav-logo span { font-family:'Inter',sans-serif; font-weight:900; font-size:1.4rem; letter-spacing:2px; text-transform:uppercase; color:var(--white); text-shadow:0 0 20px rgba(204,0,0,0.4); }
+        .nav-links { display:flex; align-items:center; gap:6px; list-style:none; }
+        .nav-links a { text-decoration:none; color:rgba(240,244,255,0.75); font-size:0.85rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:8px 14px; border-radius:4px; transition:color 0.25s; position:relative; }
+        .nav-links a::after { content:''; position:absolute; bottom:4px; left:14px; right:14px; height:2px; background:var(--red); transform:scaleX(0); transition:transform 0.25s; border-radius:2px; }
+        .nav-links a:hover { color:var(--white); }
+        .nav-links a:hover::after { transform:scaleX(1); }
+        .nav-cta { background:linear-gradient(135deg,var(--red) 0%,#ff3333 100%) !important; color:var(--white) !important; border-radius:50px !important; padding:8px 20px !important; font-weight:700 !important; box-shadow:0 4px 15px rgba(204,0,0,0.4); transition:all 0.3s ease !important; }
+        .nav-cta::after { display:none !important; }
+        .nav-cta:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(204,0,0,0.6); }
+        .nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none; }
+        .nav-hamburger span { display:block; width:26px; height:2px; background:var(--white); border-radius:2px; }
+        .mobile-nav { display:none; position:fixed; inset:0; z-index:101; background:rgba(8,18,40,0.99); flex-direction:column; align-items:center; justify-content:center; gap:24px; }
+        .mobile-nav.open { display:flex; }
+        .mobile-nav a { font-family:'Inter',sans-serif; font-weight:900; text-transform:uppercase; font-size:2.4rem; letter-spacing:4px; color:var(--white); text-decoration:none; }
+        .mobile-nav a:hover { color:var(--red); }
+        .mobile-nav-close { position:absolute; top:24px; right:5%; background:none; border:none; cursor:pointer; }
+        .mobile-nav-close svg { width:28px; height:28px; stroke:white; }
 
-        .bg-primary-red {
-            background-color: #d70000;
-        }
+        /* PAGE HEADER */
+        .page-header { padding: 130px 8% 60px; position:relative; z-index:1; }
+        .section-eyebrow { font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:10px; display:block; }
+        .section-title { font-family:'Inter',sans-serif; font-weight:900; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:2px; text-transform:uppercase; color:var(--white); line-height:0.95; }
+        .section-divider { display:block; width:48px; height:3px; background:var(--red); border-radius:2px; margin-top:18px; }
 
-        .text-primary-red {
-            color: #d70000;
-        }
+        /* CONTENT */
+        .content-area { position:relative; z-index:1; max-width:860px; margin:0 auto; padding:0 8% 80px; }
+        .legal-card { background:var(--card-bg); border:1px solid var(--card-border); border-radius:14px; padding:36px 40px; margin-bottom:20px; }
+        .legal-card h2 { font-family:'Inter',sans-serif; font-weight:900; font-size:1.15rem; letter-spacing:1px; text-transform:uppercase; color:var(--red); margin-bottom:16px; }
+        .legal-card h3 { font-weight:700; font-size:0.92rem; color:var(--white); margin:16px 0 6px; }
+        .legal-card p { font-size:0.88rem; color:var(--gray); line-height:1.75; margin-bottom:10px; }
+        .legal-card a { color:var(--white); text-decoration:underline; text-decoration-color:rgba(204,0,0,0.4); transition:color 0.2s; }
+        .legal-card a:hover { color:var(--red); }
+        .legal-card ul { list-style:none; margin:8px 0 10px 0; }
+        .legal-card ul li { font-size:0.88rem; color:var(--gray); line-height:1.75; padding-left:16px; position:relative; }
+        .legal-card ul li::before { content:'—'; position:absolute; left:0; color:var(--red); }
+        .back-link { display:inline-flex; align-items:center; gap:8px; color:var(--gray); font-size:0.8rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; text-decoration:none; margin-bottom:32px; transition:color 0.2s; }
+        .back-link:hover { color:var(--white); }
+        .back-link svg { width:16px; height:16px; }
 
-        .border-primary-red {
-            border-color: #d70000;
-        }
+        /* FOOTER */
+        footer { position:relative; z-index:1; background:#060e1f; border-top:1px solid rgba(204,0,0,0.3); }
+        .footer-inner { max-width:1280px; margin:0 auto; padding:64px 8% 32px; }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+        @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+        @media(max-width:540px){.footer-grid{grid-template-columns:1fr;}}
+        .footer-brand img { height:52px; margin-bottom:12px; filter:drop-shadow(0 0 10px rgba(204,0,0,0.35)); }
+        .footer-brand-name { font-family:'Inter',sans-serif; font-weight:900; text-transform:uppercase; font-size:1.5rem; letter-spacing:2px; margin-bottom:12px; }
+        .footer-brand-desc { font-size:0.82rem; color:var(--gray); line-height:1.7; }
+        .footer-col h4 { font-family:'Inter',sans-serif; font-weight:900; text-transform:uppercase; font-size:1.05rem; letter-spacing:2px; color:var(--red); margin-bottom:18px; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:10px; }
+        .footer-col ul a, .footer-col p { font-size:0.82rem; color:var(--gray); text-decoration:none; transition:color 0.2s; line-height:1.6; }
+        .footer-col ul a:hover { color:var(--white); }
+        .footer-social { display:flex; gap:10px; margin-top:4px; }
+        .footer-social a { width:40px; height:40px; border-radius:8px; background:var(--card-bg); border:1px solid var(--card-border); display:flex; align-items:center; justify-content:center; transition:background 0.25s,border-color 0.25s,transform 0.2s; }
+        .footer-social a:hover { background:var(--red); border-color:var(--red); transform:translateY(-3px); }
+        .footer-social svg { width:18px; height:18px; fill:var(--white); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,0.06); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.75rem; color:rgba(136,153,187,0.6); }
+        .footer-bottom a { color:rgba(136,153,187,0.6); text-decoration:none; transition:color 0.2s; }
+        .footer-bottom a:hover { color:var(--white); }
 
-        html {
-            scroll-behavior: smooth;
+        /* ANIMATIONS */
+        .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal-delay-1 { transition-delay:0.1s; }
+        .reveal-delay-2 { transition-delay:0.2s; }
+        .reveal-delay-3 { transition-delay:0.3s; }
+
+        @media(max-width:768px){
+            .nav-links{display:none;}
+            .nav-hamburger{display:flex;}
+            .page-header{padding:110px 6% 48px;}
+            .content-area{padding:0 6% 60px;}
+            .legal-card{padding:24px;}
         }
     </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
 </head>
+<body>
+<canvas id="bg-canvas"></canvas>
 
-<body class="bg-gray-50 font-sans leading-normal tracking-normal text-gray-800">
+<nav>
+    <a href="index.html" class="nav-logo">
+        <img src="800x800.png" alt="Inter Mainz Wappen">
+        <span>Inter Mainz</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="geschichte.html">Geschichte</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="vorstand.html">Vorstand</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="https://fc-inter-mainz.fan12.de/" class="nav-cta">🛒 Online-Shop</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
 
-    <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
-        <div class="container mx-auto flex flex-wrap items-center justify-between">
-            <a href="index.html"
-                class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
-                <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
-                F.C. Inter Mainz 2005
-            </a>
+<div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-close">
+        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <a href="geschichte.html">Geschichte</a>
+    <a href="teams.html">Teams</a>
+    <a href="vorstand.html">Vorstand</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
+</div>
 
-            <div class="block lg:hidden">
-                <button id="nav-toggle"
-                    class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-gray-300 hover:border-gray-300">
-                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                    </svg>
-                </button>
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <span class="section-eyebrow">Rechtliches</span>
+    <h1 class="section-title">Impressum</h1>
+    <span class="section-divider"></span>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+    <a href="index.html" class="back-link reveal">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        Zurück zur Startseite
+    </a>
+
+    <div class="legal-card reveal reveal-delay-1">
+        <h2>Angaben gemäß § 5 DDG</h2>
+        <p>
+            <strong style="color:var(--white)">F.C. Inter Mainz 2005 e.V.</strong><br>
+            Albert-Stohr-Straße 50<br>
+            55128 Mainz<br>
+            Deutschland
+        </p>
+    </div>
+
+    <div class="legal-card reveal reveal-delay-2">
+        <h2>Vertreten durch</h2>
+        <p>
+            <strong style="color:var(--white)">1. Vorsitzender:</strong> Santiago Ballabriga<br>
+            <strong style="color:var(--white)">2. Vorsitzender:</strong> Fernando Trochez<br>
+            <strong style="color:var(--white)">Schatzmeister:</strong> José Luis Fuente Fernández
+        </p>
+    </div>
+
+    <div class="legal-card reveal reveal-delay-3">
+        <h2>Kontakt</h2>
+        <p>
+            📧 E-Mail: <a href="mailto:info@fc-inter-mainz.de">info@fc-inter-mainz.de</a><br>
+            🌐 Website: <a href="https://www.fc-inter-mainz.de">www.fc-inter-mainz.de</a>
+        </p>
+    </div>
+
+    <div class="legal-card reveal">
+        <h2>Registereintrag</h2>
+        <p>
+            Eingetragen im Vereinsregister.<br>
+            Registergericht: Amtsgericht Mainz<br>
+            Registernummer: VR 3999
+        </p>
+    </div>
+
+    <div class="legal-card reveal reveal-delay-1">
+        <h2>Verantwortlich für den Inhalt (§ 18 Abs. 2 MStV)</h2>
+        <p>
+            Santiago Ballabriga<br>
+            Albert-Stohr-Straße 50<br>
+            55128 Mainz
+        </p>
+    </div>
+
+    <div class="legal-card reveal reveal-delay-2">
+        <h2>Haftungsausschluss</h2>
+        <h3>Haftung für Inhalte</h3>
+        <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+        <h3>Haftung für Links</h3>
+        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+        <h3>Urheberrecht</h3>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+    </div>
+
+    <div class="legal-card reveal reveal-delay-3">
+        <h2>Streitschlichtung</h2>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br>
+        Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="800x800.png" alt="Inter Mainz Wappen">
+                <div class="footer-brand-name">F.C. Inter Mainz</div>
+                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.</p>
             </div>
-
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0"
-                id="nav-content">
-                <ul class="list-reset lg:flex justify-end flex-1 items-center">
-
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="geschichte.html">Geschichte</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="teams.html">Teams</a>
-                    </li>
-                    
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="vorstand.html">Vorstand</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="kontakt.html">Kontakt</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
-                    </li>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="geschichte.html">Geschichte</a></li>
+                    <li><a href="teams.html">Mannschaften</a></li>
+                    <li><a href="vorstand.html">Vorstand</a></li>
                 </ul>
             </div>
-        </div>
-    </nav>
-
-    <main class="container mx-auto pt-32 pb-20 px-6 max-w-4xl flex-grow">
-        <div class="bg-white p-10 shadow-xl rounded-xl border-t-8 border-primary-blue">
-            <h1 class="text-4xl font-black text-primary-blue mb-8 uppercase tracking-tight border-b pb-4">Impressum</h1>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <section class="space-y-8">
-                    <div>
-                        <h2 class="text-xl font-bold text-primary-blue mb-2">Angaben gemäß § 5 TMG</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            F.C. Inter Mainz 2005 e.V.<br>
-                            Albert-Stohr-Straße 50<br>
-                            55128 Mainz
-                        </p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-primary-blue mb-2">Vertreten durch den Vorstand</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            1. Vorsitzender: Santiago Ballabriga<br>
-                            2. Vorsitzender: Fernando Trochez<br>
-                            Schatzmeister: José Luis Fuente Fernández
-                        </p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-primary-blue mb-2">Kontakt</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            Telefon: +49 (0) 6131 000000<br>
-                            E-Mail: info@fc-inter-mainz.de
-                        </p>
-                    </div>
-
-                    <div>
-                        <h2 class="text-xl font-bold text-primary-blue mb-2">Registereintrag</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            Eintragung im Vereinsregister.<br>
-                            Registergericht: Amtsgericht Mainz<br>
-                            Registernummer: VR [NUMMER EINTRAGEN]
-                        </p>
-                    </div>
-                </section>
-
-                <section class="space-y-6 bg-gray-50 p-6 rounded-lg border border-gray-100">
-                    <h2 class="text-2xl font-black text-gray-800 border-b border-gray-200 pb-2 mb-4">Haftungs­ausschluss
-                    </h2>
-
-                    <div>
-                        <h3 class="font-bold text-gray-800 text-sm">Haftung für eigene Inhalte</h3>
-                        <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                            Gemäß § 7 Abs. 1 TMG sind wir als Dienstanbieter für die eigenen redaktionellen Inhalte auf
-                            dieser Webseite nach den allgemeinen Gesetzen verantwortlich. Entsprechend den §§ 8 bis 10
-                            TMG besteht jedoch keine Verpflichtung, gespeicherte oder übermittelte fremde Informationen
-                            permanent zu überwachen. Sollten uns konkrete Rechtsverletzungen bekannt werden, entfernen
-                            wir die entsprechenden Inhalte unverzüglich.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold text-gray-800 text-sm">Haftung für externe Links</h3>
-                        <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                            Unsere Webseite enthält Verknüpfungen zu Webseiten Dritter. Da wir auf deren aktuelle und
-                            zukünftige Gestaltung sowie Inhalte keinerlei Einfluss haben, können wir hierfür keine
-                            Gewähr übernehmen. Verantwortlich ist stets der jeweilige Betreiber der verlinkten Seite.
-                            Sobald uns Rechtsverstöße auf verlinkten Seiten bekannt werden, werden wir derartige Links
-                            umgehend löschen.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold text-gray-800 text-sm">Urheberrechtsschutz</h3>
-                        <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                            Die auf dieser Webseite veröffentlichten Inhalte, Texte, Bilder und Werke unterliegen dem
-                            deutschen Urheberrecht. Jede Art der Vervielfältigung, Bearbeitung oder Verwertung außerhalb
-                            der gesetzlichen Grenzen bedarf der vorherigen schriftlichen Zustimmung des Vereins.
-                            Downloads oder Kopien sind ausschließlich für den privaten, nicht-kommerziellen Gebrauch
-                            gestattet. Bei Bekanntwerden von Urheberrechtsverletzungen bitten wir um einen Hinweis, um
-                            diese umgehend zu entfernen.
-                        </p>
-                    </div>
-                </section>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p><br>
+                <p>📧 info@fc-inter-mainz.de</p>
             </div>
-
-            <div class="mt-8 text-center text-sm text-gray-500 border-t pt-4">
-                <p>Dieses Impressum gilt auch für unsere Social-Media-Profile (Facebook, Instagram).</p>
-            </div>
-        </div>
-    </main>
-
-    <footer id="kontakt" class="bg-primary-blue text-white pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center mb-6">
-                        <img src="800x800.png" alt="Wappen" class="h-12 mr-3">
-                        <span class="text-2xl font-bold">Inter Mainz</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">F.C. Inter Mainz – Dein Fußballverein für alle Generationen in der
-                        Landeshauptstadt Mainz.</p>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Navigation</h4>
-                    <ul class="text-gray-400 space-y-3">
-                        <li><a href="#" class="hover:text-white transition">Startseite</a></li>
-                        <li><a href="#vorstand" class="hover:text-white transition">Vorstand</a></li>
-                        <li><a href="#" class="hover:text-white transition">Mannschaften</a></li>
-                        <li><a href="#veranstaltungen" class="hover:text-white transition">Termine</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Kontakt</h4>
-                    <ul class="text-gray-400 space-y-3 text-sm">
-                        <li class="flex items-start">
-                            <span class="mr-2">📍</span>Bezirkssportanlage Mainz<br>Albert-Stohr-Straße 50, 55128 Mainz
-                        </li>
-                        <li class="flex items-center">
-                            <span class="mr-2">📧</span> info@intermainz.de
-                        </li>
-                        <li class="flex items-center">
-                            <span class="mr-2">📞</span> +49 06131 000000
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Social Media</h4>
-                    <div class="flex space-x-4">
-                        
-                        <!-- Facebook (Reemplaza el # por el link de tu página de FB) -->
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
-                            <!-- Logo SVG de Facebook -->
-                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
-                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
-                            </svg>
-                        </a>
-                        
-                        <!-- Instagram -->
-                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                            class="w-10 h-10 bg-pink-700 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
-                            <!-- Logo SVG de Instagram -->
-                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                            </svg>
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs flex flex-col items-center">
-                <p>&copy; 2026 F.C. Inter Mainz. Alle Rechte vorbehalten. Erstellt mit Leidenschaft für den Mainzer
-                    Fußball.</p>
-                <div class="mt-4 space-x-4">
-                    <a href="impressum.html" class="hover:text-white transition font-semibold">Impressum</a>
-                    <span class="text-gray-700">|</span>
-                    <a href="datenschutzbestimmung.html"
-                        class="hover:text-white transition font-semibold">Datenschutzerklärung</a>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <div class="footer-social">
+                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+            <div style="display:flex;gap:20px">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-
+<script>
+    /* Canvas */
+    (function(){
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        resize(); window.addEventListener('resize', resize);
+        const shapes = Array.from({length:15},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:12+Math.random()*28,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.25,rot:Math.random()*Math.PI*2,vrot:(Math.random()-0.5)*0.004,type:Math.random()>0.5?'hex':'logo',alpha:0.08+Math.random()*0.25}));
+        const sp=new Path2D(),s=0.9;
+        sp.moveTo(0,-s);sp.lineTo(s*.75,-s*.6);sp.lineTo(s*.75,s*.3);sp.quadraticCurveTo(s*.75,s,0,s*1.2);sp.quadraticCurveTo(-s*.75,s,-s*.75,s*.3);sp.lineTo(-s*.75,-s*.6);sp.closePath();
+        const hp=new Path2D();
+        for(let i=0;i<6;i++){const a=(Math.PI/3)*i;i===0?hp.moveTo(Math.cos(a),Math.sin(a)):hp.lineTo(Math.cos(a),Math.sin(a));}hp.closePath();
+        function draw(){
+            ctx.clearRect(0,0,W,H);
+            shapes.forEach(sh=>{sh.x+=sh.vx;sh.y+=sh.vy;sh.rot+=sh.vrot;if(sh.x<-80)sh.x=W+80;if(sh.x>W+80)sh.x=-80;if(sh.y<-80)sh.y=H+80;if(sh.y>H+80)sh.y=-80;ctx.save();ctx.translate(sh.x,sh.y);ctx.rotate(sh.rot);ctx.scale(sh.r,sh.r);ctx.globalAlpha=sh.alpha;ctx.lineWidth=1.5/sh.r;if(sh.type==='logo'){ctx.strokeStyle='#cc0000';ctx.stroke(sp);}else{ctx.strokeStyle='#1a3a73';ctx.stroke(hp);}ctx.restore();});
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+    /* Nav */
+    const hamburger=document.getElementById('hamburger');
+    const mobileNav=document.getElementById('mobile-nav');
+    const mobileClose=document.getElementById('mobile-close');
+    hamburger.addEventListener('click',()=>mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click',()=>mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('open')));
+    /* Reveal */
+    (function(){
+        const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.1});
+        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    })();
+</script>
 </body>
-
 </html>

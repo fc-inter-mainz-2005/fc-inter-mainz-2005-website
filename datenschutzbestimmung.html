@@ -1,283 +1,298 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutzbestimmungen - F.C. Inter Mainz</title>
+    <title>Datenschutzerklärung – F.C. Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 1. Fuente Variable: Todos los grosores normales (100 al 900) */
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
-            font-weight: 100 900;
-            font-style: normal;
-        }
+        @font-face { font-family:'Inter'; src:url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype'); font-weight:100 900; font-style:normal; font-display:block; }
+        @font-face { font-family:'Inter'; src:url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype'); font-weight:100 900; font-style:italic; font-display:block; }
+        :root { --blue:#0a1f44; --blue-mid:#0d2a5c; --blue-light:#1a3a73; --red:#cc0000; --red-bright:#ff1a1a; --white:#f0f4ff; --gray:#8899bb; --card-bg:rgba(255,255,255,0.04); --card-border:rgba(255,255,255,0.08); }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html{scroll-behavior:smooth;}
+        body{background-color:var(--blue);color:var(--white);font-family:'Inter',sans-serif;font-weight:400;overflow-x:hidden;}
+        ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--blue);}::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px;}
+        #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.12;}
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,18,40,0.98);box-shadow:0 1px 0 rgba(204,0,0,0.4);}
+        .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+        .nav-logo img{height:46px;filter:drop-shadow(0 0 8px rgba(204,0,0,0.5));transition:transform 0.3s;}
+        .nav-logo:hover img{transform:scale(1.08) rotate(-3deg);}
+        .nav-logo span{font-family:'Inter',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:2px;text-transform:uppercase;color:var(--white);text-shadow:0 0 20px rgba(204,0,0,0.4);}
+        .nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
+        .nav-links a{text-decoration:none;color:rgba(240,244,255,0.75);font-size:0.85rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;border-radius:4px;transition:color 0.25s;position:relative;}
+        .nav-links a::after{content:'';position:absolute;bottom:4px;left:14px;right:14px;height:2px;background:var(--red);transform:scaleX(0);transition:transform 0.25s;border-radius:2px;}
+        .nav-links a:hover{color:var(--white);}
+        .nav-links a:hover::after{transform:scaleX(1);}
+        .nav-cta{background:linear-gradient(135deg,var(--red) 0%,#ff3333 100%) !important;color:var(--white) !important;border-radius:50px !important;padding:8px 20px !important;font-weight:700 !important;box-shadow:0 4px 15px rgba(204,0,0,0.4);transition:all 0.3s ease !important;}
+        .nav-cta::after{display:none !important;}
+        .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(204,0,0,0.6);}
+        .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+        .nav-hamburger span{display:block;width:26px;height:2px;background:var(--white);border-radius:2px;}
+        .mobile-nav{display:none;position:fixed;inset:0;z-index:101;background:rgba(8,18,40,0.99);flex-direction:column;align-items:center;justify-content:center;gap:24px;}
+        .mobile-nav.open{display:flex;}
+        .mobile-nav a{font-family:'Inter',sans-serif;font-weight:900;text-transform:uppercase;font-size:2.4rem;letter-spacing:4px;color:var(--white);text-decoration:none;}
+        .mobile-nav a:hover{color:var(--red);}
+        .mobile-nav-close{position:absolute;top:24px;right:5%;background:none;border:none;cursor:pointer;}
+        .mobile-nav-close svg{width:28px;height:28px;stroke:white;}
 
-        /* 2. Fuente Variable: Todos los grosores en cursiva/itálica */
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
-            font-weight: 100 900;
-            font-style: italic;
-        }
+        .page-header{padding:130px 8% 60px;position:relative;z-index:1;}
+        .section-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block;}
+        .section-title{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,4rem);letter-spacing:2px;text-transform:uppercase;color:var(--white);line-height:0.95;}
+        .section-divider{display:block;width:48px;height:3px;background:var(--red);border-radius:2px;margin-top:18px;}
 
-        /* Aplicar la fuente a todo el cuerpo de la web */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+        .content-area{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 8% 80px;}
+        .legal-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:36px 40px;margin-bottom:20px;}
+        .legal-card h2{font-family:'Inter',sans-serif;font-weight:900;font-size:1.05rem;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+        .legal-card h3{font-weight:700;font-size:0.9rem;color:var(--white);margin:14px 0 6px;border-left:3px solid var(--red);padding-left:10px;}
+        .legal-card p{font-size:0.86rem;color:var(--gray);line-height:1.8;margin-bottom:10px;}
+        .legal-card a{color:var(--white);text-decoration:underline;text-decoration-color:rgba(204,0,0,0.4);transition:color 0.2s;}
+        .legal-card a:hover{color:var(--red);}
+        .legal-card ul{list-style:none;margin:8px 0 10px 0;}
+        .legal-card ul li{font-size:0.86rem;color:var(--gray);line-height:1.75;padding-left:16px;position:relative;margin-bottom:4px;}
+        .legal-card ul li::before{content:'›';position:absolute;left:0;color:var(--red);font-weight:700;}
+        .toc-card{background:rgba(204,0,0,0.06);border:1px solid rgba(204,0,0,0.2);border-radius:14px;padding:28px 36px;margin-bottom:20px;}
+        .toc-card h2{font-family:'Inter',sans-serif;font-weight:900;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+        .toc-card ol{list-style:decimal;padding-left:20px;}
+        .toc-card ol li{font-size:0.84rem;color:var(--gray);margin-bottom:6px;line-height:1.6;}
+        .toc-card ol a{color:var(--white);text-decoration:none;transition:color 0.2s;}
+        .toc-card ol a:hover{color:var(--red);}
+        .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--gray);font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;margin-bottom:32px;transition:color 0.2s;}
+        .back-link:hover{color:var(--white);}
+        .back-link svg{width:16px;height:16px;}
 
-        /* Colores del F.C. Inter Mainz */
-        .bg-primary-blue {
-            background-color: #003366;
-        }
+        footer{position:relative;z-index:1;background:#060e1f;border-top:1px solid rgba(204,0,0,0.3);}
+        .footer-inner{max-width:1280px;margin:0 auto;padding:64px 8% 32px;}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+        @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+        @media(max-width:540px){.footer-grid{grid-template-columns:1fr;}}
+        .footer-brand img{height:52px;margin-bottom:12px;filter:drop-shadow(0 0 10px rgba(204,0,0,0.35));}
+        .footer-brand-name{font-family:'Inter',sans-serif;font-weight:900;text-transform:uppercase;font-size:1.5rem;letter-spacing:2px;margin-bottom:12px;}
+        .footer-brand-desc{font-size:0.82rem;color:var(--gray);line-height:1.7;}
+        .footer-col h4{font-family:'Inter',sans-serif;font-weight:900;text-transform:uppercase;font-size:1.05rem;letter-spacing:2px;color:var(--red);margin-bottom:18px;}
+        .footer-col ul{list-style:none;}
+        .footer-col ul li{margin-bottom:10px;}
+        .footer-col ul a,.footer-col p{font-size:0.82rem;color:var(--gray);text-decoration:none;transition:color 0.2s;line-height:1.6;}
+        .footer-col ul a:hover{color:var(--white);}
+        .footer-social{display:flex;gap:10px;margin-top:4px;}
+        .footer-social a{width:40px;height:40px;border-radius:8px;background:var(--card-bg);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;transition:background 0.25s,border-color 0.25s,transform 0.2s;}
+        .footer-social a:hover{background:var(--red);border-color:var(--red);transform:translateY(-3px);}
+        .footer-social svg{width:18px;height:18px;fill:var(--white);}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.75rem;color:rgba(136,153,187,0.6);}
+        .footer-bottom a{color:rgba(136,153,187,0.6);text-decoration:none;transition:color 0.2s;}
+        .footer-bottom a:hover{color:var(--white);}
 
-        .text-primary-blue {
-            color: #003366;
-        }
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        .reveal-delay-1{transition-delay:0.1s;}.reveal-delay-2{transition-delay:0.2s;}.reveal-delay-3{transition-delay:0.3s;}
 
-        .bg-primary-red {
-            background-color: #d70000;
-        }
-
-        .text-primary-red {
-            color: #d70000;
-        }
-
-        .border-primary-red {
-            border-color: #d70000;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        @media(max-width:768px){.nav-links{display:none;}.nav-hamburger{display:flex;}.page-header{padding:110px 6% 48px;}.content-area{padding:0 6% 60px;}.legal-card{padding:24px 20px;}}
     </style>
 </head>
+<body>
+<canvas id="bg-canvas"></canvas>
 
-<body class="bg-gray-50 font-sans leading-normal tracking-normal text-gray-800">
+<nav>
+    <a href="index.html" class="nav-logo">
+        <img src="800x800.png" alt="Inter Mainz Wappen">
+        <span>Inter Mainz</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="geschichte.html">Geschichte</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="vorstand.html">Vorstand</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="https://fc-inter-mainz.fan12.de/" class="nav-cta">🛒 Online-Shop</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-close"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <a href="geschichte.html">Geschichte</a>
+    <a href="teams.html">Teams</a>
+    <a href="vorstand.html">Vorstand</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
+</div>
 
-    <nav class="bg-primary-blue p-4 shadow-md fixed w-full z-50 top-0">
-        <div class="container mx-auto flex flex-wrap items-center justify-between">
-            <a href="index.html"
-                class="flex items-center text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl">
-                <img src="800x800.png" alt="F.C. Inter Mainz Wappen" class="h-10 mr-3">
-                F.C. Inter Mainz
-            </a>
+<div class="page-header">
+    <span class="section-eyebrow">Rechtliches</span>
+    <h1 class="section-title">Datenschutz&shy;erklärung</h1>
+    <span class="section-divider"></span>
+</div>
 
-            <div class="block lg:hidden">
-                <button id="nav-toggle"
-                    class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-gray-300 hover:border-gray-300">
-                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                    </svg>
-                </button>
+<div class="content-area">
+    <a href="index.html" class="back-link reveal">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        Zurück zur Startseite
+    </a>
+
+    <!-- INHALTSVERZEICHNIS -->
+    <div class="toc-card reveal reveal-delay-1">
+        <h2>Inhaltsverzeichnis</h2>
+        <ol>
+            <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+            <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
+            <li><a href="#rechte">Rechte der betroffenen Personen</a></li>
+            <li><a href="#kontaktformular">Kontaktformular</a></li>
+            <li><a href="#hosting">Hosting</a></li>
+            <li><a href="#cookies">Cookies</a></li>
+            <li><a href="#fussballde">Fussball.de-Widgets</a></li>
+            <li><a href="#instagram">Instagram</a></li>
+            <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
+        </ol>
+    </div>
+
+    <!-- 1 -->
+    <div class="legal-card reveal reveal-delay-2" id="verantwortlicher">
+        <h2>1. Verantwortlicher</h2>
+        <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
+        <p>
+            <strong style="color:var(--white)">F.C. Inter Mainz 2005 e.V.</strong><br>
+            Albert-Stohr-Straße 50 · 55128 Mainz<br>
+            📧 <a href="mailto:info@fc-inter-mainz.de">info@fc-inter-mainz.de</a>
+        </p>
+    </div>
+
+    <!-- 2 -->
+    <div class="legal-card reveal" id="grundsaetze">
+        <h2>2. Grundsätze der Datenverarbeitung</h2>
+        <p>Personenbezogene Daten werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts verarbeitet. Gemäß Art. 4 Ziffer 1 DSGVO gilt als „Verarbeitung" jeder Vorgang im Zusammenhang mit personenbezogenen Daten.</p>
+        <p>Wir verarbeiten personenbezogene Daten nur, wenn eine der folgenden Rechtsgrundlagen vorliegt:</p>
+        <ul>
+            <li>Einwilligung der betroffenen Person (Art. 6 Abs. 1 lit. a DSGVO)</li>
+            <li>Erfüllung eines Vertrags (Art. 6 Abs. 1 lit. b DSGVO)</li>
+            <li>Erfüllung einer rechtlichen Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)</li>
+            <li>Wahrung berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO)</li>
+        </ul>
+    </div>
+
+    <!-- 3 -->
+    <div class="legal-card reveal reveal-delay-1" id="rechte">
+        <h2>3. Rechte der betroffenen Personen</h2>
+        <p>Sie haben als betroffene Person folgende Rechte gegenüber uns:</p>
+        <h3>Recht auf Auskunft (Art. 15 DSGVO)</h3>
+        <p>Sie haben das Recht, Auskunft über die zu Ihrer Person gespeicherten Daten sowie über deren Verarbeitung zu erhalten.</p>
+        <h3>Recht auf Berichtigung (Art. 16 DSGVO)</h3>
+        <p>Sie haben das Recht, unrichtige personenbezogene Daten berichtigen zu lassen.</p>
+        <h3>Recht auf Löschung (Art. 17 DSGVO)</h3>
+        <p>Sie haben das Recht, die Löschung Ihrer bei uns gespeicherten Daten zu verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+        <h3>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</h3>
+        <p>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</p>
+        <h3>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
+        <p>Sie haben das Recht, Ihre bereitgestellten Daten in einem structured, maschinenlesbaren Format zu erhalten.</p>
+        <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+        <p>Sie haben das Recht, jederzeit der Verarbeitung Ihrer Daten zu widersprechen.</p>
+        <h3>Beschwerderecht</h3>
+        <p>Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. In Rheinland-Pfalz ist dies der Landesbeauftragte für den Datenschutz und die Informationsfreiheit: <a href="https://www.datenschutz.rlp.de" target="_blank" rel="noopener">www.datenschutz.rlp.de</a></p>
+    </div>
+
+    <!-- 4 -->
+    <div class="legal-card reveal reveal-delay-2" id="kontaktformular">
+        <h2>4. Contactformular</h2>
+        <p>Wenn Sie uns über unser Kontaktformular eine Anfrage zukommen lassen, werden die von Ihnen eingegebenen Daten (Vorname, Nachname, E-Mail-Adresse, optionale Telefonnummer sowie Ihre Nachricht) zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+        <p><strong style="color:var(--white)">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).</p>
+        <p><strong style="color:var(--white)">Speicherdauer:</strong> Die Daten werden gelöscht, sobald die Anfrage abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+        <p>Ihre Daten werden nicht an Dritte weitergegeben und ausschließlich für den genannten Zweck genutzt.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="legal-card reveal" id="hosting">
+        <h2>5. Hosting</h2>
+        <p>Unsere Website wird extern gehostet. Wir nutzen für die Bereitstellung und den Betrieb dieser Online-Präsenz die Infrastruktur und Dienste von <strong>IONOS SE</strong> (Elgendorfer Str. 57, 56410 Montabaur, Deutschland) sowie Deployment-Dienste von <strong>Netlify, Inc.</strong> (512 2nd Street, Floor 2, San Francisco, CA 94107, USA). Die personenbezogenen Daten, die beim Besuch dieser Website automatisch erfasst werden (insbesondere Logfiles wie IP-Adressen, Browsertyp, Datum und Uhrzeit des Zugriffs, etc.) sowie Daten aus Formularen, werden auf den Servern dieser Anbieter verarbeitet.</p>
+        <p>Die Nutzung dieser Hoster erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren, schnellen, fehlerfreien und effizienten Bereitstellung unseres Vereinsangebots durch professionelle IT-Dienstleister).</p>
+        <p><strong>Auftragsverarbeitung (AVV):</strong> Wir haben mit den genannten Anbietern einen Vertrag über Auftragsverarbeitung (bzw. entsprechende Data Processing Agreements) gemäß Art. 28 DSGVO abgeschlossen. Dies stellt sicher, dass die Verarbeitung streng nach unseren Weisungen und im Einklang mit europäischen Datenschutzstandards erfolgt. Soweit Daten bei der Nutzung von Netlify in die USA übertragen werden, wird das Datenschutzniveau durch den Abschluss der EU-Standardvertragsklauseln (Standard Contractual Clauses - SCC) abgesichert.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="legal-card reveal reveal-delay-1" id="cookies">
+        <h2>6. Cookies</h2>
+        <p>Unsere Website verwendet keine Tracking-Cookies oder Analyse-Cookies von Drittanbietern. Es werden lediglich technisch notwendige Sitzungsdaten verarbeitet, die für den Betrieb der Website erforderlich sind und keinerlei personenbezogene Informationen langfristig speichern.</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="legal-card reveal reveal-delay-1" id="fussballde">
+        <h2>7. Fussball.de-Widgets</h2>
+        <p>Auf unserer Website binden wir Widgets der Plattform <strong>Fussball.de</strong> ein, um aktuelle Spielergebnisse, Tabellenstände y kommende Spielpaarungen unserer Mannschaften live anzuzeigen. Dies ist ein Angebot der DFB GmbH & Co. KG (Otto-Fleck-Schneise 6, 60528 Frankfurt am Main).</p>
+        <p>Beim Aufruf von Seiten unserer Website, auf denen diese Widgets integrado sind, baut Ihr Webbrowser automatisch eine direkte Verbindung zu los Servern von Fussball.de auf. Hierdurch wird Ihre IP-Adresse sowie die Information, welche spezifische Unterseite unserer Internetpräsenz Sie aufgerufen haben, an den Betreiber (DFB GmbH & Co. KG) übermittelt.</p>
+        <p><strong style="color:var(--white)">Rechtsgrundlage:</strong> Die Einbindung dieses Dienstes erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. Unser Interesse liegt darin, den Besuchern unserer Website aktuelle sportliche Informationen und Spielpläne direkt und benutzerfreundlich zur Verfügung zu stellen.</p>
+        <p>Weitere Informationen über den Zweck und Umfang der Datenverarbeitung durch den Anbieter sowie Ihre diesbezüglichen Rechte entnehmen Sie bitte der Datenschutzerklärung von Fussball.de unter: <a href="https://www.fussball.de/datenschutz" target="_blank" rel="noopener">www.fussball.de/datenschutz</a></p>
+    </div>
+
+    <!-- 8 -->
+    <div class="legal-card reveal reveal-delay-2" id="instagram">
+        <h2>8. Instagram</h2>
+        <p>Wir unterhalten eine Präsenz auf Instagram (Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland). Wenn Sie unsere Instagram-Seite besuchen, kann Instagram Daten über Sie erheben.</p>
+        <p>Einzelheiten dazu entnehmen Sie der Datenschutzrichtlinie von Meta/Instagram: <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener">privacycenter.instagram.com/policy</a></p>
+        <p>Eine Übertragung von Daten in die USA und andere Drittländer kann nicht ausgeschlossen werden. Meta verwendet Standardvertragsklauseln gemäß Art. 46 DSGVO als Grundlage für die Datenübertragung.</p>
+    </div>
+
+    <!-- 9 -->
+    <div class="legal-card reveal reveal-delay-3" id="aenderungen">
+        <h2>9. Änderungen dieser Erklärung</h2>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+        <p><strong style="color:var(--white)">Stand:</strong> Juli 2026</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="800x800.png" alt="Inter Mainz Wappen">
+                <div class="footer-brand-name">F.C. Inter Mainz</div>
+                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.</p>
             </div>
-
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0"
-                id="nav-content">
-                <ul class="list-reset lg:flex justify-end flex-1 items-center">
-
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="geschichte.html">Geschichte</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="teams.html">Teams</a>
-                    </li>
-                                        <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="vorstand.html">Vorstand</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="kontakt.html">Kontakt</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-white no-underline hover:text-primary-red py-2 px-4 transition"
-                            href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
-                    </li>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="geschichte.html">Geschichte</a></li>
+                    <li><a href="teams.html">Mannschaften</a></li>
+                    <li><a href="vorstand.html">Vorstand</a></li>
                 </ul>
             </div>
-        </div>
-    </nav>
-
-    <main class="container mx-auto pt-32 pb-20 px-6 max-w-4xl">
-        <div class="bg-white p-8 md:p-12 shadow-lg rounded-xl">
-            <h1 class="text-4xl font-black text-primary-blue mb-8 border-b-4 border-primary-red pb-4 uppercase">
-                Datenschutz­erklärung
-            </h1>
-
-            <section class="space-y-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-primary-blue mb-4">1. Name und Anschrift des Verantwortlichen
-                    </h2>
-                    <p class="mb-4">Der Verantwortliche im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer
-                        nationaler Datenschutzgesetze ist der:</p>
-                    <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-primary-blue">
-                        <p class="font-bold">F.C. Inter Mainz 2005 e.V.</p>
-                        <p>Vertreten durch den Vorstand gemäß § 26 BGB</p>
-                        <p>Albert-Stohr-Straße 50</p>
-                        <p>55128 Mainz</p>
-                        <p>E-Mail: info@fc-inter-mainz.de</p>
-                        <p>Webseite: www.fc-inter-mainz.de</p>
-                    </div>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-primary-blue mb-4">2. Datenerhebung über das Online-Formular
-                        "Mitgliedschaftsanfrage"</h2>
-                    <p class="mb-4 italic">Beschreibung und Umfang der Datenverarbeitung:</p>
-                    <p class="mb-4">Auf unserer Webseite bieten wir die Möglichkeit, eine Anfrage zur Mitgliedschaft zu
-                        stellen. Dabei werden folgende Daten aus der Eingabemaske an uns übermittelt und gespeichert:
-                    </p>
-                    <ul class="list-disc ml-6 mb-4 space-y-1">
-                        <li>Name (Vor- und Nachname)</li>
-                        <li>Geburtsdatum</li>
-                        <li>E-Mail-Adresse</li>
-                        <li>IP-Adresse sowie Datum/Uhrzeit der Anfrage</li>
-                    </ul>
-
-                    <p class="font-bold mt-6 mb-2">Rechtsgrundlage:</p>
-                    <p class="mb-4">Rechtsgrundlage für die Verarbeitung der Daten ist <strong>Art. 6 Abs. 1 lit. b
-                            DSGVO</strong> (Durchführung vorvertraglicher Maßnahmen). Die Anfrage dient der Vorbereitung
-                        eines Mitgliedschaftsvertrages.</p>
-
-                    <p class="font-bold mt-6 mb-2">Zweck der Verarbeitung:</p>
-                    <p class="mb-4">Die Erhebung des Namens und des Geburtsdatums ist erforderlich, um Ihre Identität
-                        festzustellen und die Zuordnung zu den korrekten Altersklassen (gemäß Spielordnung des
-                        Südwestdeutschen Fußballverbandes - SWFV) zu prüfen. Die E-Mail-Adresse dient dazu, der Kontaktaufnahme zur Abstimmung von Probetrainings.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-primary-blue mb-4">3. Speicherdauer</h2>
-                    <p class="mb-4">Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung
-                        nicht mehr erforderlich sind:</p>
-                    <ul class="list-disc ml-6 mb-4 space-y-2">
-                        <li><strong>Bei Ablehnung:</strong> Kommt keine Mitgliedschaft zustande, werden Ihre Daten
-                            spätestens 6 Monate nach Abschluss der Konversation gelöscht.</li>
-                        <li><strong>Bei Beitritt:</strong> Werden Sie Mitglied, werden die Daten in unsere
-                            Mitgliederverwaltung übernommen. Hier gelten die gesetzlichen Aufbewahrungsfristen (i.d.R.
-                            10 Jahre für beitragsrelevante Unterlagen gemäß Abgabenordnung).</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-primary-blue mb-4">4. Weitergabe von Daten</h2>
-                    <p class="mb-4">Zum Zeitpunkt der Online-Anfrage erfolgt <strong>keine</strong> Weitergabe Ihrer
-                        Daten an externe Dritte oder Sponsoren.</p>
-                    <p class="mb-4 underline italic">Besonderer Hinweis zum Spielbetrieb:</p>
-                    <p>Erst nach einem offiziellen Vereinsbeitritt werden Daten (Name, Geburtsdatum, Nationalität) an
-                        den <strong>Südwestdeutschen Fußballverband e.V. (SWFV)</strong> zum Zwecke der
-                        Spielberechtigung und Passausstellung übermittelt (Art. 6 Abs. 1 lit. b und c DSGVO).</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-primary-blue mb-4">5. Ihre Rechte</h2>
-                    <p class="mb-4">Als betroffene Person haben Sie gemäß DSGVO folgende Rechte:</p>
-                    <ul class="list-disc ml-6 space-y-2">
-                        <li><strong>Recht auf Auskunft (Art. 15):</strong> Sie können erfahren, welche Daten wir über
-                            Sie speichern.</li>
-                        <li><strong>Recht auf Berichtigung (Art. 16):</strong> Korrektur falscher Daten.</li>
-                        <li><strong>Recht auf Löschung (Art. 17):</strong> "Recht auf Vergessenwerden".</li>
-                        <li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18).</strong></li>
-                        <li><strong>Recht auf Datenübertragbarkeit (Art. 20).</strong></li>
-                        <li><strong>Widerspruchsrecht (Art. 21).</strong></li>
-                    </ul>
-                    <p class="mt-4">Zur Ausübung dieser Rechte wenden Sie sich bitte an die oben genannte Adresse des
-                        Vorstands.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-primary-blue mb-4">6. Datensicherheit</h2>
-                    <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte
-                        eine <strong>SSL- bzw. TLS-Verschlüsselung</strong>. Eine verschlüsselte Verbindung erkennen Sie
-                        daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt.</p>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <footer id="kontakt" class="bg-primary-blue text-white pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center mb-6">
-                        <img src="800x800.png" alt="Wappen" class="h-12 mr-3">
-                        <span class="text-2xl font-bold">Inter Mainz</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">F.C. Inter Mainz – Dein Fußballverein für alle Generationen in der
-                        Landeshauptstadt Mainz.</p>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Navigation</h4>
-                    <ul class="text-gray-400 space-y-3">
-                        <li><a href="#" class="hover:text-white transition">Startseite</a></li>
-                        <li><a href="#vorstand" class="hover:text-white transition">Vorstand</a></li>
-                        <li><a href="#" class="hover:text-white transition">Mannschaften</a></li>
-                        <li><a href="#veranstaltungen" class="hover:text-white transition">Termine</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Kontakt</h4>
-                    <ul class="text-gray-400 space-y-3 text-sm">
-                        <li class="flex items-start">
-                            <span class="mr-2">📍</span>Bezirkssportanlage Mainz<br>Albert-Stohr-Straße 50, 55128 Mainz
-                        </li>
-                        <li class="flex items-center">
-                            <span class="mr-2">📧</span> info@intermainz.de
-                        </li>
-                        <li class="flex items-center">
-                            <span class="mr-2">📞</span> +49 06131 000000
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-primary-red pb-2 inline-block">Social Media</h4>
-                    <div class="flex space-x-4">
-                        
-                        <!-- Facebook (Reemplaza el # por el link de tu página de FB) -->
-                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                            class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
-                            <!-- Logo SVG de Facebook -->
-                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
-                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
-                            </svg>
-                        </a>
-                        
-                        <!-- Instagram -->
-                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                            class="w-10 h-10 bg-pink-700 rounded-full flex items-center justify-center hover:bg-primary-red transition transform hover:scale-110">
-                            <!-- Logo SVG de Instagram -->
-                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                            </svg>
-                        </a>
-                        
-                    </div>
-                </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p><br>
+                <p>📧 info@fc-inter-mainz.de</p>
             </div>
-
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs flex flex-col items-center">
-                <p>&copy; 2026 F.C. Inter Mainz. Alle Rechte vorbehalten. Erstellt mit Leidenschaft für den Mainzer
-                    Fußball.</p>
-                <div class="mt-4 space-x-4">
-                    <a href="impressum.html" class="hover:text-white transition font-semibold">Impressum</a>
-                    <span class="text-gray-700">|</span>
-                    <a href="datenschutzbestimmung.html"
-                        class="hover:text-white transition font-semibold">Datenschutzerklärung</a>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <div class="footer-social">
+                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
+                    <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
                 </div>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+            <div style="display:flex;gap:20px">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-
+<script>
+    (function(){
+        const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');let W,H;
+        function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+        const shapes=Array.from({length:15},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:12+Math.random()*28,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.25,rot:Math.random()*Math.PI*2,vrot:(Math.random()-0.5)*0.004,type:Math.random()>0.5?'hex':'logo',alpha:0.08+Math.random()*0.25}));
+        const sp=new Path2D(),s=0.9;sp.moveTo(0,-s);sp.lineTo(s*.75,-s*.6);sp.lineTo(s*.75,s*.3);sp.quadraticCurveTo(s*.75,s,0,s*1.2);sp.quadraticCurveTo(-s*.75,s,-s*.75,s*.3);sp.lineTo(-s*.75,-s*.6);sp.closePath();
+        const hp=new Path2D();for(let i=0;i<6;i++){const a=(Math.PI/3)*i;i===0?hp.moveTo(Math.cos(a),Math.sin(a)):hp.lineTo(Math.cos(a),Math.sin(a));}hp.closePath();
+        function draw(){ctx.clearRect(0,0,W,H);shapes.forEach(sh=>{sh.x+=sh.vx;sh.y+=sh.vy;sh.rot+=sh.vrot;if(sh.x<-80)sh.x=W+80;if(sh.x>W+80)sh.x=-80;if(sh.y<-80)sh.y=H+80;if(sh.y>H+80)sh.y=-80;ctx.save();ctx.translate(sh.x,sh.y);ctx.rotate(sh.rot);ctx.scale(sh.r,sh.r);ctx.globalAlpha=sh.alpha;ctx.lineWidth=1.5/sh.r;if(sh.type==='logo'){ctx.strokeStyle='#cc0000';ctx.stroke(sp);}else{ctx.strokeStyle='#1a3a73';ctx.stroke(hp);}ctx.restore();});requestAnimationFrame(draw);}draw();
+    })();
+    const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobile-nav'),mobileClose=document.getElementById('mobile-close');
+    hamburger.addEventListener('click',()=>mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click',()=>mobileNav.classList.remove('open'));
+    mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('open')));
+    (function(){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));})();
+</script>
 </body>
-
 </html>
