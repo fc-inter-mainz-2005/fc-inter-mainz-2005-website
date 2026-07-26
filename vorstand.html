@@ -29,28 +29,41 @@
             font-display: block;
         }
 
-        :root {
+                :root {
+            /* TEMA CLARO */
+            --bg-body: #faf8f5;
+            --bg-surface: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.98);
+            --bg-footer: #f0f4f8;
+            --text-main: #1a202c;
+            --text-muted: #4a5568;
+            
             --blue: #0a1f44;
-            --blue-mid: #0d2a5c;
-            --blue-light: #1a3a73;
+            --blue-mid: #2b4c7e;
+            --blue-light: #e2e8f0;
             --red: #cc0000;
-            --white: #f0f4ff;
+            --red-bright: #ff1a1a;
+            
+            --card-border: rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --white: #ffffff; /* Redefinido por si acaso */
             --gray: #8899bb;
-            --card-bg: rgba(255,255,255,0.04);
-            --card-border: rgba(255,255,255,0.08);
+            --card-bg: #ffffff;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--blue);
-            width: 100%;
-            color: var(--white);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            max-width: 100vw;
             font-weight: 400;
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
         }
 
         .nav-logo span, .section-eyebrow, .team-title, .footer-brand-name, .footer-col h4, .mobile-nav a {
@@ -59,9 +72,10 @@
             text-transform: uppercase;
         }
 
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--blue); }
-        ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
 
         #bg-canvas {
             position: fixed;
@@ -69,7 +83,7 @@
             width: 100%; height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.12;
+            opacity: 0.15;
         }
 
         /* ── NAV ── */
@@ -82,15 +96,14 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(8, 18, 40, 0.98); 
-            box-shadow: 0 1px 0 rgba(204,0,0,0.4);
+            background: var(--bg-nav); box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             transition: background 0.4s, box-shadow 0.4s;
         }
         
         .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .nav-logo img { height: 46px; filter: drop-shadow(0 0 8px rgba(204,0,0,0.5)); transition: transform 0.3s; }
         .nav-logo:hover img { transform: scale(1.08) rotate(-3deg); }
-        .nav-logo span { font-size: 1.4rem; letter-spacing: 2px; color: var(--white); text-shadow: 0 0 20px rgba(204,0,0,0.4); }
+        .nav-logo span { font-size: 1.4rem; letter-spacing: 2px; color: var(--blue); }
         
         .nav-links {
             display: flex;
@@ -99,21 +112,21 @@
             list-style: none;
         }
         .nav-links a {
-            text-decoration: none; color: rgba(240,244,255,0.75); font-size: 0.85rem; font-weight: 600;
+            text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600;
             letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; position: relative; transition: color 0.25s;
         }
         .nav-links a::after {
             content: ''; position: absolute; bottom: 4px; left: 14px; right: 14px; height: 2px;
             background: var(--red); transform: scaleX(0); transition: transform 0.25s; border-radius: 2px;
         }
-        .nav-links a.active { color: var(--white); }
+        .nav-links a.active { color: var(--blue); }
         .nav-links a.active::after { transform: scaleX(1); }
-        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover { color: var(--blue); }
         .nav-links a:hover::after { transform: scaleX(1); }
         
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
-            color: var(--white) !important;
+            color: white !important;
             border-radius: 50px !important;
             padding: 8px 20px !important;
             font-weight: 700 !important;
@@ -131,13 +144,13 @@
         }
 
         .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: none; }
-        .nav-hamburger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+        .nav-hamburger span { display: block; width: 26px; height: 2px; background: var(--blue); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
 
-        .mobile-nav { display: none; position: fixed; inset: 0; z-index: 101; background: rgba(8,18,40,0.99); flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+        .mobile-nav { display: none; position: fixed; inset: 0; z-index: 101; background: rgba(255,255,255,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
         .mobile-nav.open { display: flex; }
-        .mobile-nav a { font-size: 2.4rem; letter-spacing: 4px; color: var(--white); text-decoration: none; transition: color 0.2s; }
+        .mobile-nav a { font-size: 2.4rem; letter-spacing: 4px; color: var(--blue); text-decoration: none; transition: color 0.2s; }
         .mobile-nav a:hover { color: var(--red); }
-        .mobile-nav-close { position: absolute; top: 24px; right: 5%; background: none; border: none; cursor: pointer; color: var(--white); }
+        .mobile-nav-close { position: absolute; top: 24px; right: 5%; background: none; border: none; cursor: pointer; color: var(--blue); }
         .mobile-nav-close svg { width: 28px; height: 28px; stroke: currentColor; }
 
         .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
@@ -155,26 +168,26 @@
         .vorstand-card:hover { transform: translateY(-8px); border-color: var(--red); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .vorstand-photo { width: 140px; height: 140px; margin: 0 auto 20px; border-radius: 50%; background: var(--blue-mid); overflow: hidden; border: 4px solid var(--card-border); }
         
-        footer { position: relative; z-index: 1; background: #060e1f; border-top: 1px solid rgba(204,0,0,0.3); margin-top: 80px; }
+        footer { position: relative; z-index: 1; background: var(--blue); color: white; border-top: 4px solid var(--red); margin-top: 80px; }
         .footer-inner { max-width: 1280px; margin: 0 auto; padding: 64px 8% 32px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
         @media(max-width:900px){ .footer-grid { grid-template-columns:1fr 1fr; gap:32px; } }
         @media(max-width:540px){ .footer-grid { grid-template-columns:1fr; } }
         .footer-brand img { height: 52px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(204,0,0,0.35)); }
         .footer-brand-name { font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 12px; }
-        .footer-brand-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.7; }
+        .footer-brand-desc { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); line-height: 1.7; }
         .footer-col h4 { font-size: 1.05rem; letter-spacing: 2px; color: var(--red); margin-bottom: 18px; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul a, .footer-col p { font-size: 0.82rem; color: var(--gray); text-decoration: none; transition: color 0.2s; line-height: 1.6; }
-        .footer-col ul a:hover { color: var(--white); }
+        .footer-col ul a, .footer-col p { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; line-height: 1.6; }
+        .footer-col ul a:hover { color: white; }
         .footer-social { display: flex; gap: 10px; margin-top: 4px; }
-        .footer-social a { width: 40px; height: 40px; border-radius: 8px; background: var(--card-bg); border: 1px solid var(--card-border); display: flex; align-items: center; justify-content: center; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
+        .footer-social a { width: 40px; height: 40px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
         .footer-social a:hover { background: var(--red); border-color: var(--red); transform: translateY(-3px); }
-        .footer-social svg { width: 18px; height: 18px; fill: var(--white); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.75rem; color: rgba(136,153,187,0.6); }
-        .footer-bottom a { color: rgba(136,153,187,0.6); text-decoration: none; transition: color 0.2s; }
-        .footer-bottom a:hover { color: var(--white); }
+        .footer-social svg { width: 18px; height: 18px; fill: white; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); }
+        .footer-bottom a { color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.2s; }
+        .footer-bottom a:hover { color: white; }
 
         .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -193,6 +206,7 @@
         <span>Inter Mainz</span>
     </a>
     <ul class="nav-links">
+        <li><a href="index.html">Startseite</a></li>
         <li><a href="geschichte.html">Geschichte</a></li>
         <li><a href="teams.html">Teams</a></li>
         <li><a href="vorstand.html" class="active">Vorstand</a></li>
@@ -215,6 +229,7 @@
     <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
         <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
+    <a href="index.html">Startseite</a>
     <a href="geschichte.html">Geschichte</a>
     <a href="teams.html">Teams</a>
     <a href="vorstand.html" style="color:var(--red)">Vorstand</a>
@@ -224,7 +239,7 @@
 
 <header class="pt-40 pb-16 text-center z-10 relative">
     <p class="section-eyebrow reveal">Führungsteam</p>
-    <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter reveal reveal-delay-1">Unser Vorstand</h1>
+    <h1 class="text-4xl md:text-6xl font-black text-[#0a1f44] uppercase tracking-tighter reveal reveal-delay-1">Unser Vorstand</h1>
     <p class="text-[var(--gray)] mt-4 max-w-2xl mx-auto px-4 reveal reveal-delay-1">Die aktuelle Besetzung und Verantwortlichkeiten der Vereinsführung (Stand 2026).</p>
 </header>
 
@@ -240,25 +255,25 @@
                 <div class="vorstand-photo">
                     <img src="santy.jpg" alt="Santiago Ballabriga" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-red-900/20 flex items-center justify-center text-red-500 text-4xl font-black\'>SB</div>'">
                 </div>
-                <h3 class="text-xl font-bold mb-1 text-white">Santiago Ballabriga</h3>
+                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Santiago Ballabriga</h3>
                 <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">1. Vorsitzender</p>
-                <a href="kontakt.html" class="inline-block bg-[rgba(255,255,255,0.04)] hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
+                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
             </div>
             <div class="vorstand-card">
                 <div class="vorstand-photo">
                     <div class="w-full h-full bg-blue-900/20 flex items-center justify-center text-blue-500 text-4xl font-black">FT</div>
                 </div>
-                <h3 class="text-xl font-bold mb-1 text-white">Fernando Trochez</h3>
+                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Fernando Trochez</h3>
                 <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">2. Vorsitzender</p>
-                <a href="kontakt.html" class="inline-block bg-[rgba(255,255,255,0.04)] hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
+                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
             </div>
             <div class="vorstand-card">
                 <div class="vorstand-photo">
                     <img src="jose.jpg" alt="José Luis Fuente Fernández" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-green-900/20 flex items-center justify-center text-green-500 text-4xl font-black\'>JF</div>'">
                 </div>
-                <h3 class="text-xl font-bold mb-1 text-white">José Luis Fuente Fernández</h3>
+                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">José Luis Fuente Fernández</h3>
                 <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">Schatzmeister</p>
-                <a href="kontakt.html" class="inline-block bg-[rgba(255,255,255,0.04)] hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
+                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
             </div>
         </div>
     </section>
@@ -271,18 +286,18 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl border border-[var(--card-border)] border-l-4 border-l-[var(--blue-light)] shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition transform hover:-translate-y-1 hover:border-l-[var(--red)]">
                 <div>
-                    <h4 class="text-lg font-black text-white uppercase tracking-wider mb-2">Abteilung Fußball</h4>
-                    <p class="text-[var(--gray)] text-sm">Verantwortlich: <span class="text-white font-semibold">Martin Ubilla (Sportdirektor)</span></p>
+                    <h4 class="text-lg font-black text-[#0a1f44] uppercase tracking-wider mb-2">Abteilung Fußball</h4>
+                    <p class="text-[var(--gray)] text-sm">Verantwortlich: <span class="text-[var(--blue)] font-semibold">Martin Ubilla (Sportdirektor)</span></p>
                 </div>
-                <a href="kontakt.html" class="bg-[rgba(255,255,255,0.05)] border border-[var(--card-border)] text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
+                <a href="kontakt.html" class="bg-transparent border border-[var(--card-border)] text-[var(--blue)] hover:text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
             </div>
 
             <div class="bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl border border-[var(--card-border)] border-l-4 border-l-[var(--blue-light)] shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition transform hover:-translate-y-1 hover:border-l-[var(--red)]">
                 <div>
-                    <h4 class="text-lg font-black text-white uppercase tracking-wider mb-2">Sponsoring & Partnerschaften</h4>
-                    <p class="text-[var(--gray)] text-sm">Verantwortlich: <span class="text-white font-semibold">Santiago Ballabriga</span></p>
+                    <h4 class="text-lg font-black text-[#0a1f44] uppercase tracking-wider mb-2">Sponsoring & Partnerschaften</h4>
+                    <p class="text-[var(--gray)] text-sm">Verantwortlich: <span class="text-[var(--blue)] font-semibold">Santiago Ballabriga</span></p>
                 </div>
-                <a href="kontakt.html" class="bg-[rgba(255,255,255,0.05)] border border-[var(--card-border)] text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
+                <a href="kontakt.html" class="bg-transparent border border-[var(--card-border)] text-[var(--blue)] hover:text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
             </div>
         </div>
     </section>
@@ -335,7 +350,7 @@
         function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
         resize();
         window.addEventListener('resize', resize);
-        const shapes = Array.from({length: 15}, () => ({ x: Math.random()*W, y: Math.random()*H, r: 12+Math.random()*28, vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.25, rot: Math.random()*Math.PI*2, vrot: (Math.random()-0.5)*0.004, type: Math.random()>0.5 ? 'hex' : 'logo', alpha: 0.08+Math.random()*0.25 }));
+        const shapes = Array.from({length: 15}, () => ({ x: Math.random()*W, y: Math.random()*H, r: 12+Math.random()*28, vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.25, rot: Math.random()*Math.PI*2, vrot: (Math.random()-0.5)*0.004, type: Math.random()>0.5 ? 'hex' : 'logo', alpha: 0.1+Math.random()*0.15 }));
         const shieldPath = new Path2D(); const s=0.9; shieldPath.moveTo(0,-s); shieldPath.lineTo(s*0.75,-s*0.6); shieldPath.lineTo(s*0.75,s*0.3); shieldPath.quadraticCurveTo(s*0.75,s*1.0,0,s*1.2); shieldPath.quadraticCurveTo(-s*0.75,s*1.0,-s*0.75,s*0.3); shieldPath.lineTo(-s*0.75,-s*0.6); shieldPath.closePath();
         const hexPath = new Path2D(); for(let i=0;i<6;i++){ const a=(Math.PI/3)*i; if(i===0) hexPath.moveTo(Math.cos(a),Math.sin(a)); else hexPath.lineTo(Math.cos(a),Math.sin(a)); } hexPath.closePath();
         function draw(){
@@ -345,7 +360,7 @@
                 if(sh.x < -80) sh.x = W+80; if(sh.x > W+80) sh.x = -80;
                 if(sh.y < -80) sh.y = H+80; if(sh.y > H+80) sh.y = -80;
                 ctx.save(); ctx.translate(sh.x, sh.y); ctx.rotate(sh.rot); ctx.scale(sh.r, sh.r); ctx.globalAlpha = sh.alpha; ctx.lineWidth = 1.5/sh.r;
-                if(sh.type === 'logo'){ ctx.strokeStyle = '#cc0000'; ctx.stroke(shieldPath); } else { ctx.strokeStyle = '#1a3a73'; ctx.stroke(hexPath); }
+                if(sh.type === 'logo'){ ctx.strokeStyle = '#cc0000'; ctx.stroke(shieldPath); } else { ctx.strokeStyle = '#2b4c7e'; ctx.stroke(hexPath); }
                 ctx.restore();
             });
             requestAnimationFrame(draw);
