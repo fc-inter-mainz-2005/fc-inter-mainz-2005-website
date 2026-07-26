@@ -30,15 +30,24 @@
         }
 
         :root {
+            /* TEMA CLARO */
+            --bg-body: #faf8f5;
+            --bg-surface: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.98);
+            --bg-footer: #f0f4f8;
+            --text-main: #1a202c;
+            --text-muted: #4a5568;
+            
             --blue: #0a1f44;
-            --blue-mid: #0d2a5c;
-            --blue-light: #1a3a73;
+            --blue-mid: #2b4c7e;
+            --blue-light: #e2e8f0;
             --red: #cc0000;
             --red-bright: #ff1a1a;
-            --white: #f0f4ff;
-            --gray: #8899bb;
-            --card-bg: rgba(255,255,255,0.04);
-            --card-border: rgba(255,255,255,0.08);
+            
+            --card-border: rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,8 +55,8 @@
         html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--blue);
-            color: var(--white);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             overflow-x: hidden;
@@ -61,9 +70,10 @@
         }
 
         /* ── SCROLLBAR ── */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--blue); }
-        ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
 
         /* ── CANVAS BACKGROUND ── */
         #bg-canvas {
@@ -72,7 +82,7 @@
             width: 100%; height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.12;
+            opacity: 0.15; /* Un poco más visible en fondo claro */
         }
 
         /* ── NAV ── */
@@ -88,10 +98,9 @@
             transition: background 0.4s, box-shadow 0.4s;
         }
         
-        /* Eliminado el blur para mejorar rendimiento masivo */
         nav.scrolled {
-            background: rgba(8, 18, 40, 0.98); 
-            box-shadow: 0 1px 0 rgba(204,0,0,0.4);
+            background: var(--bg-nav); 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .nav-logo {
             display: flex;
@@ -101,15 +110,19 @@
         }
         .nav-logo img {
             height: 46px;
-            filter: drop-shadow(0 0 8px rgba(204,0,0,0.5));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
             transition: transform 0.3s;
         }
         .nav-logo:hover img { transform: scale(1.08) rotate(-3deg); }
         .nav-logo span {
             font-size: 1.4rem;
             letter-spacing: 2px;
-            color: var(--white);
-            text-shadow: 0 0 20px rgba(204,0,0,0.4);
+            color: var(--blue);
+        }
+        /* Cambio de color de nav para contraste inicial sobre el hero oscuro */
+        nav:not(.scrolled) .nav-logo span {
+             color: white;
+             text-shadow: 0 0 20px rgba(0,0,0,0.8);
         }
         .nav-links {
             display: flex;
@@ -119,7 +132,7 @@
         }
         .nav-links a {
             text-decoration: none;
-            color: rgba(240,244,255,0.75);
+            color: var(--text-muted);
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 1.5px;
@@ -128,6 +141,10 @@
             border-radius: 4px;
             transition: color 0.25s, background 0.25s;
             position: relative;
+        }
+        nav:not(.scrolled) .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
         .nav-links a::after {
             content: '';
@@ -139,25 +156,28 @@
             transition: transform 0.25s;
             border-radius: 2px;
         }
-        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover { color: var(--blue); }
+        nav:not(.scrolled) .nav-links a:hover { color: white; }
         .nav-links a:hover::after { transform: scaleX(1); }
+        
         /* ── BOTÓN ONLINE-SHOP MODERNO ── */
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
-            color: var(--white) !important;
-            border-radius: 50px !important; /* Forma de píldora */
+            color: white !important;
+            border-radius: 50px !important;
             padding: 8px 20px !important;
             font-weight: 700 !important;
-            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4); /* Resplandor rojo */
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);
             transition: all 0.3s ease !important;
             display: inline-flex !important;
             align-items: center;
             gap: 8px;
+            text-shadow: none !important;
         }
         .nav-cta::after { display: none !important; }
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
             background: linear-gradient(135deg, #ff1a1a 0%, #ff4d4d 100%) !important;
         }
 
@@ -174,12 +194,16 @@
             display: block;
             width: 26px;
             height: 2px;
-            background: var(--white);
+            background: var(--blue);
             border-radius: 2px;
             transition: transform 0.3s, opacity 0.3s;
         }
+        nav:not(.scrolled) .nav-hamburger span {
+            background: white;
+        }
 
         /* ── HERO ── */
+        /* Mantenemos el hero oscuro para que las fotos resalten */
         .hero {
             position: relative;
             height: 100vh;
@@ -211,9 +235,9 @@
             inset: 0;
             background: linear-gradient(
                 120deg,
-                rgba(8,18,40,0.92) 0%,
-                rgba(8,18,40,0.7) 50%,
-                rgba(8,18,40,0.35) 100%
+                rgba(10,31,68,0.85) 0%,
+                rgba(10,31,68,0.6) 50%,
+                rgba(10,31,68,0.3) 100%
             );
         }
 
@@ -227,35 +251,33 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(204,0,0,0.18);
-            border: 1px solid rgba(204,0,0,0.4);
+            background: rgba(204,0,0,0.8);
             border-radius: 100px;
             padding: 6px 16px;
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #ff8080;
+            color: white;
             margin-bottom: 24px;
             animation: fadeUp 0.8s ease both 0.2s;
         }
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 5rem); /* <-- Tamaño máximo reducido a 5rem */
+            font-size: clamp(2.5rem, 6vw, 5rem);
             line-height: 0.92;
             letter-spacing: 3px;
-            color: var(--white);
+            color: white;
             margin-bottom: 24px;
             animation: fadeUp 0.8s ease both 0.4s;
         }
         .hero-title .accent {
             color: var(--red);
             display: block;
-            text-shadow: 0 0 60px rgba(204,0,0,0.5);
         }
         .hero-sub {
             font-size: 1.05rem;
             font-weight: 300;
-            color: rgba(240,244,255,0.7);
+            color: rgba(255,255,255,0.9);
             max-width: 480px;
             line-height: 1.7;
             margin-bottom: 40px;
@@ -283,19 +305,20 @@
             border: none;
             cursor: pointer;
             transition: background 0.25s, transform 0.2s, box-shadow 0.3s;
-            box-shadow: 0 4px 24px rgba(204,0,0,0.4);
+            box-shadow: 0 4px 12px rgba(204,0,0,0.3);
         }
         .btn-primary:hover {
             background: var(--red-bright);
             transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(204,0,0,0.6);
+            box-shadow: 0 6px 16px rgba(204,0,0,0.4);
         }
         .btn-outline {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: transparent;
-            color: var(--white);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+            color: white;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
@@ -303,13 +326,13 @@
             text-transform: uppercase;
             padding: 14px 32px;
             border-radius: 4px;
-            border: 2px solid rgba(240,244,255,0.3);
+            border: 2px solid rgba(255,255,255,0.5);
             cursor: pointer;
             transition: border-color 0.25s, transform 0.2s, background 0.25s;
         }
         .btn-outline:hover {
-            border-color: rgba(240,244,255,0.8);
-            background: rgba(240,244,255,0.06);
+            border-color: white;
+            background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
         }
 
@@ -323,7 +346,7 @@
         }
         .hero-dot {
             width: 28px; height: 3px;
-            background: rgba(240,244,255,0.25);
+            background: rgba(255,255,255,0.4);
             border-radius: 2px;
             cursor: pointer;
             transition: background 0.3s, width 0.3s;
@@ -337,25 +360,29 @@
         .stats-bar {
             position: relative;
             z-index: 1;
-            background: var(--red);
-            padding: 20px 8%;
+            background: white;
+            border-bottom: 1px solid var(--card-border);
+            padding: 30px 8%;
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             gap: 16px;
+            box-shadow: var(--shadow-sm);
         }
         .stat-item { text-align: center; }
         .stat-num {
             font-size: 2.4rem;
             line-height: 1;
             letter-spacing: 2px;
+            color: var(--blue);
         }
         .stat-label {
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.75;
+            color: var(--text-muted);
+            margin-top: 4px;
         }
 
         /* ── SECTION WRAPPER ── */
@@ -377,7 +404,7 @@
         .section-title {
             font-size: clamp(2.4rem, 5vw, 4rem);
             letter-spacing: 2px;
-            color: var(--white);
+            color: var(--blue);
             line-height: 0.95;
         }
         .section-divider {
@@ -391,7 +418,7 @@
 
         /* ── MATCHES ── */
         .matches-section {
-            background: rgba(255,255,255,0.02);
+            background: white;
             border-top: 1px solid var(--card-border);
             border-bottom: 1px solid var(--card-border);
         }
@@ -404,7 +431,7 @@
             font-weight: 700;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gray);
+            color: var(--text-muted);
             margin-bottom: 48px;
         }
         .sponsors-grid {
@@ -412,27 +439,27 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 24px 180px;
+            gap: 24px 120px; /* Reducido el gap para pantallas claras */
         }
         .sponsor-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.45;
-            filter: grayscale(1) brightness(1.4);
+            opacity: 0.6;
+            filter: grayscale(1);
             transition: opacity 0.4s, filter 0.4s, transform 0.3s;
             cursor: pointer;
         }
         .sponsor-item:hover {
             opacity: 1;
-            filter: grayscale(0) brightness(1);
+            filter: grayscale(0);
             transform: scale(1.06);
         }
         .sponsor-item img { max-height: 60px; max-width: 160px; object-fit: contain; }
 
         /* ── VORSTAND ── */
         .vorstand-section {
-            background: linear-gradient(180deg, transparent 0%, rgba(204,0,0,0.04) 50%, transparent 100%);
+            background: var(--bg-body);
         }
         .vorstand-grid {
             display: grid;
@@ -440,21 +467,21 @@
             gap: 28px;
         }
         .vorstand-card {
-            background: var(--card-bg);
+            background: var(--bg-surface);
             border: 1px solid var(--card-border);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+            transition: transform 0.35s, box-shadow 0.35s;
             cursor: default;
+            box-shadow: var(--shadow-sm);
         }
         .vorstand-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(204,0,0,0.4);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(204,0,0,0.15);
+            box-shadow: var(--shadow-lg);
         }
         .vorstand-photo {
             height: 240px;
-            background: var(--blue-mid);
+            background: var(--blue-light);
             position: relative;
             overflow: hidden;
         }
@@ -469,14 +496,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--blue-mid) 0%, var(--blue-light) 100%);
+            background: var(--blue-light);
         }
-        .vorstand-photo-placeholder svg { opacity: 0.2; }
+        .vorstand-photo-placeholder svg { stroke: var(--blue-mid); opacity: 0.5; }
         .vorstand-info { padding: 22px 24px; }
         .vorstand-name {
             font-weight: 700;
             font-size: 1.05rem;
-            color: var(--white);
+            color: var(--blue);
             margin-bottom: 4px;
         }
         .vorstand-role {
@@ -495,49 +522,6 @@
         }
         @media(max-width:900px){ .news-events { grid-template-columns:1fr; gap:48px; } }
 
-        /* NEWS */
-        .news-article {
-            display: flex;
-            gap: 16px;
-            padding: 16px;
-            border-radius: 10px;
-            border: 1px solid transparent;
-            transition: border-color 0.3s, background 0.3s;
-            cursor: pointer;
-        }
-        .news-article:hover {
-            background: rgba(255,255,255,0.04);
-            border-color: var(--card-border);
-        }
-        .news-thumb {
-            width: 80px; height: 80px;
-            border-radius: 8px;
-            flex-shrink: 0;
-            background: var(--blue-mid);
-            overflow: hidden;
-        }
-        .news-thumb-inner { width: 100%; height: 100%; }
-        .news-tag {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--red);
-            margin-bottom: 4px;
-        }
-        .news-headline {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--white);
-            line-height: 1.4;
-            margin-bottom: 4px;
-        }
-        .news-excerpt {
-            font-size: 0.82rem;
-            color: var(--gray);
-            line-height: 1.5;
-        }
-
         /* EVENTS */
         .event-item {
             display: flex;
@@ -545,16 +529,17 @@
             gap: 16px;
             padding: 16px 18px;
             border-radius: 10px;
-            background: var(--card-bg);
+            background: var(--bg-surface);
             border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-sm);
             cursor: pointer;
-            transition: border-color 0.3s, transform 0.2s, background 0.3s;
+            transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
             margin-bottom: 12px;
         }
         .event-item:hover {
-            border-color: rgba(204,0,0,0.4);
+            border-color: rgba(204,0,0,0.3);
             transform: translateX(4px);
-            background: rgba(204,0,0,0.06);
+            box-shadow: var(--shadow-md);
         }
         .event-date {
             min-width: 58px;
@@ -574,21 +559,21 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255,255,255,0.9);
         }
         .event-name {
             font-weight: 700;
             font-size: 0.95rem;
-            color: var(--white);
+            color: var(--text-main);
             margin-bottom: 2px;
         }
         .event-meta {
             font-size: 0.78rem;
-            color: var(--gray);
+            color: var(--text-muted);
         }
         .event-arrow {
             margin-left: auto;
-            color: var(--gray);
+            color: var(--text-muted);
             transition: color 0.25s, transform 0.25s;
         }
         .event-item:hover .event-arrow {
@@ -597,11 +582,13 @@
         }
 
         /* ── FOOTER ── */
+        /* Mantenemos el footer oscuro para anclar el final de la página */
         footer {
             position: relative;
             z-index: 1;
-            background: #060e1f;
-            border-top: 1px solid rgba(204,0,0,0.3);
+            background: var(--blue);
+            border-top: 4px solid var(--red);
+            color: white;
         }
         .footer-inner {
             max-width: 1280px;
@@ -619,7 +606,6 @@
         .footer-brand img {
             height: 52px;
             margin-bottom: 12px;
-            filter: drop-shadow(0 0 10px rgba(204,0,0,0.35));
         }
         .footer-brand-name {
             font-size: 1.5rem;
@@ -628,25 +614,25 @@
         }
         .footer-brand-desc {
             font-size: 0.82rem;
-            color: var(--gray);
+            color: rgba(255,255,255,0.7);
             line-height: 1.7;
         }
         .footer-col h4 {
             font-size: 1.05rem;
             letter-spacing: 2px;
-            color: var(--red);
+            color: var(--red-bright);
             margin-bottom: 18px;
         }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul a, .footer-col p {
             font-size: 0.82rem;
-            color: var(--gray);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
             transition: color 0.2s;
             line-height: 1.6;
         }
-        .footer-col ul a:hover { color: var(--white); }
+        .footer-col ul a:hover { color: white; }
         .footer-social {
             display: flex;
             gap: 10px;
@@ -655,21 +641,19 @@
         .footer-social a {
             width: 40px; height: 40px;
             border-radius: 8px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+            transition: background 0.25s, transform 0.2s;
         }
         .footer-social a:hover {
             background: var(--red);
-            border-color: var(--red);
             transform: translateY(-3px);
         }
-        .footer-social svg { width: 18px; height: 18px; fill: var(--white); }
+        .footer-social svg { width: 18px; height: 18px; fill: white; }
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 24px;
             display: flex;
             justify-content: space-between;
@@ -677,16 +661,16 @@
             flex-wrap: wrap;
             gap: 12px;
             font-size: 0.75rem;
-            color: rgba(136,153,187,0.6);
+            color: rgba(255,255,255,0.5);
         }
         .footer-bottom a {
-            color: rgba(136,153,187,0.6);
+            color: rgba(255,255,255,0.5);
             text-decoration: none;
             transition: color 0.2s;
         }
-        .footer-bottom a:hover { color: var(--white); }
+        .footer-bottom a:hover { color: white; }
 
-        /* ── MODALS (Optimizados sin desenfoque) ── */
+        /* ── MODALS (Adaptados al tema claro) ── */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -694,27 +678,28 @@
             display: none;
             align-items: center;
             justify-content: center;
-            background: rgba(4,10,26,0.95); /* Sin blur para más fluidez */
+            background: rgba(10,31,68,0.8);
+            backdrop-filter: blur(4px);
         }
         .modal-overlay.open { display: flex; }
         .modal-box {
-            background: #0e1e3d;
-            border: 1px solid rgba(204,0,0,0.3);
+            background: white;
             border-radius: 16px;
             max-width: 520px;
             width: calc(100% - 32px);
             overflow: hidden;
             position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             animation: modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
         }
         @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.88) translateY(24px); }
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
         .modal-close {
             position: absolute;
             top: 14px; right: 14px;
-            background: rgba(255,255,255,0.08);
+            background: rgba(0,0,0,0.1);
             border: none;
             border-radius: 8px;
             width: 36px; height: 36px;
@@ -725,21 +710,23 @@
         }
         .modal-close:hover { background: var(--red); }
         .modal-close svg { width: 18px; height: 18px; stroke: white; }
+        .modal-close:hover svg { stroke: white; }
+        
         .modal-hero {
             height: 160px;
-            background: linear-gradient(135deg, var(--blue-light), var(--blue));
+            background: var(--blue-mid);
             position: relative;
             overflow: hidden;
         }
         .modal-hero img {
             width: 100%; height: 100%;
             object-fit: cover;
-            opacity: 0.6;
+            opacity: 0.8;
         }
         .modal-hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(14,30,61,0.95) 0%, transparent 60%);
+            background: linear-gradient(to top, rgba(10,31,68,0.9) 0%, transparent 80%);
             display: flex; flex-direction: column;
             justify-content: flex-end;
             padding: 20px 24px;
@@ -755,16 +742,17 @@
             padding: 3px 10px;
             border-radius: 4px;
             margin-bottom: 6px;
+            align-self: flex-start;
         }
         .modal-title {
             font-size: 1.8rem;
             letter-spacing: 1px;
             color: white;
         }
-        .modal-body { padding: 24px; }
+        .modal-body { padding: 24px; color: var(--text-main); }
         .modal-body p {
             font-size: 0.88rem;
-            color: var(--gray);
+            color: var(--text-muted);
             line-height: 1.7;
             margin-bottom: 16px;
         }
@@ -772,15 +760,15 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            background: rgba(255,255,255,0.04);
+            background: var(--bg-body);
             border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 14px 16px;
             font-size: 0.84rem;
             margin-bottom: 20px;
         }
-        .modal-detail-text { color: var(--white); font-weight: 600; }
-        .modal-detail-sub { color: var(--gray); font-size: 0.78rem; }
+        .modal-detail-text { color: var(--blue); font-weight: 700; }
+        .modal-detail-sub { color: var(--text-muted); font-size: 0.78rem; }
         .modal-footer {
             display: flex;
             justify-content: space-between;
@@ -795,8 +783,8 @@
             cursor: pointer;
             border: none;
         }
-        .modal-footer a { color: var(--gray); transition: color 0.2s; }
-        .modal-footer a:hover { color: var(--white); }
+        .modal-footer a { color: var(--blue-mid); transition: color 0.2s; }
+        .modal-footer a:hover { color: var(--blue); }
         .modal-footer .btn-primary { padding: 10px 22px; font-size: 0.78rem; }
 
         /* ── MOBILE NAV ── */
@@ -805,7 +793,7 @@
             position: fixed;
             inset: 0;
             z-index: 101;
-            background: rgba(8,18,40,0.99); /* Optimizado sin blur */
+            background: rgba(255,255,255,0.98);
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -813,9 +801,9 @@
         }
         .mobile-nav.open { display: flex; }
         .mobile-nav a {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             letter-spacing: 4px;
-            color: var(--white);
+            color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -826,9 +814,9 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--white);
+            color: var(--blue);
         }
-        .mobile-nav-close svg { width: 28px; height: 28px; stroke: currentColor; }
+        .mobile-nav-close svg { width: 32px; height: 32px; stroke: currentColor; }
 
         /* ── ANIMATIONS ── */
         @keyframes fadeUp {
@@ -959,11 +947,15 @@
             <h2 class="section-title">Aktuelle Ergebnisse</h2>
             <span class="section-divider"></span>
         </div>
-        
-        <div id="fp-widget_root-3H3U7sr6mDIfxvv7aP5CJkIPB2g">
-            <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank"rel="noopener">FC Inter Mainz auf FuPa</a>
-        </div>
-        <script async src="https://widget.fupa.net/widget.js"></script>
+        <div class="reveal reveal-delay-1">
+            <div class="fussballde_widget" data-id="616905ca-b7ca-4644-9e09-10958c32bc43" data-type="team-matches"
+                style="width:100%"></div>
+            </div>
+            <div class="fussballde_widget" data-id="a56da618-0868-4795-89c4-6d0672f5dec3" data-type="team-matches"
+                style="width: 100%"></div>
+            </div>
+</section>
+
 <section>
     <div class="section-inner">
         <p class="sponsors-label reveal">Unsere offiziellen Partner & Sponsoren</p>
@@ -991,7 +983,7 @@
         <div class="vorstand-grid">
             <div class="vorstand-card reveal reveal-delay-1">
                 <div class="vorstand-photo">
-                    <img src="santy.jpg" alt="Santiago Ballabriga" onerror="this.parentElement.innerHTML='<div class=vorstand-photo-placeholder><svg width=64 height=64 fill=none stroke=white viewBox=\'0 0 24 24\'><path stroke-linecap=round stroke-linejoin=round stroke-width=1 d=\'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z\'/></svg></div>'">
+                    <img src="santy.jpg" alt="Santiago Ballabriga" onerror="this.parentElement.innerHTML='<div class=vorstand-photo-placeholder><svg width=64 height=64 fill=none stroke=currentColor viewBox='0 0 24 24'><path stroke-linecap=round stroke-linejoin=round stroke-width=1.5 d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z'/></svg></div>'">
                 </div>
                 <div class="vorstand-info">
                     <div class="vorstand-name">Santiago Ballabriga</div>
@@ -1001,7 +993,7 @@
             <div class="vorstand-card reveal reveal-delay-2">
                 <div class="vorstand-photo">
                     <div class="vorstand-photo-placeholder">
-                        <svg width="64" height="64" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+                        <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
                     </div>
                 </div>
                 <div class="vorstand-info">
@@ -1011,7 +1003,7 @@
             </div>
             <div class="vorstand-card reveal reveal-delay-3">
                 <div class="vorstand-photo">
-                    <img src="jose.jpg" alt="José Luis Fuente Fernández" onerror="this.parentElement.innerHTML='<div class=vorstand-photo-placeholder><svg width=64 height=64 fill=none stroke=white viewBox=\'0 0 24 24\'><path stroke-linecap=round stroke-linejoin=round stroke-width=1 d=\'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z\'/></svg></div>'">
+                    <img src="jose.jpg" alt="José Luis Fuente Fernández" onerror="this.parentElement.innerHTML='<div class=vorstand-photo-placeholder><svg width=64 height=64 fill=none stroke=currentColor viewBox='0 0 24 24'><path stroke-linecap=round stroke-linejoin=round stroke-width=1.5 d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z'/></svg></div>'">
                 </div>
                 <div class="vorstand-info">
                     <div class="vorstand-name">José Luis Fuente Fernández</div>
@@ -1020,70 +1012,69 @@
             </div>
         </div>
     </div>
-    </section>
+</section>
     
-    <section>
-        <div class="section-inner">
-            <div class="news-events">
-    
-                <div id="veranstaltungen">
-                    <div class="section-header reveal">
-                        <p class="section-eyebrow">Kalender</p>
-                        <h2 class="section-title">Kommende Termine</h2>
-                        <span class="section-divider"></span>
-                    </div>
-                    <div id="event-list" class="space-y-4">
-                    </div>
+<section>
+    <div class="section-inner">
+        <div class="news-events">
+
+            <div id="veranstaltungen">
+                <div class="section-header reveal">
+                    <p class="section-eyebrow">Kalender</p>
+                    <h2 class="section-title">Kommende Termine</h2>
+                    <span class="section-divider"></span>
+                </div>
+                <div id="event-list" class="space-y-4">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="800x800.png" alt="Inter Mainz Wappen">
-                    <div class="footer-brand-name">F.C. Inter Mainz</div>
-                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
-                        Gegründet 2005 mit Leidenschaft.</p>
-                </div>
-                <div class="footer-col">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="teams.html">Mannschaften</a></li>
-                    <li><a href="#veranstaltungen">Termine</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
-                </ul>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="800x800.png" alt="Inter Mainz Wappen">
+                <div class="footer-brand-name">F.C. Inter Mainz</div>
+                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                    Gegründet 2005 mit Leidenschaft.</p>
             </div>
             <div class="footer-col">
-                <h4>Kontakt</h4>
-                <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p>
-                <br>
-                <p>📧 info@intermainz.de</p>
-                <br>
-                <p>📞 +49 06131 000000</p>
-            </div>
-            <div class="footer-col">
-                <h4>Social Media</h4>
-                <div class="footer-social">
-                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
-                </div>
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="geschichte.html">Geschichte</a></li>
+                <li><a href="teams.html">Mannschaften</a></li>
+                <li><a href="#veranstaltungen">Termine</a></li>
+                <li><a href="vorstand.html">Vorstand</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Kontakt</h4>
+            <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p>
+            <br>
+            <p>📧 info@intermainz.de</p>
+            <br>
+            <p>📞 +49 06131 000000</p>
+        </div>
+        <div class="footer-col">
+            <h4>Social Media</h4>
+            <div class="footer-social">
+                <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
-            <div style="display:flex;gap:20px">
-                <a href="impressum.html">Impressum</a>
-                <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
-            </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+        <div style="display:flex;gap:20px">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
         </div>
     </div>
 </footer>
@@ -1122,7 +1113,7 @@
         <button class="modal-close" onclick="closeModal('modal-jhv')">
             <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-        <div class="modal-hero" style="background:linear-gradient(135deg,#1a0000,#0a1f44)">
+        <div class="modal-hero">
             <div class="modal-hero-overlay">
                 <span class="modal-tag">24. Mai 2026</span>
                 <h3 class="modal-title">Saisonfinale und Grill</h3>
@@ -1139,7 +1130,7 @@
 </div>
 
 <script>
-/* ─ Canvas animated background (Optimized for performance) ─ */
+/* ─ Canvas animated background (Optimized for light mode) ─ */
 (function(){
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
@@ -1152,7 +1143,6 @@
     resize();
     window.addEventListener('resize', resize);
 
-    // Reducimos la cantidad de elementos de 28 a 15 para liberar la memoria RAM
     const shapes = Array.from({length: 15}, () => ({
         x: Math.random() * W,
         y: Math.random() * H,
@@ -1162,10 +1152,9 @@
         rot: Math.random() * Math.PI * 2,
         vrot: (Math.random() - 0.5) * 0.004,
         type: Math.random() > 0.5 ? 'hex' : 'logo',
-        alpha: 0.08 + Math.random() * 0.25
+        alpha: 0.1 + Math.random() * 0.15 /* Más sutil para modo claro */
     }));
 
-    // Pre-compilamos las formas gráficas una sola vez (Aceleración de Hardware)
     const shieldPath = new Path2D();
     const s = 0.9;
     shieldPath.moveTo(0, -s);
@@ -1198,7 +1187,6 @@
             ctx.save();
             ctx.translate(shape.x, shape.y);
             ctx.rotate(shape.rot);
-            // Reutilizamos el path precompilado y solo lo agrandamos (Ultra Rápido)
             ctx.scale(shape.r, shape.r);
             ctx.globalAlpha = shape.alpha;
             ctx.lineWidth = 1.5 / shape.r; 
@@ -1207,7 +1195,7 @@
                 ctx.strokeStyle = '#cc0000';
                 ctx.stroke(shieldPath);
             } else {
-                ctx.strokeStyle = '#1a3a73';
+                ctx.strokeStyle = '#2b4c7e'; /* Azul más oscuro para destacar en fondo claro */
                 ctx.stroke(hexPath);
             }
             ctx.restore();
@@ -1307,7 +1295,7 @@ fetch('events.json')
             data.events.forEach((event, index) => {
                 const html = `
                 <div class="event-item reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}" onclick="openModal('${event.modal_id}')">
-                    <div class="event-date" ${index === 1 ? 'style="background:var(--blue-light)"' : ''}>
+                    <div class="event-date" ${index === 1 ? 'style="background:var(--blue-mid)"' : ''}>
                         <div class="event-date-num">${event.date_num}</div>
                         <div class="event-date-mo">${event.date_mo}</div>
                     </div>
