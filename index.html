@@ -1126,6 +1126,36 @@
             transition-delay: 0.4s;
         }
 
+        .widget-grid {
+    display: grid;
+    /* En móviles: 1 columna. En pantallas más grandes: se adaptan al ancho disponible (min 350px) */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px; /* Espacio entre las tarjetas */
+    margin-top: 20px;
+}
+
+.widget-card {
+    background: var(--card-bg); /* Un fondo ligeramente más claro que el azul oscuro principal */
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    overflow: hidden; /* Asegura que el contenido del iframe de FuPa no se salga de los bordes redondeados */
+}
+
+/* Efecto hover suave */
+.widget-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(204, 0, 0, 0.3); /* Un toque rojo del club al pasar el ratón */
+}
+
+/* Asegura que el iframe generado por FuPa ocupe todo el ancho disponible */
+.widget-card iframe {
+    width: 100% !important;
+    border-radius: 8px; /* Redondea los bordes interiores del propio widget si es posible */
+}
+
         /* ── RESPONSIVE ── */
         @media(max-width:768px) {
             .nav-links {
@@ -1260,46 +1290,48 @@
         <div class="stat-item">
             <div class="stat-num">20+</div>
             <div class="stat-label">Nationen</div>
+            </div>
+            </div>
+            
+            <section class="matches-section">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <p class="section-eyebrow">Spielplan & Tabelle</p>
+            <h2 class="section-title">Aktuelle Ergebnisse</h2>
+            <span class="section-divider"></span>
         </div>
-    </div>
 
-    <section class="matches-section">
-        <div class="section-inner">
-            <div class="section-header reveal">
-                <p class="section-eyebrow">Spielplan & Tabelle</p>
-                <h2 class="section-title">Aktuelle Ergebnisse</h2>
-                <span class="section-divider"></span>
+        <!-- CONTENEDOR GRID -->
+        <div class="widget-grid reveal reveal-delay-1">
+            
+            <!-- TARJETA WIDGET 1 -->
+            <div class="widget-card">
+                <div id="fp-widget_root-3H3VDqsfqhC9UagnvObtyRxyqqv">
+                    <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz auf FuPa</a>
+                </div>
             </div>
 
-            <div id="fp-widget_root-3H3VDqsfqhC9UagnvObtyRxyqqv"><a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz auf FuPa</a></div>
-<script src="https://widget-api.fupa.net/vendor/widget.js?v1"></script>
-
-            <div id="fp-widget_root-3H3U7sr6mDIfxvv7aP5CJkIPB2g"><a href="https://www.fupa.net/club/fc-inter-mainz"
-                    target="_blank" rel="noopener">FC Inter Mainz auf FuPa</a></div>
-            <script src="https://widget-api.fupa.net/vendor/widget.js?v1"></script>
-            <script async src="https://widget.fupa.net/widget.js"></script>
-
-            <div id="fp-widget_root-3H3W8BQ9dKsBBPN7l8GxRiO7NtF"><a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz auf FuPa</a></div>
-<script src="https://widget-api.fupa.net/vendor/widget.js?v1"></script>
-            <section>
-                <div class="section-inner">
-                    <p class="sponsors-label reveal">Unsere offiziellen Partner & Sponsoren</p>
-                    <div class="sponsors-grid">
-                        <a href="https://el-burro.de/" target="_blank" rel="noopener"
-                            class="sponsor-item reveal reveal-delay-1">
-                            <img src="elburro.png" alt="El Burro Restaurant & Bar">
-                        </a>
-                        <a href="https://ziberi.eu/" target="_blank" rel="noopener"
-                            class="sponsor-item reveal reveal-delay-2">
-                            <img src="ziberi.png" alt="Ziberi Projekt- & Wohnbau">
-                        </a>
-                        <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener"
-                            class="sponsor-item reveal reveal-delay-4" style="text-decoration:none">
-                            <img src="dvblogo.svg" alt="Deutsches Vermögensberatung">
-                        </a>
-                    </div>
+            <!-- TARJETA WIDGET 2 -->
+            <div class="widget-card">
+                <div id="fp-widget_root-3H3U7sr6mDIfxvv7aP5CJkIPB2g">
+                    <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz auf FuPa</a>
                 </div>
-            </section>
+            </div>
+
+            <!-- TARJETA WIDGET 3 -->
+            <div class="widget-card">
+                <div id="fp-widget_root-3H3W8BQ9dKsBBPN7l8GxRiO7NtF">
+                    <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz auf FuPa</a>
+                </div>
+            </div>
+
+        </div> <!-- Cierra widget-grid -->
+
+        <!-- SCRIPT DE FUPA (Una sola vez) -->
+        <script async src="https://widget.fupa.net/widget.js"></script>
+        
+    </div>
+</section>
 
             <section class="vorstand-section" id="vorstand">
                 <div class="section-inner">
