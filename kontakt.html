@@ -209,13 +209,17 @@
         }
         .mobile-nav.open { display: flex; }
         .mobile-nav a {
-            font-size: 2.4rem;
-            letter-spacing: 4px;
+            font-size: 1.8rem; /* Tamaño reducido para mejor lectura */
+            font-weight: 900;
+            letter-spacing: 2px; /* Espaciado ajustado */
             color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
         }
-        .mobile-nav a:hover { color: var(--red); }
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--red) !important;
+        }
         .mobile-nav-close {
             position: absolute;
             top: 24px; right: 5%;

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vorstand – F.C. Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
-    
+
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -29,7 +30,7 @@
             font-display: block;
         }
 
-                :root {
+        :root {
             /* TEMA CLARO */
             --bg-body: #faf8f5;
             --bg-surface: #ffffff;
@@ -37,24 +38,34 @@
             --bg-footer: #f0f4f8;
             --text-main: #1a202c;
             --text-muted: #4a5568;
-            
+
             --blue: #0a1f44;
             --blue-mid: #2b4c7e;
             --blue-light: #e2e8f0;
             --red: #cc0000;
             --red-bright: #ff1a1a;
-            
+
             --card-border: rgba(0, 0, 0, 0.08);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            --white: #ffffff; /* Redefinido por si acaso */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --white: #ffffff;
+            /* Redefinido por si acaso */
             --gray: #8899bb;
             --card-bg: #ffffff;
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: var(--bg-body);
@@ -66,21 +77,40 @@
             max-width: 100vw;
         }
 
-        .nav-logo span, .section-eyebrow, .team-title, .footer-brand-name, .footer-col h4, .mobile-nav a {
+        .nav-logo span,
+        .section-eyebrow,
+        .team-title,
+        .footer-brand-name,
+        .footer-col h4,
+        .mobile-nav a {
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
 
         #bg-canvas {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
             pointer-events: none;
             opacity: 0.15;
@@ -89,41 +119,92 @@
         /* ── NAV ── */
         nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             padding: 0 5%;
             height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--bg-nav); box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--bg-nav);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             transition: background 0.4s, box-shadow 0.4s;
         }
-        
-        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo img { height: 46px; filter: drop-shadow(0 0 8px rgba(204,0,0,0.5)); transition: transform 0.3s; }
-        .nav-logo:hover img { transform: scale(1.08) rotate(-3deg); }
-        .nav-logo span { font-size: 1.4rem; letter-spacing: 2px; color: var(--blue); }
-        
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 46px;
+            filter: drop-shadow(0 0 8px rgba(204, 0, 0, 0.5));
+            transition: transform 0.3s;
+        }
+
+        .nav-logo:hover img {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
+        .nav-logo span {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--blue);
+        }
+
         .nav-links {
             display: flex;
-            align-items: center; /* Alineación perfecta del nuevo botón */
+            align-items: center;
+            /* Alineación perfecta del nuevo botón */
             gap: 6px;
             list-style: none;
         }
+
         .nav-links a {
-            text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 600;
-            letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; position: relative; transition: color 0.25s;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            position: relative;
+            transition: color 0.25s;
         }
+
         .nav-links a::after {
-            content: ''; position: absolute; bottom: 4px; left: 14px; right: 14px; height: 2px;
-            background: var(--red); transform: scaleX(0); transition: transform 0.25s; border-radius: 2px;
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: var(--red);
+            transform: scaleX(0);
+            transition: transform 0.25s;
+            border-radius: 2px;
         }
-        .nav-links a.active { color: var(--blue); }
-        .nav-links a.active::after { transform: scaleX(1); }
-        .nav-links a:hover { color: var(--blue); }
-        .nav-links a:hover::after { transform: scaleX(1); }
-        
+
+        .nav-links a.active {
+            color: var(--blue);
+        }
+
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
             color: white !important;
@@ -136,261 +217,521 @@
             align-items: center;
             gap: 8px;
         }
-        .nav-cta::after { display: none !important; }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
             background: linear-gradient(135deg, #ff1a1a 0%, #ff4d4d 100%) !important;
         }
 
-        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: none; }
-        .nav-hamburger span { display: block; width: 26px; height: 2px; background: var(--blue); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-
-        .mobile-nav { display: none; position: fixed; inset: 0; z-index: 101; background: rgba(255,255,255,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
-        .mobile-nav.open { display: flex; }
-        .mobile-nav a { font-size: 2.4rem; letter-spacing: 4px; color: var(--blue); text-decoration: none; transition: color 0.2s; }
-        .mobile-nav a:hover { color: var(--red); }
-        .mobile-nav-close { position: absolute; top: 24px; right: 5%; background: none; border: none; cursor: pointer; color: var(--blue); }
-        .mobile-nav-close svg { width: 28px; height: 28px; stroke: currentColor; }
-
-        .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-        .section-eyebrow { font-size: 0.8rem; letter-spacing: 4px; color: var(--red); margin-bottom: 16px; display: inline-block; }
-        .team-title {
-            font-size: clamp(1.5rem, 4vw, 2.5rem); /* Reducimos el tamaño mínimo en móviles */
-            word-break: break-word; /* Fuerza el quiebre si la palabra es demasiado larga */
-            -webkit-hyphens: auto;  /* Soporte para guiones automáticos en iOS/Android */
-            hyphens: auto;
-            line-height: 1.1;       /* Asegura que no se solapen las líneas si se parte */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: none;
         }
-        
-        .vorstand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
-        .vorstand-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
-        .vorstand-card:hover { transform: translateY(-8px); border-color: var(--red); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .vorstand-photo { width: 140px; height: 140px; margin: 0 auto 20px; border-radius: 50%; background: var(--blue-mid); overflow: hidden; border: 4px solid var(--card-border); }
-        
-        footer { position: relative; z-index: 1; background: var(--blue); color: white; border-top: 4px solid var(--red); margin-top: 80px; }
-        .footer-inner { max-width: 1280px; margin: 0 auto; padding: 64px 8% 32px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-        @media(max-width:900px){ .footer-grid { grid-template-columns:1fr 1fr; gap:32px; } }
-        @media(max-width:540px){ .footer-grid { grid-template-columns:1fr; } }
-        .footer-brand img { height: 52px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(204,0,0,0.35)); }
-        .footer-brand-name { font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 12px; }
-        .footer-brand-desc { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); line-height: 1.7; }
-        .footer-col h4 { font-size: 1.05rem; letter-spacing: 2px; color: var(--red); margin-bottom: 18px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul a, .footer-col p { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; line-height: 1.6; }
-        .footer-col ul a:hover { color: white; }
-        .footer-social { display: flex; gap: 10px; margin-top: 4px; }
-        .footer-social a { width: 40px; height: 40px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
-        .footer-social a:hover { background: var(--red); border-color: var(--red); transform: translateY(-3px); }
-        .footer-social svg { width: 18px; height: 18px; fill: white; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); }
-        .footer-bottom a { color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.2s; }
-        .footer-bottom a:hover { color: white; }
 
-        .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        
-        @media(max-width:768px){ .nav-links { display: none; } .nav-hamburger { display: flex; } }
+        .nav-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--blue);
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.98);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-size: 1.8rem; /* Tamaño reducido para mejor lectura */
+            font-weight: 900;
+            letter-spacing: 2px; /* Espaciado ajustado */
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--red);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px;
+            right: 5%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--blue);
+        }
+
+        .mobile-nav-close svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--red);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .team-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            /* Reducimos el tamaño mínimo en móviles */
+            word-break: break-word;
+            /* Fuerza el quiebre si la palabra es demasiado larga */
+            -webkit-hyphens: auto;
+            /* Soporte para guiones automáticos en iOS/Android */
+            hyphens: auto;
+            line-height: 1.1;
+            /* Asegura que no se solapen las líneas si se parte */
+        }
+
+        .vorstand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .vorstand-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .vorstand-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--red);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .vorstand-photo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: var(--blue-mid);
+            overflow: hidden;
+            border: 4px solid var(--card-border);
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            background: var(--blue);
+            color: white;
+            border-top: 4px solid var(--red);
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 8% 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media(max-width:900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media(max-width:540px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand img {
+            height: 52px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 10px rgba(204, 0, 0, 0.35));
+        }
+
+        .footer-brand-name {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            color: var(--red);
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a,
+        .footer-col p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+            line-height: 1.6;
+        }
+
+        .footer-col ul a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<canvas id="bg-canvas"></canvas>
+    <canvas id="bg-canvas"></canvas>
 
-<nav id="navbar">
-    <a href="index.html" class="nav-logo">
-        <img src="800x800.png" alt="Wappen">
-        <span>Inter Mainz</span>
-    </a>
-    <ul class="nav-links">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="probetraining.html">Probetraining</a></li>
-        <li><a href="geschichte.html">Geschichte</a></li>
-        <li><a href="teams.html">Teams</a></li>
-        <li><a href="vorstand.html" class="active">Vorstand</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li>
-            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                </svg>
-                Online-Shop
-            </a>
-        </li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-        <span></span><span></span><span></span>
-    </button>
-</nav>
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="800x800.png" alt="Wappen">
+            <span>Inter Mainz</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="geschichte.html">Geschichte</a></li>
+            <li><a href="teams.html">Teams</a></li>
+            <li><a href="vorstand.html" class="active">Vorstand</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li>
+                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Online-Shop
+                </a>
+            </li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
 
-<div class="mobile-nav" id="mobile-nav">
-    <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
-        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <a href="index.html">Startseite</a>
-    <a href="probetraining.html">Probetraining</a>
-    <a href="geschichte.html">Geschichte</a>
-    <a href="teams.html">Teams</a>
-    <a href="vorstand.html" style="color:var(--red)">Vorstand</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
-</div>
-
-<header class="pt-40 pb-16 text-center z-10 relative">
-    <p class="section-eyebrow reveal">Führungsteam</p>
-    <h1 class="text-4xl md:text-6xl font-black text-[#0a1f44] uppercase tracking-tighter reveal reveal-delay-1">Unser Vorstand</h1>
-    <p class="text-[var(--gray)] mt-4 max-w-2xl mx-auto px-4 reveal reveal-delay-1">Die aktuelle Besetzung und Verantwortlichkeiten der Vereinsführung (Stand 2026).</p>
-</header>
-
-<main class="section-inner relative z-10 pb-24 space-y-24">
-    
-    <section class="reveal">
-        <div class="flex items-center mb-12">
-            <h2 class="team-title text-2xl md:text-3xl">Vereinsführung</h2>
-            <div class="flex-grow h-px bg-[var(--card-border)] ml-4 md:ml-8"></div>
-        </div>
-        <div class="vorstand-grid">
-            <div class="vorstand-card">
-                <div class="vorstand-photo">
-                    <img src="santy.jpg" alt="Santiago Ballabriga" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-red-900/20 flex items-center justify-center text-red-500 text-4xl font-black\'>SB</div>'">
-                </div>
-                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Santiago Ballabriga</h3>
-                <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">1. Vorsitzender</p>
-                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
-            </div>
-            <div class="vorstand-card">
-                <div class="vorstand-photo">
-                    <div class="w-full h-full bg-blue-900/20 flex items-center justify-center text-blue-500 text-4xl font-black">FT</div>
-                </div>
-                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Fernando Trochez</h3>
-                <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">2. Vorsitzender</p>
-                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
-            </div>
-            <div class="vorstand-card">
-                <div class="vorstand-photo">
-                    <img src="jose.jpg" alt="José Luis Fuente Fernández" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-green-900/20 flex items-center justify-center text-green-500 text-4xl font-black\'>JF</div>'">
-                </div>
-                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">José Luis Fuente Fernández</h3>
-                <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">Schatzmeister</p>
-                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="reveal">
-        <div class="flex items-center mb-12">
-            <h2 class="team-title text-2xl md:text-3xl break-words">Abteilungsverantwortliche</h2>
-            <div class="flex-grow h-px bg-[var(--card-border)] ml-4 md:ml-8"></div>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl border border-[var(--card-border)] border-l-4 border-l-[var(--blue-light)] shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition transform hover:-translate-y-1 hover:border-l-[var(--red)]">
-                <div>
-                    <h4 class="text-lg font-black text-[#0a1f44] uppercase tracking-wider mb-2">Abteilung Fußball</h4>
-                    <p class="text-[var(--gray)] text-sm">Verantwortlich: <span class="text-[var(--blue)] font-semibold">Martin Ubilla (Sportdirektor)</span></p>
-                </div>
-                <a href="kontakt.html" class="bg-transparent border border-[var(--card-border)] text-[var(--blue)] hover:text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
-            </div>
-
-            <div class="bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl border border-[var(--card-border)] border-l-4 border-l-[var(--blue-light)] shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition transform hover:-translate-y-1 hover:border-l-[var(--red)]">
-                <div>
-                    <h4 class="text-lg font-black text-[#0a1f44] uppercase tracking-wider mb-2">Sponsoring & Partnerschaften</h4>
-                    <p class="text-[var(--gray)] text-sm">Verantwortlich: <span class="text-[var(--blue)] font-semibold">Santiago Ballabriga</span></p>
-                </div>
-                <a href="kontakt.html" class="bg-transparent border border-[var(--card-border)] text-[var(--blue)] hover:text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="800x800.png" alt="Wappen">
-                <div class="footer-brand-name">F.C. Inter Mainz</div>
-                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in Mainz.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="probetraining.html">Probetraining</a></li>
-                    <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="teams.html">Teams</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Kontakt</h4>
-                <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
-            </div>
-            <div class="footer-col">
-                <h4>Social Media</h4>
-                <div class="footer-social">
-                    <a href="#"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
-                    <a href="https://www.instagram.com/fc_inter_mainz/"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
-            <div style="display:flex;gap:20px">
-                <a href="impressum.html">Impressum</a>
-                <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
-            </div>
-        </div>
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
+            <svg fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <a href="index.html">Startseite</a>
+        <a href="probetraining.html">Probetraining</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="teams.html">Teams</a>
+        <a href="vorstand.html" style="color:var(--red)">Vorstand</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
     </div>
-</footer>
 
-<script>
-    (function(){
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let W, H;
-        function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-        resize();
-        window.addEventListener('resize', resize);
-        const shapes = Array.from({length: 15}, () => ({ x: Math.random()*W, y: Math.random()*H, r: 12+Math.random()*28, vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.25, rot: Math.random()*Math.PI*2, vrot: (Math.random()-0.5)*0.004, type: Math.random()>0.5 ? 'hex' : 'logo', alpha: 0.1+Math.random()*0.15 }));
-        const shieldPath = new Path2D(); const s=0.9; shieldPath.moveTo(0,-s); shieldPath.lineTo(s*0.75,-s*0.6); shieldPath.lineTo(s*0.75,s*0.3); shieldPath.quadraticCurveTo(s*0.75,s*1.0,0,s*1.2); shieldPath.quadraticCurveTo(-s*0.75,s*1.0,-s*0.75,s*0.3); shieldPath.lineTo(-s*0.75,-s*0.6); shieldPath.closePath();
-        const hexPath = new Path2D(); for(let i=0;i<6;i++){ const a=(Math.PI/3)*i; if(i===0) hexPath.moveTo(Math.cos(a),Math.sin(a)); else hexPath.lineTo(Math.cos(a),Math.sin(a)); } hexPath.closePath();
-        function draw(){
-            ctx.clearRect(0,0,W,H);
-            shapes.forEach(sh => {
-                sh.x += sh.vx; sh.y += sh.vy; sh.rot += sh.vrot;
-                if(sh.x < -80) sh.x = W+80; if(sh.x > W+80) sh.x = -80;
-                if(sh.y < -80) sh.y = H+80; if(sh.y > H+80) sh.y = -80;
-                ctx.save(); ctx.translate(sh.x, sh.y); ctx.rotate(sh.rot); ctx.scale(sh.r, sh.r); ctx.globalAlpha = sh.alpha; ctx.lineWidth = 1.5/sh.r;
-                if(sh.type === 'logo'){ ctx.strokeStyle = '#cc0000'; ctx.stroke(shieldPath); } else { ctx.strokeStyle = '#2b4c7e'; ctx.stroke(hexPath); }
-                ctx.restore();
-            });
-            requestAnimationFrame(draw);
-        }
-        draw();
-    })();
+    <header class="pt-40 pb-16 text-center z-10 relative">
+        <p class="section-eyebrow reveal">Führungsteam</p>
+        <h1 class="text-4xl md:text-6xl font-black text-[#0a1f44] uppercase tracking-tighter reveal reveal-delay-1">
+            Unser Vorstand</h1>
+        <p class="text-[var(--gray)] mt-4 max-w-2xl mx-auto px-4 reveal reveal-delay-1">Die aktuelle Besetzung und
+            Verantwortlichkeiten der Vereinsführung (Stand 2026).</p>
+    </header>
 
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobileClose = document.getElementById('mobile-close');
-    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+    <main class="section-inner relative z-10 pb-24 space-y-24">
 
-    (function(){
-        const els = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        els.forEach(el => observer.observe(el));
-    })();
-</script>
+        <section class="reveal">
+            <div class="flex items-center mb-12">
+                <h2 class="team-title text-2xl md:text-3xl">Vereinsführung</h2>
+                <div class="flex-grow h-px bg-[var(--card-border)] ml-4 md:ml-8"></div>
+            </div>
+            <div class="vorstand-grid">
+                <div class="vorstand-card">
+                    <div class="vorstand-photo">
+                        <img src="santy.jpg" alt="Santiago Ballabriga" class="w-full h-full object-cover"
+                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-red-900/20 flex items-center justify-center text-red-500 text-4xl font-black\'>SB</div>'">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Santiago Ballabriga</h3>
+                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">1. Vorsitzender</p>
+                    <a href="kontakt.html"
+                        class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
+                </div>
+                <div class="vorstand-card">
+                    <div class="vorstand-photo">
+                        <div
+                            class="w-full h-full bg-blue-900/20 flex items-center justify-center text-blue-500 text-4xl font-black">
+                            FT</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Fernando Trochez</h3>
+                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">2. Vorsitzender</p>
+                    <a href="kontakt.html"
+                        class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
+                </div>
+                <div class="vorstand-card">
+                    <div class="vorstand-photo">
+                        <img src="jose.jpg" alt="José Luis Fuente Fernández" class="w-full h-full object-cover"
+                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-green-900/20 flex items-center justify-center text-green-500 text-4xl font-black\'>JF</div>'">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">José Luis Fuente Fernández</h3>
+                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">Schatzmeister</p>
+                    <a href="kontakt.html"
+                        class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <div class="flex items-center mb-12">
+                <h2 class="team-title text-2xl md:text-3xl break-words">Abteilungsverantwortliche</h2>
+                <div class="flex-grow h-px bg-[var(--card-border)] ml-4 md:ml-8"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div
+                    class="bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl border border-[var(--card-border)] border-l-4 border-l-[var(--blue-light)] shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition transform hover:-translate-y-1 hover:border-l-[var(--red)]">
+                    <div>
+                        <h4 class="text-lg font-black text-[#0a1f44] uppercase tracking-wider mb-2">Abteilung Fußball
+                        </h4>
+                        <p class="text-[var(--gray)] text-sm">Verantwortlich: <span
+                                class="text-[var(--blue)] font-semibold">Martin Ubilla (Sportdirektor)</span></p>
+                    </div>
+                    <a href="kontakt.html"
+                        class="bg-transparent border border-[var(--card-border)] text-[var(--blue)] hover:text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
+                </div>
+
+                <div
+                    class="bg-[var(--card-bg)] p-6 md:p-8 rounded-2xl border border-[var(--card-border)] border-l-4 border-l-[var(--blue-light)] shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 transition transform hover:-translate-y-1 hover:border-l-[var(--red)]">
+                    <div>
+                        <h4 class="text-lg font-black text-[#0a1f44] uppercase tracking-wider mb-2">Sponsoring &
+                            Partnerschaften</h4>
+                        <p class="text-[var(--gray)] text-sm">Verantwortlich: <span
+                                class="text-[var(--blue)] font-semibold">Santiago Ballabriga</span></p>
+                    </div>
+                    <a href="kontakt.html"
+                        class="bg-transparent border border-[var(--card-border)] text-[var(--blue)] hover:text-white px-6 py-3 rounded font-bold text-xs hover:bg-[var(--red)] hover:border-[var(--red)] transition uppercase tracking-wider">Kontakt</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="800x800.png" alt="Wappen">
+                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in Mainz.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="probetraining.html">Probetraining</a></li>
+                        <li><a href="geschichte.html">Geschichte</a></li>
+                        <li><a href="teams.html">Teams</a></li>
+                        <li><a href="vorstand.html">Vorstand</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="footer-social">
+                        <a href="#"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                            </svg></a>
+                        <a href="https://www.instagram.com/fc_inter_mainz/"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:20px">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            let W, H;
+            function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+            resize();
+            window.addEventListener('resize', resize);
+            const shapes = Array.from({ length: 15 }, () => ({ x: Math.random() * W, y: Math.random() * H, r: 12 + Math.random() * 28, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.25, rot: Math.random() * Math.PI * 2, vrot: (Math.random() - 0.5) * 0.004, type: Math.random() > 0.5 ? 'hex' : 'logo', alpha: 0.1 + Math.random() * 0.15 }));
+            const shieldPath = new Path2D(); const s = 0.9; shieldPath.moveTo(0, -s); shieldPath.lineTo(s * 0.75, -s * 0.6); shieldPath.lineTo(s * 0.75, s * 0.3); shieldPath.quadraticCurveTo(s * 0.75, s * 1.0, 0, s * 1.2); shieldPath.quadraticCurveTo(-s * 0.75, s * 1.0, -s * 0.75, s * 0.3); shieldPath.lineTo(-s * 0.75, -s * 0.6); shieldPath.closePath();
+            const hexPath = new Path2D(); for (let i = 0; i < 6; i++) { const a = (Math.PI / 3) * i; if (i === 0) hexPath.moveTo(Math.cos(a), Math.sin(a)); else hexPath.lineTo(Math.cos(a), Math.sin(a)); } hexPath.closePath();
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                shapes.forEach(sh => {
+                    sh.x += sh.vx; sh.y += sh.vy; sh.rot += sh.vrot;
+                    if (sh.x < -80) sh.x = W + 80; if (sh.x > W + 80) sh.x = -80;
+                    if (sh.y < -80) sh.y = H + 80; if (sh.y > H + 80) sh.y = -80;
+                    ctx.save(); ctx.translate(sh.x, sh.y); ctx.rotate(sh.rot); ctx.scale(sh.r, sh.r); ctx.globalAlpha = sh.alpha; ctx.lineWidth = 1.5 / sh.r;
+                    if (sh.type === 'logo') { ctx.strokeStyle = '#cc0000'; ctx.stroke(shieldPath); } else { ctx.strokeStyle = '#2b4c7e'; ctx.stroke(hexPath); }
+                    ctx.restore();
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileClose = document.getElementById('mobile-close');
+        hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+        mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+        (function () {
+            const els = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(el => observer.observe(el));
+        })();
+    </script>
 </body>
+
 </html>

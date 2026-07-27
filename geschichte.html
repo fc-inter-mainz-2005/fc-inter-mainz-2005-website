@@ -85,8 +85,13 @@
         .footer-col h4,
         .mobile-nav a {
             font-family: 'Inter', sans-serif;
-            font-weight: 900;
             text-transform: uppercase;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 1.8rem; /* Tamaño reducido para mejor lectura */
+            font-weight: 900;
+            letter-spacing: 2px; /* Espaciado ajustado */
+            transition: color 0.2s;
         }
 
         /* ── SCROLLBAR ── */
@@ -251,14 +256,6 @@
             display: flex;
         }
 
-        .mobile-nav a {
-            font-size: 2.4rem;
-            letter-spacing: 4px;
-            color: var(--blue);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
         .mobile-nav a:hover {
             color: var(--red);
         }
@@ -270,7 +267,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--text-main);
+            color: var(--blue);
         }
 
         .mobile-nav-close svg {

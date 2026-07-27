@@ -52,7 +52,7 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
 
         body {
             background-color: var(--bg-body);
@@ -799,15 +799,22 @@
             justify-content: center;
             gap: 24px;
         }
+
         .mobile-nav.open { display: flex; }
         .mobile-nav a {
-            font-size: 2.2rem;
-            letter-spacing: 4px;
+            font-size: 1.8rem; /* Tamaño unificado con las demás páginas */
+            font-weight: 900;
+            letter-spacing: 2px;
             color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
         }
-        .mobile-nav a:hover { color: var(--red); }
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--red) !important;
+        }
         .mobile-nav-close {
             position: absolute;
             top: 24px; right: 5%;
@@ -816,8 +823,11 @@
             cursor: pointer;
             color: var(--blue);
         }
-        .mobile-nav-close svg { width: 32px; height: 32px; stroke: currentColor; }
-
+        .mobile-nav-close svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+        }
         /* ── MATCHES ── */
         .matches-section {
             background: rgba(255, 255, 255, 0.02);
@@ -831,20 +841,20 @@
 
         .widget-grid {
     display: grid;
-    /* En móviles: 1 columna. En pantallas más grandes: se adaptan al ancho disponible (min 350px) */
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 32px; /* Espacio entre las tarjetas */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 20px;
     margin-top: 20px;
 }
 
 .widget-card {
-    background: var(--card-bg); /* Un fondo ligeramente más claro que el azul oscuro principal */
     border: 1px solid var(--card-border);
     border-radius: 14px;
     padding: 24px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, border-color 0.3s ease;
-    overflow: hidden; /* Asegura que el contenido del iframe de FuPa no se salga de los bordes redondeados */
+    overflow: hidden;
+    min-width: 0; /* Evita que los hijos de grid expandan el contenedor */
+    max-width: 100%;
 }
 
 /* Efecto hover suave */
@@ -854,9 +864,14 @@
 }
 
 /* Asegura que el iframe generado por FuPa ocupe todo el ancho disponible */
-.widget-card iframe {
+.widget-card iframe,
+.widget-card > div > *,
+[id^="fp-widget_root"] iframe,
+[id^="fp-widget_root"] > * {
     width: 100% !important;
-    border-radius: 8px; /* Redondea los bordes interiores del propio widget si es posible */
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border-radius: 8px;
 }
 
         /* ── ANIMATIONS ── */
@@ -887,6 +902,9 @@
             .stats-bar { gap: 24px; padding: 16px 6%; }
             .section-inner { padding: 60px 6%; }
             .vorstand-grid { grid-template-columns: 1fr; }
+            /* Widgets: forzar 1 columna en móvil */
+            .widget-grid { grid-template-columns: 1fr !important; gap: 14px; }
+            .widget-card { padding: 10px; }
         }
     </style>
 </head>
@@ -924,7 +942,7 @@
     <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
         <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
-    <a href="index.html">Startseite</a>
+    <a href="index.html" class="active">Startseite</a>
     <a href="probetraining.html">Probetraining</a>
     <a href="geschichte.html">Geschichte</a>
     <a href="teams.html">Teams</a>

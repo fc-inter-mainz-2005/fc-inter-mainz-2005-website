@@ -224,13 +224,17 @@
         }
         .mobile-nav.open { display: flex; }
         .mobile-nav a {
-            font-size: 2.4rem;
-            letter-spacing: 4px;
+            font-size: 1.8rem; /* Tamaño reducido para mejor lectura */
+            font-weight: 900;
+            letter-spacing: 2px; /* Espaciado ajustado */
             color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
         }
         .mobile-nav a:hover { color: var(--red); }
+        .mobile-nav a.active {
+            color: var(--red) !important;
+        }
         .mobile-nav-close {
             position: absolute;
             top: 24px; right: 5%;
@@ -239,7 +243,9 @@
             cursor: pointer;
             color: var(--blue);
         }
-        .mobile-nav-close svg { width: 32px; height: 32px; stroke: currentColor; }
+        .mobile-nav-close svg { width: 28px;
+            height: 28px;
+            stroke: currentColor;}
 
         /* Estilo para el botón deshabilitado */
         #submit-btn:disabled {
@@ -295,7 +301,7 @@
     </a>
     <ul class="nav-links">
         <li><a href="index.html">Startseite</a></li>
-        <li><a href="probetraining.html" style="color: var(--red);">Probetraining</a></li>
+        <li><a href="probetraining.html" class="active">Probetraining</a></li>
         <li><a href="geschichte.html">Geschichte</a></li>
         <li><a href="teams.html">Teams</a></li>
         <li><a href="vorstand.html">Vorstand</a></li>
@@ -324,14 +330,7 @@
     <a href="teams.html">Teams</a>
     <a href="vorstand.html">Vorstand</a>
     <a href="kontakt.html">Kontakt</a>
-    <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">
-        <span style="display: flex; align-items: center; gap: 8px;">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-            </svg>
-            Online-Shop
-        </span>
-    </a>
+    <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
 </div>
 
 <main class="container mx-auto pt-36 pb-20 px-4 relative z-10">
