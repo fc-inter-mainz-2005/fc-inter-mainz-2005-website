@@ -376,7 +376,7 @@
         .footer-brand img {
             height: 52px;
             margin-bottom: 12px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
 
         .footer-brand-name {
@@ -608,19 +608,19 @@
                 </div>
 
                 <div class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <div class="flex items-center h-5">
-                        <input id="privacy-check" type="checkbox" required
-                            class="focus:ring-[#cc0000] h-4 w-4 text-[#cc0000] border-gray-300 rounded cursor-pointer">
-                    </div>
-                    <div class="ml-3 text-sm">
-                        <label for="privacy-check" class="font-medium text-gray-700 leading-relaxed cursor-pointer">
-                            Ich akzeptiere die
-                            <a href="datenschutzbestimmung.html" style="color: var(--blue);"
-                                class="hover:underline font-bold"><strong>Datenschutzbestimmungen</strong></a>
-                            und stimme der Verarbeitung meiner Daten zu. *
+                    <div class="privacy-box mb-6">
+                        <input id="privacy-check" type="checkbox" required>
+                        <label for="privacy-check">
+                            Ich habe die
+                            <a href="datenschutzbestimmung.html"
+                                style="color: var(--blue);"><strong>Datenschutzbestimmungen</strong></a>
+                            gelesen und erkläre mich damit einverstanden, dass meine Daten zur
+                            Bearbeitung meines Anliegens gespeichert werden.
                         </label>
                     </div>
                 </div>
+
+
 
                 <div class="pt-4">
                     <button type="submit" id="submit-btn" disabled
