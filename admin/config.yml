@@ -18,3 +18,72 @@ collections:
           - {label: "Titel", name: "name", widget: "string"}
           - {label: "Details", name: "meta", widget: "string"}
           - {label: "Modal ID", name: "modal_id", widget: "string"}
+
+  - name: "vorstand"
+    label: "Vorstand"
+    files:
+      - label: "Mitglieder"
+        name: "mitglieder"
+        file: "data/vorstand.json"
+        fields:
+          - label: "Mitglieder"
+            name: "members"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Position", name: "role", widget: "string"}
+              - {label: "Foto", name: "photo", widget: "image"}
+
+  - name: "sponsoren"
+    label: "Sponsoren"
+    files:
+      - label: "Liste"
+        name: "liste"
+        file: "data/sponsors.json"
+        fields:
+          - label: "Sponsoren"
+            name: "sponsors"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Logo", name: "image", widget: "image"}
+              - {label: "Link", name: "link", widget: "string"}
+
+  - name: "teams"
+    label: "Mannschaftsfotos"
+    files:
+      - label: "Fotos"
+        name: "fotos"
+        file: "data/teams.json"
+        fields:
+          - {label: "Foto Inter Mainz I", name: "inter_i", widget: "image"}
+          - {label: "Foto Inter Mainz II", name: "inter_ii", widget: "image"}
+          - {label: "Foto Alte Herren", name: "alte_herren", widget: "image"}
+
+  - name: "probetraining"
+    label: "Probetraining-Hinweis"
+    files:
+      - label: "Hinweis"
+        name: "hinweis"
+        file: "data/probetraining.json"
+        fields:
+          - {label: "Hinweis anzeigen?", name: "show_hinweis", widget: "boolean", default: true}
+          - {label: "Text", name: "hinweis_text", widget: "text", required: false}
+
+  - name: "impressum"
+    label: "Impressum"
+    files:
+      - label: "Inhalt"
+        name: "inhalt"
+        file: "content/impressum.json"
+        fields:
+          - {label: "Text (Markdown)", name: "content", widget: "markdown"}
+
+  - name: "datenschutz"
+    label: "Datenschutzerklärung"
+    files:
+      - label: "Inhalt"
+        name: "inhalt"
+        file: "content/datenschutz.json"
+        fields:
+          - {label: "Text (Markdown)", name: "content", widget: "markdown"}

@@ -10,8 +10,6 @@
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
-    <script type="text/javascript" src="https://www.fussball.de/widgets.js"></script>
-
     <style>
         /* ── FUENTES LOCALES INTER ── */
         @font-face {
@@ -1219,7 +1217,7 @@
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
-            <span>Inter Mainz</span>
+            <span>Inter Mainz 2005</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -1273,7 +1271,7 @@
                 <span class="accent">Gemeinschaft.</span>
                 Fussball.
             </h1>
-            <p class="hero-sub">Willkommen beim F.C. Inter Mainz. Dein Verein im Herzen von Mainz seit 2005 — für
+            <p class="hero-sub">Willkommen beim F.C. Inter Mainz. Dein Verein im Herzen von Mainz seit 2005 - für
                 sportlichen Ehrgeiz und sozialen Zusammenhalt.</p>
             <div class="hero-actions">
                 <a href="probetraining.html" class="btn-primary">
@@ -1367,7 +1365,7 @@
     <section>
         <div class="section-inner">
             <p class="sponsors-label reveal">Unsere offiziellen Partner & Sponsoren</p>
-            <div class="sponsors-grid">
+            <div class="sponsors-grid" id="sponsors-grid">
                 <a href="https://el-burro.de/" target="_blank" rel="noopener"
                     class="sponsor-item reveal reveal-delay-1">
                     <img src="elburro.png" alt="El Burro Restaurant & Bar">
@@ -1387,10 +1385,10 @@
         <div class="section-inner">
             <div class="section-header reveal">
                 <p class="section-eyebrow">Führungsteam</p>
-                <h2 class="section-title">Der Vorstand</h2>
+                <h2 class="section-title">Der Geschäftsführender Vorstand</h2>
                 <span class="section-divider"></span>
             </div>
-            <div class="vorstand-grid">
+            <div class="vorstand-grid" id="vorstand-grid-home">
                 <div class="vorstand-card reveal reveal-delay-1">
                     <div class="vorstand-photo">
                         <img src="santy.jpg" alt="Santiago Ballabriga">
@@ -1403,7 +1401,7 @@
 
                 <div class="vorstand-card reveal reveal-delay-2">
                     <div class="vorstand-photo">
-                        <img src="fernando.jpg" alt="Fernando Trochez">
+                        <img src="fernando.jpeg" alt="Fernando Trochez">
                     </div>
                     <div class="vorstand-info">
                         <div class="vorstand-name">Fernando Trochez</div>
@@ -1417,7 +1415,7 @@
                     </div>
                     <div class="vorstand-info">
                         <div class="vorstand-name">José Luis Fuente Fernández</div>
-                        <div class="vorstand-role">Schatzmeister</div>
+                        <div class="vorstand-role">3. Vorsitzender</div>
                     </div>
                 </div>
             </div>
@@ -1719,21 +1717,63 @@
             .then(data => {
                 const list = document.getElementById('event-list');
                 data.events.forEach((event, index) => {
-                    const html = `
-                <div class="event-item reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}" onclick="openModal('${event.modal_id}')">
-                    <div class="event-date" ${index === 1 ? 'style="background:var(--blue-mid)"' : ''}>
-                        <div class="event-date-num">${event.date_num}</div>
-                        <div class="event-date-mo">${event.date_mo}</div>
-                    </div>
-                    <div>
-                        <div class="event-name">${event.name}</div>
-                        <div class="event-meta">${event.meta}</div>
-                    </div>
-                    <div class="event-arrow">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                    </div>
-                </div>`;
-                    list.innerHTML += html;
+                    const item = document.createElement('div');
+                    item.className = `event-item reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}`;
+                    item.onclick = () => openModal(event.modal_id);
+                    item.innerHTML = `
+                        <div class="event-date">
+                            <div class="event-date-num"></div>
+                            <div class="event-date-mo"></div>
+                        </div>
+                        <div>
+                            <div class="event-name"></div>
+                            <div class="event-meta"></div>
+                        </div>
+                        <div class="event-arrow">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </div>`;
+                    if (index === 1) item.querySelector('.event-date').style.background = 'var(--blue-mid)';
+                    item.querySelector('.event-date-num').textContent = event.date_num;
+                    item.querySelector('.event-date-mo').textContent = event.date_mo;
+                    item.querySelector('.event-name').textContent = event.name;
+                    item.querySelector('.event-meta').textContent = event.meta;
+                    list.appendChild(item);
+                });
+            });
+
+        fetch('data/sponsors.json')
+            .then(res => res.json())
+            .then(data => {
+                const grid = document.getElementById('sponsors-grid');
+                data.sponsors.forEach(s => {
+                    const a = document.createElement('a');
+                    a.href = s.link; a.target = '_blank'; a.rel = 'noopener';
+                    a.className = 'sponsor-item reveal';
+                    const img = document.createElement('img');
+                    img.src = s.image; img.alt = s.name;
+                    a.appendChild(img);
+                    grid.appendChild(a);
+                });
+            });
+
+        fetch('data/vorstand.json')
+            .then(res => res.json())
+            .then(data => {
+                const grid = document.getElementById('vorstand-grid-home');
+                data.members.forEach(m => {
+                    const card = document.createElement('div');
+                    card.className = 'vorstand-card reveal';
+                    card.innerHTML = `
+                        <div class="vorstand-photo"><img alt=""></div>
+                        <div class="vorstand-info">
+                            <div class="vorstand-name"></div>
+                            <div class="vorstand-role"></div>
+                        </div>`;
+                    card.querySelector('img').src = m.photo;
+                    card.querySelector('img').alt = m.name;
+                    card.querySelector('.vorstand-name').textContent = m.name;
+                    card.querySelector('.vorstand-role').textContent = m.role;
+                    grid.appendChild(card);
                 });
             });
     </script>

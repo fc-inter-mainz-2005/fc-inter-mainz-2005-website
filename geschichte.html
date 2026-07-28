@@ -82,12 +82,24 @@
         .section-eyebrow,
         .section-title,
         .history-title,
-        .footer-brand-name,
         .footer-col h4,
         .mobile-nav a {
             font-family: 'Inter', sans-serif;
             text-transform: uppercase;
             color: var(--blue);
+            text-decoration: none;
+            font-size: 1.8rem;
+            /* Tamaño reducido para mejor lectura */
+            font-weight: 900;
+            letter-spacing: 2px;
+            /* Espaciado ajustado */
+            transition: color 0.2s;
+        }
+
+        .footer-brand-name {
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            color: var(--white);
             text-decoration: none;
             font-size: 1.8rem;
             /* Tamaño reducido para mejor lectura */
@@ -643,7 +655,7 @@
                 </div>
                 <div
                     class="order-1 lg:order-2 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1518605368461-1e1e38ce8058?q=80&w=800&auto=format&fit=contain"
+                    <img src="InterMainzGrundung.jpg"
                         alt="Historisches Bild 1" class="w-full h-auto object-contain rounded-xl lightbox-img">
                 </div>
             </div>
