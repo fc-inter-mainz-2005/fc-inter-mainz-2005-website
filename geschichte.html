@@ -30,7 +30,7 @@
             font-display: block;
         }
 
-                :root {
+        :root {
             /* TEMA CLARO */
             --bg-body: #faf8f5;
             --bg-surface: #ffffff;
@@ -38,18 +38,19 @@
             --bg-footer: #f0f4f8;
             --text-main: #1a202c;
             --text-muted: #4a5568;
-            
+
             --blue: #0a1f44;
             --blue-mid: #2b4c7e;
             --blue-light: #e2e8f0;
             --red: #cc0000;
             --red-bright: #ff1a1a;
-            
+
             --card-border: rgba(0, 0, 0, 0.08);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            --white: #ffffff; /* Redefinido por si acaso */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --white: #ffffff;
+            /* Redefinido por si acaso */
             --gray: #8899bb;
             --card-bg: #ffffff;
         }
@@ -88,17 +89,31 @@
             text-transform: uppercase;
             color: var(--blue);
             text-decoration: none;
-            font-size: 1.8rem; /* Tamaño reducido para mejor lectura */
+            font-size: 1.8rem;
+            /* Tamaño reducido para mejor lectura */
             font-weight: 900;
-            letter-spacing: 2px; /* Espaciado ajustado */
+            letter-spacing: 2px;
+            /* Espaciado ajustado */
             transition: color 0.2s;
         }
 
         /* ── SCROLLBAR ── */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
 
         /* ── CANVAS BACKGROUND ── */
         #bg-canvas {
@@ -125,7 +140,8 @@
             align-items: center;
             justify-content: space-between;
             transition: background 0.4s, box-shadow 0.4s;
-            background: var(--bg-nav); box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--bg-nav);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .nav-logo {
@@ -137,7 +153,7 @@
 
         .nav-logo img {
             height: 46px;
-            filter: drop-shadow(0 0 8px rgba(204, 0, 0, 0.5));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
             transition: transform 0.3s;
         }
 
@@ -203,16 +219,22 @@
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
             color: white !important;
-            border-radius: 50px !important; /* Forma de píldora */
+            border-radius: 50px !important;
+            /* Forma de píldora */
             padding: 8px 20px !important;
             font-weight: 700 !important;
-            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4); /* Resplandor rojo */
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4);
+            /* Resplandor rojo */
             transition: all 0.3s ease !important;
             display: inline-flex !important;
             align-items: center;
             gap: 8px;
         }
-        .nav-cta::after { display: none !important; }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
@@ -245,7 +267,7 @@
             inset: 0;
             z-index: 101;
             /* Corregido para que cubra la hamburguesa */
-            background: rgba(255,255,255,0.98);
+            background: rgba(255, 255, 255, 0.98);
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -318,7 +340,8 @@
         footer {
             position: relative;
             z-index: 1;
-            background: var(--blue); color: white;
+            background: var(--blue);
+            color: white;
             border-top: 4px solid var(--red);
             margin-top: 40px;
         }
@@ -352,7 +375,7 @@
         .footer-brand img {
             height: 52px;
             margin-bottom: 12px;
-            filter: drop-shadow(0 0 10px rgba(204, 0, 0, 0.35));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .footer-brand-name {
@@ -361,19 +384,91 @@
             margin-bottom: 12px;
         }
 
-        .footer-brand-desc { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); line-height: 1.7; }
-        .footer-col h4 { font-size: 1.05rem; letter-spacing: 2px; color: var(--red); margin-bottom: 18px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul a, .footer-col p { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; line-height: 1.6; }
-        .footer-col ul a:hover { color: white; }
-        .footer-social { display: flex; gap: 10px; margin-top: 4px; }
-        .footer-social a { width: 40px; height: 40px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
-        .footer-social a:hover { background: var(--red); border-color: var(--red); transform: translateY(-3px); }
-        .footer-social svg { width: 18px; height: 18px; fill: white; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); }
-        .footer-bottom a { color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.2s; }
-        .footer-bottom a:hover { color: white; }
+        .footer-brand-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            color: var(--red);
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a,
+        .footer-col p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+            line-height: 1.6;
+        }
+
+        .footer-col ul a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
 
         /* ── ANIMATIONS ── */
         .reveal {
@@ -411,6 +506,55 @@
                 display: flex;
             }
         }
+
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 31, 68, 0.92);
+            backdrop-filter: blur(4px);
+            padding: 24px;
+            cursor: zoom-out;
+        }
+
+        .lightbox-overlay.open {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 5%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox-close svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+        }
+
+        .lightbox-img {
+            cursor: zoom-in;
+        }
     </style>
 </head>
 
@@ -431,13 +575,15 @@
             <li><a href="vorstand.html">Vorstand</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
             <li>
-            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                </svg>
-                Online-Shop
-            </a>
-        </li>
+                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Online-Shop
+                </a>
+            </li>
         </ul>
         <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
             <span></span><span></span><span></span>
@@ -498,14 +644,14 @@
                 <div
                     class="order-1 lg:order-2 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
                     <img src="https://images.unsplash.com/photo-1518605368461-1e1e38ce8058?q=80&w=800&auto=format&fit=contain"
-                        alt="Historisches Bild 1" class="w-full h-auto object-contain rounded-xl">
+                        alt="Historisches Bild 1" class="w-full h-auto object-contain rounded-xl lightbox-img">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal">
                 <div
                     class="order-1 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
-                    <img src="Aufstieg.jpeg" alt="Historisches Bild 2" class="w-full h-auto object-contain rounded-xl">
+                    <img src="Aufstieg.jpeg" alt="Historisches Bild 2" class="w-full h-auto object-contain rounded-xl lightbox-img">
                 </div>
                 <div class="relative order-2 lg:col-span-5">
                     <div class="bg-year-watermark">2023</div>
@@ -537,7 +683,7 @@
                 <div
                     class="order-1 lg:order-2 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
                     <img src="InterMainzAll.jpeg" alt="Historisches Bild 3"
-                        class="w-full h-auto object-contain rounded-xl">
+                        class="w-full h-auto object-contain rounded-xl lightbox-img">
                 </div>
             </div>
 
@@ -545,53 +691,71 @@
     </main>
 
     <footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="800x800.png" alt="Inter Mainz Wappen">
-                <div class="footer-brand-name">F.C. Inter Mainz</div>
-                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
-                    Gegründet 2005 mit Leidenschaft.</p>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="800x800.png" alt="Inter Mainz Wappen">
+                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                        Gegründet 2005 mit Leidenschaft.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="probetraining.html">Probetraining</a></li>
+                        <li><a href="geschichte.html">Geschichte</a></li>
+                        <li><a href="teams.html">Teams</a></li>
+                        <li><a href="vorstand.html">Vorstand</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="https://fc-inter-mainz.fan12.de/" target="_blank"
+                                rel="noopener noreferrer">Online-Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                    <br>
+                    <p>info@intermainz.de</p>
+                    <br>
+                    <p>+49 06131 000000</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="footer-social">
+                        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-col">
-            <h4>Navigation</h4>
-            <ul>
-                <li><a href="index.html">Startseite</a></li>
-                <li><a href="probetraining.html">Probetraining</a></li>
-                <li><a href="geschichte.html">Geschichte</a></li>
-                <li><a href="teams.html">Mannschaften</a></li>
-                <li><a href="#veranstaltungen">Termine</a></li>
-                <li><a href="vorstand.html">Vorstand</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Kontakt</h4>
-            <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p>
-            <br>
-            <p>📧 info@intermainz.de</p>
-            <br>
-            <p>📞 +49 06131 000000</p>
-        </div>
-        <div class="footer-col">
-            <h4>Social Media</h4>
-            <div class="footer-social">
-                <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
+            <div class="footer-bottom">
+                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:20px">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
+                </div>
             </div>
-        </div>
+    </footer>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <svg fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img id="lightbox-img" src="" alt="">
     </div>
-    <div class="footer-bottom">
-        <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
-        <div style="display:flex;gap:20px">
-            <a href="impressum.html">Impressum</a>
-            <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
-        </div>
-    </div>
-</footer>
 
     <script>
         /* ─ Canvas animated background (Optimized) ─ */
@@ -690,7 +854,29 @@
             }, { threshold: 0.12 });
             els.forEach(el => observer.observe(el));
         })();
+
+        function openLightbox(src, alt){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt || '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e){
+    if(e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+});
+document.querySelectorAll('.lightbox-img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+});
     </script>
+
+    
 </body>
 
 </html>

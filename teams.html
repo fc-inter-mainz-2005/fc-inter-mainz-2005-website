@@ -130,9 +130,9 @@
             align-items: center;
             justify-content: space-between;
             background: var(--bg-nav);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             transition: background 0.4s, box-shadow 0.4s;
-            
+
         }
 
         nav.scrolled {
@@ -275,9 +275,11 @@
         }
 
         .mobile-nav a {
-            font-size: 1.8rem; /* Tamaño reducido para mejor lectura */
+            font-size: 1.8rem;
+            /* Tamaño reducido para mejor lectura */
             font-weight: 900;
-            letter-spacing: 2px; /* Espaciado ajustado */
+            letter-spacing: 2px;
+            /* Espaciado ajustado */
             color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
@@ -406,7 +408,7 @@
         .footer-brand img {
             height: 52px;
             margin-bottom: 12px;
-            filter: drop-shadow(0 0 10px rgba(204, 0, 0, 0.35));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .footer-brand-name {
@@ -534,6 +536,55 @@
                 display: flex;
             }
         }
+
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 31, 68, 0.92);
+            backdrop-filter: blur(4px);
+            padding: 24px;
+            cursor: zoom-out;
+        }
+
+        .lightbox-overlay.open {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 5%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox-close svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+        }
+
+        .lightbox-img {
+            cursor: zoom-in;
+        }
     </style>
 </head>
 
@@ -620,7 +671,7 @@
                 <div
                     class="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
                     <img src="InterMainzI.jpg" alt="Mannschaftsfoto Inter Mainz I"
-                        class="w-full h-auto object-cover rounded-xl"
+                        class="w-full h-auto object-cover rounded-xl lightbox-img"
                         onerror="this.parentElement.innerHTML='<div class=\'w-full h-72 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-[var(--text-muted)]\'><svg class=\'w-16 h-16 mb-3 opacity-30\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z\'/><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M15 13a3 3 0 11-6 0 3 3 0 016 0z\'/></svg><p class=\'text-sm font-semibold uppercase tracking-wide text-[var(--blue)]\'>Mannschaftsfoto Inter Mainz I</p><p class=\'text-xs mt-1\'>Bild hier einfügen: InterMainzI.jpg</p></div>'">
                 </div>
             </section>
@@ -636,7 +687,7 @@
                 <div
                     class="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
                     <img src="InterMainzII.jpg" alt="Mannschaftsfoto Inter Mainz II"
-                        class="w-full h-auto object-cover rounded-xl">
+                        class="w-full h-auto object-cover rounded-xl lightbox-img">
                 </div>
             </section>
 
@@ -651,7 +702,7 @@
                 <div
                     class="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
                     <img src="AlteHerren.jpg" alt="Mannschaftsfoto Alte Herren Ü32"
-                        class="w-full h-auto object-cover rounded-xl">
+                        class="w-full h-auto object-cover rounded-xl lightbox-img">
                 </div>
             </section>
 
@@ -673,17 +724,20 @@
                         <li><a href="index.html">Startseite</a></li>
                         <li><a href="probetraining.html">Probetraining</a></li>
                         <li><a href="geschichte.html">Geschichte</a></li>
-                        <li><a href="teams.html">Mannschaften</a></li>
+                        <li><a href="teams.html">Teams</a></li>
                         <li><a href="vorstand.html">Vorstand</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="https://fc-inter-mainz.fan12.de/" target="_blank"
+                                rel="noopener noreferrer">Online-Shop</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Kontakt</h4>
-                    <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
                     <br>
-                    <p>📧 info@intermainz.de</p>
+                    <p>info@intermainz.de</p>
                     <br>
-                    <p>📞 +49 06131 000000</p>
+                    <p>+49 06131 000000</p>
                 </div>
                 <div class="footer-col">
                     <h4>Social Media</h4>
@@ -713,6 +767,15 @@
             </div>
         </div>
     </footer>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <svg fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
 
     <script>
         /* Canvas */
@@ -791,7 +854,29 @@
             }, { threshold: 0.12 });
             els.forEach(el => observer.observe(el));
         })();
+
+        function openLightbox(src, alt){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt || '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e){
+    if(e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+});
+document.querySelectorAll('.lightbox-img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+});
     </script>
+
+    
 </body>
 
 </html>

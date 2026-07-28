@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,23 @@
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @font-face { font-family:'Inter'; src:url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype'); font-weight:100 900; font-style:normal; font-display:block; }
-        @font-face { font-family:'Inter'; src:url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype'); font-weight:100 900; font-style:italic; font-display:block; }
-                :root {
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+            font-display: block;
+        }
+
+        :root {
             /* TEMA CLARO */
             --bg-body: #faf8f5;
             --bg-surface: #ffffff;
@@ -19,23 +34,35 @@
             --bg-footer: #f0f4f8;
             --text-main: #1a202c;
             --text-muted: #4a5568;
-            
+
             --blue: #0a1f44;
             --blue-mid: #2b4c7e;
             --blue-light: #e2e8f0;
             --red: #cc0000;
             --red-bright: #ff1a1a;
-            
+
             --card-border: rgba(0, 0, 0, 0.08);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            --white: #ffffff; /* Redefinido por si acaso */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --white: #ffffff;
+            /* Redefinido por si acaso */
             --gray: #8899bb;
             --card-bg: #ffffff;
         }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-        html{scroll-behavior:smooth;}
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
@@ -45,21 +72,117 @@
             width: 100%;
             max-width: 100vw;
         }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
-        #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity: 0.15;}
-        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:72px;display:flex;align-items:center;justify-content:space-between;background: var(--bg-nav); box-shadow: 0 1px 3px rgba(0,0,0,0.1);}
-        .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-        .nav-logo img{height:46px;filter:drop-shadow(0 0 8px rgba(204,0,0,0.5));transition:transform 0.3s;}
-        .nav-logo:hover img{transform:scale(1.08) rotate(-3deg);}
-        .nav-logo span{font-family:'Inter',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:2px;text-transform:uppercase;color: var(--blue);}
-        .nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
-        .nav-links a{text-decoration:none;color: var(--text-muted);font-size:0.85rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;border-radius:4px;transition:color 0.25s;position:relative;}
-        .nav-links a::after{content:'';position:absolute;bottom:4px;left:14px;right:14px;height:2px;background:var(--red);transform:scaleX(0);transition:transform 0.25s;border-radius:2px;}
-        .nav-links a:hover { color: var(--blue); }
-        .nav-links a:hover::after{transform:scaleX(1);}
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0 5%;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-nav);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 46px;
+            filter: drop-shadow(0 0 8px rgba(204, 0, 0, 0.5));
+            transition: transform 0.3s;
+        }
+
+        .nav-logo:hover img {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
+        .nav-logo span {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            border-radius: 4px;
+            transition: color 0.25s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: var(--red);
+            transform: scaleX(0);
+            transition: transform 0.25s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
             color: white !important;
@@ -74,293 +197,719 @@
             gap: 8px !important;
             text-shadow: none !important;
         }
-        .nav-cta::after { display: none !important; }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(204, 0, 0, 0.35) !important;
             background: linear-gradient(135deg, #ff1a1a 0%, #ff4d4d 100%) !important;
         }
-        .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
-        .nav-hamburger span{display:block;width:26px;height:2px;background: var(--blue);border-radius:2px;}
-        .mobile-nav{display:none;position:fixed;inset:0;z-index:101;background: rgba(255,255,255,0.98);flex-direction:column;align-items:center;justify-content:center;gap:24px;}
-        .mobile-nav.open{display:flex;}
-        .mobile-nav a{font-family:'Inter',sans-serif;font-weight:900;text-transform:uppercase;font-size:2.4rem;letter-spacing:4px;color: var(--blue); text-decoration: none;}
-        .mobile-nav a:hover{color:var(--red);}
-        .mobile-nav-close{position:absolute;top:24px;right:5%;background:none;border:none;cursor:pointer;}
-        .mobile-nav-close svg{width:28px;height:28px;stroke:currentColor;}
 
-        .page-header{padding:130px 8% 60px;position:relative;z-index:1;}
-        .section-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px;display:block;}
-        .section-title{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,4rem);letter-spacing:2px;text-transform:uppercase;color: var(--blue); line-height: 0.95;}
-        .section-divider{display:block;width:48px;height:3px;background:var(--red);border-radius:2px;margin-top:18px;}
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
 
-        .content-area{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 8% 80px;}
-        .legal-card{background: var(--bg-surface); border: 1px solid var(--card-border); box-shadow: var(--shadow-sm);border-radius:14px;padding:36px 40px;margin-bottom:20px;}
-        .legal-card h2{font-family:'Inter',sans-serif;font-weight:900;font-size:1.05rem;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
-        .legal-card h3{font-weight:700;font-size:0.9rem;color: var(--text-main);margin:14px 0 6px;border-left:3px solid var(--red);padding-left:10px;}
-        .legal-card p{font-size:0.86rem;color: var(--text-muted);line-height:1.8;margin-bottom:10px;}
-        .legal-card a{color: var(--text-main);text-decoration:underline;text-decoration-color:rgba(204,0,0,0.4);transition:color 0.2s;}
-        .legal-card a:hover{color:var(--red);}
-        .legal-card ul{list-style:none;margin:8px 0 10px 0;}
-        .legal-card ul li{font-size:0.86rem;color: var(--text-muted);line-height:1.75;padding-left:16px;position:relative;margin-bottom:4px;}
-        .legal-card ul li::before{content:'›';position:absolute;left:0;color:var(--red);font-weight:700;}
-        .toc-card{background:rgba(204,0,0,0.06);border:1px solid rgba(204,0,0,0.2);border-radius:14px;padding:28px 36px;margin-bottom:20px;}
-        .toc-card h2{font-family:'Inter',sans-serif;font-weight:900;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
-        .toc-card ol{list-style:decimal;padding-left:20px;}
-        .toc-card ol li{font-size:0.84rem;color: var(--text-muted);margin-bottom:6px;line-height:1.6;}
-        .toc-card ol a{color: var(--text-main);text-decoration:none;transition:color 0.2s;}
-        .toc-card ol a:hover{color:var(--red);}
-        .back-link{display:inline-flex;align-items:center;gap:8px;color: var(--text-muted);font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;margin-bottom:32px;transition:color 0.2s;}
-        .back-link:hover{color: var(--text-main);}
-        .back-link svg{width:16px;height:16px;}
+        .nav-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--blue);
+            border-radius: 2px;
+        }
 
-        footer{position:relative;z-index:1;background: var(--blue); color: white;border-top: 4px solid var(--red);}
-        .footer-inner{max-width:1280px;margin:0 auto;padding:64px 8% 32px;}
-        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-        @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
-        @media(max-width:540px){.footer-grid{grid-template-columns:1fr;}}
-        .footer-brand img{height:52px;margin-bottom:12px;filter:drop-shadow(0 0 10px rgba(204,0,0,0.35));}
-        .footer-brand-name{font-family:'Inter',sans-serif;font-weight:900;text-transform:uppercase;font-size:1.5rem;letter-spacing:2px;margin-bottom:12px;}
-        .footer-brand-desc { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); line-height: 1.7; }
-        .footer-col h4 { font-size: 1.05rem; letter-spacing: 2px; color: var(--red); margin-bottom: 18px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul a, .footer-col p { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; line-height: 1.6; }
-        .footer-col ul a:hover { color: white; }
-        .footer-social { display: flex; gap: 10px; margin-top: 4px; }
-        .footer-social a { width: 40px; height: 40px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
-        .footer-social a:hover { background: var(--red); border-color: var(--red); transform: translateY(-3px); }
-        .footer-social svg { width: 18px; height: 18px; fill: white; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); }
-        .footer-bottom a { color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.2s; }
-        .footer-bottom a:hover { color: white; }
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.98);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
 
-        .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
-        .reveal.visible{opacity:1;transform:translateY(0);}
-        .reveal-delay-1{transition-delay:0.1s;}.reveal-delay-2{transition-delay:0.2s;}.reveal-delay-3{transition-delay:0.3s;}
+        .mobile-nav.open {
+            display: flex;
+        }
 
-        @media(max-width:768px){.nav-links{display:none;}.nav-hamburger{display:flex;}.page-header{padding:110px 6% 48px;}.content-area{padding:0 6% 60px;}.legal-card{padding:24px 20px;}}
+        .mobile-nav a {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 2.4rem;
+            letter-spacing: 4px;
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--red);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px;
+            right: 5%;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav-close svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+        }
+
+        .page-header {
+            padding: 130px 8% 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue);
+            line-height: 0.95;
+        }
+
+        .section-divider {
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: var(--red);
+            border-radius: 2px;
+            margin-top: 18px;
+        }
+
+        .content-area {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 8% 80px;
+        }
+
+        .legal-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-sm);
+            border-radius: 14px;
+            padding: 36px 40px;
+            margin-bottom: 20px;
+        }
+
+        .legal-card h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 14px;
+        }
+
+        .legal-card h3 {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin: 14px 0 6px;
+            border-left: 3px solid var(--red);
+            padding-left: 10px;
+        }
+
+        .legal-card p {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .legal-card a {
+            color: var(--text-main);
+            text-decoration: underline;
+            text-decoration-color: rgba(204, 0, 0, 0.4);
+            transition: color 0.2s;
+        }
+
+        .legal-card a:hover {
+            color: var(--red);
+        }
+
+        .legal-card ul {
+            list-style: none;
+            margin: 8px 0 10px 0;
+        }
+
+        .legal-card ul li {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .legal-card ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .toc-card {
+            background: rgba(204, 0, 0, 0.06);
+            border: 1px solid rgba(204, 0, 0, 0.2);
+            border-radius: 14px;
+            padding: 28px 36px;
+            margin-bottom: 20px;
+        }
+
+        .toc-card h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 14px;
+        }
+
+        .toc-card ol {
+            list-style: decimal;
+            padding-left: 20px;
+        }
+
+        .toc-card ol li {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        .toc-card ol a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .toc-card ol a:hover {
+            color: var(--red);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-main);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            background: var(--blue);
+            color: white;
+            border-top: 4px solid var(--red);
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 8% 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media(max-width:900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media(max-width:540px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand img {
+            height: 52px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .footer-brand-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            color: var(--red);
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a,
+        .footer-col p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+            line-height: 1.6;
+        }
+
+        .footer-col ul a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .page-header {
+                padding: 110px 6% 48px;
+            }
+
+            .content-area {
+                padding: 0 6% 60px;
+            }
+
+            .legal-card {
+                padding: 24px 20px;
+            }
+        }
     </style>
 </head>
-<body>
-<canvas id="bg-canvas"></canvas>
 
-<nav>
-    <a href="index.html" class="nav-logo">
-        <img src="800x800.png" alt="Inter Mainz Wappen">
-        <span>Inter Mainz</span>
-    </a>
-    <ul class="nav-links">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="probetraining.html">Probetraining</a></li>
-        <li><a href="geschichte.html">Geschichte</a></li>
-        <li><a href="teams.html">Teams</a></li>
-        <li><a href="vorstand.html">Vorstand</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li>
-            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="800x800.png" alt="Inter Mainz Wappen">
+            <span>Inter Mainz</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="geschichte.html">Geschichte</a></li>
+            <li><a href="teams.html">Teams</a></li>
+            <li><a href="vorstand.html">Vorstand</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li>
+                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Online-Shop
+                </a>
+            </li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger"
+            aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-close" id="mobile-close"><svg fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg></button>
+        <a href="index.html">Startseite</a>
+        <a href="probetraining.html">Probetraining</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="teams.html">Teams</a>
+        <a href="vorstand.html">Vorstand</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 Online-Shop
-            </a>
-        </li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-nav" id="mobile-nav">
-    <button class="mobile-nav-close" id="mobile-close"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-    <a href="index.html">Startseite</a>
-    <a href="probetraining.html">Probetraining</a>
-    <a href="geschichte.html">Geschichte</a>
-    <a href="teams.html">Teams</a>
-    <a href="vorstand.html">Vorstand</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">
-        <span style="display: flex; align-items: center; gap: 8px;">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </span>
+        </a>
+    </div>
+
+    <div class="page-header">
+        <span class="section-eyebrow">Rechtliches</span>
+        <h1 class="section-title">Datenschutz&shy;erklärung</h1>
+        <span class="section-divider"></span>
+    </div>
+
+    <div class="content-area">
+        <a href="index.html" class="back-link reveal">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            Online-Shop
-        </span>
-    </a>
-</div>
+            Zurück zur Startseite
+        </a>
 
-<div class="page-header">
-    <span class="section-eyebrow">Rechtliches</span>
-    <h1 class="section-title">Datenschutz&shy;erklärung</h1>
-    <span class="section-divider"></span>
-</div>
+        <!-- INHALTSVERZEICHNIS -->
+        <div class="toc-card reveal reveal-delay-1">
+            <h2>Inhaltsverzeichnis</h2>
+            <ol>
+                <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+                <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
+                <li><a href="#rechte">Rechte der betroffenen Personen</a></li>
+                <li><a href="#kontaktformular">Kontaktformular</a></li>
+                <li><a href="#hosting">Hosting</a></li>
+                <li><a href="#cookies">Cookies</a></li>
+                <li><a href="#fussballde">Fussball.de-Widgets</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
+            </ol>
+        </div>
 
-<div class="content-area">
-    <a href="index.html" class="back-link reveal">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        Zurück zur Startseite
-    </a>
+        <!-- 1 -->
+        <div class="legal-card reveal reveal-delay-2" id="verantwortlicher">
+            <h2>1. Verantwortlicher</h2>
+            <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler
+                Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
+            <p>
+                <strong style="color:var(--white)">F.C. Inter Mainz 2005 e.V.</strong><br>
+                Albert-Stohr-Straße 50 · 55128 Mainz<br>
+                📧 <a href="mailto:info@fc-inter-mainz.de">info@fc-inter-mainz.de</a>
+            </p>
+        </div>
 
-    <!-- INHALTSVERZEICHNIS -->
-    <div class="toc-card reveal reveal-delay-1">
-        <h2>Inhaltsverzeichnis</h2>
-        <ol>
-            <li><a href="#verantwortlicher">Verantwortlicher</a></li>
-            <li><a href="#grundsaetze">Grundsätze der Datenverarbeitung</a></li>
-            <li><a href="#rechte">Rechte der betroffenen Personen</a></li>
-            <li><a href="#kontaktformular">Kontaktformular</a></li>
-            <li><a href="#hosting">Hosting</a></li>
-            <li><a href="#cookies">Cookies</a></li>
-            <li><a href="#fussballde">Fussball.de-Widgets</a></li>
-            <li><a href="#instagram">Instagram</a></li>
-            <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
-        </ol>
+        <!-- 2 -->
+        <div class="legal-card reveal" id="grundsaetze">
+            <h2>2. Grundsätze der Datenverarbeitung</h2>
+            <p>Personenbezogene Daten werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der
+                Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts verarbeitet. Gemäß Art. 4
+                Ziffer 1 DSGVO gilt als „Verarbeitung" jeder Vorgang im Zusammenhang mit personenbezogenen Daten.</p>
+            <p>Wir verarbeiten personenbezogene Daten nur, wenn eine der folgenden Rechtsgrundlagen vorliegt:</p>
+            <ul>
+                <li>Einwilligung der betroffenen Person (Art. 6 Abs. 1 lit. a DSGVO)</li>
+                <li>Erfüllung eines Vertrags (Art. 6 Abs. 1 lit. b DSGVO)</li>
+                <li>Erfüllung einer rechtlichen Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)</li>
+                <li>Wahrung berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO)</li>
+            </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="legal-card reveal reveal-delay-1" id="rechte">
+            <h2>3. Rechte der betroffenen Personen</h2>
+            <p>Sie haben als betroffene Person folgende Rechte gegenüber uns:</p>
+            <h3>Recht auf Auskunft (Art. 15 DSGVO)</h3>
+            <p>Sie haben das Recht, Auskunft über die zu Ihrer Person gespeicherten Daten sowie über deren Verarbeitung
+                zu erhalten.</p>
+            <h3>Recht auf Berichtigung (Art. 16 DSGVO)</h3>
+            <p>Sie haben das Recht, unrichtige personenbezogene Daten berichtigen zu lassen.</p>
+            <h3>Recht auf Löschung (Art. 17 DSGVO)</h3>
+            <p>Sie haben das Recht, die Löschung Ihrer bei uns gespeicherten Daten zu verlangen, sofern keine
+                gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+            <h3>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</h3>
+            <p>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</p>
+            <h3>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
+            <p>Sie haben das Recht, Ihre bereitgestellten Daten in einem structured, maschinenlesbaren Format zu
+                erhalten.</p>
+            <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+            <p>Sie haben das Recht, jederzeit der Verarbeitung Ihrer Daten zu widersprechen.</p>
+            <h3>Beschwerderecht</h3>
+            <p>Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. In
+                Rheinland-Pfalz ist dies der Landesbeauftragte für den Datenschutz und die Informationsfreiheit: <a
+                    href="https://www.datenschutz.rlp.de" target="_blank" rel="noopener">www.datenschutz.rlp.de</a></p>
+        </div>
+
+        <!-- 4 -->
+        <div class="legal-card reveal reveal-delay-2" id="kontaktformular">
+            <h2>4. Contactformular</h2>
+            <p>Wenn Sie uns über unser Kontaktformular eine Anfrage zukommen lassen, werden die von Ihnen eingegebenen
+                Daten (Vorname, Nachname, E-Mail-Adresse, optionale Telefonnummer sowie Ihre Nachricht) zur Bearbeitung
+                der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+            <p><strong style="color:var(--white)">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+                Interesse an der Beantwortung von Anfragen).</p>
+            <p><strong style="color:var(--white)">Speicherdauer:</strong> Die Daten werden gelöscht, sobald die Anfrage
+                abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+            <p>Ihre Daten werden nicht an Dritte weitergegeben und ausschließlich für den genannten Zweck genutzt.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="legal-card reveal" id="hosting">
+            <h2>5. Hosting</h2>
+            <p>Unsere Website wird extern gehostet. Wir nutzen für die Bereitstellung und den Betrieb dieser
+                Online-Präsenz die Infrastruktur und Dienste von <strong>IONOS SE</strong> (Elgendorfer Str. 57, 56410
+                Montabaur, Deutschland) sowie Deployment-Dienste von <strong>Netlify, Inc.</strong> (512 2nd Street,
+                Floor 2, San Francisco, CA 94107, USA). Die personenbezogenen Daten, die beim Besuch dieser Website
+                automatisch erfasst werden (insbesondere Logfiles wie IP-Adressen, Browsertyp, Datum und Uhrzeit des
+                Zugriffs, etc.) sowie Daten aus Formularen, werden auf den Servern dieser Anbieter verarbeitet.</p>
+            <p>Die Nutzung dieser Hoster erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
+                einer sicheren, schnellen, fehlerfreien und effizienten Bereitstellung unseres Vereinsangebots durch
+                professionelle IT-Dienstleister).</p>
+            <p><strong>Auftragsverarbeitung (AVV):</strong> Wir haben mit den genannten Anbietern einen Vertrag über
+                Auftragsverarbeitung (bzw. entsprechende Data Processing Agreements) gemäß Art. 28 DSGVO abgeschlossen.
+                Dies stellt sicher, dass die Verarbeitung streng nach unseren Weisungen und im Einklang mit europäischen
+                Datenschutzstandards erfolgt. Soweit Daten bei der Nutzung von Netlify in die USA übertragen werden,
+                wird das Datenschutzniveau durch den Abschluss der EU-Standardvertragsklauseln (Standard Contractual
+                Clauses - SCC) abgesichert.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="legal-card reveal reveal-delay-1" id="cookies">
+            <h2>6. Cookies</h2>
+            <p>Unsere Website verwendet keine Tracking-Cookies oder Analyse-Cookies von Drittanbietern. Es werden
+                lediglich technisch notwendige Sitzungsdaten verarbeitet, die für den Betrieb der Website erforderlich
+                sind und keinerlei personenbezogene Informationen langfristig speichern.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="legal-card reveal reveal-delay-1" id="fussballde">
+            <h2>7. Fussball.de-Widgets</h2>
+            <p>Auf unserer Website binden wir Widgets der Plattform <strong>Fussball.de</strong> ein, um aktuelle
+                Spielergebnisse, Tabellenstände y kommende Spielpaarungen unserer Mannschaften live anzuzeigen. Dies ist
+                ein Angebot der DFB GmbH & Co. KG (Otto-Fleck-Schneise 6, 60528 Frankfurt am Main).</p>
+            <p>Beim Aufruf von Seiten unserer Website, auf denen diese Widgets integrado sind, baut Ihr Webbrowser
+                automatisch eine direkte Verbindung zu los Servern von Fussball.de auf. Hierdurch wird Ihre IP-Adresse
+                sowie die Information, welche spezifische Unterseite unserer Internetpräsenz Sie aufgerufen haben, an
+                den Betreiber (DFB GmbH & Co. KG) übermittelt.</p>
+            <p><strong style="color:var(--white)">Rechtsgrundlage:</strong> Die Einbindung dieses Dienstes erfolgt auf
+                Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. Unser Interesse liegt darin,
+                den Besuchern unserer Website aktuelle sportliche Informationen und Spielpläne direkt und
+                benutzerfreundlich zur Verfügung zu stellen.</p>
+            <p>Weitere Informationen über den Zweck und Umfang der Datenverarbeitung durch den Anbieter sowie Ihre
+                diesbezüglichen Rechte entnehmen Sie bitte der Datenschutzerklärung von Fussball.de unter: <a
+                    href="https://www.fussball.de/datenschutz" target="_blank"
+                    rel="noopener">www.fussball.de/datenschutz</a></p>
+        </div>
+
+        <!-- 8 -->
+        <div class="legal-card reveal reveal-delay-2" id="instagram">
+            <h2>8. Instagram</h2>
+            <p>Wir unterhalten eine Präsenz auf Instagram (Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand
+                Canal Harbour, Dublin 2, Irland). Wenn Sie unsere Instagram-Seite besuchen, kann Instagram Daten über
+                Sie erheben.</p>
+            <p>Einzelheiten dazu entnehmen Sie der Datenschutzrichtlinie von Meta/Instagram: <a
+                    href="https://privacycenter.instagram.com/policy/" target="_blank"
+                    rel="noopener">privacycenter.instagram.com/policy</a></p>
+            <p>Eine Übertragung von Daten in die USA und andere Drittländer kann nicht ausgeschlossen werden. Meta
+                verwendet Standardvertragsklauseln gemäß Art. 46 DSGVO als Grundlage für die Datenübertragung.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="legal-card reveal reveal-delay-3" id="aenderungen">
+            <h2>9. Änderungen dieser Erklärung</h2>
+            <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen
+                Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen.
+                Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+            <p><strong style="color:var(--white)">Stand:</strong> Juli 2026</p>
+        </div>
     </div>
 
-    <!-- 1 -->
-    <div class="legal-card reveal reveal-delay-2" id="verantwortlicher">
-        <h2>1. Verantwortlicher</h2>
-        <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
-        <p>
-            <strong style="color:var(--white)">F.C. Inter Mainz 2005 e.V.</strong><br>
-            Albert-Stohr-Straße 50 · 55128 Mainz<br>
-            📧 <a href="mailto:info@fc-inter-mainz.de">info@fc-inter-mainz.de</a>
-        </p>
-    </div>
-
-    <!-- 2 -->
-    <div class="legal-card reveal" id="grundsaetze">
-        <h2>2. Grundsätze der Datenverarbeitung</h2>
-        <p>Personenbezogene Daten werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts verarbeitet. Gemäß Art. 4 Ziffer 1 DSGVO gilt als „Verarbeitung" jeder Vorgang im Zusammenhang mit personenbezogenen Daten.</p>
-        <p>Wir verarbeiten personenbezogene Daten nur, wenn eine der folgenden Rechtsgrundlagen vorliegt:</p>
-        <ul>
-            <li>Einwilligung der betroffenen Person (Art. 6 Abs. 1 lit. a DSGVO)</li>
-            <li>Erfüllung eines Vertrags (Art. 6 Abs. 1 lit. b DSGVO)</li>
-            <li>Erfüllung einer rechtlichen Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)</li>
-            <li>Wahrung berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO)</li>
-        </ul>
-    </div>
-
-    <!-- 3 -->
-    <div class="legal-card reveal reveal-delay-1" id="rechte">
-        <h2>3. Rechte der betroffenen Personen</h2>
-        <p>Sie haben als betroffene Person folgende Rechte gegenüber uns:</p>
-        <h3>Recht auf Auskunft (Art. 15 DSGVO)</h3>
-        <p>Sie haben das Recht, Auskunft über die zu Ihrer Person gespeicherten Daten sowie über deren Verarbeitung zu erhalten.</p>
-        <h3>Recht auf Berichtigung (Art. 16 DSGVO)</h3>
-        <p>Sie haben das Recht, unrichtige personenbezogene Daten berichtigen zu lassen.</p>
-        <h3>Recht auf Löschung (Art. 17 DSGVO)</h3>
-        <p>Sie haben das Recht, die Löschung Ihrer bei uns gespeicherten Daten zu verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
-        <h3>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</h3>
-        <p>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</p>
-        <h3>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
-        <p>Sie haben das Recht, Ihre bereitgestellten Daten in einem structured, maschinenlesbaren Format zu erhalten.</p>
-        <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
-        <p>Sie haben das Recht, jederzeit der Verarbeitung Ihrer Daten zu widersprechen.</p>
-        <h3>Beschwerderecht</h3>
-        <p>Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. In Rheinland-Pfalz ist dies der Landesbeauftragte für den Datenschutz und die Informationsfreiheit: <a href="https://www.datenschutz.rlp.de" target="_blank" rel="noopener">www.datenschutz.rlp.de</a></p>
-    </div>
-
-    <!-- 4 -->
-    <div class="legal-card reveal reveal-delay-2" id="kontaktformular">
-        <h2>4. Contactformular</h2>
-        <p>Wenn Sie uns über unser Kontaktformular eine Anfrage zukommen lassen, werden die von Ihnen eingegebenen Daten (Vorname, Nachname, E-Mail-Adresse, optionale Telefonnummer sowie Ihre Nachricht) zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
-        <p><strong style="color:var(--white)">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).</p>
-        <p><strong style="color:var(--white)">Speicherdauer:</strong> Die Daten werden gelöscht, sobald die Anfrage abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
-        <p>Ihre Daten werden nicht an Dritte weitergegeben und ausschließlich für den genannten Zweck genutzt.</p>
-    </div>
-
-    <!-- 5 -->
-    <div class="legal-card reveal" id="hosting">
-        <h2>5. Hosting</h2>
-        <p>Unsere Website wird extern gehostet. Wir nutzen für die Bereitstellung und den Betrieb dieser Online-Präsenz die Infrastruktur und Dienste von <strong>IONOS SE</strong> (Elgendorfer Str. 57, 56410 Montabaur, Deutschland) sowie Deployment-Dienste von <strong>Netlify, Inc.</strong> (512 2nd Street, Floor 2, San Francisco, CA 94107, USA). Die personenbezogenen Daten, die beim Besuch dieser Website automatisch erfasst werden (insbesondere Logfiles wie IP-Adressen, Browsertyp, Datum und Uhrzeit des Zugriffs, etc.) sowie Daten aus Formularen, werden auf den Servern dieser Anbieter verarbeitet.</p>
-        <p>Die Nutzung dieser Hoster erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren, schnellen, fehlerfreien und effizienten Bereitstellung unseres Vereinsangebots durch professionelle IT-Dienstleister).</p>
-        <p><strong>Auftragsverarbeitung (AVV):</strong> Wir haben mit den genannten Anbietern einen Vertrag über Auftragsverarbeitung (bzw. entsprechende Data Processing Agreements) gemäß Art. 28 DSGVO abgeschlossen. Dies stellt sicher, dass die Verarbeitung streng nach unseren Weisungen und im Einklang mit europäischen Datenschutzstandards erfolgt. Soweit Daten bei der Nutzung von Netlify in die USA übertragen werden, wird das Datenschutzniveau durch den Abschluss der EU-Standardvertragsklauseln (Standard Contractual Clauses - SCC) abgesichert.</p>
-    </div>
-
-    <!-- 6 -->
-    <div class="legal-card reveal reveal-delay-1" id="cookies">
-        <h2>6. Cookies</h2>
-        <p>Unsere Website verwendet keine Tracking-Cookies oder Analyse-Cookies von Drittanbietern. Es werden lediglich technisch notwendige Sitzungsdaten verarbeitet, die für den Betrieb der Website erforderlich sind und keinerlei personenbezogene Informationen langfristig speichern.</p>
-    </div>
-
-    <!-- 7 -->
-    <div class="legal-card reveal reveal-delay-1" id="fussballde">
-        <h2>7. Fussball.de-Widgets</h2>
-        <p>Auf unserer Website binden wir Widgets der Plattform <strong>Fussball.de</strong> ein, um aktuelle Spielergebnisse, Tabellenstände y kommende Spielpaarungen unserer Mannschaften live anzuzeigen. Dies ist ein Angebot der DFB GmbH & Co. KG (Otto-Fleck-Schneise 6, 60528 Frankfurt am Main).</p>
-        <p>Beim Aufruf von Seiten unserer Website, auf denen diese Widgets integrado sind, baut Ihr Webbrowser automatisch eine direkte Verbindung zu los Servern von Fussball.de auf. Hierdurch wird Ihre IP-Adresse sowie die Information, welche spezifische Unterseite unserer Internetpräsenz Sie aufgerufen haben, an den Betreiber (DFB GmbH & Co. KG) übermittelt.</p>
-        <p><strong style="color:var(--white)">Rechtsgrundlage:</strong> Die Einbindung dieses Dienstes erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. Unser Interesse liegt darin, den Besuchern unserer Website aktuelle sportliche Informationen und Spielpläne direkt und benutzerfreundlich zur Verfügung zu stellen.</p>
-        <p>Weitere Informationen über den Zweck und Umfang der Datenverarbeitung durch den Anbieter sowie Ihre diesbezüglichen Rechte entnehmen Sie bitte der Datenschutzerklärung von Fussball.de unter: <a href="https://www.fussball.de/datenschutz" target="_blank" rel="noopener">www.fussball.de/datenschutz</a></p>
-    </div>
-
-    <!-- 8 -->
-    <div class="legal-card reveal reveal-delay-2" id="instagram">
-        <h2>8. Instagram</h2>
-        <p>Wir unterhalten eine Präsenz auf Instagram (Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland). Wenn Sie unsere Instagram-Seite besuchen, kann Instagram Daten über Sie erheben.</p>
-        <p>Einzelheiten dazu entnehmen Sie der Datenschutzrichtlinie von Meta/Instagram: <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener">privacycenter.instagram.com/policy</a></p>
-        <p>Eine Übertragung von Daten in die USA und andere Drittländer kann nicht ausgeschlossen werden. Meta verwendet Standardvertragsklauseln gemäß Art. 46 DSGVO als Grundlage für die Datenübertragung.</p>
-    </div>
-
-    <!-- 9 -->
-    <div class="legal-card reveal reveal-delay-3" id="aenderungen">
-        <h2>9. Änderungen dieser Erklärung</h2>
-        <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
-        <p><strong style="color:var(--white)">Stand:</strong> Juli 2026</p>
-    </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="800x800.png" alt="Inter Mainz Wappen">
-                <div class="footer-brand-name">F.C. Inter Mainz</div>
-                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.</p>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="800x800.png" alt="Inter Mainz Wappen">
+                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                        Gegründet 2005 mit Leidenschaft.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="geschichte.html">Geschichte</a></li>
+                        <li><a href="teams.html">Mannschaften</a></li>
+                        <li><a href="vorstand.html">Vorstand</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                    <br>
+                    <p>info@intermainz.de</p>
+                    <br>
+                    <p>+49 06131 000000</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="footer-social">
+                        <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                            </svg></a>
+                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener"
+                            aria-label="Instagram"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg></a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="teams.html">Mannschaften</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Kontakt</h4>
-                <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p><br>
-                <p>📧 info@fc-inter-mainz.de</p>
-            </div>
-            <div class="footer-col">
-                <h4>Social Media</h4>
-                <div class="footer-social">
-                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
-                    <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <div class="footer-bottom">
+                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:20px">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
-            <div style="display:flex;gap:20px">
-                <a href="impressum.html">Impressum</a>
-                <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<script>
-    (function(){
-        const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');let W,H;
-        function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
-        const shapes=Array.from({length:15},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:12+Math.random()*28,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.25,rot:Math.random()*Math.PI*2,vrot:(Math.random()-0.5)*0.004,type:Math.random()>0.5?'hex':'logo',alpha:0.1+Math.random()*0.15}));
-        const sp=new Path2D(),s=0.9;sp.moveTo(0,-s);sp.lineTo(s*.75,-s*.6);sp.lineTo(s*.75,s*.3);sp.quadraticCurveTo(s*.75,s,0,s*1.2);sp.quadraticCurveTo(-s*.75,s,-s*.75,s*.3);sp.lineTo(-s*.75,-s*.6);sp.closePath();
-        const hp=new Path2D();for(let i=0;i<6;i++){const a=(Math.PI/3)*i;i===0?hp.moveTo(Math.cos(a),Math.sin(a)):hp.lineTo(Math.cos(a),Math.sin(a));}hp.closePath();
-        function draw(){ctx.clearRect(0,0,W,H);shapes.forEach(sh=>{sh.x+=sh.vx;sh.y+=sh.vy;sh.rot+=sh.vrot;if(sh.x<-80)sh.x=W+80;if(sh.x>W+80)sh.x=-80;if(sh.y<-80)sh.y=H+80;if(sh.y>H+80)sh.y=-80;ctx.save();ctx.translate(sh.x,sh.y);ctx.rotate(sh.rot);ctx.scale(sh.r,sh.r);ctx.globalAlpha=sh.alpha;ctx.lineWidth=1.5/sh.r;if(sh.type==='logo'){ctx.strokeStyle='#cc0000';ctx.stroke(sp);}else{ctx.strokeStyle='#2b4c7e';ctx.stroke(hp);}ctx.restore();});requestAnimationFrame(draw);}draw();
-    })();
-    const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobile-nav'),mobileClose=document.getElementById('mobile-close');
-    hamburger.addEventListener('click',()=>mobileNav.classList.add('open'));
-    mobileClose.addEventListener('click',()=>mobileNav.classList.remove('open'));
-    mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('open')));
-    (function(){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));})();
-</script>
+    <script>
+        (function () {
+            const canvas = document.getElementById('bg-canvas'), ctx = canvas.getContext('2d'); let W, H;
+            function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; } resize(); window.addEventListener('resize', resize);
+            const shapes = Array.from({ length: 15 }, () => ({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, r: 12 + Math.random() * 28, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.25, rot: Math.random() * Math.PI * 2, vrot: (Math.random() - 0.5) * 0.004, type: Math.random() > 0.5 ? 'hex' : 'logo', alpha: 0.1 + Math.random() * 0.15 }));
+            const sp = new Path2D(), s = 0.9; sp.moveTo(0, -s); sp.lineTo(s * .75, -s * .6); sp.lineTo(s * .75, s * .3); sp.quadraticCurveTo(s * .75, s, 0, s * 1.2); sp.quadraticCurveTo(-s * .75, s, -s * .75, s * .3); sp.lineTo(-s * .75, -s * .6); sp.closePath();
+            const hp = new Path2D(); for (let i = 0; i < 6; i++) { const a = (Math.PI / 3) * i; i === 0 ? hp.moveTo(Math.cos(a), Math.sin(a)) : hp.lineTo(Math.cos(a), Math.sin(a)); } hp.closePath();
+            function draw() { ctx.clearRect(0, 0, W, H); shapes.forEach(sh => { sh.x += sh.vx; sh.y += sh.vy; sh.rot += sh.vrot; if (sh.x < -80) sh.x = W + 80; if (sh.x > W + 80) sh.x = -80; if (sh.y < -80) sh.y = H + 80; if (sh.y > H + 80) sh.y = -80; ctx.save(); ctx.translate(sh.x, sh.y); ctx.rotate(sh.rot); ctx.scale(sh.r, sh.r); ctx.globalAlpha = sh.alpha; ctx.lineWidth = 1.5 / sh.r; if (sh.type === 'logo') { ctx.strokeStyle = '#cc0000'; ctx.stroke(sp); } else { ctx.strokeStyle = '#2b4c7e'; ctx.stroke(hp); } ctx.restore(); }); requestAnimationFrame(draw); } draw();
+        })();
+        const hamburger = document.getElementById('hamburger'), mobileNav = document.getElementById('mobile-nav'), mobileClose = document.getElementById('mobile-close');
+        hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+        mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+        (function () { const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 }); document.querySelectorAll('.reveal').forEach(el => obs.observe(el)); })();
+    </script>
 </body>
+
 </html>

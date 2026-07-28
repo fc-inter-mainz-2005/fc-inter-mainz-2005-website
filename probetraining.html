@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mitglied werden – F.C. Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
-    
+
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -37,24 +38,33 @@
             --bg-footer: #f0f4f8;
             --text-main: #1a202c;
             --text-muted: #4a5568;
-            
+
             --blue: #0a1f44;
             --blue-mid: #2b4c7e;
             --blue-light: #e2e8f0;
             --red: #cc0000;
             --red-bright: #ff1a1a;
-            
+
             --card-border: rgba(0, 0, 0, 0.08);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --white: #ffffff;
             --gray: #8899bb;
             --card-bg: #ffffff;
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: var(--bg-body);
@@ -67,23 +77,41 @@
         }
 
         /* Títulos impactantes */
-        .nav-logo span, .section-eyebrow, .footer-brand-name, .footer-col h4, .mobile-nav a {
+        .nav-logo span,
+        .section-eyebrow,
+        .footer-brand-name,
+        .footer-col h4,
+        .mobile-nav a {
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
         }
 
         /* ── SCROLLBAR ── */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
 
         /* ── CANVAS BACKGROUND ── */
         #bg-canvas {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
             pointer-events: none;
             opacity: 0.15;
@@ -92,7 +120,9 @@
         /* ── NAV ── */
         nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             padding: 0 5%;
             height: 72px;
@@ -100,42 +130,50 @@
             align-items: center;
             justify-content: space-between;
             transition: background 0.4s, box-shadow 0.4s;
-            background: var(--bg-nav); box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--bg-nav);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
-        
+
         nav.scrolled {
-            background: var(--bg-nav); 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--bg-nav);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
-        
+
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
         }
+
         .nav-logo img {
             height: 46px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
             transition: transform 0.3s;
         }
-        .nav-logo:hover img { transform: scale(1.08) rotate(-3deg); }
+
+        .nav-logo:hover img {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
         .nav-logo span {
             font-size: 1.4rem;
             letter-spacing: 2px;
             color: var(--blue);
         }
+
         nav:not(.scrolled) .nav-logo span {
-             color: var(--blue);
-             text-shadow: none;
+            color: var(--blue);
+            text-shadow: none;
         }
-        
+
         .nav-links {
             display: flex;
             align-items: center;
             gap: 6px;
             list-style: none;
         }
+
         .nav-links a {
             text-decoration: none;
             color: var(--text-muted);
@@ -148,27 +186,50 @@
             transition: color 0.25s, background 0.25s;
             position: relative;
         }
+
         nav:not(.scrolled) .nav-links a {
             color: var(--text-muted);
             text-shadow: none;
         }
-        .nav-links a.active { color: var(--blue); }
-        nav:not(.scrolled) .nav-links a.active { color: var(--blue); text-shadow: none; }
+
+        .nav-links a.active {
+            color: var(--blue);
+        }
+
+        nav:not(.scrolled) .nav-links a.active {
+            color: var(--blue);
+            text-shadow: none;
+        }
+
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 4px; left: 14px; right: 14px;
+            bottom: 4px;
+            left: 14px;
+            right: 14px;
             height: 2px;
             background: var(--red);
             transform: scaleX(0);
             transition: transform 0.25s;
             border-radius: 2px;
         }
-        .nav-links a.active::after { transform: scaleX(1); }
-        .nav-links a:hover { color: var(--blue); }
-        nav:not(.scrolled) .nav-links a:hover { color: var(--blue); }
-        .nav-links a:hover::after { transform: scaleX(1); }
-        
+
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        nav:not(.scrolled) .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
             color: white !important;
@@ -182,7 +243,11 @@
             gap: 8px;
             text-shadow: none !important;
         }
-        .nav-cta::after { display: none !important; }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
@@ -198,6 +263,7 @@
             background: none;
             border: none;
         }
+
         .nav-hamburger span {
             display: block;
             width: 26px;
@@ -206,6 +272,7 @@
             border-radius: 2px;
             transition: transform 0.3s, opacity 0.3s;
         }
+
         nav:not(.scrolled) .nav-hamburger span {
             background: var(--blue);
         }
@@ -215,37 +282,52 @@
             display: none;
             position: fixed;
             inset: 0;
-            z-index: 101; 
-            background: rgba(255,255,255,0.98);
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.98);
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 24px;
         }
-        .mobile-nav.open { display: flex; }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
         .mobile-nav a {
-            font-size: 1.8rem; /* Tamaño reducido para mejor lectura */
+            font-size: 1.8rem;
+            /* Tamaño reducido para mejor lectura */
             font-weight: 900;
-            letter-spacing: 2px; /* Espaciado ajustado */
+            letter-spacing: 2px;
+            /* Espaciado ajustado */
             color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
         }
-        .mobile-nav a:hover { color: var(--red); }
+
+        .mobile-nav a:hover {
+            color: var(--red);
+        }
+
         .mobile-nav a.active {
             color: var(--red) !important;
         }
+
         .mobile-nav-close {
             position: absolute;
-            top: 24px; right: 5%;
+            top: 24px;
+            right: 5%;
             background: none;
             border: none;
             cursor: pointer;
             color: var(--blue);
         }
-        .mobile-nav-close svg { width: 28px;
+
+        .mobile-nav-close svg {
+            width: 28px;
             height: 28px;
-            stroke: currentColor;}
+            stroke: currentColor;
+        }
 
         /* Estilo para el botón deshabilitado */
         #submit-btn:disabled {
@@ -259,293 +341,428 @@
         footer {
             position: relative;
             z-index: 1;
-            background: var(--blue); color: white;
+            background: var(--blue);
+            color: white;
             border-top: 4px solid var(--red);
             margin-top: 60px;
         }
-        .footer-inner { max-width: 1280px; margin: 0 auto; padding: 64px 8% 32px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-        @media(max-width:900px){ .footer-grid { grid-template-columns:1fr 1fr; gap:32px; } }
-        @media(max-width:540px){ .footer-grid { grid-template-columns:1fr; } }
-        .footer-brand img { height: 52px; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(204,0,0,0.35)); }
-        .footer-brand-name { font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 12px; }
-        .footer-brand-desc { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); line-height: 1.7; }
-        .footer-col h4 { font-size: 1.05rem; letter-spacing: 2px; color: var(--red-bright); margin-bottom: 18px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul a, .footer-col p { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; line-height: 1.6; }
-        .footer-col ul a:hover { color: white; }
-        .footer-social { display: flex; gap: 10px; margin-top: 4px; }
-        .footer-social a { width: 40px; height: 40px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
-        .footer-social a:hover { background: var(--red); border-color: var(--red); transform: translateY(-3px); }
-        .footer-social svg { width: 18px; height: 18px; fill: white; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); }
-        .footer-bottom a { color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.2s; }
-        .footer-bottom a:hover { color: white; }
 
-        @media(max-width:768px){
-            .nav-links { display: none; }
-            .nav-hamburger { display: flex; }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 64px 8% 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media(max-width:900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media(max-width:540px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand img {
+            height: 52px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .footer-brand-name {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            color: var(--red-bright);
+            margin-bottom: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a,
+        .footer-col p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+            line-height: 1.6;
+        }
+
+        .footer-col ul a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<canvas id="bg-canvas"></canvas>
+    <canvas id="bg-canvas"></canvas>
 
-<nav id="navbar">
-    <a href="index.html" class="nav-logo">
-        <img src="800x800.png" alt="Inter Mainz Wappen">
-        <span>Inter Mainz</span>
-    </a>
-    <ul class="nav-links">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="probetraining.html" class="active">Probetraining</a></li>
-        <li><a href="geschichte.html">Geschichte</a></li>
-        <li><a href="teams.html">Teams</a></li>
-        <li><a href="vorstand.html">Vorstand</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li>
-            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                </svg>
-                Online-Shop
-            </a>
-        </li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-        <span></span><span></span><span></span>
-    </button>
-</nav>
-
-<div class="mobile-nav" id="mobile-nav">
-    <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
-        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <a href="index.html">Startseite</a>
-    <a href="probetraining.html">Probetraining</a>
-    <a href="geschichte.html">Geschichte</a>
-    <a href="teams.html">Teams</a>
-    <a href="vorstand.html">Vorstand</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
-</div>
-
-<main class="container mx-auto pt-36 pb-20 px-4 relative z-10">
-    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden border border-[var(--card-border)]">
-        <div style="background-color: var(--blue);" class="p-8 text-white text-center">
-            <h1 class="text-3xl font-black uppercase tracking-tight">Anmeldung Probetraining</h1>
-            <p class="mt-2 text-blue-200 text-sm">Werde Teil unserer Mannschaft im Herzen von Mainz.</p>
-        </div>
-
-        <div class="bg-red-50 border-l-4 border-primary-red p-4 mx-8 mt-8 rounded-r-lg">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-[#cc0000]" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                            clip-rule="evenodd" />
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="800x800.png" alt="Inter Mainz Wappen">
+            <span>Inter Mainz</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="probetraining.html" class="active">Probetraining</a></li>
+            <li><a href="geschichte.html">Geschichte</a></li>
+            <li><a href="teams.html">Teams</a></li>
+            <li><a href="vorstand.html">Vorstand</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li>
+                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                </div>
-                <div class="ml-3">
-                    <p class="text-sm text-[#cc0000] font-bold uppercase">
-                        Wichtiger Hinweis:
-                    </p>
-                    <p class="text-sm text-red-700">
-                        Aktuell nehmen wir ausschließlich männliche Spieler für unsere Kader auf.
-                    </p>
-                </div>
-            </div>
-        </div>
+                    Online-Shop
+                </a>
+            </li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
 
-        <form id="membership-form" class="p-8 space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Vorname *</label>
-                    <input type="text" name="vorname" required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                        placeholder="Dein Vorname">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Nachname *</label>
-                    <input type="text" name="name" required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                        placeholder="Dein Nachname">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Alter *</label>
-                    <input type="number" name="alter" required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                        placeholder="z.B. 25">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Geburtsdatum *</label>
-                    <input type="date" name="geburtsdatum" required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900">
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">E-Mail Adresse *</label>
-                <input type="email" name="email" required
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                    placeholder="beispiel@mail.de">
-            </div>
-
-            <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Handynummer (optional)</label>
-                <input type="tel" name="telefon"
-                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                    placeholder="+49 123 4567890">
-            </div>
-
-            <div class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <div class="flex items-center h-5">
-                    <input id="privacy-check" type="checkbox" required
-                        class="focus:ring-[#cc0000] h-4 w-4 text-[#cc0000] border-gray-300 rounded cursor-pointer">
-                </div>
-                <div class="ml-3 text-sm">
-                    <label for="privacy-check" class="font-medium text-gray-700 leading-relaxed cursor-pointer">
-                        Ich akzeptiere die
-                        <a href="datenschutzbestimmung.html" style="color: var(--blue);" class="hover:underline font-bold"><strong>Datenschutzbestimmungen</strong></a>
-                        und stimme der Verarbeitung meiner Daten zu. *
-                    </label>
-                </div>
-            </div>
-
-            <div class="pt-4">
-                <button type="submit" id="submit-btn" disabled
-                    class="w-full bg-[#cc0000] hover:bg-[#ff1a1a] text-white font-bold py-4 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 active:scale-95 uppercase tracking-wider cursor-pointer">
-                    Anfrage senden
-                </button>
-                <p class="text-xs text-gray-500 mt-4 text-center">
-                    * Pflichtfelder müssen ausgefüllt werden.
-                </p>
-            </div>
-        </form>
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
+            <svg fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <a href="index.html">Startseite</a>
+        <a href="probetraining.html" class="active">Probetraining</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="teams.html">Teams</a>
+        <a href="vorstand.html">Vorstand</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
     </div>
-</main>
 
-<footer>
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="800x800.png" alt="Inter Mainz Wappen">
-                <div class="footer-brand-name">F.C. Inter Mainz</div>
-                <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.</p>
+    <main class="container mx-auto pt-36 pb-20 px-4 relative z-10">
+        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden border border-[var(--card-border)]">
+            <div style="background-color: var(--blue);" class="p-8 text-white text-center">
+                <h1 class="text-3xl font-black uppercase tracking-tight">Anmeldung Probetraining</h1>
+                <p class="mt-2 text-blue-200 text-sm">Werde Teil unserer Mannschaft im Herzen von Mainz.</p>
             </div>
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="probetraining.html">Probetraining</a></li>
-                    <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="teams.html">Mannschaften</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
-                </ul>
+
+            <div class="bg-red-50 border-l-4 border-primary-red p-4 mx-8 mt-8 rounded-r-lg">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-[#cc0000]" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-[#cc0000] font-bold uppercase">
+                            Wichtiger Hinweis:
+                        </p>
+                        <p class="text-sm text-red-700">
+                            Aktuell nehmen wir ausschließlich männliche Spieler für unsere Kader auf.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Kontakt</h4>
-                <p>📍 Albert-Stohr-Straße 50<br>55128 Mainz</p>
-                <br>
-                <p>📧 info@intermainz.de</p>
-                <br>
-                <p>📞 +49 06131 000000</p>
+
+            <form id="membership-form" class="p-8 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Vorname
+                            *</label>
+                        <input type="text" name="vorname" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
+                            placeholder="Dein Vorname">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Nachname
+                            *</label>
+                        <input type="text" name="name" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
+                            placeholder="Dein Nachname">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Alter
+                            *</label>
+                        <input type="number" name="alter" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
+                            placeholder="z.B. 25">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Geburtsdatum
+                            *</label>
+                        <input type="date" name="geburtsdatum" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">E-Mail Adresse
+                        *</label>
+                    <input type="email" name="email" required
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
+                        placeholder="beispiel@mail.de">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Handynummer
+                        (optional)</label>
+                    <input type="tel" name="telefon"
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
+                        placeholder="+49 123 4567890">
+                </div>
+
+                <div class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div class="flex items-center h-5">
+                        <input id="privacy-check" type="checkbox" required
+                            class="focus:ring-[#cc0000] h-4 w-4 text-[#cc0000] border-gray-300 rounded cursor-pointer">
+                    </div>
+                    <div class="ml-3 text-sm">
+                        <label for="privacy-check" class="font-medium text-gray-700 leading-relaxed cursor-pointer">
+                            Ich akzeptiere die
+                            <a href="datenschutzbestimmung.html" style="color: var(--blue);"
+                                class="hover:underline font-bold"><strong>Datenschutzbestimmungen</strong></a>
+                            und stimme der Verarbeitung meiner Daten zu. *
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" id="submit-btn" disabled
+                        class="w-full bg-[#cc0000] hover:bg-[#ff1a1a] text-white font-bold py-4 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 active:scale-95 uppercase tracking-wider cursor-pointer">
+                        Anfrage senden
+                    </button>
+                    <p class="text-xs text-gray-500 mt-4 text-center">
+                        * Pflichtfelder müssen ausgefüllt werden.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="800x800.png" alt="Inter Mainz Wappen">
+                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                        Gegründet 2005 mit Leidenschaft.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="probetraining.html">Probetraining</a></li>
+                        <li><a href="geschichte.html">Geschichte</a></li>
+                        <li><a href="teams.html">Teams</a></li>
+                        <li><a href="vorstand.html">Vorstand</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="https://fc-inter-mainz.fan12.de/" target="_blank"
+                                rel="noopener noreferrer">Online-Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                    <br>
+                    <p>info@intermainz.de</p>
+                    <br>
+                    <p>+49 06131 000000</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="footer-social">
+                        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Social Media</h4>
-                <div class="footer-social">
-                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
+            <div class="footer-bottom">
+                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <div style="display:flex;gap:20px">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
-            <div style="display:flex;gap:20px">
-                <a href="impressum.html">Impressum</a>
-                <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<canvas id="bg-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.15;"></canvas>
+    <canvas id="bg-canvas"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.15;"></canvas>
 
-<script>
-    /* Canvas */
-    (function(){
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let W, H;
-        function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-        resize(); window.addEventListener('resize', resize);
-        const shapes = Array.from({length:15},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:12+Math.random()*28,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.25,rot:Math.random()*Math.PI*2,vrot:(Math.random()-0.5)*0.004,type:Math.random()>0.5?'hex':'logo',alpha:0.1+Math.random()*0.15}));
-        const sp=new Path2D(),s=0.9;
-        sp.moveTo(0,-s);sp.lineTo(s*.75,-s*.6);sp.lineTo(s*.75,s*.3);sp.quadraticCurveTo(s*.75,s,0,s*1.2);sp.quadraticCurveTo(-s*.75,s,-s*.75,s*.3);sp.lineTo(-s*.75,-s*.6);sp.closePath();
-        const hp=new Path2D();
-        for(let i=0;i<6;i++){const a=(Math.PI/3)*i;i===0?hp.moveTo(Math.cos(a),Math.sin(a)):hp.lineTo(Math.cos(a),Math.sin(a));}hp.closePath();
-        function draw(){
-            ctx.clearRect(0,0,W,H);
-            shapes.forEach(sh=>{sh.x+=sh.vx;sh.y+=sh.vy;sh.rot+=sh.vrot;if(sh.x<-80)sh.x=W+80;if(sh.x>W+80)sh.x=-80;if(sh.y<-80)sh.y=H+80;if(sh.y>H+80)sh.y=-80;ctx.save();ctx.translate(sh.x,sh.y);ctx.rotate(sh.rot);ctx.scale(sh.r,sh.r);ctx.globalAlpha=sh.alpha;ctx.lineWidth=1.5/sh.r;if(sh.type==='logo'){ctx.strokeStyle='#cc0000';ctx.stroke(sp);}else{ctx.strokeStyle='#2b4c7e';ctx.stroke(hp);}ctx.restore();});
-            requestAnimationFrame(draw);
-        }
-        draw();
-    })();
+    <script>
+        /* Canvas */
+        (function () {
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            let W, H;
+            function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+            resize(); window.addEventListener('resize', resize);
+            const shapes = Array.from({ length: 15 }, () => ({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, r: 12 + Math.random() * 28, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.25, rot: Math.random() * Math.PI * 2, vrot: (Math.random() - 0.5) * 0.004, type: Math.random() > 0.5 ? 'hex' : 'logo', alpha: 0.1 + Math.random() * 0.15 }));
+            const sp = new Path2D(), s = 0.9;
+            sp.moveTo(0, -s); sp.lineTo(s * .75, -s * .6); sp.lineTo(s * .75, s * .3); sp.quadraticCurveTo(s * .75, s, 0, s * 1.2); sp.quadraticCurveTo(-s * .75, s, -s * .75, s * .3); sp.lineTo(-s * .75, -s * .6); sp.closePath();
+            const hp = new Path2D();
+            for (let i = 0; i < 6; i++) { const a = (Math.PI / 3) * i; i === 0 ? hp.moveTo(Math.cos(a), Math.sin(a)) : hp.lineTo(Math.cos(a), Math.sin(a)); } hp.closePath();
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                shapes.forEach(sh => { sh.x += sh.vx; sh.y += sh.vy; sh.rot += sh.vrot; if (sh.x < -80) sh.x = W + 80; if (sh.x > W + 80) sh.x = -80; if (sh.y < -80) sh.y = H + 80; if (sh.y > H + 80) sh.y = -80; ctx.save(); ctx.translate(sh.x, sh.y); ctx.rotate(sh.rot); ctx.scale(sh.r, sh.r); ctx.globalAlpha = sh.alpha; ctx.lineWidth = 1.5 / sh.r; if (sh.type === 'logo') { ctx.strokeStyle = '#cc0000'; ctx.stroke(sp); } else { ctx.strokeStyle = '#2b4c7e'; ctx.stroke(hp); } ctx.restore(); });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
 
-    /* Nav */
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobileClose = document.getElementById('mobile-close');
-    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+        /* Nav */
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileClose = document.getElementById('mobile-close');
+        hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+        mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
-    /* Form logic */
-    const privacyCheck = document.getElementById('privacy-check');
-    const submitBtn = document.getElementById('submit-btn');
-    const form = document.getElementById('membership-form');
+        /* Form logic */
+        const privacyCheck = document.getElementById('privacy-check');
+        const submitBtn = document.getElementById('submit-btn');
+        const form = document.getElementById('membership-form');
 
-    privacyCheck.addEventListener('change', function () {
-        submitBtn.disabled = !this.checked;
-    });
+        privacyCheck.addEventListener('change', function () {
+            submitBtn.disabled = !this.checked;
+        });
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = `Wird gesendet…`;
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `Wird gesendet…`;
 
-        fetch('php/mitgliedConsultSaveInDB.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.saveStatus) {
-                    alert('Vielen Dank! Deine Anfrage wurde erfolgreich gespeichert.');
-                    form.reset();
-                    submitBtn.disabled = true;
-                } else {
-                    alert('Fehler: ' + data.message);
-                    submitBtn.disabled = false;
-                }
+            fetch('php/mitgliedConsultSaveInDB.php', {
+                method: 'POST',
+                body: formData
             })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Es gab ein Problem beim Senden der Anfrage.');
-                submitBtn.disabled = false;
-            });
-    });
-</script>
+                .then(response => response.json())
+                .then(data => {
+                    if (data.saveStatus) {
+                        alert('Vielen Dank! Deine Anfrage wurde erfolgreich gespeichert.');
+                        form.reset();
+                        submitBtn.disabled = true;
+                    } else {
+                        alert('Fehler: ' + data.message);
+                        submitBtn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Es gab ein Problem beim Senden der Anfrage.');
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
 </body>
+
 </html>
