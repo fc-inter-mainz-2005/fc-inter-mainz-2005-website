@@ -528,36 +528,83 @@
             margin-bottom: 48px;
         }
 
-        .sponsors-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 24px 120px;
-            /* Reducido el gap para pantallas claras */
-        }
+        .sponsors-marquee {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+}
 
-        .sponsor-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.6;
-            filter: grayscale(1);
-            transition: opacity 0.4s, filter 0.4s, transform 0.3s;
-            cursor: pointer;
-        }
+.sponsors-track {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    width: max-content;
+    animation: sponsors-scroll 28s linear infinite;
+}
 
-        .sponsor-item:hover {
-            opacity: 1;
-            filter: grayscale(0);
-            transform: scale(1.06);
-        }
+.sponsors-marquee:hover .sponsors-track {
+    animation-play-state: paused;
+}
 
-        .sponsor-item img {
-            max-height: 60px;
-            max-width: 160px;
-            object-fit: contain;
-        }
+@keyframes sponsors-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.sponsor-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 160px;
+    height: 70px;
+    opacity: 0.6;
+    filter: grayscale(1);
+    transition: opacity 0.4s, filter 0.4s, transform 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sponsor-item:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: scale(1.06);
+}
+
+.sponsor-item img {
+    max-height: 60px;
+    max-width: 160px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Respeta accesibilidad: si el usuario prefiere menos movimiento, se detiene */
+@media (prefers-reduced-motion: reduce) {
+    .sponsors-track {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .sponsors-marquee {
+        overflow: visible;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+}
+
+@media(max-width:768px) {
+    .sponsors-track {
+        gap: 56px;
+        animation-duration: 20s;
+    }
+    .sponsor-item {
+        width: 120px;
+        height: 56px;
+    }
+}
 
         /* ── VORSTAND ── */
         .vorstand-section {
