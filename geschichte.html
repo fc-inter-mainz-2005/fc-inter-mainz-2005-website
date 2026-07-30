@@ -411,9 +411,10 @@
             display: flex;
         }
 
-        .mobile-nav a:hover {
-            color: var(--red);
-        }
+        .mobile-nav a:hover,
+.mobile-nav a.active {
+    color: var(--red);
+}
 
         .mobile-nav-close {
             position: absolute;
@@ -751,7 +752,7 @@
                 </svg>
             </button>
             <div class="mobile-nav-submenu">
-                <a href="geschichte.html">Geschichte</a>
+                <a href="geschichte.html" class="active">Geschichte</a>
                 <a href="vorstand.html">Vorstand</a>
                 <a href="teams.html">Teams</a>
             </div>
