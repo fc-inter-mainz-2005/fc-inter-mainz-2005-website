@@ -247,6 +247,128 @@
             transition: transform 0.3s, opacity 0.3s;
         }
 
+
+        /* ── DROPDOWN DESKTOP ── */
+        .nav-links li.has-dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .nav-links .dropdown-toggle svg {
+            width: 10px;
+            height: 10px;
+            transition: transform 0.25s;
+        }
+
+        .nav-links li.has-dropdown:hover .dropdown-toggle svg,
+        .nav-links li.has-dropdown.open .dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 4px;
+            background: var(--bg-surface);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            min-width: 210px;
+            padding: 8px;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 50;
+        }
+
+        .nav-links li.has-dropdown:hover .dropdown-menu,
+        .nav-links li.has-dropdown.open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: none;
+            color: var(--text-muted);
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu li a::after {
+            display: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: rgba(204, 0, 0, 0.08);
+            color: var(--red);
+        }
+
+        /* ── ACORDEÓN MOBILE ── */
+        .mobile-nav-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-nav-group-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--blue);
+        }
+
+        .mobile-nav-group-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.25s;
+        }
+
+        .mobile-nav-group.open .mobile-nav-group-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .mobile-nav-submenu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-nav-group.open .mobile-nav-submenu {
+            display: flex;
+        }
+
+        .mobile-nav-submenu a {
+            font-size: 1.15rem !important;
+            letter-spacing: 1px !important;
+        }
+
         .mobile-nav {
             display: none;
             position: fixed;
@@ -525,11 +647,22 @@
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
-            <li><a href="probetraining.html">Probetraining</a></li>
-            <li><a href="geschichte.html">Geschichte</a></li>
-            <li><a href="teams.html">Teams</a></li>
-            <li><a href="vorstand.html" class="active">Vorstand</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle">
+                    Verein
+                    <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M1 1l5 5 5-5" />
+                    </svg>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="geschichte.html">Geschichte</a></li>
+                    <li><a href="vorstand.html">Vorstand</a></li>
+                    <li><a href="teams.html">Teams</a></li>
+                </ul>
+            </li>
             <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="downloadcenter.html">Downloadcenter</a></li>
             <li>
                 <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -552,13 +685,27 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
+
         <a href="index.html">Startseite</a>
-        <a href="probetraining.html">Probetraining</a>
-        <a href="geschichte.html">Geschichte</a>
-        <a href="teams.html">Teams</a>
-        <a href="vorstand.html" style="color:var(--red)">Vorstand</a>
+
+        <div class="mobile-nav-group">
+            <button class="mobile-nav-group-toggle">
+                Verein
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div class="mobile-nav-submenu">
+                <a href="geschichte.html">Geschichte</a>
+                <a href="vorstand.html">Vorstand</a>
+                <a href="teams.html">Teams</a>
+            </div>
+        </div>
+
         <a href="kontakt.html">Kontakt</a>
-        <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
+        <a href="probetraining.html">Probetraining</a>
+        <a href="downloadcenter.html">Downloadcenter</a>
+        <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">Online-Shop</a>
     </div>
 
     <header class="pt-40 pb-16 text-center z-10 relative">
@@ -623,7 +770,8 @@
                             onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-blue-900/20 flex items-center justify-center text-blue-500 text-4xl font-black\'>MU</div>'">
                     </div>
                     <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Martin Ubilla</h3>
-                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">Abteilung Fußball – Sportdirektor</p>
+                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">Abteilung Fußball –
+                        Sportdirektor</p>
                 </div>
 
                 <div class="vorstand-card">
@@ -632,7 +780,8 @@
                             onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-red-900/20 flex items-center justify-center text-red-500 text-4xl font-black\'>SB</div>'">
                     </div>
                     <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Santiago Ballabriga</h3>
-                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">Sponsoring & Partnerschaften</p>
+                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">Sponsoring &
+                        Partnerschaften</p>
                 </div>
 
                 <div class="vorstand-card">
@@ -780,6 +929,30 @@
                     grid.appendChild(card);
                 });
             });
+
+        /* ─ Dropdown desktop (click, funciona también en touch) ─ */
+        document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parent = toggle.closest('li');
+                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => {
+                    if (li !== parent) li.classList.remove('open');
+                });
+                parent.classList.toggle('open');
+            });
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-links li.has-dropdown')) {
+                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => li.classList.remove('open'));
+            }
+        });
+
+        /* ─ Acordeón mobile ─ */
+        document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                toggle.closest('.mobile-nav-group').classList.toggle('open');
+            });
+        });
     </script>
 </body>
 

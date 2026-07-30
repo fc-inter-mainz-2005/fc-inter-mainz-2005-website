@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitglied werden – F.C. Inter Mainz 2005</title>
+    <title>Downloadcenter – F.C. Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -13,7 +13,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* ── FUENTES LOCALES INTER ── */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
@@ -31,7 +30,6 @@
         }
 
         :root {
-            /* TEMA CLARO */
             --bg-body: #faf8f5;
             --bg-surface: #ffffff;
             --bg-nav: rgba(255, 255, 255, 0.98);
@@ -76,9 +74,9 @@
             max-width: 100vw;
         }
 
-        /* Títulos impactantes */
         .nav-logo span,
         .section-eyebrow,
+        .section-title,
         .footer-brand-name,
         .footer-col h4,
         .mobile-nav a {
@@ -87,7 +85,6 @@
             text-transform: uppercase;
         }
 
-        /* ── SCROLLBAR ── */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -105,7 +102,6 @@
             background: #a0aec0;
         }
 
-        /* ── CANVAS BACKGROUND ── */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -117,7 +113,6 @@
             opacity: 0.15;
         }
 
-        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0;
@@ -130,11 +125,6 @@
             align-items: center;
             justify-content: space-between;
             transition: background 0.4s, box-shadow 0.4s;
-            background: var(--bg-nav);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        nav.scrolled {
             background: var(--bg-nav);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
@@ -162,11 +152,6 @@
             color: var(--blue);
         }
 
-        nav:not(.scrolled) .nav-logo span {
-            color: var(--blue);
-            text-shadow: none;
-        }
-
         .nav-links {
             display: flex;
             align-items: center;
@@ -187,18 +172,8 @@
             position: relative;
         }
 
-        nav:not(.scrolled) .nav-links a {
-            color: var(--text-muted);
-            text-shadow: none;
-        }
-
         .nav-links a.active {
             color: var(--blue);
-        }
-
-        nav:not(.scrolled) .nav-links a.active {
-            color: var(--blue);
-            text-shadow: none;
         }
 
         .nav-links a::after {
@@ -222,62 +197,11 @@
             color: var(--blue);
         }
 
-        nav:not(.scrolled) .nav-links a:hover {
-            color: var(--blue);
-        }
-
         .nav-links a:hover::after {
             transform: scaleX(1);
         }
 
-        .nav-cta {
-            background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
-            color: white !important;
-            border-radius: 50px !important;
-            padding: 8px 20px !important;
-            font-weight: 700 !important;
-            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);
-            transition: all 0.3s ease !important;
-            display: inline-flex !important;
-            align-items: center;
-            gap: 8px;
-            text-shadow: none !important;
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
-            background: linear-gradient(135deg, #ff1a1a 0%, #ff4d4d 100%) !important;
-        }
-
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            background: none;
-            border: none;
-        }
-
-        .nav-hamburger span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: var(--blue);
-            border-radius: 2px;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-
-        nav:not(.scrolled) .nav-hamburger span {
-            background: var(--blue);
-        }
-
-        /* ── DROPDOWN DESKTOP ── */
+        /* dropdown desktop */
         .nav-links li.has-dropdown {
             position: relative;
         }
@@ -349,7 +273,94 @@
             color: var(--red);
         }
 
-        /* ── ACORDEÓN MOBILE ── */
+        .nav-cta {
+            background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
+            color: white !important;
+            border-radius: 50px !important;
+            padding: 8px 20px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.4);
+            transition: all 0.3s ease !important;
+            display: inline-flex !important;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.6);
+            background: linear-gradient(135deg, #ff1a1a 0%, #ff4d4d 100%) !important;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--blue);
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 101;
+            background: rgba(255, 255, 255, 0.98);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--red) !important;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px;
+            right: 5%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--blue);
+        }
+
+        .mobile-nav-close svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+        }
+
         .mobile-nav-group {
             display: flex;
             flex-direction: column;
@@ -398,74 +409,131 @@
             letter-spacing: 1px !important;
         }
 
-        /* ── MOBILE NAV ── */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 101;
-            background: rgba(255, 255, 255, 0.98);
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--red);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        /* ── DOWNLOAD CARDS ── */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .download-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            display: flex;
             flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .download-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(204, 0, 0, 0.35);
+        }
+
+        .download-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(204, 0, 0, 0.1);
+            border: 1px solid rgba(204, 0, 0, 0.25);
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 24px;
+            margin-bottom: 20px;
         }
 
-        .mobile-nav.open {
-            display: flex;
+        .download-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--red);
         }
 
-        .mobile-nav a {
-            font-size: 1.8rem;
-            /* Tamaño reducido para mejor lectura */
-            font-weight: 900;
-            letter-spacing: 2px;
-            /* Espaciado ajustado */
+        .download-title {
+            font-size: 1.15rem;
+            font-weight: 800;
             color: var(--blue);
+            margin-bottom: 10px;
+        }
+
+        .download-desc {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--red);
+            color: white;
             text-decoration: none;
-            transition: color 0.2s;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 13px 22px;
+            border-radius: 8px;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 16px rgba(204, 0, 0, 0.3);
         }
 
-        .mobile-nav a:hover {
-            color: var(--red);
+        .download-btn:hover {
+            background: var(--red-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.45);
         }
 
-        .mobile-nav a.active {
-            color: var(--red) !important;
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
         }
 
-        .mobile-nav-close {
-            position: absolute;
-            top: 24px;
-            right: 5%;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--blue);
+        .hint-note {
+            margin-top: 40px;
+            background: rgba(10, 31, 68, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 18px 22px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.7;
         }
 
-        .mobile-nav-close svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
-        }
-
-        /* Estilo para el botón deshabilitado */
-        #submit-btn:disabled {
-            background-color: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* ── FOOTER ── */
         footer {
             position: relative;
             z-index: 1;
             background: var(--blue);
             color: white;
             border-top: 4px solid var(--red);
-            margin-top: 60px;
+            margin-top: 40px;
         }
 
         .footer-inner {
@@ -515,7 +583,7 @@
         .footer-col h4 {
             font-size: 1.05rem;
             letter-spacing: 2px;
-            color: var(--red-bright);
+            color: var(--red);
             margin-bottom: 18px;
         }
 
@@ -592,6 +660,29 @@
             color: white;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
         @media(max-width:768px) {
             .nav-links {
                 display: none;
@@ -608,6 +699,7 @@
 
     <canvas id="bg-canvas"></canvas>
 
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
@@ -647,6 +739,7 @@
         </button>
     </nav>
 
+    <!-- Mobile Nav -->
     <div class="mobile-nav" id="mobile-nav">
         <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
             <svg fill="none" viewBox="0 0 24 24">
@@ -669,122 +762,123 @@
                 <a href="teams.html">Teams</a>
             </div>
         </div>
-
         <a href="kontakt.html">Kontakt</a>
         <a href="probetraining.html">Probetraining</a>
         <a href="downloadcenter.html">Downloadcenter</a>
         <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">Online-Shop</a>
     </div>
 
-    <main class="container mx-auto pt-36 pb-20 px-4 relative z-10">
-        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden border border-[var(--card-border)]">
-            <div style="background-color: var(--blue);" class="p-8 text-white text-center">
-                <h1 class="text-3xl font-black uppercase tracking-tight">Anmeldung Probetraining</h1>
-                <p class="mt-2 text-blue-200 text-sm">Werde Teil unserer Mannschaft im Herzen von Mainz.</p>
-            </div>
+    <!-- ═══════════════════════ PAGE HEADER ═══════════════════════ -->
+    <header class="pt-40 pb-16 relative z-10 text-center">
+        <div class="container mx-auto px-6">
+            <p class="section-eyebrow reveal">Formulare & Dokumente</p>
+            <h1
+                class="text-4xl md:text-6xl font-black text-[#0a1f44] uppercase tracking-tighter mb-6 reveal reveal-delay-1">
+                Download<span style="color:var(--red)">center</span>
+            </h1>
+            <div class="h-1 w-24 mx-auto reveal reveal-delay-2" style="background:var(--red); border-radius:2px;"></div>
+            <p class="mt-6 text-sm reveal reveal-delay-3"
+                style="color: var(--text-muted); max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+                Hier findest du alle wichtigen Formulare rund um deine Mitgliedschaft beim F.C. Inter Mainz 2005 zum
+                Herunterladen.
+            </p>
+        </div>
+    </header>
 
-            <div class="bg-red-50 border-l-4 border-primary-red p-4 mx-8 mt-8 rounded-r-lg" id="hinweis-box">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <svg class="h-5 w-5 text-[#cc0000]" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                clip-rule="evenodd" />
+    <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+    <main class="relative z-10 pb-24">
+        <div class="section-inner">
+
+            <div class="download-grid">
+
+                <!-- ANMELDUNG -->
+                <div class="download-card reveal">
+                    <div class="download-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 4v16m0 0l-6-6m6 6l6-6M4 20h16" />
                         </svg>
                     </div>
-                    <div class="ml-3">
-                        <p class="text-sm text-[#cc0000] font-bold uppercase">
-                            Wichtiger Hinweis:
-                        </p>
-                        <p class="text-sm text-red-700" id="hinweis-text">
-                            Aktuell nehmen wir ausschließlich männliche Spieler für unsere Kader auf.
-                        </p>
-                    </div>
+                    <div class="download-title">Spielerlaubnis bzw. Vereinswechsel</div>
+                    <p class="download-desc">
+                        Mit diesem Formular meldest du dich offiziell als neues Mitglied beim F.C. Inter Mainz 2005 e.V.
+                        an. Bitte fülle es vollständig aus und sende es per E-Mail an uns oder gib es bei einem unserer
+                        Vorstandsmitglieder ab.
+                    </p>
+                    <button
+                        onclick="downloadFile('documents/spielerlaubnis.pdf', 'Spielerlaubnis.pdf')"
+                        class="download-btn">
+                        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
+                        </svg>
+                        PDF herunterladen
+                    </button>
                 </div>
+
+                <!-- ABMELDUNG -->
+                <div class="download-card reveal reveal-delay-1">
+                    <div class="download-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M20 12H8m0 0l4-4m-4 4l4 4M14 4H6a2 2 0 00-2 2v12a2 2 0 002 2h8" />
+                        </svg>
+                    </div>
+                    <div class="download-title">Abmeldeformular</div>
+                    <p class="download-desc">
+                        Solltest du deine Mitgliedschaft beenden wollen, nutze bitte dieses Formular. Beachte die
+                        satzungsgemäße Kündigungsfrist und reiche das ausgefüllte Dokument rechtzeitig beim Vorstand
+                        ein.
+                    </p>
+                    <button onclick="downloadFile('documents/spielerlaubnis.pdf', 'Abmeldeformular.pdf')"
+                        class="download-btn">
+                        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
+                        </svg>
+                        PDF herunterladen
+                    </button>
+                </div>
+
+                <!-- VEREINSANMELDUNG -->
+                <div class="download-card reveal reveal-delay-2">
+                    <div class="download-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12h6m-6 4h6M9 8h1m5 13H6a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="download-title">Vereinsanmeldung</div>
+                    <p class="download-desc">
+                        Das offizielle Vereinsanmeldeformular für die Datenübermittlung an den zuständigen
+                        Fußballverband.
+                        Dieses Dokument wird zusätzlich zum Anmeldeformular benötigt, um dich für den Spielbetrieb zu
+                        registrieren.
+                    </p>
+
+                    <button onclick="downloadFile('documents/Anmeldeformular_Inter_Mainz.docx', 'Vereinsanmeldung_Inter_Mainz.docx')"
+                        class="download-btn">
+                        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
+                        </svg>
+                        PDF herunterladen
+                    </button>
+                </div>
+
             </div>
 
-            <form id="membership-form" class="p-8 space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Vorname
-                            *</label>
-                        <input type="text" name="vorname" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                            placeholder="Dein Vorname">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Nachname
-                            *</label>
-                        <input type="text" name="name" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                            placeholder="Dein Nachname">
-                    </div>
-                </div>
+            <div class="hint-note reveal reveal-delay-3">
+                <strong style="color:var(--text-main)">Hinweis:</strong> Bei Fragen zum Ausfüllen der Formulare oder zur
+                Mitgliedschaft wende dich gerne über unser <a href="kontakt.html"
+                    style="color:var(--blue); font-weight:700;">Kontaktformular</a>
+                an uns.
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Alter
-                            *</label>
-                        <input type="number" name="alter" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                            placeholder="z.B. 25">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Geburtsdatum
-                            *</label>
-                        <input type="date" name="geburtsdatum" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">E-Mail Adresse
-                        *</label>
-                    <input type="email" name="email" required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                        placeholder="beispiel@mail.de">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Handynummer
-                        (optional)</label>
-                    <input type="tel" name="telefon"
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
-                        placeholder="+49 123 4567890">
-                </div>
-
-                <p class="text-xs text-gray-500 mb-3">
-                    Hinweis: Bist du beim Ausfüllen jünger als 16 Jahre, lass dieses Formular bitte von einem
-                    Elternteil oder Erziehungsberechtigten ausfüllen.
-                </p>
-                <div class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <div class="privacy-box mb-6">
-                        <input id="privacy-check" type="checkbox" required>
-                        <label for="privacy-check">
-                            Ich habe die
-                            <a href="datenschutzbestimmung.html"
-                                style="color: var(--blue);"><strong>Datenschutzbestimmungen</strong></a>
-                            gelesen und erkläre mich damit einverstanden, dass meine Daten zur
-                            Bearbeitung meines Anliegens gespeichert werden.
-                        </label>
-                    </div>
-                </div>
-
-
-
-                <div class="pt-4">
-                    <button type="submit" id="submit-btn" disabled
-                        class="w-full bg-[#cc0000] hover:bg-[#ff1a1a] text-white font-bold py-4 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 active:scale-95 uppercase tracking-wider cursor-pointer">
-                        Anfrage senden
-                    </button>
-                    <p class="text-xs text-gray-500 mt-4 text-center">
-                        * Pflichtfelder müssen ausgefüllt werden.
-                    </p>
-                </div>
-            </form>
         </div>
     </main>
 
+    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
     <footer>
         <div class="footer-inner">
             <div class="footer-grid">
@@ -799,6 +893,7 @@
                     <ul>
                         <li><a href="index.html">Startseite</a></li>
                         <li><a href="probetraining.html">Probetraining</a></li>
+                        <li><a href="downloadcenter.html">Downloadcenter</a></li>
                         <li><a href="geschichte.html">Geschichte</a></li>
                         <li><a href="teams.html">Teams</a></li>
                         <li><a href="vorstand.html">Vorstand</a></li>
@@ -845,28 +940,66 @@
         </div>
     </footer>
 
+    <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
     <script>
-        /* Canvas */
+        /* ─ Canvas animated background ─ */
         (function () {
             const canvas = document.getElementById('bg-canvas');
             const ctx = canvas.getContext('2d');
             let W, H;
             function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-            resize(); window.addEventListener('resize', resize);
-            const shapes = Array.from({ length: 15 }, () => ({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, r: 12 + Math.random() * 28, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.25, rot: Math.random() * Math.PI * 2, vrot: (Math.random() - 0.5) * 0.004, type: Math.random() > 0.5 ? 'hex' : 'logo', alpha: 0.1 + Math.random() * 0.15 }));
-            const sp = new Path2D(), s = 0.9;
-            sp.moveTo(0, -s); sp.lineTo(s * .75, -s * .6); sp.lineTo(s * .75, s * .3); sp.quadraticCurveTo(s * .75, s, 0, s * 1.2); sp.quadraticCurveTo(-s * .75, s, -s * .75, s * .3); sp.lineTo(-s * .75, -s * .6); sp.closePath();
-            const hp = new Path2D();
-            for (let i = 0; i < 6; i++) { const a = (Math.PI / 3) * i; i === 0 ? hp.moveTo(Math.cos(a), Math.sin(a)) : hp.lineTo(Math.cos(a), Math.sin(a)); } hp.closePath();
+            resize();
+            window.addEventListener('resize', resize);
+
+            const shapes = Array.from({ length: 15 }, () => ({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                r: 12 + Math.random() * 28,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.25,
+                rot: Math.random() * Math.PI * 2,
+                vrot: (Math.random() - 0.5) * 0.004,
+                type: Math.random() > 0.5 ? 'hex' : 'logo',
+                alpha: 0.1 + Math.random() * 0.15
+            }));
+
+            const shieldPath = new Path2D();
+            const s = 0.9;
+            shieldPath.moveTo(0, -s); shieldPath.lineTo(s * 0.75, -s * 0.6);
+            shieldPath.lineTo(s * 0.75, s * 0.3);
+            shieldPath.quadraticCurveTo(s * 0.75, s * 1.0, 0, s * 1.2);
+            shieldPath.quadraticCurveTo(-s * 0.75, s * 1.0, -s * 0.75, s * 0.3);
+            shieldPath.lineTo(-s * 0.75, -s * 0.6); shieldPath.closePath();
+
+            const hexPath = new Path2D();
+            for (let i = 0; i < 6; i++) {
+                const a = (Math.PI / 3) * i;
+                if (i === 0) hexPath.moveTo(Math.cos(a), Math.sin(a));
+                else hexPath.lineTo(Math.cos(a), Math.sin(a));
+            }
+            hexPath.closePath();
+
             function draw() {
                 ctx.clearRect(0, 0, W, H);
-                shapes.forEach(sh => { sh.x += sh.vx; sh.y += sh.vy; sh.rot += sh.vrot; if (sh.x < -80) sh.x = W + 80; if (sh.x > W + 80) sh.x = -80; if (sh.y < -80) sh.y = H + 80; if (sh.y > H + 80) sh.y = -80; ctx.save(); ctx.translate(sh.x, sh.y); ctx.rotate(sh.rot); ctx.scale(sh.r, sh.r); ctx.globalAlpha = sh.alpha; ctx.lineWidth = 1.5 / sh.r; if (sh.type === 'logo') { ctx.strokeStyle = '#cc0000'; ctx.stroke(sp); } else { ctx.strokeStyle = '#2b4c7e'; ctx.stroke(hp); } ctx.restore(); });
+                shapes.forEach(shape => {
+                    shape.x += shape.vx; shape.y += shape.vy; shape.rot += shape.vrot;
+                    if (shape.x < -80) shape.x = W + 80;
+                    if (shape.x > W + 80) shape.x = -80;
+                    if (shape.y < -80) shape.y = H + 80;
+                    if (shape.y > H + 80) shape.y = -80;
+                    ctx.save();
+                    ctx.translate(shape.x, shape.y); ctx.rotate(shape.rot); ctx.scale(shape.r, shape.r);
+                    ctx.globalAlpha = shape.alpha; ctx.lineWidth = 1.5 / shape.r;
+                    if (shape.type === 'logo') { ctx.strokeStyle = '#cc0000'; ctx.stroke(shieldPath); }
+                    else { ctx.strokeStyle = '#2b4c7e'; ctx.stroke(hexPath); }
+                    ctx.restore();
+                });
                 requestAnimationFrame(draw);
             }
             draw();
         })();
 
-        /* Nav */
+        /* ─ Mobile nav ─ */
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
         const mobileClose = document.getElementById('mobile-close');
@@ -874,56 +1007,7 @@
         mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
         mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
-        /* Form logic */
-        const privacyCheck = document.getElementById('privacy-check');
-        const submitBtn = document.getElementById('submit-btn');
-        const form = document.getElementById('membership-form');
-
-        privacyCheck.addEventListener('change', function () {
-            submitBtn.disabled = !this.checked;
-        });
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `Wird gesendet…`;
-
-            fetch('php/mitgliedConsultSaveInDB.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.saveStatus) {
-                        alert('Vielen Dank! Deine Anfrage wurde erfolgreich gespeichert.');
-                        form.reset();
-                        submitBtn.disabled = true;
-                    } else {
-                        alert('Fehler: ' + data.message);
-                        submitBtn.disabled = false;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Es gab ein Problem beim Senden der Anfrage.');
-                    submitBtn.disabled = false;
-                });
-        });
-
-
-        fetch('data/probetraining.json')
-            .then(res => res.json())
-            .then(data => {
-                const box = document.getElementById('hinweis-box');
-                if (!data.show_hinweis || !data.hinweis_text) {
-                    box.style.display = 'none';
-                } else {
-                    document.getElementById('hinweis-text').textContent = data.hinweis_text;
-                }
-            });
-
-        /* ─ Dropdown desktop (click, funciona también en touch) ─ */
+        /* ─ Dropdown desktop ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -946,6 +1030,43 @@
                 toggle.closest('.mobile-nav-group').classList.toggle('open');
             });
         });
+
+        /* ─ Scroll reveal ─ */
+        (function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        })();
+
+        /* ─ Descarga con diálogo "Guardar como" (Chrome/Edge); fallback normal en otros ─ */
+        async function downloadFile(url, suggestedName) {
+            if (window.showSaveFilePicker) {
+                try {
+                    const handle = await window.showSaveFilePicker({
+                        suggestedName,
+                        types: [{ description: 'PDF', accept: { 'application/pdf': ['.pdf'] } }]
+                    });
+                    const response = await fetch(url);
+                    const blob = await response.blob();
+                    const writable = await handle.createWritable();
+                    await writable.write(blob);
+                    await writable.close();
+                } catch (err) {
+                    if (err.name !== 'AbortError') console.error(err);
+                }
+            } else {
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = suggestedName;
+                a.click();
+            }
+        }
     </script>
 </body>
 

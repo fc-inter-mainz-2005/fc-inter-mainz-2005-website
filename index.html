@@ -529,69 +529,76 @@
         }
 
         .sponsors-marquee {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
-}
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+        }
 
-.sponsors-track {
-    display: flex;
-    align-items: center;
-    gap: 130px;
-    width: max-content;
-    animation: sponsors-scroll 32s linear infinite;
-}
+        .sponsors-track {
+            display: flex;
+            align-items: center;
+            gap: 130px;
+            width: max-content;
+            animation: sponsors-scroll 32s linear infinite;
+        }
 
-.sponsors-marquee:hover .sponsors-track {
-    animation-play-state: paused;
-}
+        .sponsors-marquee:hover .sponsors-track {
+            animation-play-state: paused;
+        }
 
-@keyframes sponsors-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-}
+        @keyframes sponsors-scroll {
+            from {
+                transform: translateX(0);
+            }
 
-.sponsor-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    width: 210px;
-    height: 100px;
-    transition: transform 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-}
+            to {
+                transform: translateX(-50%);
+            }
+        }
 
-.sponsor-item:hover {
-    transform: scale(1.06);
-}
+        .sponsor-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 210px;
+            height: 100px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-.sponsor-item img {
-    max-height: 88px;
-    max-width: 200px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
+        .sponsor-item:hover {
+            transform: scale(1.06);
+        }
+
+        .sponsor-item img {
+            max-height: 88px;
+            max-width: 200px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
 
 
-@media(max-width:768px) {
-    .sponsors-track {
-        gap: 72px;
-        animation-duration: 24s;
-    }
-    .sponsor-item {
-        width: 150px;
-        height: 72px;
-    }
-    .sponsor-item img {
-        max-height: 64px;
-        max-width: 140px;
-    }
-}
+        @media(max-width:768px) {
+            .sponsors-track {
+                gap: 72px;
+                animation-duration: 24s;
+            }
+
+            .sponsor-item {
+                width: 150px;
+                height: 72px;
+            }
+
+            .sponsor-item img {
+                max-height: 64px;
+                max-width: 140px;
+            }
+        }
 
         /* ── VORSTAND ── */
         .vorstand-section {
@@ -1061,6 +1068,136 @@
             font-size: 0.78rem;
         }
 
+        /* ── DROPDOWN DESKTOP ── */
+        .nav-links li.has-dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .nav-links .dropdown-toggle svg {
+            width: 10px;
+            height: 10px;
+            transition: transform 0.25s;
+        }
+
+        .nav-links li.has-dropdown:hover .dropdown-toggle svg,
+        .nav-links li.has-dropdown.open .dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 4px;
+            background: var(--bg-surface);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            min-width: 210px;
+            padding: 8px;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 50;
+        }
+
+        .nav-links li.has-dropdown:hover .dropdown-menu,
+        .nav-links li.has-dropdown.open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: none;
+            color: var(--text-muted);
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu li a::after {
+            display: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: rgba(204, 0, 0, 0.08);
+            color: var(--red);
+        }
+
+        .nav-links li.has-dropdown .dropdown-menu a {
+            color: var(--text-muted);
+            text-shadow: none;
+        }
+
+        .nav-links li.has-dropdown .dropdown-menu a:hover {
+            color: var(--red);
+        }
+
+        /* ── ACORDEÓN MOBILE ── */
+        .mobile-nav-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-nav-group-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--blue);
+        }
+
+        .mobile-nav-group-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.25s;
+        }
+
+        .mobile-nav-group.open .mobile-nav-group-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .mobile-nav-submenu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-nav-group.open .mobile-nav-submenu {
+            display: flex;
+        }
+
+        .mobile-nav-submenu a {
+            font-size: 1.15rem !important;
+            letter-spacing: 1px !important;
+        }
+
         /* ── MOBILE NAV ── */
         .mobile-nav {
             display: none;
@@ -1255,11 +1392,22 @@
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
-            <li><a href="probetraining.html">Probetraining</a></li>
-            <li><a href="geschichte.html">Geschichte</a></li>
-            <li><a href="teams.html">Teams</a></li>
-            <li><a href="vorstand.html">Vorstand</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="dropdown-toggle">
+                    Verein
+                    <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M1 1l5 5 5-5" />
+                    </svg>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="geschichte.html">Geschichte</a></li>
+                    <li><a href="vorstand.html">Vorstand</a></li>
+                    <li><a href="teams.html">Teams</a></li>
+                </ul>
+            </li>
             <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="probetraining.html">Probetraining</a></li>
+            <li><a href="downloadcenter.html">Downloadcenter</a></li>
             <li>
                 <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -1282,13 +1430,26 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <a href="index.html" class="active">Startseite</a>
-        <a href="probetraining.html">Probetraining</a>
-        <a href="geschichte.html">Geschichte</a>
-        <a href="teams.html">Teams</a>
-        <a href="vorstand.html">Vorstand</a>
+
+        <a href="index.html">Startseite</a>
+
+        <div class="mobile-nav-group">
+            <button class="mobile-nav-group-toggle">
+                Verein
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div class="mobile-nav-submenu">
+                <a href="geschichte.html">Geschichte</a>
+                <a href="vorstand.html">Vorstand</a>
+                <a href="teams.html">Teams</a>
+            </div>
+        </div>
         <a href="kontakt.html">Kontakt</a>
-        <a href="https://fc-inter-mainz.fan12.de/">Online-Shop</a>
+        <a href="probetraining.html">Probetraining</a>
+        <a href="downloadcenter.html">Downloadcenter</a>
+        <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">Online-Shop</a>
     </div>
 
     <header class="hero">
@@ -1382,7 +1543,8 @@
                 <!-- TARJETA WIDGET 3 -->
                 <div class="widget-card">
                     <div id="fp-widget_root-3H3W8BQ9dKsBBPN7l8GxRiO7NtF">
-                        <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz Ü32
+                        <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz
+                            Ü32
                             auf
                             FuPa</a>
                     </div>
@@ -1397,57 +1559,88 @@
     </section>
 
     <section>
-    <div class="section-inner">
-        <p class="sponsors-label reveal">Unsere offiziellen Partner & Sponsoren</p>
+        <div class="section-inner">
+            <p class="sponsors-label reveal">Unsere offiziellen Partner & Sponsoren</p>
 
-        <div class="sponsors-marquee">
-            <div class="sponsors-track" id="sponsors-track">
+            <div class="sponsors-marquee">
+                <div class="sponsors-track" id="sponsors-track">
 
-                <a href="https://el-burro.de/" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="elburro.png" alt="El Burro Restaurant & Bar" loading="lazy">
-                </a>
-                <a href="https://ziberi.eu/" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="ziberi.png" alt="Ziberi Projekt- & Wohnbau" loading="lazy">
-                </a>
-                <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener"
-                   class="sponsor-item" style="text-decoration:none">
-                    <img src="dvblogo.svg" alt="Deutsches Vermögensberatung" title="Deutsches Vermögensberatung" loading="lazy">
-                </a>
-                <a href="https://www.liquideshandwerk.de" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="liquides.png" alt="Liquides Handwerk" title="Liquides Handwerk" loading="lazy">
-                </a>
-                <a href="https://www.restaurant-graca.de" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="graca.png" alt="Restaurant Graça" title="Restaurant Graça" loading="lazy">
-                </a>
-                <a href="https://diegouhligreinigung.de" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="ud.png" alt="Diego Uhlig Reinigung" title="Diego Uhlig Reinigung" loading="lazy">
-                </a>
+                    <a href="https://el-burro.de/" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="elburro.png" alt="El Burro Restaurant & Bar" loading="lazy">
+                    </a>
+                    <a href="https://ziberi.eu/" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="ziberi.png" alt="Ziberi Projekt- & Wohnbau" loading="lazy">
+                    </a>
+                    <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener"
+                        class="sponsor-item" style="text-decoration:none">
+                        <img src="dvblogo.svg" alt="Deutsches Vermögensberatung" title="Deutsches Vermögensberatung"
+                            loading="lazy">
+                    </a>
+                    <a href="https://www.liquideshandwerk.de" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="liquides.png" alt="Liquides Handwerk" title="Liquides Handwerk" loading="lazy">
+                    </a>
+                    <a href="https://www.restaurant-graca.de" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="graca.png" alt="Restaurant Graça" title="Restaurant Graça" loading="lazy">
+                    </a>
+                    <a href="https://diegouhligreinigung.de" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="ud.png" alt="Diego Uhlig Reinigung" title="Diego Uhlig Reinigung" loading="lazy">
+                    </a>
 
-                <!-- Duplicado (idéntico) para que el loop sea perfecto e infinito -->
-                <a href="https://el-burro.de/" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="elburro.png" alt="" title="El Burro Restaurant & Bar" loading="lazy">
-                </a>
-                <a href="https://ziberi.eu/" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="ziberi.png" alt="" title="Ziberi Projekt- & Wohnbau" loading="lazy">
-                </a>
-                <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener"
-                   class="sponsor-item" style="text-decoration:none" aria-hidden="true" tabindex="-1">
-                    <img src="dvblogo.svg" alt="" title="Deutsches Vermögensberatung" loading="lazy">
-                </a>
-                <a href="https://www.liquideshandwerk.de" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="liquides.png" alt="" title="Liquides Handwerk" loading="lazy">
-                </a>
-                <a href="https://www.restaurant-graca.de" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="graca.png" alt="" title="Restaurant Graça" loading="lazy">
-                </a>
-                <a href="https://diegouhligreinigung.de" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="ud.png" alt="" title="Diego Uhlig Reinigung" loading="lazy">
-                </a>
+                    <a href="https://www.lasslop.com" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="lasslop.svg" alt="Lasslop" title="Lasslop" loading="lazy">
+                    </a>
 
+                    <a href="https://casadelsol.de" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="casadelsol.png" alt="Casa del Sol" title="Casa del Sol" loading="lazy">
+                    </a>
+
+                    <a href="https://www.instagram.com/laalegria2026?utm_source=qr" target="_blank" rel="noopener"
+                        class="sponsor-item">
+                        <img src="laalegria.png" alt="La Alegría" title="La Alegría" loading="lazy">
+                    </a>
+
+                    <!-- Duplicado (idéntico) para que el loop sea perfecto e infinito -->
+                    <a href="https://el-burro.de/" target="_blank" rel="noopener" class="sponsor-item"
+                        aria-hidden="true" tabindex="-1">
+                        <img src="elburro.png" alt="" title="El Burro Restaurant & Bar" loading="lazy">
+                    </a>
+                    <a href="https://ziberi.eu/" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true"
+                        tabindex="-1">
+                        <img src="ziberi.png" alt="" title="Ziberi Projekt- & Wohnbau" loading="lazy">
+                    </a>
+                    <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener"
+                        class="sponsor-item" style="text-decoration:none" aria-hidden="true" tabindex="-1">
+                        <img src="dvblogo.svg" alt="" title="Deutsches Vermögensberatung" loading="lazy">
+                    </a>
+                    <a href="https://www.liquideshandwerk.de" target="_blank" rel="noopener" class="sponsor-item"
+                        aria-hidden="true" tabindex="-1">
+                        <img src="liquides.png" alt="" title="Liquides Handwerk" loading="lazy">
+                    </a>
+                    <a href="https://www.restaurant-graca.de" target="_blank" rel="noopener" class="sponsor-item"
+                        aria-hidden="true" tabindex="-1">
+                        <img src="graca.png" alt="" title="Restaurant Graça" loading="lazy">
+                    </a>
+                    <a href="https://diegouhligreinigung.de" target="_blank" rel="noopener" class="sponsor-item"
+                        aria-hidden="true" tabindex="-1">
+                        <img src="ud.png" alt="" title="Diego Uhlig Reinigung" loading="lazy">
+                    </a>
+
+                    <a href="https://www.lasslop.com" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="lasslop.svg" alt="Lasslop" title="Lasslop" loading="lazy">
+                    </a>
+
+                    <a href="https://casadelsol.de" target="_blank" rel="noopener" class="sponsor-item">
+                        <img src="casadelsol.png" alt="Casa del Sol" title="Casa del Sol" loading="lazy">
+                    </a>
+
+                    <a href="https://www.instagram.com/laalegria2026?utm_source=qr" target="_blank" rel="noopener"
+                        class="sponsor-item">
+                        <img src="laalegria.png" alt="La Alegría" title="La Alegría" loading="lazy">
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="vorstand-section" id="vorstand">
         <div class="section-inner">
@@ -1525,6 +1718,7 @@
                         <li><a href="teams.html">Teams</a></li>
                         <li><a href="vorstand.html">Vorstand</a></li>
                         <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="downloadcenter.html">Downloadcenter</a></li>
                         <li><a href="https://fc-inter-mainz.fan12.de/" target="_blank"
                                 rel="noopener noreferrer">Online-Shop</a></li>
                     </ul>
@@ -1540,7 +1734,8 @@
                 <div class="footer-col">
                     <h4>Social Media</h4>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/p/FC-Inter-Mainz-2005-eV-100063568061273/" target="_blank" rel="noopener" aria-label="Facebook">
+                        <a href="https://www.facebook.com/p/FC-Inter-Mainz-2005-eV-100063568061273/" target="_blank"
+                            rel="noopener" aria-label="Facebook">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
@@ -1844,6 +2039,33 @@
                     grid.appendChild(card);
                 });
             });
+
+
+
+        /* ─ Dropdown desktop (click, funciona también en touch) ─ */
+        document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parent = toggle.closest('li');
+                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => {
+                    if (li !== parent) li.classList.remove('open');
+                });
+                parent.classList.toggle('open');
+            });
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-links li.has-dropdown')) {
+                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => li.classList.remove('open'));
+            }
+        });
+
+        /* ─ Acordeón mobile ─ */
+        document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                toggle.closest('.mobile-nav-group').classList.toggle('open');
+            });
+        });
+
     </script>
 </body>
 
