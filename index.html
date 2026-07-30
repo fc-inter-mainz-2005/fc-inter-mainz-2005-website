@@ -539,9 +539,9 @@
 .sponsors-track {
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 130px;
     width: max-content;
-    animation: sponsors-scroll 28s linear infinite;
+    animation: sponsors-scroll 32s linear infinite;
 }
 
 .sponsors-marquee:hover .sponsors-track {
@@ -558,51 +558,38 @@
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    width: 160px;
-    height: 70px;
-    opacity: 0.6;
-    filter: grayscale(1);
-    transition: opacity 0.4s, filter 0.4s, transform 0.3s;
+    width: 210px;
+    height: 100px;
+    transition: transform 0.3s;
     cursor: pointer;
     text-decoration: none;
 }
 
 .sponsor-item:hover {
-    opacity: 1;
-    filter: grayscale(0);
     transform: scale(1.06);
 }
 
 .sponsor-item img {
-    max-height: 60px;
-    max-width: 160px;
+    max-height: 88px;
+    max-width: 200px;
     width: auto;
     height: auto;
     object-fit: contain;
 }
 
-/* Respeta accesibilidad: si el usuario prefiere menos movimiento, se detiene */
-@media (prefers-reduced-motion: reduce) {
-    .sponsors-track {
-        animation: none;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .sponsors-marquee {
-        overflow: visible;
-        mask-image: none;
-        -webkit-mask-image: none;
-    }
-}
 
 @media(max-width:768px) {
     .sponsors-track {
-        gap: 56px;
-        animation-duration: 20s;
+        gap: 72px;
+        animation-duration: 24s;
     }
     .sponsor-item {
-        width: 120px;
-        height: 56px;
+        width: 150px;
+        height: 72px;
+    }
+    .sponsor-item img {
+        max-height: 64px;
+        max-width: 140px;
     }
 }
 
@@ -1424,37 +1411,37 @@
                 </a>
                 <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener"
                    class="sponsor-item" style="text-decoration:none">
-                    <img src="dvblogo.svg" alt="Deutsches Vermögensberatung" loading="lazy">
+                    <img src="dvblogo.svg" alt="Deutsches Vermögensberatung" title="Deutsches Vermögensberatung" loading="lazy">
                 </a>
                 <a href="https://www.liquideshandwerk.de" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="liquides.png" alt="Liquides Handwerk" loading="lazy">
+                    <img src="liquides.png" alt="Liquides Handwerk" title="Liquides Handwerk" loading="lazy">
                 </a>
                 <a href="https://www.restaurant-graca.de" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="graca.png" alt="Restaurant Graça" loading="lazy">
+                    <img src="graca.png" alt="Restaurant Graça" title="Restaurant Graça" loading="lazy">
                 </a>
                 <a href="https://diegouhligreinigung.de" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="ud.png" alt="Diego Uhlig Reinigung" loading="lazy">
+                    <img src="ud.png" alt="Diego Uhlig Reinigung" title="Diego Uhlig Reinigung" loading="lazy">
                 </a>
 
                 <!-- Duplicado (idéntico) para que el loop sea perfecto e infinito -->
                 <a href="https://el-burro.de/" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="elburro.png" alt="" loading="lazy">
+                    <img src="elburro.png" alt="" title="El Burro Restaurant & Bar" loading="lazy">
                 </a>
                 <a href="https://ziberi.eu/" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="ziberi.png" alt="" loading="lazy">
+                    <img src="ziberi.png" alt="" title="Ziberi Projekt- & Wohnbau" loading="lazy">
                 </a>
                 <a href="https://www.dvag.de/jascha.mecking/index.html" target="_blank" rel="noopener"
                    class="sponsor-item" style="text-decoration:none" aria-hidden="true" tabindex="-1">
-                    <img src="dvblogo.svg" alt="" loading="lazy">
+                    <img src="dvblogo.svg" alt="" title="Deutsches Vermögensberatung" loading="lazy">
                 </a>
                 <a href="https://www.liquideshandwerk.de" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="liquides.png" alt="" loading="lazy">
+                    <img src="liquides.png" alt="" title="Liquides Handwerk" loading="lazy">
                 </a>
                 <a href="https://www.restaurant-graca.de" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="graca.png" alt="" loading="lazy">
+                    <img src="graca.png" alt="" title="Restaurant Graça" loading="lazy">
                 </a>
                 <a href="https://diegouhligreinigung.de" target="_blank" rel="noopener" class="sponsor-item" aria-hidden="true" tabindex="-1">
-                    <img src="ud.png" alt="" loading="lazy">
+                    <img src="ud.png" alt="" title="Diego Uhlig Reinigung" loading="lazy">
                 </a>
 
             </div>
