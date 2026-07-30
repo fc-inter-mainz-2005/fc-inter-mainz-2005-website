@@ -740,7 +740,7 @@
     <nav>
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
-            <span>Inter Mainz</span>
+            <span>F.C. Inter Mainz</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -990,10 +990,6 @@
             document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
         })();
 
-        fetch('content/impressum.json')
-            .then(res => res.json())
-            .then(data => { document.getElementById('legal-content').innerHTML = marked.parse(data.content); });
-
         /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
@@ -1019,7 +1015,6 @@
         });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 </body>
 
 </html>

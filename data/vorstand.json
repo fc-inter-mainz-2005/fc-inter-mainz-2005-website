@@ -1,0 +1,19 @@
+{
+  "members": [
+    {
+      "name": "Santiago Ballabriga",
+      "role": "1. Vorsitzender",
+      "photo": "santy.jpg"
+    },
+    {
+      "name": "Fernando Trochez",
+      "role": "2. Vorsitzender",
+      "photo": "fernando.jpeg"
+    },
+    {
+      "name": "José Luis Fuente Fernández",
+      "role": "3. Vorsitzender",
+      "photo": "jose.jpg"
+    }
+  ]
+}

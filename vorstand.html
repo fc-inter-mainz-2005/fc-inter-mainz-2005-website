@@ -643,7 +643,7 @@
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Wappen">
-            <span>Inter Mainz</span>
+            <span>F.C. Inter Mainz</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -723,39 +723,7 @@
                 <h2 class="team-title text-2xl md:text-3xl">Vereinsführung</h2>
                 <div class="flex-grow h-px bg-[var(--card-border)] ml-4 md:ml-8"></div>
             </div>
-            <div class="vorstand-grid" id="vorstand-grid">
-                <div class="vorstand-card">
-                    <div class="vorstand-photo">
-                        <img src="santy.jpg" alt="Santiago Ballabriga" class="w-full h-full object-cover"
-                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-red-900/20 flex items-center justify-center text-red-500 text-4xl font-black\'>SB</div>'">
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Santiago Ballabriga</h3>
-                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">1. Vorsitzender</p>
-                    <a href="kontakt.html"
-                        class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
-                </div>
-                <div class="vorstand-card">
-                    <div class="vorstand-photo">
-                        <img src="fernando.jpeg" alt="Fernando Trochez" class="w-full h-full object-cover"
-                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-green-900/20 flex items-center justify-center text-green-500 text-4xl font-black\'>FT</div>'">
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">Fernando Trochez</h3>
-                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">2. Vorsitzender</p>
-                    <a href="kontakt.html"
-                        class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
-                </div>
-
-                <div class="vorstand-card">
-                    <div class="vorstand-photo">
-                        <img src="jose.jpg" alt="José Luis Fuente Fernández" class="w-full h-full object-cover"
-                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-green-900/20 flex items-center justify-center text-green-500 text-4xl font-black\'>JF</div>'">
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]">José Luis Fuente Fernández</h3>
-                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6">3. Vorsitzender</p>
-                    <a href="kontakt.html"
-                        class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>
-                </div>
-            </div>
+            <div class="vorstand-grid" id="vorstand-grid"></div>
         </section>
 
         <section class="reveal">
@@ -912,24 +880,24 @@
         })();
 
         fetch('data/vorstand.json')
-            .then(res => res.json())
-            .then(data => {
-                const grid = document.getElementById('vorstand-grid');
-                data.members.forEach(m => {
-                    const card = document.createElement('div');
-                    card.className = 'vorstand-card';
-                    card.innerHTML = `
-                        <div class="vorstand-photo"><img alt=""></div>
-                        <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
-                        <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>
-                        <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>`;
-                    card.querySelector('img').src = m.photo;
-                    card.querySelector('img').alt = m.name;
-                    card.querySelector('h3').textContent = m.name;
-                    card.querySelector('p').textContent = m.role;
-                    grid.appendChild(card);
-                });
-            });
+    .then(res => res.json())
+    .then(data => {
+        const grid = document.getElementById('vorstand-grid');
+        data.members.forEach(m => {
+            const card = document.createElement('div');
+            card.className = 'vorstand-card';
+            card.innerHTML = `
+                <div class="vorstand-photo"><img alt="" class="w-full h-full object-cover"></div>
+                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
+                <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>
+                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>`;
+            card.querySelector('img').src = m.photo;
+            card.querySelector('img').alt = m.name;
+            card.querySelector('h3').textContent = m.name;
+            card.querySelector('p').textContent = m.role;
+            grid.appendChild(card);
+        });
+    });
 
         /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {

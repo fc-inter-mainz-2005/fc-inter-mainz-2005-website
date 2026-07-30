@@ -840,7 +840,7 @@
                 <li><a href="#kontaktformular">Kontaktformular & Probetraining</a></li>
                 <li><a href="#hosting">Hosting</a></li>
                 <li><a href="#cookies">Cookies</a></li>
-                <li><a href="#fussballde">FuPa-Widgets</a></li>
+                <li><a href="#fupa">FuPa-Widgets</a></li>
                 <li><a href="#instagram">Instagram</a></li>
                 <li><a href="#aenderungen">Änderungen dieser Erklärung</a></li>
             </ol>
@@ -963,9 +963,8 @@
                 den Besuchern unserer Website aktuelle sportliche Informationen und Spielpläne direkt und
                 benutzerfreundlich zur Verfügung zu stellen.</p>
             <p>Weitere Informationen über den Zweck und Umfang der Datenverarbeitung durch den Anbieter sowie Ihre
-                diesbezüglichen Rechte entnehmen Sie bitte der Datenschutzerklärung von FuPa unter:
-                href="https://www.fupa.net/datenschutz.html" target="_blank"
-                rel="noopener">www.fupa.net/datenschutz.html</a></p>
+    diesbezüglichen Rechte entnehmen Sie bitte der Datenschutzerklärung von FuPa unter:
+    <a href="https://www.fupa.net/datenschutz.html" target="_blank" rel="noopener">www.fupa.net/datenschutz.html</a></p>
         </div>
 
         <div class="legal-card reveal reveal-delay-2" id="instagram">
@@ -1060,11 +1059,6 @@
         mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
         mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
         (function () { const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 }); document.querySelectorAll('.reveal').forEach(el => obs.observe(el)); })();
-
-        fetch('content/datenschutz.json')
-            .then(res => res.json())
-            .then(data => { document.getElementById('legal-content').innerHTML = marked.parse(data.content); });
-
         /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
@@ -1090,7 +1084,6 @@
         });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 </body>
 
 </html>
