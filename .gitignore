@@ -3,3 +3,5 @@ includes/php/db.inc.php
 php/
 /php
 .php
+node_modules/
+css/tailwind.css
