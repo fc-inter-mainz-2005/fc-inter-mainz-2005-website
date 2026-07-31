@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/tailwind.css">
 
     <style>
-        /* ── FUENTES LOCALES INTER ── */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
@@ -31,7 +30,6 @@
         }
 
         :root {
-            /* TEMA CLARO */
             --bg-body: #faf8f5;
             --bg-surface: #ffffff;
             --bg-nav: rgba(255, 255, 255, 0.98);
@@ -72,7 +70,6 @@
             overflow-x: hidden;
         }
 
-        /* Títulos impactantes usando Inter Black para reemplazar a Bebas Neue */
         .nav-logo span,
         .hero-title,
         .stat-num,
@@ -91,7 +88,6 @@
             -webkit-hyphens: auto;
         }
 
-        /* ── SCROLLBAR ── */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -109,7 +105,6 @@
             background: #a0aec0;
         }
 
-        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0;
@@ -153,7 +148,6 @@
             white-space: nowrap;
         }
 
-        /* Cambio de color de nav para contraste inicial sobre el hero oscuro */
         nav:not(.scrolled) .nav-logo span {
             color: white;
             text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
@@ -178,7 +172,6 @@
             transition: color 0.25s, background 0.25s;
             position: relative;
             display: inline-flex;
-            /* ← añadir */
             align-items: center;
         }
 
@@ -212,7 +205,6 @@
             transform: scaleX(1);
         }
 
-        /* ── BOTÓN ONLINE-SHOP MODERNO ── */
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
             color: white !important;
@@ -260,8 +252,6 @@
             background: white;
         }
 
-        /* ── HERO ── */
-        /* Mantenemos el hero oscuro para que las fotos resalten */
         .hero {
             position: relative;
             height: 100vh;
@@ -428,7 +418,6 @@
             width: 52px;
         }
 
-        /* ── STATS BAR ── */
         .stats-bar {
             position: relative;
             z-index: 1;
@@ -462,7 +451,6 @@
             margin-top: 4px;
         }
 
-        /* ── SECTION WRAPPER ── */
         section {
             position: relative;
             z-index: 1;
@@ -503,7 +491,6 @@
             margin-top: 16px;
         }
 
-        /* ── MATCHES ── */
         .matches-section {
             background: white;
             border-top: 1px solid var(--card-border);
@@ -514,7 +501,6 @@
             width: 100%;
         }
 
-        /* ── SPONSORS ── */
         .sponsors-label {
             text-align: center;
             font-size: 0.68rem;
@@ -597,7 +583,6 @@
             }
         }
 
-        /* ── VORSTAND ── */
         .vorstand-section {
             background: var(--bg-body);
         }
@@ -674,7 +659,6 @@
             color: var(--red);
         }
 
-        /* ── NEWS + EVENTS GRID ── */
         .news-events {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -688,7 +672,6 @@
             }
         }
 
-        /* EVENTS */
         .event-item {
             display: flex;
             align-items: center;
@@ -755,8 +738,6 @@
             transform: translateX(4px);
         }
 
-        /* ── FOOTER ── */
-        /* Mantenemos el footer oscuro para anclar el final de la página */
         footer {
             position: relative;
             z-index: 1;
@@ -886,7 +867,6 @@
             color: white;
         }
 
-        /* ── MODALS (Adaptados al tema claro) ── */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -1065,7 +1045,6 @@
             font-size: 0.78rem;
         }
 
-        /* ── DROPDOWN DESKTOP ── */
         .nav-links li.has-dropdown {
             position: relative;
         }
@@ -1146,7 +1125,6 @@
             color: var(--red);
         }
 
-        /* ── ACORDEÓN MOBILE ── */
         .mobile-nav-group {
             display: flex;
             flex-direction: column;
@@ -1195,7 +1173,6 @@
             letter-spacing: 1px !important;
         }
 
-        /* ── MOBILE NAV ── */
         .mobile-nav {
             display: none;
             position: fixed;
@@ -1214,7 +1191,6 @@
 
         .mobile-nav a {
             font-size: 1.8rem;
-            /* Tamaño unificado con las demás páginas */
             font-weight: 900;
             letter-spacing: 2px;
             color: var(--blue);
@@ -1245,7 +1221,6 @@
             stroke: currentColor;
         }
 
-        /* ── MATCHES ── */
         .matches-section {
             background: rgba(255, 255, 255, 0.02);
             border-top: 1px solid var(--card-border);
@@ -1293,11 +1268,9 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
             overflow: hidden;
             min-width: 0;
-            /* Evita que los hijos de grid expandan el contenedor */
             max-width: 100%;
         }
 
-        /* ── COOKIE / CONSENT BANNER ── */
         .cookie-banner {
             position: fixed;
             left: 0;
@@ -1403,14 +1376,11 @@
             background: var(--red-bright);
         }
 
-        /* Efecto hover suave */
         .widget-card:hover {
             transform: translateY(-4px);
             border-color: rgba(204, 0, 0, 0.3);
-            /* Un toque rojo del club al pasar el ratón */
         }
 
-        /* Asegura que el iframe generado por FuPa ocupe todo el ancho disponible */
         .widget-card iframe,
         .widget-card>div>*,
         [id^="fp-widget_root"] iframe,
@@ -1421,7 +1391,6 @@
             border-radius: 8px;
         }
 
-        /* ── ANIMATIONS ── */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -1461,7 +1430,6 @@
             transition-delay: 0.4s;
         }
 
-        /* ── RESPONSIVE ── */
         @media(max-width:1200px) {
             .nav-links {
                 display: none;
@@ -1496,7 +1464,6 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Widgets: forzar 1 columna en móvil */
             .widget-grid {
                 gap: 14px;
             }
@@ -1791,14 +1758,11 @@
     <div id="modals-container"></div>
 
     <script>
-        /* ─ Navbar scroll effect ─ */
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 20);
         }, { passive: true });
 
-        /* ─ Hero slider ─ */
-        /* ─ Hero slider (dinámico via CMS) ─ */
         fetch('data/hero.json')
             .then(res => { if (!res.ok) throw new Error('hero.json not found'); return res.json(); })
             .then(data => {
@@ -1829,7 +1793,6 @@
             })
             .catch(err => console.warn('Hero slides not available:', err));
 
-        /* ─ Cookie consent + FuPa click-to-load ─ */
         (function () {
             const CONSENT_KEY = 'im_cookie_consent'; // 'accepted' | 'rejected'
             const banner = document.getElementById('cookie-banner');
@@ -1865,7 +1828,6 @@
             } else if (!consent) {
                 if (banner) banner.classList.add('open');
             }
-            // consent === 'rejected' → placeholder queda visible, no se carga nada
 
             const acceptBtn = document.getElementById('cookie-accept-btn');
             const rejectBtn = document.getElementById('cookie-reject-btn');
@@ -1887,7 +1849,6 @@
             });
         })();
 
-        /* ─ Mobile nav ─ */
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
         const mobileClose = document.getElementById('mobile-close');
@@ -1895,7 +1856,6 @@
         mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
         mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
-        /* ─ Modals ─ */
         function openModal(id) {
             const m = document.getElementById(id);
             m.classList.add('open');
@@ -1916,7 +1876,6 @@
             if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
         });
 
-        /* ─ Scroll reveal ─ */
         (function () {
             const els = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
@@ -2059,7 +2018,6 @@
 
 
 
-        /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2076,7 +2034,6 @@
             }
         });
 
-        /* ─ Acordeón mobile ─ */
         document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
                 toggle.closest('.mobile-nav-group').classList.toggle('open');

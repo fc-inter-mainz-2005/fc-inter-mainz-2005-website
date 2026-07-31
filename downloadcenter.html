@@ -164,7 +164,7 @@
             border-radius: 4px;
             transition: color 0.25s, background 0.25s;
             position: relative;
-            display: inline-flex;      /* ← añadir */
+            display: inline-flex;
     align-items: center;
         }
 
@@ -197,7 +197,6 @@
             transform: scaleX(1);
         }
 
-        /* dropdown desktop */
         .nav-links li.has-dropdown {
             position: relative;
         }
@@ -427,7 +426,6 @@
             color: var(--text-main);
         }
 
-        /* ── DOWNLOAD CARDS ── */
         .download-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -880,10 +878,8 @@
         </div>
     </footer>
 
-    <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
     <script>
 
-        /* ─ Mobile nav ─ */
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
         const mobileClose = document.getElementById('mobile-close');
@@ -891,7 +887,6 @@
         mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
         mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
-        /* ─ Dropdown desktop ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -908,14 +903,12 @@
             }
         });
 
-        /* ─ Acordeón mobile ─ */
         document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
                 toggle.closest('.mobile-nav-group').classList.toggle('open');
             });
         });
 
-        /* ─ Scroll reveal ─ */
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -926,7 +919,6 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        /* ─ Descarga con diálogo "Guardar como" (Chrome/Edge); fallback normal en otros ─ */
         async function downloadFile(url, suggestedName) {
             if (window.showSaveFilePicker) {
                 try {
