@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F.C. Inter Mainz 2005 – Offiziell</title>
+    <title>FC Inter Mainz 2005 – Offiziell</title>
     <link rel="icon" type="image/png" href="800x800.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -85,6 +85,10 @@
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
+            overflow-wrap: break-word;
+            word-break: normal;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         /* ── SCROLLBAR ── */
@@ -1263,10 +1267,32 @@
         }
 
         .widget-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
             margin-top: 20px;
+        }
+
+        .widget-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.05rem;
+            color: var(--blue);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .widget-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--red);
+            border-radius: 2px;
+            display: inline-block;
         }
 
         .widget-card {
@@ -1349,13 +1375,16 @@
                 display: flex;
             }
 
+            .nav-logo span {
+                display: none;
+            }
+
             .hero-content {
                 padding: 0 6%;
             }
 
             .hero-title {
                 font-size: 2.1rem;
-                word-break: break-word;
             }
 
             .stats-bar {
@@ -1373,7 +1402,6 @@
 
             /* Widgets: forzar 1 columna en móvil */
             .widget-grid {
-                grid-template-columns: 1fr !important;
                 gap: 14px;
             }
 
@@ -1391,7 +1419,7 @@
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
-            <span>F.C. Inter Mainz</span>
+            <span>FC Inter Mainz</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -1464,7 +1492,7 @@
                 <span class="accent">Gemeinschaft.</span>
                 Fussball.
             </h1>
-            <p class="hero-sub">Willkommen beim F.C. Inter Mainz. Dein Verein im Herzen von Mainz seit 2005 - für
+            <p class="hero-sub">Willkommen beim FC Inter Mainz. Dein Verein im Herzen von Mainz seit 2005 - für
                 sportlichen Ehrgeiz und sozialen Zusammenhalt.</p>
             <div class="hero-actions">
                 <a href="probetraining.html" class="btn-primary">
@@ -1514,32 +1542,33 @@
                 <span class="section-divider"></span>
             </div>
 
-            <!-- CONTENEDOR GRID -->
+            <!-- CONTENEDOR APILADO -->
             <div class="widget-grid reveal reveal-delay-1">
 
-                <!-- TARJETA WIDGET 1 -->
+                <!-- TARJETA WIDGET 1: Primer equipo -->
                 <div class="widget-card">
+                    <h3 class="widget-title">FC Inter Mainz</h3>
                     <div id="fp-widget_root-3H3VDqsfqhC9UagnvObtyRxyqqv">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter
                             Mainz I auf FuPa</a>
                     </div>
                 </div>
 
-                <!-- TARJETA WIDGET 2 -->
+                <!-- TARJETA WIDGET 2: Segundo equipo -->
                 <div class="widget-card">
+                    <h3 class="widget-title">FC Inter Mainz II</h3>
                     <div id="fp-widget_root-3H86m7DAQODYtcqZ0DSyRxT1sR4">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter
                             Mainz II auf FuPa</a>
                     </div>
                 </div>
 
-                <!-- TARJETA WIDGET 3 -->
+                <!-- TARJETA WIDGET 3: Alte Herren -->
                 <div class="widget-card">
+                    <h3 class="widget-title">FC Inter Mainz Ü32</h3>
                     <div id="fp-widget_root-3H3W8BQ9dKsBBPN7l8GxRiO7NtF">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz
-                            Ü32
-                            auf
-                            FuPa</a>
+                            Ü32 auf FuPa</a>
                     </div>
                 </div>
 
@@ -1594,7 +1623,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="800x800.png" alt="Inter Mainz Wappen">
-                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <div class="footer-brand-name">FC Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
@@ -1641,7 +1670,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <span>© 2026 FC Inter Mainz 2005. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>

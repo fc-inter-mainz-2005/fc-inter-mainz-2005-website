@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitglied werden – F.C. Inter Mainz 2005</title>
+    <title>Mitglied werden – FC Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -85,6 +85,10 @@
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
+            overflow-wrap: break-word;
+            word-break: normal;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         /* ── SCROLLBAR ── */
@@ -601,6 +605,10 @@
             .nav-hamburger {
                 display: flex;
             }
+
+            .nav-logo span {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -612,7 +620,7 @@
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
-            <span>F.C. Inter Mainz</span>
+            <span>FC Inter Mainz</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -796,7 +804,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="800x800.png" alt="Inter Mainz Wappen">
-                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <div class="footer-brand-name">FC Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
@@ -843,7 +851,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <span>© 2026 FC Inter Mainz 2005. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unsere Geschichte – F.C. Inter Mainz 2005</title>
+    <title>Unsere Geschichte – FC Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -88,11 +88,13 @@
             color: var(--blue);
             text-decoration: none;
             font-size: 1.8rem;
-            /* Tamaño reducido para mejor lectura */
             font-weight: 900;
             letter-spacing: 2px;
-            /* Espaciado ajustado */
             transition: color 0.2s;
+            overflow-wrap: break-word;
+            word-break: normal;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         .footer-brand-name {
@@ -457,6 +459,10 @@
             line-height: 1;
             margin-bottom: 16px;
             color: var(--text-main);
+            overflow-wrap: break-word;
+            word-break: normal;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         .bg-year-watermark {
@@ -642,6 +648,10 @@
             .nav-hamburger {
                 display: flex;
             }
+
+            .nav-logo span {
+                display: none;
+            }
         }
 
         .lightbox-overlay {
@@ -702,7 +712,7 @@
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
-            <span>F.C. Inter Mainz</span>
+            <span>FC Inter Mainz</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -796,7 +806,7 @@
 
                         Im Jahr 2005 beschlossen einige Mitglieder dieser Kerngruppe, neue Grundlagen für diesen
                         Zusammenhalt zu
-                        schaffen. Sie gründeten den F.C. Inter Mainz 2005, meldeten ihn offiziell als Amateurverein an
+                        schaffen. Sie gründeten den FC Inter Mainz 2005, meldeten ihn offiziell als Amateurverein an
                         und trugen
                         sich in die Regionalliga ein.
 
@@ -858,7 +868,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="800x800.png" alt="Inter Mainz Wappen">
-                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <div class="footer-brand-name">FC Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
@@ -905,7 +915,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <span>© 2026 FC Inter Mainz 2005. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>

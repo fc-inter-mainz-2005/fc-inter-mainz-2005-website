@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum – F.C. Inter Mainz 2005</title>
+    <title>Impressum – FC Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -448,6 +448,10 @@
             text-transform: uppercase;
             color: var(--text-main);
             line-height: 0.95;
+            overflow-wrap: break-word;
+            word-break: normal;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         .section-divider {
@@ -720,6 +724,10 @@
                 display: flex;
             }
 
+            .nav-logo span {
+                display: none;
+            }
+
             .page-header {
                 padding: 110px 6% 48px;
             }
@@ -741,7 +749,7 @@
     <nav>
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
-            <span>F.C. Inter Mainz</span>
+            <span>FC. Inter Mainz</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -822,7 +830,7 @@
         <div class="legal-card reveal reveal-delay-1" >
             <h2>Angaben gemäß § 5 DDG</h2>
             <p>
-                <strong style="color:var(--text-main)">F.C. Inter Mainz 2005 e.V.</strong><br>
+                <strong style="color:var(--text-main)">FC. Inter Mainz 2005 e.V.</strong><br>
                 Albert-Stohr-Straße 50<br>
                 55128 Mainz<br>
                 Deutschland
@@ -902,7 +910,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="800x800.png" alt="Inter Mainz Wappen">
-                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <div class="footer-brand-name">FC. Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
@@ -949,7 +957,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <span>© 2026 FC. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>

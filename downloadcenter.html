@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Downloadcenter – F.C. Inter Mainz 2005</title>
+    <title>Downloadcenter – FC Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -83,6 +83,10 @@
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
+            overflow-wrap: break-word;
+            word-break: normal;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         ::-webkit-scrollbar {
@@ -515,6 +519,23 @@
         .download-btn svg {
             width: 16px;
             height: 16px;
+            flex-shrink: 0;
+        }
+
+        .download-btn-text {
+            display: inline;
+        }
+
+        @media (max-width: 1200px) {
+            .download-btn {
+                padding: 13px;
+                width: 44px;
+                height: 44px;
+            }
+
+            .download-btn-text {
+                display: none;
+            }
         }
 
         .hint-note {
@@ -692,6 +713,10 @@
             .nav-hamburger {
                 display: flex;
             }
+
+            .nav-logo span {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -704,7 +729,7 @@
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
-            <span>F.C. Inter Mainz</span>
+            <span>FC Inter Mainz</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Startseite</a></li>
@@ -780,7 +805,7 @@
             <div class="h-1 w-24 mx-auto reveal reveal-delay-2" style="background:var(--red); border-radius:2px;"></div>
             <p class="mt-6 text-sm reveal reveal-delay-3"
                 style="color: var(--text-muted); max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
-                Hier findest du alle wichtigen Formulare rund um deine Mitgliedschaft beim F.C. Inter Mainz 2005 zum
+                Hier findest du alle wichtigen Formulare rund um deine Mitgliedschaft beim FC Inter Mainz 2005 zum
                 Herunterladen.
             </p>
         </div>
@@ -808,7 +833,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="800x800.png" alt="Inter Mainz Wappen">
-                    <div class="footer-brand-name">F.C. Inter Mainz</div>
+                    <div class="footer-brand-name">FC Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
@@ -855,7 +880,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 F.C. Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <span>© 2026 FC Inter Mainz 2005. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
@@ -1005,11 +1030,11 @@
                 </div>
                 <div class="download-title"></div>
                 <p class="download-desc"></p>
-                <button class="download-btn">
+                <button class="download-btn" aria-label="Datei herunterladen">
                     <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
                     </svg>
-                    Datei herunterladen
+                    <span class="download-btn-text">Datei herunterladen</span>
                 </button>`;
                     div.querySelector('.download-title').textContent = card.title;
                     div.querySelector('.download-desc').textContent = card.description;
