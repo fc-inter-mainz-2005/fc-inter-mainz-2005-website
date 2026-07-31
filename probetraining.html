@@ -684,7 +684,7 @@
                 <p class="mt-2 text-blue-200 text-sm">Werde Teil unserer Mannschaft im Herzen von Mainz.</p>
             </div>
 
-            <div class="bg-red-50 border-l-4 border-primary-red p-4 mx-8 mt-8 rounded-r-lg" id="hinweis-box">
+            <div class="bg-red-50 border-l-4 border-[#cc0000] p-4 mx-8 mt-8 rounded-r-lg" id="hinweis-box">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <svg class="h-5 w-5 text-[#cc0000]" viewBox="0 0 20 20" fill="currentColor">
@@ -704,7 +704,12 @@
                 </div>
             </div>
 
-            <form id="membership-form" class="p-8 space-y-6">
+            <form id="contact-form" name="probetraining" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="form-name" value="probetraining" />
+                <p style="display:none">
+                    <label>Nicht ausfüllen: <input name="bot-field" /></label>
+                </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Vorname
@@ -891,20 +896,16 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = `Wird gesendet…`;
 
-            fetch('php/mitgliedConsultSaveInDB.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.saveStatus) {
-                        alert('Vielen Dank! Deine Anfrage wurde erfolgreich gespeichert.');
-                        form.reset();
+            fetch('/', { method: 'POST', body: formData })
+                .then(() => {
+                    submitBtn.innerHTML = `✓ Erfolgreich gesendet`;
+                    submitBtn.style.background = '#166534';
+                    form.reset();
+                    setTimeout(() => {
+                        submitBtn.innerHTML = `<svg .../> Nachricht absenden`;
+                        submitBtn.style.background = '';
                         submitBtn.disabled = true;
-                    } else {
-                        alert('Fehler: ' + data.message);
-                        submitBtn.disabled = false;
-                    }
+                    }, 4000);
                 })
                 .catch(error => {
                     console.error('Error:', error);

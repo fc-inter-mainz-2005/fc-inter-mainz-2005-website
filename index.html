@@ -308,11 +308,11 @@
         }
 
         .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 min(8%, 56px);
-    max-width: 900px;
-}
+            position: relative;
+            z-index: 2;
+            padding: 0 min(8%, 56px);
+            max-width: 900px;
+        }
 
         .hero-badge {
             display: inline-flex;
@@ -1566,8 +1566,8 @@
             <p class="sponsors-label reveal">Unsere offiziellen Partner & Sponsoren</p>
 
             <div class="sponsors-marquee">
-    <div class="sponsors-track" id="sponsors-track"></div>
-</div>
+                <div class="sponsors-track" id="sponsors-track"></div>
+            </div>
         </div>
     </section>
 
@@ -1875,7 +1875,10 @@
 
 
         fetch('events.json')
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error('events.json not found');
+                return res.json();
+            })
             .then(data => {
                 const list = document.getElementById('event-list');
                 data.events.forEach((event, index) => {
@@ -1901,34 +1904,41 @@
                     item.querySelector('.event-meta').textContent = event.meta;
                     list.appendChild(item);
                 });
-            });
+            })
+            .catch(err => console.warn('Events not loaded:', err));
 
         fetch('data/sponsors.json')
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) throw new Error('sponsors.json not found');
+        return res.json();
+    })
     .then(data => {
         const track = document.getElementById('sponsors-track');
-        function renderSponsor(s, hidden) {
-            const a = document.createElement('a');
-            a.href = s.link;
-            a.target = '_blank';
-            a.rel = 'noopener';
-            a.className = 'sponsor-item';
-            if (hidden) { a.setAttribute('aria-hidden', 'true'); a.tabIndex = -1; }
-            const img = document.createElement('img');
-            img.src = s.image;
-            img.alt = hidden ? '' : s.name;
-            img.title = s.name;
-            img.loading = 'lazy';
-            a.appendChild(img);
-            track.appendChild(a);
-        }
-        // Se pinta la lista dos veces para que el loop infinito del CSS (translateX(-50%)) sea perfecto
-        data.sponsors.forEach(s => renderSponsor(s, false));
-        data.sponsors.forEach(s => renderSponsor(s, true));
-    });
+                function renderSponsor(s, hidden) {
+                    const a = document.createElement('a');
+                    a.href = /^https?:\/\//i.test(s.link) ? s.link : '#';
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.className = 'sponsor-item';
+                    if (hidden) { a.setAttribute('aria-hidden', 'true'); a.tabIndex = -1; }
+                    const img = document.createElement('img');
+                    img.src = s.image;
+                    img.alt = hidden ? '' : s.name;
+                    img.title = s.name;
+                    img.loading = 'lazy';
+                    a.appendChild(img);
+                    track.appendChild(a);
+                }
+                // Se pinta la lista dos veces para que el loop infinito del CSS (translateX(-50%)) sea perfecto
+                data.sponsors.forEach(s => renderSponsor(s, false));
+                data.sponsors.forEach(s => renderSponsor(s, true));
+            }).catch(err => console.warn('Sponsors not available:', err));
 
         fetch('data/vorstand.json')
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error('vorstand.json not found');
+                return res.json();
+            })
             .then(data => {
                 const grid = document.getElementById('vorstand-grid-home');
                 data.members.forEach(m => {
@@ -1946,7 +1956,7 @@
                     card.querySelector('.vorstand-role').textContent = m.role;
                     grid.appendChild(card);
                 });
-            });
+            }).catch(err => console.warn('Vorstand not available:', err));
 
 
 
