@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/tailwind.css">
 
     <style>
-        /* ── FUENTES LOCALES INTER ── */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
@@ -31,7 +30,6 @@
         }
 
         :root {
-            /* TEMA CLARO */
             --bg-body: #faf8f5;
             --bg-surface: #ffffff;
             --bg-nav: rgba(255, 255, 255, 0.98);
@@ -50,7 +48,6 @@
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --white: #ffffff;
-            /* Redefinido por si acaso */
             --gray: #8899bb;
             --card-bg: #ffffff;
         }
@@ -109,7 +106,6 @@
             background: #a0aec0;
         }
 
-        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0;
@@ -153,7 +149,6 @@
         .nav-links {
             display: flex;
             align-items: center;
-            /* Alineación perfecta del nuevo botón */
             gap: 6px;
             list-style: none;
         }
@@ -169,7 +164,6 @@
             position: relative;
             transition: color 0.25s;
             display: inline-flex;
-            /* ← añadir */
             align-items: center;
         }
 
@@ -245,7 +239,6 @@
         }
 
 
-        /* ── DROPDOWN DESKTOP ── */
         .nav-links li.has-dropdown {
             position: relative;
         }
@@ -317,7 +310,6 @@
             color: var(--red);
         }
 
-        /* ── ACORDEÓN MOBILE ── */
         .mobile-nav-group {
             display: flex;
             flex-direction: column;
@@ -384,10 +376,8 @@
 
         .mobile-nav a {
             font-size: 1.8rem;
-            /* Tamaño reducido para mejor lectura */
             font-weight: 900;
             letter-spacing: 2px;
-            /* Espaciado ajustado */
             color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
@@ -430,14 +420,10 @@
 
         .team-title {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
-            /* Reducimos el tamaño mínimo en móviles */
             word-break: normal;
-            /* Fuerza el quiebre si la palabra es demasiado larga */
             -webkit-hyphens: auto;
-            /* Soporte para guiones automáticos en iOS/Android */
             hyphens: auto;
             line-height: 1.1;
-            /* Asegura que no se solapen las líneas si se parte */
             overflow-wrap: break-word;
         }
 
@@ -884,7 +870,6 @@
                 });
             }).catch(err => console.warn('Abteilungsverantwortliche nicht verfügbar:', err));
 
-        /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -901,7 +886,6 @@
             }
         });
 
-        /* ─ Acordeón mobile ─ */
         document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
                 toggle.closest('.mobile-nav-group').classList.toggle('open');

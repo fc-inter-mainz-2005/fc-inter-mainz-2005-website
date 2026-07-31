@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/tailwind.css">
 
     <style>
-        /* ── FUENTES LOCALES INTER ── */
         @font-face {
             font-family: 'Inter';
             src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
@@ -170,7 +169,7 @@
             border-radius: 4px;
             transition: color 0.25s, background 0.25s;
             position: relative;
-            display: inline-flex;      /* ← añadir */
+            display: inline-flex; 
     align-items: center;
         }
 
@@ -247,7 +246,6 @@
             transition: transform 0.3s, opacity 0.3s;
         }
 
-        /* ── DROPDOWN DESKTOP ── */
         .nav-links li.has-dropdown {
             position: relative;
         }
@@ -319,7 +317,6 @@
             color: var(--red);
         }
 
-        /* ── ACORDEÓN MOBILE ── */
         .mobile-nav-group {
             display: flex;
             flex-direction: column;
@@ -386,10 +383,8 @@
 
         .mobile-nav a {
             font-size: 1.8rem;
-            /* Tamaño reducido para mejor lectura */
             font-weight: 900;
             letter-spacing: 2px;
-            /* Espaciado ajustado */
             color: var(--blue);
             text-decoration: none;
             transition: color 0.2s;
@@ -976,7 +971,6 @@ fetch('data/teams.json')
     })
     .catch(err => console.warn('Teams nicht verfügbar:', err));
 
-        /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -993,7 +987,6 @@ fetch('data/teams.json')
             }
         });
 
-        /* ─ Acordeón mobile ─ */
         document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
                 toggle.closest('.mobile-nav-group').classList.toggle('open');

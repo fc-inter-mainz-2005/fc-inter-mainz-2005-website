@@ -1,32 +1,6 @@
 {
   "events": [
     {
-      "date_num": "18",
-      "date_mo": "Juli",
-      "name": "Großes Sommerfest",
-      "meta": "Ab 14:00 Uhr · Alte Ziegelei",
-      "tag": "18. Juli 2026",
-      "image": "Sommerfest.png",
-      "description": "Feiere mit uns den Abschluss einer grandiosen Saison! Es gibt Grillfleisch, kühle Getränke, eine Hüpfburg für die Kleinen und ein DJ sorgt für die musikalische Untermalung.",
-      "location_name": "Alte Ziegelei",
-      "location_address": "Alte Ziegelei, 55128 Mainz · Ab 14:00 Uhr",
-      "link_text": "📷 Post ansehen",
-      "link_url": "https://instagram.com"
-    },
-    {
-      "date_num": "24",
-      "date_mo": "Mai",
-      "name": "Saisonfinale und Grill",
-      "meta": "Ende der Saison 2024/25",
-      "tag": "24. Mai 2026",
-      "image": "",
-      "description": "Liebe Mitglieder, wir laden Sie herzlich zu den letzten Spielen der Saison und zum anschließenden Grillen ein, um den Tag abzuschließen.",
-      "location_name": "",
-      "location_address": "",
-      "link_text": "Fragen vorab einreichen?",
-      "link_url": "kontakt.html"
-    },
-    {
       "date_num": "05",
       "date_mo": "September",
       "name": "Trainingsauftakt Herbst",

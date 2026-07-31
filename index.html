@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Inter Mainz 2005 – Offiziell</title>
+    <title>FC Inter Mainz 2005</title>
     <link rel="icon" type="image/png" href="800x800.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -1952,6 +1952,16 @@
             .then(data => {
                 const list = document.getElementById('event-list');
                 const modalsContainer = document.getElementById('modals-container');
+                
+                const dynamicObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            obs.unobserve(entry.target); // Dejar de observar una vez que ya apareció
+                        }
+                    });
+                }, { threshold: 0.12 });
+
                 data.events.forEach((event, index) => {
                     const modalId = 'modal-dyn-' + index;
                     const item = document.createElement('div');
@@ -1969,13 +1979,18 @@
                         <div class="event-arrow">
                             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                         </div>`;
+                        
                     if (index % 2 === 1) item.querySelector('.event-date').style.background = 'var(--blue-mid)';
+                    
                     item.querySelector('.event-date-num').textContent = event.date_num;
                     item.querySelector('.event-date-mo').textContent = event.date_mo;
                     item.querySelector('.event-name').textContent = event.name;
                     item.querySelector('.event-meta').textContent = event.meta;
+                    
                     list.appendChild(item);
                     modalsContainer.insertAdjacentHTML('beforeend', buildModalHTML(event, modalId));
+                    
+                    dynamicObserver.observe(item);
                 });
             })
             .catch(err => console.warn('Events not loaded:', err));

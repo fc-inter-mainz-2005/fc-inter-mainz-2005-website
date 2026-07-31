@@ -45,7 +45,6 @@
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --white: #ffffff;
-            /* Redefinido por si acaso */
             --gray: #8899bb;
             --card-bg: #ffffff;
         }
@@ -150,7 +149,6 @@
             transition: color 0.25s;
             position: relative;
             display: inline-flex;
-            /* ← añadir */
             align-items: center;
         }
 
@@ -218,7 +216,6 @@
             border-radius: 2px;
         }
 
-        /* ── DROPDOWN DESKTOP ── */
         .nav-links li.has-dropdown {
             position: relative;
         }
@@ -290,7 +287,6 @@
             color: var(--red);
         }
 
-        /* ── ACORDEÓN MOBILE ── */
         .mobile-nav-group {
             display: flex;
             flex-direction: column;
@@ -1067,7 +1063,6 @@
         mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
         mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
         (function () { const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 }); document.querySelectorAll('.reveal').forEach(el => obs.observe(el)); })();
-        /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1084,7 +1079,6 @@
             }
         });
 
-        /* ─ Acordeón mobile ─ */
         document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
             toggle.addEventListener('click', () => {
                 toggle.closest('.mobile-nav-group').classList.toggle('open');
