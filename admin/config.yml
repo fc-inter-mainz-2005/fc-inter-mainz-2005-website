@@ -23,7 +23,7 @@ collections:
     files:
       - label: "Termine Liste"
         name: "termine_file"
-        file: "events.json"
+        file: "data/events.json"
         fields:
           - label: "Eventos"
             name: "events"

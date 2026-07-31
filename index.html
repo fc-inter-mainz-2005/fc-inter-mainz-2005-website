@@ -1890,19 +1890,34 @@
         })();
 
 
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>"']/g, c => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
+        }
+
         function buildModalHTML(event, id) {
-            const heroImg = event.image ? `<img src="${event.image}" alt="${event.name}" onerror="this.style.display='none'">` : '';
+            const safe = {
+                name: escapeHtml(event.name),
+                description: escapeHtml(event.description),
+                tag: escapeHtml(event.tag),
+                location_name: escapeHtml(event.location_name),
+                location_address: escapeHtml(event.location_address),
+                link_text: escapeHtml(event.link_text)
+            };
+            const heroImg = event.image ? `<img src="${escapeHtml(event.image)}" alt="${safe.name}" onerror="this.style.display='none'">` : '';
             const locationBlock = event.location_name ? `
                 <div class="modal-detail">
                     <span style="font-size:1.2rem">📍</span>
                     <div>
-                        <div class="modal-detail-text">${event.location_name}</div>
-                        <div class="modal-detail-sub">${event.location_address || ''}</div>
+                        <div class="modal-detail-text">${safe.location_name}</div>
+                        <div class="modal-detail-sub">${safe.location_address || ''}</div>
                     </div>
                 </div>` : '';
             const isExternal = event.link_url && /^https?:\/\//i.test(event.link_url);
             const linkBlock = event.link_url
-                ? `<a href="${event.link_url}" ${isExternal ? 'target="_blank" rel="noopener"' : ''}>${event.link_text || 'Mehr erfahren'}</a>`
+                ? `<a href="${event.link_url}" ${isExternal ? 'target="_blank" rel="noopener"' : ''}>${safe.link_text || 'Mehr erfahren'}</a>`
                 : '<span></span>';
             return `
             <div class="modal-overlay" id="${id}">
@@ -1913,12 +1928,12 @@
                     <div class="modal-hero">
                         ${heroImg}
                         <div class="modal-hero-overlay">
-                            <span class="modal-tag">${event.tag || ''}</span>
-                            <h3 class="modal-title">${event.name}</h3>
+                            <span class="modal-tag">${safe.tag || ''}</span>
+                            <h3 class="modal-title">${safe.name}</h3>
                         </div>
                     </div>
                     <div class="modal-body">
-                        <p>${event.description || ''}</p>
+                        <p>${safe.description || ''}</p>
                         ${locationBlock}
                         <div class="modal-footer">
                             ${linkBlock}
@@ -1929,7 +1944,7 @@
             </div>`;
         }
 
-        fetch('events.json')
+        fetch('data/events.json')
             .then(res => {
                 if (!res.ok) throw new Error('events.json not found');
                 return res.json();
