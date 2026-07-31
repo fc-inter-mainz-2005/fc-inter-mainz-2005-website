@@ -154,6 +154,7 @@
             font-size: 1.4rem;
             letter-spacing: 2px;
             color: var(--blue);
+            white-space: nowrap;
         }
 
         .nav-links {
@@ -434,13 +435,14 @@
         .team-title {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
             /* Reducimos el tamaño mínimo en móviles */
-            word-break: break-word;
+            word-break: normal;
             /* Fuerza el quiebre si la palabra es demasiado larga */
             -webkit-hyphens: auto;
             /* Soporte para guiones automáticos en iOS/Android */
             hyphens: auto;
             line-height: 1.1;
             /* Asegura que no se solapen las líneas si se parte */
+             overflow-wrap: break-word;
         }
 
         .vorstand-grid {
@@ -460,6 +462,18 @@
             flex: 0 1 280px;
             max-width: 320px;
         }
+
+        @media (min-width: 1024px) {
+    .vorstand-grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .vorstand-grid-4 .vorstand-card {
+        max-width: none;
+        flex: none;
+    }
+}
 
         .vorstand-card:hover {
             transform: translateY(-8px);
@@ -625,7 +639,7 @@
             transition-delay: 0.1s;
         }
 
-        @media(max-width:768px) {
+        @media(max-width:1200px) {
             .nav-links {
                 display: none;
             }
@@ -732,7 +746,7 @@
                 <h2 class="team-title text-2xl md:text-3xl break-words">Abteilungsverantwortliche</h2>
                 <div class="flex-grow h-px bg-[var(--card-border)] ml-4 md:ml-8"></div>
             </div>
-            <div class="vorstand-grid">
+            <div class="vorstand-grid vorstand-grid-4">
                 <div class="vorstand-card">
                     <div class="vorstand-photo">
                         <img src="martin.jpg" alt="Martin Ubilla" class="w-full h-full object-cover"

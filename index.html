@@ -10,6 +10,8 @@
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
+    <link rel="stylesheet" href="css/tailwind.css">
+
     <style>
         /* ── FUENTES LOCALES INTER ── */
         @font-face {
@@ -157,6 +159,7 @@
             font-size: 1.4rem;
             letter-spacing: 2px;
             color: var(--blue);
+            white-space: nowrap;
         }
 
         /* Cambio de color de nav para contraste inicial sobre el hero oscuro */
@@ -305,11 +308,11 @@
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 8% 0 8%;
-            max-width: 900px;
-        }
+    position: relative;
+    z-index: 2;
+    padding: 0 min(8%, 56px);
+    max-width: 900px;
+}
 
         .hero-badge {
             display: inline-flex;
@@ -1337,7 +1340,7 @@
         }
 
         /* ── RESPONSIVE ── */
-        @media(max-width:768px) {
+        @media(max-width:1200px) {
             .nav-links {
                 display: none;
             }

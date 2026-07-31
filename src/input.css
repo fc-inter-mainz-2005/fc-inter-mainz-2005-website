@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+    body {
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        overflow-wrap: break-word;
+    }
+
+    .nav-links a {
+        hyphens: none;
+        white-space: nowrap;
+    }
+}
