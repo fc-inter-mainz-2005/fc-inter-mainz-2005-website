@@ -1,0 +1,56 @@
+{
+  "events": [
+    {
+      "date_num": "18",
+      "date_mo": "Juli",
+      "name": "Großes Sommerfest",
+      "meta": "Ab 14:00 Uhr · Alte Ziegelei",
+      "tag": "18. Juli 2026",
+      "image": "Sommerfest.png",
+      "description": "Feiere mit uns den Abschluss einer grandiosen Saison! Es gibt Grillfleisch, kühle Getränke, eine Hüpfburg für die Kleinen und ein DJ sorgt für die musikalische Untermalung.",
+      "location_name": "Alte Ziegelei",
+      "location_address": "Alte Ziegelei, 55128 Mainz · Ab 14:00 Uhr",
+      "link_text": "📷 Post ansehen",
+      "link_url": "https://instagram.com"
+    },
+    {
+      "date_num": "24",
+      "date_mo": "Mai",
+      "name": "Saisonfinale und Grill",
+      "meta": "Ende der Saison 2024/25",
+      "tag": "24. Mai 2026",
+      "image": "",
+      "description": "Liebe Mitglieder, wir laden Sie herzlich zu den letzten Spielen der Saison und zum anschließenden Grillen ein, um den Tag abzuschließen.",
+      "location_name": "",
+      "location_address": "",
+      "link_text": "Fragen vorab einreichen?",
+      "link_url": "kontakt.html"
+    },
+    {
+      "date_num": "05",
+      "date_mo": "September",
+      "name": "Trainingsauftakt Herbst",
+      "meta": "Ab 18:30 Uhr · Bezirkssportanlage Mainz",
+      "tag": "05. September 2026",
+      "image": "",
+      "description": "Nach der Sommerpause starten wir wieder gemeinsam ins Training. Neue Spieler sind herzlich willkommen, einfach vorbeikommen und mittrainieren.",
+      "location_name": "Bezirkssportanlage Mainz",
+      "location_address": "Albert-Stohr-Straße 50, 55128 Mainz · Ab 18:30 Uhr",
+      "link_text": "Zum Probetraining anmelden",
+      "link_url": "probetraining.html"
+    },
+    {
+      "date_num": "12",
+      "date_mo": "Oktober",
+      "name": "Herbstwanderpokal",
+      "meta": "Freundschaftsturnier · Sportplatz Alte Ziegelei",
+      "tag": "12. Oktober 2026",
+      "image": "",
+      "description": "Unser traditionelles Freundschaftsturnier mit befreundeten Vereinen aus der Region. Zuschauer sind herzlich willkommen.",
+      "location_name": "Sportplatz Alte Ziegelei",
+      "location_address": "Alte Ziegelei, 55128 Mainz · Ab 11:00 Uhr",
+      "link_text": "📷 Post ansehen",
+      "link_url": "https://instagram.com"
+    }
+  ]
+}
