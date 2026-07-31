@@ -1191,6 +1191,12 @@
             const fileInput = form.querySelector('#anhang');
             if (fileInput && fileInput.files.length > 0) {
                 const file = fileInput.files[0];
+                const allowedExt = ['.pdf', '.jpg', '.jpeg', '.png', '.docx'];
+                const ext = '.' + file.name.split('.').pop().toLowerCase();
+                if (!allowedExt.includes(ext) || !allowedTypes.includes(file.type)) {
+                    alert('Dateityp nicht erlaubt. Bitte nur PDF, JPG, PNG oder DOCX hochladen.');
+                    return;
+                }
                 const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png',
                     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
                 const maxSize = 3 * 1024 * 1024; // 3 MB

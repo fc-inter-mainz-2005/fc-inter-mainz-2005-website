@@ -684,7 +684,7 @@
                 <p class="mt-2 text-blue-200 text-sm">Werde Teil unserer Mannschaft im Herzen von Mainz.</p>
             </div>
 
-            <div class="bg-red-50 border-l-4 border-[#cc0000] p-4 mx-8 mt-8 rounded-r-lg" id="hinweis-box">
+            <div class="bg-red-50 border-l-4 border-[#cc0000] p-4 mx-8 mt-6 rounded-r-lg" id="hinweis-box">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <svg class="h-5 w-5 text-[#cc0000]" viewBox="0 0 20 20" fill="currentColor">
@@ -705,7 +705,7 @@
             </div>
 
             <form id="contact-form" name="probetraining" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-                enctype="multipart/form-data" novalidate>
+    enctype="multipart/form-data" novalidate class="p-8 space-y-6">
                 <input type="hidden" name="form-name" value="probetraining" />
                 <p style="display:none">
                     <label>Nicht ausfüllen: <input name="bot-field" /></label>
@@ -884,7 +884,7 @@
         /* Form logic */
         const privacyCheck = document.getElementById('privacy-check');
         const submitBtn = document.getElementById('submit-btn');
-        const form = document.getElementById('membership-form');
+        const form = document.getElementById('contact-form');
 
         privacyCheck.addEventListener('change', function () {
             submitBtn.disabled = !this.checked;
