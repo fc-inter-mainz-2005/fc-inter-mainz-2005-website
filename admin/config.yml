@@ -20,19 +20,21 @@ collections:
 
   - name: "termine"
     label: "Kommende Termine"
-    folder: "/"
-    file: "events.json"
-    fields:
-      - label: "Eventos"
-        name: "events"
-        widget: "list"
-        summary: "{{fields.name}}"
+    files:
+      - label: "Termine Liste"
+        name: "termine_file"
+        file: "events.json"
         fields:
-          - {label: "Tag (Nummer)", name: "date_num", widget: "string"}
-          - {label: "Monat", name: "date_mo", widget: "string"}
-          - {label: "Titel", name: "name", widget: "string"}
-          - {label: "Details", name: "meta", widget: "string"}
-          - {label: "Modal ID", name: "modal_id", widget: "string"}
+          - label: "Eventos"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Tag (Nummer)", name: "date_num", widget: "string"}
+              - {label: "Monat", name: "date_mo", widget: "string"}
+              - {label: "Titel", name: "name", widget: "string"}
+              - {label: "Details", name: "meta", widget: "string"}
+              - {label: "Modal ID", name: "modal_id", widget: "string"}
 
   - name: "vorstand"
     label: "Vorstand – Vereinsführung"
