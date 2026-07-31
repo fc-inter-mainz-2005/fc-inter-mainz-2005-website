@@ -1,0 +1,16 @@
+{
+  "cards": [
+    {
+      "title": "Spielerlaubnis bzw. Vereinswechsel",
+      "description": "Enthält den Antrag für einen neuen Spielerpass sowie den Antrag auf Erteilung der Spielerlaubnis bei einem Vereinswechsel.",
+      "file": "documents/spielerlaubnis.pdf",
+      "filename": "Spielerlaubnis.pdf"
+    },
+    {
+      "title": "Vereinsanmeldung",
+      "description": "Mit diesem Formular meldest du dich offiziell als neues Mitglied beim F.C. Inter Mainz 2005 e.V. an. Bitte fülle es vollständig aus und sende es per E-Mail an uns oder gib es bei einem unserer Vorstandsmitglieder ab.",
+      "file": "documents/Anmeldeformular_Inter_Mainz.docx",
+      "filename": "Vereinsanmeldung_Inter_Mainz.docx"
+    }
+  ]
+}

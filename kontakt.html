@@ -925,17 +925,13 @@
 
                     <div class="info-card reveal">
                         <div class="info-card-title">Anschrift</div>
-                        <p class="info-card-text">
-                            Bezirkssportanlage Mainz<br>
-                            Albert-Stohr-Straße 50<br>
-                            55128 Mainz, Deutschland
-                        </p>
+                        <p class="info-card-text" id="anschrift-text"></p>
                     </div>
 
                     <div class="info-card reveal reveal-delay-1">
                         <div class="info-card-title">E-Mail</div>
                         <p class="info-card-text">
-                            <a href="mailto:info@fc-inter-mainz.de">info@fc-inter-mainz.de</a>
+                            <a href="#" id="email-link"></a>
                         </p>
                     </div>
 
@@ -1192,16 +1188,16 @@
             if (fileInput && fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 const allowedExt = ['.pdf', '.jpg', '.jpeg', '.png', '.docx'];
+                const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                const maxSize = 3 * 1024 * 1024; // 3 MB
                 const ext = '.' + file.name.split('.').pop().toLowerCase();
                 if (!allowedExt.includes(ext) || !allowedTypes.includes(file.type)) {
                     alert('Dateityp nicht erlaubt. Bitte nur PDF, JPG, PNG oder DOCX hochladen.');
                     return;
                 }
-                const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png',
-                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-                const maxSize = 3 * 1024 * 1024; // 3 MB
-                if (!allowedTypes.includes(file.type)) {
-                    alert('Dateityp nicht erlaubt. Bitte nur PDF, JPG, PNG oder DOCX hochladen.');
+                if (file.size > maxSize) {
+                    alert('Die Datei ist zu groß (max. 3 MB).');
                     return;
                 }
                 if (file.size > maxSize) {
@@ -1231,6 +1227,17 @@
                     submitBtn.disabled = false;
                 });
         });
+
+        fetch('data/kontakt.json')
+            .then(res => { if (!res.ok) throw new Error('kontakt.json not found'); return res.json(); })
+            .then(data => {
+                document.getElementById('anschrift-text').innerHTML =
+                    `${data.anschrift_name}<br>${data.strasse}<br>${data.plz_ort}`;
+                const emailLink = document.getElementById('email-link');
+                emailLink.href = 'mailto:' + data.email;
+                emailLink.textContent = data.email;
+            })
+            .catch(err => console.warn('Kontaktdaten nicht verfügbar:', err));
 
         /* ─ Dropdown desktop (click, funciona también en touch) ─ */
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {

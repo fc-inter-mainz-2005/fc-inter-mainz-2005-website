@@ -4,6 +4,20 @@ backend:
 media_folder: "images"
 public_folder: "/images"
 collections:
+  - name: "hero"
+    label: "Startseite – Titelbilder (Slideshow)"
+    files:
+      - label: "Fotos"
+        name: "slides"
+        file: "data/hero.json"
+        fields:
+          - label: "Bilder"
+            name: "slides"
+            widget: "list"
+            summary: "{{fields.image}}"
+            fields:
+              - {label: "Foto", name: "image", widget: "image"}
+
   - name: "termine"
     label: "Kommende Termine"
     folder: "/"
@@ -12,6 +26,7 @@ collections:
       - label: "Eventos"
         name: "events"
         widget: "list"
+        summary: "{{fields.name}}"
         fields:
           - {label: "Tag (Nummer)", name: "date_num", widget: "string"}
           - {label: "Monat", name: "date_mo", widget: "string"}
@@ -20,7 +35,7 @@ collections:
           - {label: "Modal ID", name: "modal_id", widget: "string"}
 
   - name: "vorstand"
-    label: "Vorstand"
+    label: "Vorstand – Vereinsführung"
     files:
       - label: "Mitglieder"
         name: "mitglieder"
@@ -29,9 +44,26 @@ collections:
           - label: "Mitglieder"
             name: "members"
             widget: "list"
+            summary: "{{fields.name}} – {{fields.role}}"
             fields:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Position", name: "role", widget: "string"}
+              - {label: "Foto", name: "photo", widget: "image"}
+
+  - name: "vorstand_abteilung"
+    label: "Vorstand – Abteilungsverantwortliche"
+    files:
+      - label: "Mitglieder"
+        name: "mitglieder"
+        file: "data/vorstand_abteilung.json"
+        fields:
+          - label: "Mitglieder"
+            name: "members"
+            widget: "list"
+            summary: "{{fields.name}} – {{fields.role}}"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Zuständigkeit", name: "role", widget: "string"}
               - {label: "Foto", name: "photo", widget: "image"}
 
   - name: "sponsoren"
@@ -44,21 +76,68 @@ collections:
           - label: "Sponsoren"
             name: "sponsors"
             widget: "list"
+            summary: "{{fields.name}}"
             fields:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Logo", name: "image", widget: "image"}
               - {label: "Link", name: "link", widget: "string"}
 
   - name: "teams"
-    label: "Mannschaftsfotos"
+    label: "Mannschaften"
+    files:
+      - label: "Team-Liste"
+        name: "liste"
+        file: "data/teams.json"
+        fields:
+          - label: "Mannschaften"
+            name: "teams"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Name der Mannschaft", name: "name", widget: "string"}
+              - {label: "Liga / Klasse", name: "liga", widget: "string"}
+              - {label: "Mannschaftsfoto", name: "photo", widget: "image"}
+              - {label: "Link zu FuPa (kompletter Kader)", name: "fupa_link", widget: "string", required: false}
+
+  - name: "geschichte"
+    label: "Geschichte – Fotos"
     files:
       - label: "Fotos"
         name: "fotos"
-        file: "data/teams.json"
+        file: "data/geschichte.json"
         fields:
-          - {label: "Foto Inter Mainz I", name: "inter_i", widget: "image"}
-          - {label: "Foto Inter Mainz II", name: "inter_ii", widget: "image"}
-          - {label: "Foto Alte Herren", name: "alte_herren", widget: "image"}
+          - {label: "Foto: Die Gründung (2005)", name: "gruendung", widget: "image"}
+          - {label: "Foto: Aufstieg & Wachstum (2023)", name: "aufstieg", widget: "image"}
+          - {label: "Foto: Der moderne Verein (Heute)", name: "heute", widget: "image"}
+
+  - name: "kontakt"
+    label: "Kontaktdaten"
+    files:
+      - label: "Anschrift & E-Mail"
+        name: "daten"
+        file: "data/kontakt.json"
+        fields:
+          - {label: "Bezeichnung (z.B. Bezirkssportanlage Mainz)", name: "anschrift_name", widget: "string"}
+          - {label: "Straße & Hausnummer", name: "strasse", widget: "string"}
+          - {label: "PLZ & Ort", name: "plz_ort", widget: "string"}
+          - {label: "E-Mail Adresse", name: "email", widget: "string"}
+
+  - name: "downloads"
+    label: "Downloadcenter"
+    files:
+      - label: "Dokumente"
+        name: "dokumente"
+        file: "data/downloads.json"
+        fields:
+          - label: "Karten"
+            name: "cards"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Titel", name: "title", widget: "string"}
+              - {label: "Beschreibung", name: "description", widget: "text"}
+              - {label: "Datei", name: "file", widget: "file", media_folder: "/documents", public_folder: "/documents"}
+              - {label: "Dateiname beim Download", name: "filename", widget: "string"}
 
   - name: "probetraining"
     label: "Probetraining-Hinweis"

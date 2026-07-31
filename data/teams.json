@@ -1,5 +1,22 @@
 {
-  "inter_i": "InterMainzI.jpg",
-  "inter_ii": "InterMainzII.jpg",
-  "alte_herren": "AlteHerren.jpg"
+  "teams": [
+    {
+      "name": "Inter Mainz",
+      "liga": "B-Klasse",
+      "photo": "InterMainzI.jpg",
+      "fupa_link": "https://www.fupa.net/team/fc-inter-mainz-m1-2026-27"
+    },
+    {
+      "name": "Inter Mainz II",
+      "liga": "C-Klasse",
+      "photo": "InterMainzII.jpg",
+      "fupa_link": "https://www.fupa.net/team/fc-inter-mainz-m2-2026-27"
+    },
+    {
+      "name": "Alte Herren (Ü32)",
+      "liga": "Ü32",
+      "photo": "AlteHerren.jpg",
+      "fupa_link": "https://www.fupa.net/club/fc-inter-mainz"
+    }
+  ]
 }

@@ -790,58 +790,7 @@
     <main class="relative z-10 pb-24">
         <div class="section-inner">
 
-            <div class="download-grid">
-
-                <!-- ANMELDUNG -->
-                <div class="download-card reveal">
-                    <div class="download-icon">
-                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 4v16m0 0l-6-6m6 6l6-6M4 20h16" />
-                        </svg>
-                    </div>
-                    <div class="download-title">Spielerlaubnis bzw. Vereinswechsel</div>
-                    <p class="download-desc">
-                        Enthält den Antrag für einen neuen Spielerpass sowie den Antrag auf Erteilung der Spielerlaubnis
-                        bei einem Vereinswechsel.
-                    </p>
-                    <button onclick="downloadFile('documents/spielerlaubnis.pdf', 'Spielerlaubnis.pdf')"
-                        class="download-btn">
-                        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
-                        </svg>
-                        PDF herunterladen
-                    </button>
-                </div>
-
-                <!-- VEREINSANMELDUNG -->
-                <div class="download-card reveal reveal-delay-2">
-                    <div class="download-icon">
-                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 12h6m-6 4h6M9 8h1m5 13H6a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" />
-                        </svg>
-                    </div>
-                    <div class="download-title">Vereinsanmeldung</div>
-                    <p class="download-desc">
-                        Mit diesem Formular meldest du dich offiziell als neues Mitglied beim F.C. Inter Mainz 2005 e.V.
-                        an. Bitte fülle es vollständig aus und sende es per E-Mail an uns oder gib es bei einem unserer
-                        Vorstandsmitglieder ab.
-                    </p>
-
-                    <button
-                        onclick="downloadFile('documents/Anmeldeformular_Inter_Mainz.docx', 'Vereinsanmeldung_Inter_Mainz.docx')"
-                        class="download-btn">
-                        <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
-                        </svg>
-                        PDF herunterladen
-                    </button>
-                </div>
-
-            </div>
+            <div class="download-grid" id="download-grid"></div>
 
             <div class="hint-note reveal reveal-delay-3">
                 <strong style="color:var(--text-main)">Hinweis:</strong> Bei Fragen zum Ausfüllen der Formulare oder zur
@@ -1007,17 +956,15 @@
         });
 
         /* ─ Scroll reveal ─ */
-        (function () {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        })();
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         /* ─ Descarga con diálogo "Guardar como" (Chrome/Edge); fallback normal en otros ─ */
         async function downloadFile(url, suggestedName) {
@@ -1042,6 +989,36 @@
                 a.click();
             }
         }
+
+        fetch('data/downloads.json')
+            .then(res => { if (!res.ok) throw new Error('downloads.json not found'); return res.json(); })
+            .then(data => {
+                const grid = document.getElementById('download-grid');
+                data.cards.forEach((card, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'download-card reveal' + (i > 0 ? ' reveal-delay-' + Math.min(i, 3) : '');
+                    div.innerHTML = `
+                <div class="download-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6M4 20h16"/>
+                    </svg>
+                </div>
+                <div class="download-title"></div>
+                <p class="download-desc"></p>
+                <button class="download-btn">
+                    <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
+                    </svg>
+                    Datei herunterladen
+                </button>`;
+                    div.querySelector('.download-title').textContent = card.title;
+                    div.querySelector('.download-desc').textContent = card.description;
+                    div.querySelector('.download-btn').addEventListener('click', () => downloadFile(card.file, card.filename));
+                    grid.appendChild(div);
+                });
+                document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            })
+            .catch(err => console.warn('Downloads nicht verfügbar:', err));
     </script>
 </body>
 
