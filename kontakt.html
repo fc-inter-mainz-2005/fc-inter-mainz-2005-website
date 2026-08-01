@@ -1007,7 +1007,7 @@
 
                 <div class="md:col-span-2 reveal reveal-delay-1">
                     <div class="form-card">
-                        <form id="contact-form" name="kontakt" method="POST" data-netlify="true"
+                        <form id="contact-form" name="kontakt" method="POST" data-netlify-recaptcha="true"
                             netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
                             <input type="hidden" name="form-name" value="kontakt" />
                             <p style="display:none">
@@ -1068,7 +1068,7 @@
                                     Bearbeitung meines Anliegens gespeichert werden.
                                 </label>
                             </div>
-
+                            <div data-netlify-recaptcha="true" class="mb-6"></div>
                             <button type="submit" id="submit-btn" class="btn-submit" disabled>
                                 Nachricht<br class="force-break"> absenden
                             </button>
@@ -1209,6 +1209,7 @@
             submitBtn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 018-8v8H4z"/></svg> Wird gesendet…`;
 
             fetch('/', { method: 'POST', body: formData })
+                .then(res => { if (!res.ok) throw new Error('rejected'); })
                 .then(() => {
                     submitBtn.innerHTML = `✓ Erfolgreich gesendet`;
                     submitBtn.style.background = '#166534';
