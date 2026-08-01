@@ -583,11 +583,18 @@
             height: 380px;
             border-radius: 14px;
             overflow: hidden;
-            background-size: cover;
-            background-position: center;
             text-decoration: none;
             box-shadow: var(--shadow-md);
             transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .about-card-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
 
         .about-card:hover {
@@ -1709,7 +1716,8 @@
                 <span class="section-divider"></span>
             </div>
             <div class="about-grid reveal reveal-delay-1">
-                <a href="geschichte.html" class="about-card" style="background-image:url('InterMainzGrundung.jpg')">
+                <a href="geschichte.html" class="about-card">
+                    <img class="about-card-img" src="InterMainzGrundung.jpg" alt="Geschichte">
                     <div class="about-card-content">
                         <div class="about-card-title">Geschichte</div>
                         <span class="about-card-btn">
@@ -1718,7 +1726,8 @@
                         </span>
                     </div>
                 </a>
-                <a href="teams.html" class="about-card" style="background-image:url('TeamsIndex.jpg')">
+                <a href="teams.html" class="about-card">
+                    <img class="about-card-img" src="TeamsIndex.jpg" alt="Teams">
                     <div class="about-card-content">
                         <div class="about-card-title">Teams</div>
                         <span class="about-card-btn">
@@ -1727,7 +1736,8 @@
                         </span>
                     </div>
                 </a>
-                <a href="vorstand.html" class="about-card" style="background-image:url('InterMainz4.jpg')">
+                <a href="vorstand.html" class="about-card">
+                    <img class="about-card-img" src="InterMainz4.jpg" alt="Vorstand">
                     <div class="about-card-content">
                         <div class="about-card-title">Vorstand</div>
                         <span class="about-card-btn">
