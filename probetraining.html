@@ -649,8 +649,8 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
                     <li><a href="teams.html">Teams</a></li>
+                    <li><a href="vorstand.html">Vorstand</a></li>
                 </ul>
             </li>
             <li><a href="kontakt.html">Kontakt</a></li>
@@ -841,7 +841,7 @@
                     <h4>Kontakt</h4>
                     <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
                     <br>
-                    <p>info@intermainz.de</p>
+                    <p><a href="mailto:info@fc-inter-mainz.de" style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
                     <br>
                     <p>+49 06131 000000</p>
                 </div>
@@ -901,6 +901,12 @@
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
             const formData = new FormData(form);
             submitBtn.disabled = true;
             submitBtn.innerHTML = `Wird gesendet…`;
