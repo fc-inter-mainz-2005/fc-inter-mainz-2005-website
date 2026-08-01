@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teams – FC Inter Mainz 2005 e.V.</title>
-    <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="icon" type="image/png" href="logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -632,6 +632,16 @@
             transition-delay: 0.3s;
         }
 
+        .force-break {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .force-break {
+                display: block;
+            }
+        }
+
         .nav-cart-mobile {
             display: none;
             align-items: center;
@@ -741,7 +751,7 @@
             </svg>
         </a>
         <a href="index.html" class="nav-logo">
-            <img src="800x800.png" alt="Inter Mainz Wappen">
+            <img src="logo.png" alt="Inter Mainz Wappen">
             <span>FC Inter Mainz</span>
         </a>
         <ul class="nav-links">
@@ -811,7 +821,7 @@
             <p class="section-eyebrow reveal">Die Kader</p>
             <h1
                 class="text-4xl md:text-6xl font-black text-[#0a1f44] uppercase tracking-tighter mb-6 reveal reveal-delay-1">
-                Unsere <span class="text-[var(--red)]">Mannschaften</span></h1>
+                Unsere<br class="force-break"> <span class="text-[var(--red)]">Mannschaften</span></h1>
             <div class="h-1 w-24 bg-[var(--red)] mx-auto reveal reveal-delay-2"></div>
 
             <div class="mt-10 flex flex-wrap justify-center gap-x-3 md:gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest reveal reveal-delay-3"
@@ -831,7 +841,7 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="800x800.png" alt="Inter Mainz Wappen">
+                    <img src="logo.png" alt="Inter Mainz Wappen">
                     <div class="footer-brand-name">FC Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>

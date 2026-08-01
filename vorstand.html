@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vorstand – FC Inter Mainz 2005 e.V.</title>
-    <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="icon" type="image/png" href="logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -421,10 +421,28 @@
         .team-title {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
             word-break: normal;
-            -webkit-hyphens: auto;
-            hyphens: auto;
+            -webkit-hyphens: none;
+            hyphens: none;
             line-height: 1.1;
-            overflow-wrap: break-word;
+            overflow-wrap: normal;
+        }
+
+        .force-break {
+            display: none;
+        }
+
+        .force-hyphen {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .force-break {
+                display: block;
+            }
+
+            .force-hyphen {
+                display: inline;
+            }
         }
 
         .vorstand-grid {
@@ -681,7 +699,7 @@
             </svg>
         </a>
         <a href="index.html" class="nav-logo">
-            <img src="800x800.png" alt="Wappen">
+            <img src="logo.png" alt="Wappen">
             <span>FC Inter Mainz</span>
         </a>
         <ul class="nav-links">
@@ -766,7 +784,7 @@
 
         <section class="reveal">
             <div class="flex items-center mb-12">
-                <h2 class="team-title text-2xl md:text-3xl break-words">Abteilungsverantwortliche</h2>
+                <h2 class="team-title text-2xl md:text-3xl">Abteilungs<span class="force-hyphen">-</span><br class="force-break">verantwortliche</h2>
                 <div class="flex-grow h-px bg-[var(--card-border)] ml-4 md:ml-8"></div>
             </div>
             <div class="vorstand-grid vorstand-grid-4" id="vorstand-grid-abteilung"></div>
@@ -778,7 +796,7 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="800x800.png" alt="Wappen">
+                    <img src="logo.png" alt="Wappen">
                     <div class="footer-brand-name">FC Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in Mainz.</p>
                 </div>

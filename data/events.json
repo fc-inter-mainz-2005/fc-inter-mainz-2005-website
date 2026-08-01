@@ -1,28 +1,28 @@
 {
   "events": [
     {
-      "date_num": "05",
-      "date_mo": "September",
-      "name": "Trainingsauftakt Herbst",
-      "meta": "Ab 18:30 Uhr · Bezirkssportanlage Mainz",
-      "tag": "05. September 2026",
+      "date_num": "20",
+      "date_mo": "Juli",
+      "name": "Neues Ultras-Banner",
+      "meta": "Ab sofort bei jedem Heimspiel im Einsatz",
+      "tag": "20. Juli 2026",
       "image": "",
-      "description": "Nach der Sommerpause starten wir wieder gemeinsam ins Training. Neue Spieler sind herzlich willkommen, einfach vorbeikommen und mittrainieren.",
+      "description": "Passend zur wachsenden Fankurve wurde ein neues Banner im Ultras-Stil angefertigt. Es ziert ab sofort den Zaun bei unseren Heimspielen und sorgt für zusätzliche Stimmung und Zusammenhalt auf den Rängen.",
       "location_name": "Bezirkssportanlage Mainz",
-      "location_address": "Albert-Stohr-Straße 50, 55128 Mainz · Ab 18:30 Uhr",
-      "link_text": "Zum Probetraining anmelden",
-      "link_url": "probetraining.html"
+      "location_address": "Albert-Stohr-Straße 50, 55128 Mainz",
+      "link_text": "📷 Fotos ansehen",
+      "link_url": "https://instagram.com"
     },
     {
-      "date_num": "12",
-      "date_mo": "Oktober",
-      "name": "Herbstwanderpokal",
-      "meta": "Freundschaftsturnier · Sportplatz Alte Ziegelei",
-      "tag": "12. Oktober 2026",
+      "date_num": "28",
+      "date_mo": "Juni",
+      "name": "Reise nach München",
+      "meta": "Freundschaftstreffen mit dem CAM München",
+      "tag": "28. Juni 2026",
       "image": "",
-      "description": "Unser traditionelles Freundschaftsturnier mit befreundeten Vereinen aus der Region. Zuschauer sind herzlich willkommen.",
-      "location_name": "Sportplatz Alte Ziegelei",
-      "location_address": "Alte Ziegelei, 55128 Mainz · Ab 11:00 Uhr",
+      "description": "Ende Juni reiste eine Abordnung unseres Vereins nach München, um dort das Centro Argentino de Munich (CAM) zu besuchen. Bei bestem Wetter gab es gemeinsam ein Asado und im Anschluss ein freundschaftliches Fußballspiel – ein gelungener Tag voller Fußball, guter Stimmung und neuer Freundschaften über Vereinsgrenzen hinweg.",
+      "location_name": "München",
+      "location_address": "Centro Argentino de Munich (CAM)",
       "link_text": "📷 Post ansehen",
       "link_url": "https://instagram.com"
     }

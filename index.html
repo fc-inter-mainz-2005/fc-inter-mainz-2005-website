@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FC Inter Mainz 2005 e.V</title>
-    <link rel="icon" type="image/png" href="800x800.png">
+    <link rel="icon" type="image/png" href="logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -516,18 +516,18 @@
         }
 
         .sponsors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
-            justify-items: center;
+            gap: 32px;
         }
 
         .sponsor-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            flex: 0 1 150px;
             height: 100px;
             transition: transform 0.3s;
             cursor: pointer;
@@ -549,10 +549,10 @@
         @media(max-width:768px) {
             .sponsors-grid {
                 gap: 24px;
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
 
             .sponsor-item {
+                flex-basis: 120px;
                 height: 72px;
             }
 
@@ -1538,7 +1538,7 @@
             </svg>
         </a>
         <a href="index.html" class="nav-logo">
-            <img src="800x800.png" alt="Inter Mainz Wappen">
+            <img src="logo.png" alt="Inter Mainz Wappen">
             <span>FC Inter Mainz</span>
         </a>
         <ul class="nav-links">
@@ -1621,8 +1621,8 @@
                     </svg>
                     Probetraining
                 </a>
-                <a href="#veranstaltungen" class="btn-outline">
-                    Neuigkeiten
+                <a href="#ueber-uns" class="btn-outline">
+                    Über uns
                     <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -1779,7 +1779,7 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="800x800.png" alt="Inter Mainz Wappen">
+                    <img src="logo.png" alt="Inter Mainz Wappen">
                     <div class="footer-brand-name">FC Inter Mainz</div>
                     <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
