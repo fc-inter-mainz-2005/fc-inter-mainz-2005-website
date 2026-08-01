@@ -915,6 +915,18 @@
     </footer>
 
     <script>
+        const navbar = document.getElementById('navbar');
+        let lastScroll = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            navbar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
+            
+            navbar.classList.toggle('scrolled', currentScroll > 20);
+            
+            lastScroll = currentScroll;
+        }, { passive: true });
 
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');

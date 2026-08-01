@@ -927,30 +927,6 @@
             stroke: white;
         }
 
-        .modal-hero {
-            height: 160px;
-            background: var(--blue-mid);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .modal-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .modal-hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(10, 31, 68, 0.9) 0%, transparent 80%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px 24px;
-        }
-
         .modal-tag {
             display: inline-block;
             background: var(--red);
@@ -2014,7 +1990,17 @@
                 location_address: escapeHtml(event.location_address),
                 link_text: escapeHtml(event.link_text)
             };
-            const heroImg = event.image ? `<img src="${escapeHtml(event.image)}" alt="${safe.name}" onerror="this.style.display='none'">` : '';
+
+            const safeLinkUrl = (() => {
+                if (!event.link_url) return '';
+                try {
+                    const url = new URL(event.link_url, window.location.origin);
+                    return ['http:', 'https:', 'mailto:'].includes(url.protocol) ? url.href : '';
+                } catch {
+                    return '';
+                }
+            })();
+            
             const locationBlock = event.location_name ? `
                 <div class="modal-detail">
                     <span style="font-size:1.2rem">📍</span>
@@ -2023,22 +2009,21 @@
                         <div class="modal-detail-sub">${safe.location_address || ''}</div>
                     </div>
                 </div>` : '';
-            const isExternal = event.link_url && /^https?:\/\//i.test(event.link_url);
-            const linkBlock = event.link_url
-                ? `<a href="${event.link_url}" ${isExternal ? 'target="_blank" rel="noopener"' : ''}>${safe.link_text || 'Mehr erfahren'}</a>`
+                
+            const isExternal = safeLinkUrl && !safeLinkUrl.startsWith(window.location.origin);
+            const linkBlock = safeLinkUrl
+                ? `<a href="${safeLinkUrl}" ${isExternal ? 'target="_blank" rel="noopener"' : ''}>${safe.link_text || 'Mehr erfahren'}</a>`
                 : '<span></span>';
+                
             return `
             <div class="modal-overlay" id="${id}">
                 <div class="modal-box">
                     <button class="modal-close" onclick="closeModal('${id}')">
                         <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
-                    <div class="modal-hero">
-                        ${heroImg}
-                        <div class="modal-hero-overlay">
-                            <span class="modal-tag">${safe.tag || ''}</span>
-                            <h3 class="modal-title">${safe.name}</h3>
-                        </div>
+                    <div style="background: var(--blue-mid); padding: 40px 24px 20px 24px;">
+                        <span class="modal-tag" style="background: rgba(255,255,255,0.2); color: white;">${safe.tag || ''}</span>
+                        <h3 class="modal-title" style="margin-top: 12px; color: white;">${safe.name}</h3>
                     </div>
                     <div class="modal-body">
                         <p>${safe.description || ''}</p>
