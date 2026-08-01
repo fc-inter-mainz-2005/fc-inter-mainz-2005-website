@@ -1644,7 +1644,7 @@
             <div class="stat-label">Mannschaften</div>
         </div>
         <div class="stat-item">
-            <div class="stat-num">90+</div>
+            <div class="stat-num" id="stat-mitglieder">90+</div>
             <div class="stat-label">Mitglieder</div>
         </div>
         <div class="stat-item">
@@ -1875,7 +1875,15 @@
                 dots.forEach(dot => dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.idx)); startTimer(); }));
                 if (slides.length > 1) startTimer();
             })
-            .catch(err => console.warn('Hero slides not available:', err));
+            
+            
+        fetch('data/stats.json')
+            .then(res => { if (!res.ok) throw new Error('stats.json not found'); return res.json(); })
+            .then(data => {
+                const el = document.getElementById('stat-mitglieder');
+                if (el && data.mitglieder) el.textContent = data.mitglieder;
+            })
+            .catch(err => console.warn('Stats nicht verfügbar:', err));
 
         (function () {
             const CONSENT_KEY = 'im_cookie_consent';

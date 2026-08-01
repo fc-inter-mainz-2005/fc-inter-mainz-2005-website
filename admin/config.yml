@@ -1,8 +1,8 @@
 backend:
   name: git-gateway
   branch: main
-media_folder: "images"
-public_folder: "/images"
+media_folder: "fotos"
+public_folder: "/fotos"
 collections:
   - name: "hero"
     label: "Startseite – Titelbilder (Slideshow)"
@@ -129,6 +129,15 @@ collections:
           - {label: "Straße & Hausnummer", name: "strasse", widget: "string"}
           - {label: "PLZ & Ort", name: "plz_ort", widget: "string"}
           - {label: "E-Mail Adresse", name: "email", widget: "string"}
+
+  - name: "statistiken"
+    label: "Statistik-Leiste (Mitgliederzahl)"
+    files:
+      - label: "Werte"
+        name: "werte"
+        file: "data/stats.json"
+        fields:
+          - {label: "Mitglieder (z.B. 90+)", name: "mitglieder", widget: "string"}
 
   - name: "downloads"
     label: "Downloadcenter"
