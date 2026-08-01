@@ -1,13 +1,13 @@
 {
   "sponsors": [
-    { "name": "El Burro Restaurant & Bar", "image": "elburro.png", "link": "https://el-burro.de/" },
-    { "name": "Ziberi Projekt- & Wohnbau", "image": "ziberi.png", "link": "https://ziberi.eu/" },
-    { "name": "Deutsches Vermögensberatung", "image": "dvblogo.svg", "link": "https://www.dvag.de/jascha.mecking/index.html" },
-    { "name": "Liquides Handwerk", "image": "liquides.png", "link": "https://www.liquideshandwerk.de" },
-    { "name": "Restaurant Graça", "image": "graca.png", "link": "https://www.restaurant-graca.de" },
-    { "name": "Diego Uhlig Reinigung", "image": "ud.png", "link": "https://diegouhligreinigung.de" },
-    { "name": "Lasslop", "image": "lasslop.svg", "link": "https://www.lasslop.com" },
-    { "name": "Casa del Sol", "image": "casadelsol.png", "link": "https://casadelsol.de" },
-    { "name": "La Alegría", "image": "laalegria.png", "link": "https://www.instagram.com/laalegria2026?utm_source=qr" }
+    { "name": "El Burro Restaurant & Bar", "image": "fotos/elburro.png", "link": "https://el-burro.de/" },
+    { "name": "Ziberi Projekt- & Wohnbau", "image": "fotos/ziberi.png", "link": "https://ziberi.eu/" },
+    { "name": "Deutsches Vermögensberatung", "image": "fotos/dvblogo.svg", "link": "https://www.dvag.de/jascha.mecking/index.html" },
+    { "name": "Liquides Handwerk", "image": "fotos/liquides.png", "link": "https://www.liquideshandwerk.de" },
+    { "name": "Restaurant Graça", "image": "fotos/graca.png", "link": "https://www.restaurant-graca.de" },
+    { "name": "Diego Uhlig Reinigung", "image": "fotos/ud.png", "link": "https://diegouhligreinigung.de" },
+    { "name": "Lasslop", "image": "fotos/lasslop.svg", "link": "https://www.lasslop.com" },
+    { "name": "Casa del Sol", "image": "fotos/casadelsol.png", "link": "https://casadelsol.de" },
+    { "name": "La Alegría", "image": "fotos/laalegria.png", "link": "https://www.instagram.com/laalegria2026?utm_source=qr" }
   ]
 }

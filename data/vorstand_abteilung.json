@@ -1,8 +1,8 @@
 {
   "members": [
-    { "name": "Martin Ubilla", "role": "Abteilung Fußball – Sportdirektor", "photo": "martin.jpg" },
-    { "name": "Santiago Ballabriga", "role": "Sponsoring & Partnerschaften", "photo": "santy.jpg" },
-    { "name": "Jaime Pérez", "role": "Kassenwart", "photo": "jaime.jpg" },
-    { "name": "Sercan Güler", "role": "Schriftführer", "photo": "sercan.jpg" }
+    { "name": "Martin Ubilla", "role": "Abteilung Fußball – Sportdirektor", "photo": "fotos/martin.jpg" },
+    { "name": "Santiago Ballabriga", "role": "Sponsoring & Partnerschaften", "photo": "fotos/santy.jpg" },
+    { "name": "Jaime Pérez", "role": "Kassenwart", "photo": "fotos/jaime.jpg" },
+    { "name": "Sercan Güler", "role": "Schriftführer", "photo": "fotos/sercan.jpg" }
   ]
 }
