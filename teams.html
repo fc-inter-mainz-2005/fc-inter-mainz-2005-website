@@ -169,8 +169,8 @@
             border-radius: 4px;
             transition: color 0.25s, background 0.25s;
             position: relative;
-            display: inline-flex; 
-    align-items: center;
+            display: inline-flex;
+            align-items: center;
         }
 
         .nav-links a.active {
@@ -730,12 +730,14 @@
 
 <body>
 
-    
+
 
     <nav id="navbar">
-        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer" aria-label="Online-Shop">
+        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
+            aria-label="Online-Shop">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
         </a>
         <a href="index.html" class="nav-logo">
@@ -943,33 +945,33 @@
         });
 
         const badgeColors = ['var(--red)', 'var(--blue-mid)', '#e2e8f0'];
-const badgeText = ['white', 'white', 'var(--blue)'];
+        const badgeText = ['white', 'white', 'var(--blue)'];
 
-fetch('data/teams.json')
-    .then(res => { if (!res.ok) throw new Error('teams.json not found'); return res.json(); })
-    .then(data => {
-        const nav = document.getElementById('teams-nav');
-        const container = document.getElementById('teams-container');
+        fetch('data/teams.json')
+            .then(res => { if (!res.ok) throw new Error('teams.json not found'); return res.json(); })
+            .then(data => {
+                const nav = document.getElementById('teams-nav');
+                const container = document.getElementById('teams-container');
 
-        data.teams.forEach((team, i) => {
-            const slug = 'team-' + i;
+                data.teams.forEach((team, i) => {
+                    const slug = 'team-' + i;
 
-            if (i > 0) {
-                const sep = document.createElement('span');
-                sep.className = 'text-gray-300';
-                sep.textContent = '|';
-                nav.appendChild(sep);
-            }
-            const navLink = document.createElement('a');
-            navLink.href = '#' + slug;
-            navLink.className = 'text-[var(--text-muted)] hover:text-[var(--text-main)] transition';
-            navLink.textContent = team.name;
-            nav.appendChild(navLink);
+                    if (i > 0) {
+                        const sep = document.createElement('span');
+                        sep.className = 'text-gray-300';
+                        sep.textContent = '|';
+                        nav.appendChild(sep);
+                    }
+                    const navLink = document.createElement('a');
+                    navLink.href = '#' + slug;
+                    navLink.className = 'text-[var(--text-muted)] hover:text-[var(--text-main)] transition';
+                    navLink.textContent = team.name;
+                    nav.appendChild(navLink);
 
-            const section = document.createElement('section');
-            section.id = slug;
-            section.className = 'reveal';
-            section.innerHTML = `
+                    const section = document.createElement('section');
+                    section.id = slug;
+                    section.className = 'reveal';
+                    section.innerHTML = `
                 <div class="flex items-center mb-8">
                     <h2 class="team-title"></h2>
                     <div class="flex-grow h-px bg-gray-200 ml-4 md:ml-8"></div>
@@ -979,36 +981,36 @@ fetch('data/teams.json')
                     <img class="w-full h-auto object-cover rounded-xl lightbox-img" alt="">
                     <div class="fupa-link-wrap"></div>
                 </div>`;
-            section.querySelector('.team-title').textContent = team.name;
-            const badge = section.querySelector('.liga-badge');
-            badge.textContent = team.liga || '';
-            badge.style.background = badgeColors[i % badgeColors.length];
-            badge.style.color = badgeText[i % badgeText.length];
+                    section.querySelector('.team-title').textContent = team.name;
+                    const badge = section.querySelector('.liga-badge');
+                    badge.textContent = team.liga || '';
+                    badge.style.background = badgeColors[i % badgeColors.length];
+                    badge.style.color = badgeText[i % badgeText.length];
 
-            const img = section.querySelector('img');
-            img.src = team.photo;
-            img.alt = 'Mannschaftsfoto ' + team.name;
-            img.onerror = function () {
-                this.parentElement.innerHTML = `<div class="w-full h-72 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-[var(--text-muted)]"><svg class="w-16 h-16 mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg><p class="text-sm font-semibold uppercase tracking-wide text-[var(--blue)]">Mannschaftsfoto ${team.name}</p></div>`;
-            };
+                    const img = section.querySelector('img');
+                    img.src = team.photo;
+                    img.alt = 'Mannschaftsfoto ' + team.name;
+                    img.onerror = function () {
+                        this.parentElement.innerHTML = `<div class="w-full h-72 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-[var(--text-muted)]"><svg class="w-16 h-16 mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg><p class="text-sm font-semibold uppercase tracking-wide text-[var(--blue)]">Mannschaftsfoto ${team.name}</p></div>`;
+                    };
 
-            if (team.fupa_link) {
-                section.querySelector('.fupa-link-wrap').innerHTML = `
+                    if (team.fupa_link) {
+                        section.querySelector('.fupa-link-wrap').innerHTML = `
                     <a href="${team.fupa_link}" target="_blank" rel="noopener"
                         class="inline-flex items-center gap-2 mt-4 text-sm font-bold uppercase tracking-wider text-[var(--red)] hover:text-[var(--blue)] transition">
                         Kompletten Kader ansehen
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>`;
-            }
-            container.appendChild(section);
-        });
+                    }
+                    container.appendChild(section);
+                });
 
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        document.querySelectorAll('.lightbox-img').forEach(img => {
-            img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
-        });
-    })
-    .catch(err => console.warn('Teams nicht verfügbar:', err));
+                document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+                document.querySelectorAll('.lightbox-img').forEach(img => {
+                    img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+                });
+            })
+            .catch(err => console.warn('Teams nicht verfügbar:', err));
 
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {

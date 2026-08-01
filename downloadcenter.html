@@ -165,7 +165,7 @@
             transition: color 0.25s, background 0.25s;
             position: relative;
             display: inline-flex;
-    align-items: center;
+            align-items: center;
         }
 
         .nav-links a.active {
@@ -495,8 +495,11 @@
             text-transform: uppercase;
             padding: 13px 22px;
             border-radius: 8px;
+            border: none;
+            width: 100%;
             transition: background 0.25s, transform 0.2s, box-shadow 0.3s;
             box-shadow: 0 4px 16px rgba(204, 0, 0, 0.3);
+            cursor: pointer;
         }
 
         .download-btn:hover {
@@ -509,22 +512,11 @@
             width: 16px;
             height: 16px;
             flex-shrink: 0;
+            stroke: currentColor;
         }
 
         .download-btn-text {
             display: inline;
-        }
-
-        @media (max-width: 1200px) {
-            .download-btn {
-                padding: 13px;
-                width: 44px;
-                height: 44px;
-            }
-
-            .download-btn-text {
-                display: none;
-            }
         }
 
         .hint-note {
@@ -743,13 +735,15 @@
 
 <body>
 
-    
+
 
     <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
     <nav id="navbar">
-        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer" aria-label="Online-Shop">
+        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
+            aria-label="Online-Shop">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
         </a>
         <a href="index.html" class="nav-logo">
@@ -774,13 +768,22 @@
             <li><a href="kontakt.html">Kontakt</a></li>
             <li><a href="probetraining.html">Probetraining</a></li>
             <li><a href="downloadcenter.html">Downloadcenter</a></li>
+            <li>
+                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Online-Shop
+                </a>
+            </li>
         </ul>
         <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
             <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <!-- Mobile Nav -->
     <div class="mobile-nav" id="mobile-nav">
         <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
             <svg fill="none" viewBox="0 0 24 24">
@@ -809,7 +812,6 @@
         <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">Online-Shop</a>
     </div>
 
-    <!-- ═══════════════════════ PAGE HEADER ═══════════════════════ -->
     <header class="pt-40 pb-16 relative z-10 text-center">
         <div class="container mx-auto px-6">
             <p class="section-eyebrow reveal">Formulare & Dokumente</p>
@@ -826,7 +828,6 @@
         </div>
     </header>
 
-    <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
     <main class="relative z-10 pb-24">
         <div class="section-inner">
 
@@ -862,8 +863,17 @@
                         <li><a href="kontakt.html">Kontakt</a></li>
                         <li><a href="probetraining.html">Probetraining</a></li>
                         <li><a href="downloadcenter.html">Downloadcenter</a></li>
-                        <li><a href="https://fc-inter-mainz.fan12.de/" target="_blank"
-                                rel="noopener noreferrer">Online-Shop</a></li>
+                        <li>
+                            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank"
+                                rel="noopener noreferrer">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                Online-Shop
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -977,8 +987,8 @@
                     div.className = 'download-card reveal' + (i > 0 ? ' reveal-delay-' + Math.min(i, 3) : '');
                     div.innerHTML = `
                 <div class="download-icon">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6M4 20h16"/>
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                     </svg>
                 </div>
                 <div class="download-title"></div>

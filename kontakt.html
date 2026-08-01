@@ -164,7 +164,7 @@
             border-radius: 4px;
             transition: color 0.25s, background 0.25s;
             position: relative;
-            display: inline-flex;    
+            display: inline-flex;
             align-items: center;
         }
 
@@ -833,18 +833,47 @@
                 padding: 24px;
             }
         }
+
+        .form-input[type="file"] {
+            padding: 9px 12px;
+            cursor: pointer;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        .form-input[type="file"]::file-selector-button {
+            background-color: var(--blue);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            margin-right: 16px;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s;
+        }
+
+        .form-input[type="file"]::file-selector-button:hover {
+            background-color: var(--blue-mid);
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 
 <body>
 
-    
 
-    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+
     <nav id="navbar">
-        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer" aria-label="Online-Shop">
+        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
+            aria-label="Online-Shop">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
         </a>
         <a href="index.html" class="nav-logo">
@@ -885,7 +914,6 @@
         </button>
     </nav>
 
-    <!-- Mobile Nav -->
     <div class="mobile-nav" id="mobile-nav">
         <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
             <svg fill="none" viewBox="0 0 24 24">
@@ -914,7 +942,6 @@
         <a href="downloadcenter.html">Downloadcenter</a>
     </div>
 
-    <!-- ═══════════════════════ PAGE HEADER ═══════════════════════ -->
     <header class="pt-40 pb-16 relative z-10 text-center">
         <div class="container mx-auto px-6">
             <p class="section-eyebrow reveal">Kontakt</p>
@@ -930,12 +957,10 @@
         </div>
     </header>
 
-    <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
     <main class="relative z-10 pb-24">
         <div class="section-inner">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
 
-                <!-- ── LEFT: Info Cards ── -->
                 <div class="md:col-span-1 flex flex-col gap-5">
 
                     <div class="info-card reveal">
@@ -970,7 +995,6 @@
 
                 </div>
 
-                <!-- ── RIGHT: Contact Form ── -->
                 <div class="md:col-span-2 reveal reveal-delay-1">
                     <div class="form-card">
                         <form id="contact-form" name="kontakt" method="POST" data-netlify="true"
@@ -1046,7 +1070,6 @@
         </div>
     </main>
 
-    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
     <footer>
         <div class="footer-inner">
             <div class="footer-grid">
@@ -1152,7 +1175,7 @@
                 const allowedExt = ['.pdf', '.jpg', '.jpeg', '.png', '.docx'];
                 const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png',
                     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-                const maxSize = 3 * 1024 * 1024; // 3 MB
+                const maxSize = 3 * 1024 * 1024;
                 const ext = '.' + file.name.split('.').pop().toLowerCase();
                 if (!allowedExt.includes(ext) || !allowedTypes.includes(file.type)) {
                     alert('Dateityp nicht erlaubt. Bitte nur PDF, JPG, PNG oder DOCX hochladen.');
