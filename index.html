@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Inter Mainz 2005</title>
+    <title>FC Inter Mainz 2005 e.V</title>
     <link rel="icon" type="image/png" href="800x800.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
@@ -565,76 +565,82 @@
             background: var(--bg-body);
         }
 
-        .vorstand-grid {
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 28px;
         }
 
-        .vorstand-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.35s, box-shadow 0.35s;
-            cursor: default;
-            box-shadow: var(--shadow-sm);
+        @media(max-width:900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .vorstand-card:hover {
+        .about-card {
+            position: relative;
+            display: block;
+            height: 380px;
+            border-radius: 14px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .about-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
 
-        .vorstand-photo {
-            height: 240px;
-            background: var(--blue-light);
-            position: relative;
-            overflow: hidden;
+        .about-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 31, 68, 0.92) 0%, rgba(10, 31, 68, 0.45) 55%, rgba(10, 31, 68, 0.05) 100%);
         }
 
-        .vorstand-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+        .about-card-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            padding: 28px 26px;
         }
 
-        .vorstand-card:hover .vorstand-photo img {
-            transform: scale(1.06);
+        .about-card-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 14px;
         }
 
-        .vorstand-photo-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
+        .about-card-btn {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            background: var(--blue-light);
-        }
-
-        .vorstand-photo-placeholder svg {
-            stroke: var(--blue-mid);
-            opacity: 0.5;
-        }
-
-        .vorstand-info {
-            padding: 22px 24px;
-        }
-
-        .vorstand-name {
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
             font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--blue);
-            margin-bottom: 4px;
-        }
-
-        .vorstand-role {
             font-size: 0.78rem;
-            font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--red);
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: border-color 0.25s, background 0.25s, transform 0.2s;
+        }
+
+        .about-card:hover .about-card-btn {
+            border-color: var(--red);
+            background: var(--red);
         }
 
         .news-events {
@@ -1460,6 +1466,23 @@
                 font-size: 2.1rem;
             }
 
+            .hero {
+                height: 100vh;
+                height: 100dvh;
+                min-height: 560px;
+            }
+
+            .hero-slide {
+                background-position: center 25%;
+            }
+
+            .hero-slide::after {
+                background: linear-gradient(180deg,
+                        rgba(10, 31, 68, 0.55) 0%,
+                        rgba(10, 31, 68, 0.55) 45%,
+                        rgba(10, 31, 68, 0.92) 100%);
+            }
+
             .stats-bar {
                 gap: 24px;
                 padding: 16px 6%;
@@ -1678,14 +1701,42 @@
         </div>
     </section>
 
-    <section class="vorstand-section" id="vorstand">
+    <section class="vorstand-section" id="ueber-uns">
         <div class="section-inner">
             <div class="section-header reveal">
-                <p class="section-eyebrow">Führungsteam</p>
-                <h2 class="section-title">Der Geschäftsführender Vorstand</h2>
+                <p class="section-eyebrow">Der Verein</p>
+                <h2 class="section-title">Über uns</h2>
                 <span class="section-divider"></span>
             </div>
-            <div class="vorstand-grid" id="vorstand-grid-home"></div>
+            <div class="about-grid reveal reveal-delay-1">
+                <a href="geschichte.html" class="about-card" style="background-image:url('InterMainzGrundung.jpg')">
+                    <div class="about-card-content">
+                        <div class="about-card-title">Geschichte</div>
+                        <span class="about-card-btn">
+                            Mehr erfahren
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </div>
+                </a>
+                <a href="teams.html" class="about-card" style="background-image:url('TeamsIndex2.jpg')">
+                    <div class="about-card-content">
+                        <div class="about-card-title">Teams</div>
+                        <span class="about-card-btn">
+                            Mehr erfahren
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </div>
+                </a>
+                <a href="vorstand.html" class="about-card" style="background-image:url('InterMainzAll.jpeg')">
+                    <div class="about-card-content">
+                        <div class="about-card-title">Vorstand</div>
+                        <span class="about-card-btn">
+                            Mehr erfahren
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -2033,32 +2084,7 @@
                 });
             }).catch(err => console.warn('Sponsors not available:', err));
 
-        fetch('data/vorstand.json')
-            .then(res => {
-                if (!res.ok) throw new Error('vorstand.json not found');
-                return res.json();
-            })
-            .then(data => {
-                const grid = document.getElementById('vorstand-grid-home');
-                data.members.forEach(m => {
-                    const card = document.createElement('div');
-                    card.className = 'vorstand-card';
-                    card.innerHTML = `
-                        <div class="vorstand-photo"><img alt=""></div>
-                        <div class="vorstand-info">
-                            <div class="vorstand-name"></div>
-                            <div class="vorstand-role"></div>
-                        </div>`;
-                    card.querySelector('img').src = m.photo;
-                    card.querySelector('img').alt = m.name;
-                    card.querySelector('.vorstand-name').textContent = m.name;
-                    card.querySelector('.vorstand-role').textContent = m.role;
-                    grid.appendChild(card);
-                });
-            }).catch(err => console.warn('Vorstand not available:', err));
-
-
-
+        
         document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
