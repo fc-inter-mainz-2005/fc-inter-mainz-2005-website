@@ -101,6 +101,7 @@
             justify-content: space-between;
             background: var(--bg-nav);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
         .nav-logo {
@@ -716,6 +717,15 @@
             transition-delay: 0.3s;
         }
 
+        .nav-cart-mobile {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--blue);
+        }
+
         @media(max-width:1200px) {
             .nav-links {
                 display: none;
@@ -727,6 +737,25 @@
 
             .nav-logo span {
                 display: none;
+            }
+
+            nav.nav-hidden {
+                transform: translateY(-100%);
+            }
+
+            .nav-cart-mobile {
+                display: flex;
+            }
+
+            nav {
+                justify-content: flex-end;
+            }
+
+            .nav-logo {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
             }
 
             .page-header {
@@ -748,6 +777,11 @@
 
 
     <nav>
+        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer" aria-label="Online-Shop">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+        </a>
         <a href="index.html" class="nav-logo">
             <img src="800x800.png" alt="Inter Mainz Wappen">
             <span>Inter Mainz</span>
@@ -811,7 +845,6 @@
         <a href="kontakt.html">Kontakt</a>
         <a href="probetraining.html">Probetraining</a>
         <a href="downloadcenter.html">Downloadcenter</a>
-        <a href="https://fc-inter-mainz.fan12.de/" target="_blank" rel="noopener noreferrer">Online-Shop</a>
     </div>
 
     <div class="page-header">
@@ -1058,6 +1091,14 @@
     </footer>
 
     <script>
+        const navbar = document.querySelector('nav');
+        let lastScroll = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            navbar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
+            lastScroll = currentScroll;
+        }, { passive: true });
+
         const hamburger = document.getElementById('hamburger'), mobileNav = document.getElementById('mobile-nav'), mobileClose = document.getElementById('mobile-close');
         hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
         mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
