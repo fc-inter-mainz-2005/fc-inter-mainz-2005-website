@@ -441,6 +441,19 @@
             box-shadow: none;
         }
 
+        .recaptcha-wrap {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+        }
+
+        .recaptcha-wrap.visible {
+            max-height: 100px;
+            opacity: 1;
+            margin-bottom: 24px;
+        }
+
         footer {
             position: relative;
             z-index: 1;
@@ -934,7 +947,7 @@
                     submitBtn.style.background = '#166534';
                     form.reset();
                     setTimeout(() => {
-                        submitBtn.innerHTML = `<svg .../> Nachricht absenden`;
+                        submitBtn.innerHTML = `Anfrage senden`;
                         submitBtn.style.background = '';
                         submitBtn.disabled = true;
                     }, 4000);
