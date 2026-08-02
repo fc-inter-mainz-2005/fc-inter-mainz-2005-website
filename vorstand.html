@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
     <link rel="stylesheet" href="css/tailwind.css">
 
@@ -895,7 +894,7 @@
                 <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
                 <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>
                 <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>`;
-                    card.querySelector('img').src = m.photo;
+                    card.querySelector('img').src = netlifyImg(m.photo, 300, 90);
                     card.querySelector('img').alt = m.name;
                     card.querySelector('h3').textContent = m.name;
                     card.querySelector('p').textContent = m.role;
@@ -919,7 +918,7 @@
                 <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
                 <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>`;
                     const imgEl = card.querySelector('img');
-                    imgEl.src = m.photo;
+                    imgEl.src = netlifyImg(m.photo, 300, 90);
                     imgEl.alt = m.name;
                     imgEl.onerror = function () {
                         const fallback = document.createElement('div');
@@ -954,6 +953,11 @@
                 toggle.closest('.mobile-nav-group').classList.toggle('open');
             });
         });
+
+        function netlifyImg(path, width, quality = 85) {
+            if (!path || path.endsWith('.svg')) return path; // SVGs no se tocan
+            return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
+        }
     </script>
 </body>
 

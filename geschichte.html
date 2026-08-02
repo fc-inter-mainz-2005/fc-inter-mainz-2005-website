@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
     <link rel="stylesheet" href="css/tailwind.css">
 
@@ -1004,9 +1003,9 @@
         fetch('data/geschichte.json')
             .then(res => { if (!res.ok) throw new Error('geschichte.json not found'); return res.json(); })
             .then(data => {
-                document.getElementById('img-gruendung').src = data.gruendung;
-                document.getElementById('img-aufstieg').src = data.aufstieg;
-                document.getElementById('img-heute').src = data.heute;
+                document.getElementById('img-gruendung').src = netlifyImg(data.gruendung, 1200);
+                document.getElementById('img-aufstieg').src = netlifyImg(data.aufstieg, 1200);
+                document.getElementById('img-heute').src = netlifyImg(data.heute, 1200);
             })
             .catch(err => console.warn('Geschichte-Fotos nicht verfügbar:', err));
 
@@ -1031,6 +1030,11 @@
                 toggle.closest('.mobile-nav-group').classList.toggle('open');
             });
         });
+
+        function netlifyImg(path, width, quality = 85) {
+            if (!path || path.endsWith('.svg')) return path;
+            return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
+        }
     </script>
 
 

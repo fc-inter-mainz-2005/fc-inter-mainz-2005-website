@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="fonts/Inter-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
     <link rel="stylesheet" href="css/tailwind.css">
 
@@ -1716,7 +1715,7 @@
             </div>
             <div class="about-grid reveal reveal-delay-1">
                 <a href="geschichte.html" class="about-card">
-                    <img class="about-card-img" src="fotos/InterMainzGrundung.jpg" alt="Geschichte">
+                    <img class="about-card-img" src="/.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=900&fm=webp&q=85" alt="Geschichte">
                     <div class="about-card-content">
                         <div class="about-card-title">Geschichte</div>
                         <span class="about-card-btn">
@@ -1729,7 +1728,7 @@
                     </div>
                 </a>
                 <a href="teams.html" class="about-card">
-                    <img class="about-card-img" src="fotos/TeamsIndex.jpg" alt="Teams">
+                    <img class="about-card-img" src="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=85" alt="Teams">
                     <div class="about-card-content">
                         <div class="about-card-title">Teams</div>
                         <span class="about-card-btn">
@@ -1742,7 +1741,7 @@
                     </div>
                 </a>
                 <a href="vorstand.html" class="about-card">
-                    <img class="about-card-img" src="fotos/InterMainz4.jpg" alt="Vorstand">
+                    <img class="about-card-img" src="/.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=85" alt="Vorstand">
                     <div class="about-card-content">
                         <div class="about-card-title">Vorstand</div>
                         <span class="about-card-btn">
@@ -1855,7 +1854,7 @@
                 data.slides.forEach((s, i) => {
                     const div = document.createElement('div');
                     div.className = 'hero-slide' + (i === 0 ? ' active' : '');
-                    div.style.backgroundImage = `url('${s.image}')`;
+                    div.style.backgroundImage = `url('${netlifyImg(s.image, 1920)}')`;
                     slidesWrap.appendChild(div);
                     const dot = document.createElement('div');
                     dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
@@ -2110,7 +2109,7 @@
                     a.rel = 'noopener';
                     a.className = 'sponsor-item';
                     const img = document.createElement('img');
-                    img.src = s.image;
+                    img.src = netlifyImg(s.image, 220, 90);
                     img.alt = s.name;
                     img.title = s.name;
                     img.loading = 'lazy';
@@ -2141,6 +2140,11 @@
                 toggle.closest('.mobile-nav-group').classList.toggle('open');
             });
         });
+
+        function netlifyImg(path, width, quality = 85) {
+            if (!path || path.endsWith('.svg')) return path;
+            return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
+        }
 
     </script>
 </body>
