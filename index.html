@@ -662,70 +662,78 @@
             }
         }
 
-        .event-item {
+        .news-card {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 16px;
-            padding: 16px 18px;
+            padding: 18px 20px;
             border-radius: 10px;
             background: var(--bg-surface);
             border: 1px solid var(--card-border);
             box-shadow: var(--shadow-sm);
-            cursor: pointer;
             transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
             margin-bottom: 12px;
         }
 
-        .event-item:hover {
+        .news-card:hover {
             border-color: rgba(204, 0, 0, 0.3);
-            transform: translateX(4px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
-        .event-date {
-            min-width: 58px;
-            text-align: center;
-            background: var(--red);
-            border-radius: 8px;
-            padding: 8px 10px;
+        .news-card-media {
+            width: 72px;
+            height: 72px;
             flex-shrink: 0;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .event-date-num {
-            font-size: 1.8rem;
-            line-height: 1;
-            color: white;
+        .news-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .event-date-mo {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.9);
+        .news-card-content {
+            min-width: 0;
         }
 
-        .event-name {
+        .news-card-title {
             font-weight: 700;
             font-size: 0.95rem;
             color: var(--text-main);
             margin-bottom: 2px;
         }
 
-        .event-meta {
+        .news-card-meta {
             font-size: 0.78rem;
             color: var(--text-muted);
+            margin-bottom: 6px;
         }
 
-        .event-arrow {
-            margin-left: auto;
+        .news-card-desc {
+            font-size: 0.82rem;
             color: var(--text-muted);
-            transition: color 0.25s, transform 0.25s;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
-        .event-item:hover .event-arrow {
+        .news-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
             color: var(--red);
-            transform: translateX(4px);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .news-card-link:hover {
+            color: var(--blue);
         }
 
         footer {
@@ -857,159 +865,6 @@
             color: white;
         }
 
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 200;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background: rgba(10, 31, 68, 0.8);
-            backdrop-filter: blur(4px);
-        }
-
-        .modal-overlay.open {
-            display: flex;
-        }
-
-        .modal-box {
-            background: white;
-            border-radius: 16px;
-            max-width: 520px;
-            width: calc(100% - 32px);
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-        }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            background: rgba(0, 0, 0, 0.1);
-            border: none;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: background 0.2s;
-        }
-
-        .modal-close:hover {
-            background: var(--red);
-        }
-
-        .modal-close svg {
-            width: 18px;
-            height: 18px;
-            stroke: white;
-        }
-
-        .modal-close:hover svg {
-            stroke: white;
-        }
-
-        .modal-tag {
-            display: inline-block;
-            background: var(--red);
-            color: white;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 3px 10px;
-            border-radius: 4px;
-            margin-bottom: 6px;
-            align-self: flex-start;
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-            color: white;
-        }
-
-        .modal-body {
-            padding: 24px;
-            color: var(--text-main);
-        }
-
-        .modal-body p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .modal-detail {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            background: var(--bg-body);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 14px 16px;
-            font-size: 0.84rem;
-            margin-bottom: 20px;
-        }
-
-        .modal-detail-text {
-            color: var(--blue);
-            font-weight: 700;
-        }
-
-        .modal-detail-sub {
-            color: var(--text-muted);
-            font-size: 0.78rem;
-        }
-
-        .modal-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--card-border);
-            padding-top: 16px;
-        }
-
-        .modal-footer a,
-        .modal-footer button {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-        }
-
-        .modal-footer a {
-            color: var(--blue-mid);
-            transition: color 0.2s;
-        }
-
-        .modal-footer a:hover {
-            color: var(--blue);
-        }
-
-        .modal-footer .btn-primary {
-            padding: 10px 22px;
-            font-size: 0.78rem;
-        }
 
         .nav-links li.has-dropdown {
             position: relative;
@@ -1834,8 +1689,6 @@
             </div>
     </footer>
 
-    <div id="modals-container"></div>
-
     <script>
         const navbar = document.getElementById('navbar');
         let lastScroll = window.scrollY;
@@ -1947,26 +1800,6 @@
         mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
         mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
 
-        function openModal(id) {
-            const m = document.getElementById(id);
-            m.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeModal(id) {
-            const m = document.getElementById(id);
-            m.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('click', e => {
-            if (e.target.classList.contains('modal-overlay') && e.target.classList.contains('open')) {
-                closeModal(e.target.id);
-            }
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
-        });
-
         (function () {
             const els = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
@@ -1981,69 +1814,6 @@
         })();
 
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str).replace(/[&<>"']/g, c => ({
-                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-            }[c]));
-        }
-
-        function buildModalHTML(event, id) {
-            const safe = {
-                name: escapeHtml(event.name),
-                description: escapeHtml(event.description),
-                tag: escapeHtml(event.tag),
-                location_name: escapeHtml(event.location_name),
-                location_address: escapeHtml(event.location_address),
-                link_text: escapeHtml(event.link_text)
-            };
-
-            const safeLinkUrl = (() => {
-                if (!event.link_url) return '';
-                try {
-                    const url = new URL(event.link_url, window.location.origin);
-                    return ['http:', 'https:', 'mailto:'].includes(url.protocol) ? url.href : '';
-                } catch {
-                    return '';
-                }
-            })();
-            
-            const locationBlock = event.location_name ? `
-                <div class="modal-detail">
-                    <span style="font-size:1.2rem">📍</span>
-                    <div>
-                        <div class="modal-detail-text">${safe.location_name}</div>
-                        <div class="modal-detail-sub">${safe.location_address || ''}</div>
-                    </div>
-                </div>` : '';
-                
-            const isExternal = safeLinkUrl && !safeLinkUrl.startsWith(window.location.origin);
-            const linkBlock = safeLinkUrl
-                ? `<a href="${safeLinkUrl}" ${isExternal ? 'target="_blank" rel="noopener"' : ''}>${safe.link_text || 'Mehr erfahren'}</a>`
-                : '<span></span>';
-                
-            return `
-            <div class="modal-overlay" id="${id}">
-                <div class="modal-box">
-                    <button class="modal-close" onclick="closeModal('${id}')">
-                        <svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </button>
-                    <div style="background: var(--blue-mid); padding: 40px 24px 20px 24px;">
-                        <span class="modal-tag" style="background: rgba(255,255,255,0.2); color: white;">${safe.tag || ''}</span>
-                        <h3 class="modal-title" style="margin-top: 12px; color: white;">${safe.name}</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p>${safe.description || ''}</p>
-                        ${locationBlock}
-                        <div class="modal-footer">
-                            ${linkBlock}
-                            <button class="btn-primary" onclick="closeModal('${id}')">Verstanden</button>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-        }
-
         fetch('data/events.json')
             .then(res => {
                 if (!res.ok) throw new Error('events.json not found');
@@ -2051,7 +1821,6 @@
             })
             .then(data => {
                 const list = document.getElementById('event-list');
-                const modalsContainer = document.getElementById('modals-container');
 
                 const dynamicObserver = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
@@ -2062,35 +1831,55 @@
                     });
                 }, { threshold: 0.12 });
 
+                const safeUrl = (url) => {
+                    if (!url) return '';
+                    try {
+                        const u = new URL(url, window.location.origin);
+                        return ['http:', 'https:'].includes(u.protocol) ? u.href : '';
+                    } catch {
+                        return '';
+                    }
+                };
+
                 data.events.forEach((event, index) => {
-                    const modalId = 'modal-dyn-' + index;
-                    const item = document.createElement('div');
-                    item.className = `event-item reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}`;
-                    item.onclick = () => openModal(modalId);
-                    item.innerHTML = `
-                        <div class="event-date">
-                            <div class="event-date-num"></div>
-                            <div class="event-date-mo"></div>
-                        </div>
-                        <div>
-                            <div class="event-name"></div>
-                            <div class="event-meta"></div>
-                        </div>
-                        <div class="event-arrow">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                        </div>`;
+                    const card = document.createElement('div');
+                    card.className = `news-card reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}`;
 
-                    if (index % 2 === 1) item.querySelector('.event-date').style.background = 'var(--blue-mid)';
+                    if (event.image) {
+                        const media = document.createElement('div');
+                        media.className = 'news-card-media';
+                        const img = document.createElement('img');
+                        img.src = event.image;
+                        img.alt = event.name || '';
+                        img.loading = 'lazy';
+                        media.appendChild(img);
+                        card.appendChild(media);
+                    }
 
-                    item.querySelector('.event-date-num').textContent = event.date_num;
-                    item.querySelector('.event-date-mo').textContent = event.date_mo;
-                    item.querySelector('.event-name').textContent = event.name;
-                    item.querySelector('.event-meta').textContent = event.meta;
+                    const content = document.createElement('div');
+                    content.className = 'news-card-content';
+                    content.innerHTML = `
+                        <div class="news-card-title"></div>
+                        <div class="news-card-meta"></div>
+                        <p class="news-card-desc"></p>`;
+                    content.querySelector('.news-card-title').textContent = event.name || '';
+                    content.querySelector('.news-card-meta').textContent = event.meta || '';
+                    content.querySelector('.news-card-desc').textContent = event.description || '';
 
-                    list.appendChild(item);
-                    modalsContainer.insertAdjacentHTML('beforeend', buildModalHTML(event, modalId));
+                    const linkUrl = safeUrl(event.link_url);
+                    if (linkUrl) {
+                        const a = document.createElement('a');
+                        a.className = 'news-card-link';
+                        a.href = linkUrl;
+                        a.target = '_blank';
+                        a.rel = 'noopener';
+                        a.textContent = event.link_text || '📷 Fotos ansehen';
+                        content.appendChild(a);
+                    }
 
-                    dynamicObserver.observe(item);
+                    card.appendChild(content);
+                    list.appendChild(card);
+                    dynamicObserver.observe(card);
                 });
             })
             .catch(err => console.warn('Events not loaded:', err));

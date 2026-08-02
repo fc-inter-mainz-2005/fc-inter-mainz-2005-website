@@ -19,28 +19,23 @@ collections:
               - {label: "Foto", name: "image", widget: "image"}
 
   - name: "termine"
-    label: "Kommende Termine"
+    label: "Neuigkeiten"
     files:
-      - label: "Termine Liste"
+      - label: "Neuigkeiten Liste"
         name: "termine_file"
         file: "data/events.json"
         fields:
-          - label: "Eventos"
+          - label: "Neuigkeiten"
             name: "events"
             widget: "list"
             summary: "{{fields.name}}"
             fields:
-              - {label: "Tag (Nummer)", name: "date_num", widget: "string"}
-              - {label: "Monat", name: "date_mo", widget: "string"}
               - {label: "Titel", name: "name", widget: "string"}
-              - {label: "Kurzinfo (Liste)", name: "meta", widget: "string"}
-              - {label: "Datum-Badge im Modal", name: "tag", widget: "string"}
-              - {label: "Bild (optional)", name: "image", widget: "image", required: false}
-              - {label: "Beschreibung", name: "description", widget: "text"}
-              - {label: "Ort – Name (optional)", name: "location_name", widget: "string", required: false}
-              - {label: "Ort – Adresse/Details (optional)", name: "location_address", widget: "string", required: false}
-              - {label: "Link-Text (optional)", name: "link_text", widget: "string", required: false}
-              - {label: "Link-URL (optional)", name: "link_url", widget: "string", required: false}
+              - {label: "Kurzinfo", name: "meta", widget: "string", required: false}
+              - {label: "Beschreibung", name: "description", widget: "text", required: false}
+              - {label: "Foto (optional – Mini-Vorschau)", name: "image", widget: "image", required: false}
+              - {label: "Link-Text", name: "link_text", widget: "string", required: false, default: "📷 Fotos ansehen"}
+              - {label: "Link-URL", name: "link_url", widget: "string", required: false}
 
   - name: "vorstand"
     label: "Vorstand – Vereinsführung"

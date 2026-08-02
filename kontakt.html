@@ -555,6 +555,19 @@
             border-top: 1px solid #e2e8f0;
             margin: 4px 0;
         }
+        
+        .recaptcha-wrap {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+        }
+
+        .recaptcha-wrap.visible {
+            max-height: 100px;
+            opacity: 1;
+            margin-bottom: 24px;
+        }
 
         .privacy-box {
             display: flex;
@@ -1065,7 +1078,9 @@
                                     Bearbeitung meines Anliegens gespeichert werden.
                                 </label>
                             </div>
-                            <div data-netlify-recaptcha="true" class="mb-6"></div>
+                            <div class="recaptcha-wrap" id="recaptcha-wrap">
+                                <div data-netlify-recaptcha="true"></div>
+                            </div>
                             <button type="submit" id="submit-btn" class="btn-submit" disabled>
                                 Nachricht<br class="force-break"> absenden
                             </button>
@@ -1174,11 +1189,24 @@
             submitBtn.disabled = !this.checked;
         });
 
+        const recaptchaWrap = document.getElementById('recaptcha-wrap');
+
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
             if (!form.checkValidity()) {
                 form.reportValidity();
+                return;
+            }
+
+            if (!recaptchaWrap.classList.contains('visible')) {
+                recaptchaWrap.classList.add('visible');
+                recaptchaWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse().length) {
+                alert('Bitte bestätige das reCAPTCHA, bevor du das Formular absendest.');
                 return;
             }
 

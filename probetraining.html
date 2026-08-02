@@ -800,7 +800,9 @@
 
 
 
-                <div data-netlify-recaptcha="true" class="mb-2"></div>
+                <div class="recaptcha-wrap" id="recaptcha-wrap">
+                    <div data-netlify-recaptcha="true"></div>
+                </div>
 
                 <div class="pt-4">
                     <button type="submit" id="submit-btn" disabled
@@ -900,11 +902,24 @@
             submitBtn.disabled = !this.checked;
         });
 
+        const recaptchaWrap = document.getElementById('recaptcha-wrap');
+
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
             if (!form.checkValidity()) {
                 form.reportValidity();
+                return;
+            }
+
+            if (!recaptchaWrap.classList.contains('visible')) {
+                recaptchaWrap.classList.add('visible');
+                recaptchaWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse().length) {
+                alert('Bitte bestätige das reCAPTCHA, bevor du das Formular absendest.');
                 return;
             }
 
