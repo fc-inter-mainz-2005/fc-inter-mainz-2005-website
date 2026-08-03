@@ -5,11 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downloadcenter – FC Inter Mainz 2005 e.V.</title>
+
+    <meta name="description"
+        content="Alle wichtigen Formulare des FC Inter Mainz 2005 e.V. zum Download: Vereinsanmeldung, Spielerlaubnis und mehr.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FC Inter Mainz 2005 e.V.">
+    <meta property="og:title" content="Downloadcenter – FC Inter Mainz 2005 e.V.">
+    <meta property="og:description" content="Formulare rund um deine Mitgliedschaft zum Herunterladen.">
+    <meta property="og:image" content="https://www.fc-inter-mainz.de/fotos/InterMainz1.jpeg">
+    <meta property="og:url" content="https://www.fc-inter-mainz.de/downloadcenter.html">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary_large_image">
+
+
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
     <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
 
     <style>
         @font-face {
@@ -831,8 +845,10 @@
     <header class="pt-40 pb-16 relative z-10 text-center">
         <div class="container mx-auto px-6">
             <p class="section-eyebrow reveal">Formulare & Dokumente</p>
-            <h1 class="text-4xl md:text-6xl font-black text-[#0a1f44] uppercase tracking-tighter mb-6 reveal reveal-delay-1">
-                Download<span class="force-hyphen">-</span><br class="force-break"><span style="color:var(--red)">center</span>
+            <h1
+                class="text-4xl md:text-6xl font-black text-[#0a1f44] uppercase tracking-tighter mb-6 reveal reveal-delay-1">
+                Download<span class="force-hyphen">-</span><br class="force-break"><span
+                    style="color:var(--red)">center</span>
             </h1>
             <div class="h-1 w-24 mx-auto reveal reveal-delay-2" style="background:var(--red); border-radius:2px;"></div>
             <p class="mt-6 text-sm reveal reveal-delay-3"
@@ -886,7 +902,8 @@
                     <h4>Kontakt</h4>
                     <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
                     <br>
-                    <p><a href="mailto:info@fc-inter-mainz.de" style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
+                    <p><a href="mailto:info@fc-inter-mainz.de"
+                            style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
                     <br>
                     <p>+49 06131 000000</p>
                 </div>
@@ -923,14 +940,14 @@
     <script>
         const navbar = document.getElementById('navbar');
         let lastScroll = window.scrollY;
-        
+
         window.addEventListener('scroll', () => {
             const currentScroll = window.scrollY;
-            
+
             navbar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
-            
+
             navbar.classList.toggle('scrolled', currentScroll > 20);
-            
+
             lastScroll = currentScroll;
         }, { passive: true });
 

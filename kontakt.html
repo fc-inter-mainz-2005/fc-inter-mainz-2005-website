@@ -5,11 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt – FC Inter Mainz 2005 e.V.</title>
+
+    <meta name="description"
+        content="Kontaktiere den FC Inter Mainz 2005 e.V. – Anschrift, E-Mail und Kontaktformular für Anfragen, Probetraining oder Sponsoring.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FC Inter Mainz 2005 e.V.">
+    <meta property="og:title" content="Kontakt – FC Inter Mainz 2005 e.V.">
+    <meta property="og:description"
+        content="Haben Sie Fragen zum Verein, zu Probetrainings oder zu Sponsoring? Wir freuen uns von Ihnen zu hören.">
+    <meta property="og:image" content="https://www.fc-inter-mainz.de/fotos/InterMainz1.jpeg">
+    <meta property="og:url" content="https://www.fc-inter-mainz.de/kontakt.html">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary_large_image">
+
+
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
     <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
 
     <style>
         @font-face {
@@ -555,7 +570,7 @@
             border-top: 1px solid #e2e8f0;
             margin: 4px 0;
         }
-        
+
         .recaptcha-wrap {
             max-height: 0;
             overflow: hidden;
@@ -1019,8 +1034,9 @@
 
                 <div class="md:col-span-2 reveal reveal-delay-1">
                     <div class="form-card">
-                        <form id="contact-form" name="kontakt" method="POST" data-netlify-recaptcha="true"
-                            netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+                        <form id="contact-form" name="kontakt" method="POST" data-netlify="true"
+                            data-netlify-recaptcha="true" netlify-honeypot="bot-field" enctype="multipart/form-data"
+                            novalidate>
                             <input type="hidden" name="form-name" value="kontakt" />
                             <p style="display:none">
                                 <label>Nicht ausfüllen: <input name="bot-field" /></label>
@@ -1119,7 +1135,8 @@
                     <h4>Kontakt</h4>
                     <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
                     <br>
-                    <p><a href="mailto:info@fc-inter-mainz.de" style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
+                    <p><a href="mailto:info@fc-inter-mainz.de"
+                            style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
                     <br>
                     <p>+49 06131 000000</p>
                 </div>

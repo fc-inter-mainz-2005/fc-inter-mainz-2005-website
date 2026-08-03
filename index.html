@@ -5,69 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FC Inter Mainz 2005 e.V</title>
+    <meta name="description"
+        content="FC Inter Mainz 2005 e.V. – Fußballverein in Mainz mit drei Mannschaften. Trainingszeiten, Probetraining, Vereinsgeschichte und aktuelle News.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FC Inter Mainz 2005 e.V.">
+    <meta property="og:title" content="FC Inter Mainz 2005 e.V. – Fußballverein in Mainz">
+    <meta property="og:description"
+        content="Dein Fußballverein für alle Generationen in Mainz. Gegründet 2005 mit Leidenschaft.">
+    <meta property="og:image" content="https://www.fc-inter-mainz.de/fotos/InterMainz1.jpeg">
+    <meta property="og:url" content="https://www.fc-inter-mainz.de/index.html">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary_large_image">
+
+
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
     <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
 
     <style>
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
-            font-weight: 100 900;
-            font-style: normal;
-            font-display: block;
-        }
-
-        @font-face {
-            font-family: 'Inter';
-            src: url('fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
-            font-weight: 100 900;
-            font-style: italic;
-            font-display: block;
-        }
-
-        :root {
-            --bg-body: #faf8f5;
-            --bg-surface: #ffffff;
-            --bg-nav: rgba(255, 255, 255, 0.98);
-            --bg-footer: #f0f4f8;
-            --text-main: #1a202c;
-            --text-muted: #4a5568;
-
-            --blue: #0a1f44;
-            --blue-mid: #2b4c7e;
-            --blue-light: #e2e8f0;
-            --red: #cc0000;
-            --red-bright: #ff1a1a;
-
-            --card-border: rgba(0, 0, 0, 0.08);
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            overflow-x: hidden;
-        }
 
         .nav-logo span,
         .hero-title,
@@ -85,23 +43,6 @@
             word-break: normal;
             hyphens: auto;
             -webkit-hyphens: auto;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-body);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e0;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a0aec0;
         }
 
         nav {
@@ -123,73 +64,14 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .nav-logo img {
-            height: 46px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-            transition: transform 0.3s;
-        }
-
-        .nav-logo:hover img {
-            transform: scale(1.08) rotate(-3deg);
-        }
-
-        .nav-logo span {
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            color: var(--blue);
-            white-space: nowrap;
-        }
-
         nav:not(.scrolled) .nav-logo span {
             color: white;
             text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 8px 14px;
-            border-radius: 4px;
-            transition: color 0.25s, background 0.25s;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-        }
-
         nav:not(.scrolled) .nav-links a {
             color: rgba(255, 255, 255, 0.85);
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 14px;
-            right: 14px;
-            height: 2px;
-            background: var(--red);
-            transform: scaleX(0);
-            transition: transform 0.25s;
-            border-radius: 2px;
         }
 
         .nav-links a:hover {
@@ -226,25 +108,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
             background: linear-gradient(135deg, #ff1a1a 0%, #ff4d4d 100%) !important;
-        }
-
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            background: none;
-            border: none;
-        }
-
-        .nav-hamburger span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: var(--blue);
-            border-radius: 2px;
-            transition: transform 0.3s, opacity 0.3s;
         }
 
         nav:not(.scrolled) .nav-hamburger span {
@@ -494,12 +357,6 @@
             margin-top: 16px;
         }
 
-        .matches-section {
-            background: white;
-            border-top: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
-        }
-
         .fussballde_widget {
             width: 100%;
         }
@@ -736,57 +593,6 @@
             color: var(--blue);
         }
 
-        footer {
-            position: relative;
-            z-index: 1;
-            background: var(--blue);
-            border-top: 4px solid var(--red);
-            color: white;
-        }
-
-        .footer-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 64px 8% 32px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        @media(max-width:900px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 32px;
-            }
-        }
-
-        @media(max-width:540px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .footer-brand img {
-            height: 52px;
-            margin-bottom: 12px;
-        }
-
-        .footer-brand-name {
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .footer-brand-desc {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.7;
-        }
-
         .footer-col h4 {
             font-size: 1.05rem;
             letter-spacing: 2px;
@@ -794,119 +600,9 @@
             margin-bottom: 18px;
         }
 
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul a,
-        .footer-col p {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.2s;
-            line-height: 1.6;
-        }
-
-        .footer-col ul a:hover {
-            color: white;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 10px;
-            margin-top: 4px;
-        }
-
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.25s, transform 0.2s;
-        }
-
-        .footer-social a:hover {
-            background: var(--red);
-            transform: translateY(-3px);
-        }
-
-        .footer-social svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .footer-bottom a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-bottom a:hover {
-            color: white;
-        }
-
-
-        .nav-links li.has-dropdown {
-            position: relative;
-        }
-
-        .nav-links .dropdown-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .nav-links .dropdown-toggle svg {
-            width: 10px;
-            height: 10px;
-            transition: transform 0.25s;
-        }
-
         .nav-links li.has-dropdown:hover .dropdown-toggle svg,
         .nav-links li.has-dropdown.open .dropdown-toggle svg {
             transform: rotate(180deg);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 4px;
-            background: var(--bg-surface);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            box-shadow: var(--shadow-lg);
-            min-width: 210px;
-            padding: 8px;
-            list-style: none;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(8px);
-            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-            z-index: 50;
         }
 
         .nav-links li.has-dropdown:hover .dropdown-menu,
@@ -914,27 +610,6 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
-        }
-
-        .dropdown-menu li a {
-            display: block;
-            padding: 10px 14px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: none;
-            color: var(--text-muted);
-            border-radius: 6px;
-            white-space: nowrap;
-        }
-
-        .dropdown-menu li a::after {
-            display: none;
-        }
-
-        .dropdown-menu li a:hover {
-            background: rgba(204, 0, 0, 0.08);
-            color: var(--red);
         }
 
         .nav-links li.has-dropdown .dropdown-menu a {
@@ -946,100 +621,17 @@
             color: var(--red);
         }
 
-        .mobile-nav-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .mobile-nav-group-toggle {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-            color: var(--blue);
-        }
-
-        .mobile-nav-group-toggle svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.25s;
-        }
-
         .mobile-nav-group.open .mobile-nav-group-toggle svg {
             transform: rotate(180deg);
-        }
-
-        .mobile-nav-submenu {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
         }
 
         .mobile-nav-group.open .mobile-nav-submenu {
             display: flex;
         }
 
-        .mobile-nav-submenu a {
-            font-size: 1.15rem !important;
-            letter-spacing: 1px !important;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 101;
-            background: rgba(255, 255, 255, 0.98);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-        }
-
-        .mobile-nav.open {
-            display: flex;
-        }
-
-        .mobile-nav a {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--blue);
-            text-decoration: none;
-            transition: color 0.2s;
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-        }
-
         .mobile-nav a:hover,
         .mobile-nav a.active {
             color: var(--red) !important;
-        }
-
-        .mobile-nav-close {
-            position: absolute;
-            top: 24px;
-            right: 5%;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--blue);
-        }
-
-        .mobile-nav-close svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
         }
 
         .matches-section {
@@ -1224,76 +816,7 @@
             }
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        .reveal-delay-4 {
-            transition-delay: 0.4s;
-        }
-
-        .nav-cart-mobile {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            left: calc(5% + 8px);
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 8px;
-            color: var(--blue);
-        }
-
         @media(max-width:1200px) {
-            .nav-links {
-                display: none;
-            }
-
-            .nav-hamburger {
-                display: flex;
-            }
-
-            .nav-logo span {
-                display: none;
-            }
-
-            nav.nav-hidden {
-                transform: translateY(-100%);
-            }
-
-            .nav-cart-mobile {
-                display: flex;
-            }
-
-            nav {
-                justify-content: flex-end;
-            }
-
-            .nav-logo {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-            }
 
             .hero-content {
                 padding: 0 6%;
@@ -1570,7 +1093,8 @@
             </div>
             <div class="about-grid reveal reveal-delay-1">
                 <a href="geschichte.html" class="about-card">
-                    <img class="about-card-img" src="/.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=900&fm=webp&q=85" alt="Geschichte">
+                    <img class="about-card-img"
+                        src="/.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=900&fm=webp&q=85" alt="Geschichte">
                     <div class="about-card-content">
                         <div class="about-card-title">Geschichte</div>
                         <span class="about-card-btn">
@@ -1583,7 +1107,8 @@
                     </div>
                 </a>
                 <a href="teams.html" class="about-card">
-                    <img class="about-card-img" src="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=85" alt="Teams">
+                    <img class="about-card-img" src="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=85"
+                        alt="Teams">
                     <div class="about-card-content">
                         <div class="about-card-title">Teams</div>
                         <span class="about-card-btn">
@@ -1596,7 +1121,8 @@
                     </div>
                 </a>
                 <a href="vorstand.html" class="about-card">
-                    <img class="about-card-img" src="/.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=85" alt="Vorstand">
+                    <img class="about-card-img" src="/.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=85"
+                        alt="Vorstand">
                     <div class="about-card-content">
                         <div class="about-card-title">Vorstand</div>
                         <span class="about-card-btn">
@@ -1656,7 +1182,8 @@
                     <h4>Kontakt</h4>
                     <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
                     <br>
-                    <p><a href="mailto:info@fc-inter-mainz.de" style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
+                    <p><a href="mailto:info@fc-inter-mainz.de"
+                            style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
                     <br>
                     <p>+49 06131 000000</p>
                 </div>
@@ -1727,8 +1254,8 @@
                 dots.forEach(dot => dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.idx)); startTimer(); }));
                 if (slides.length > 1) startTimer();
             })
-            
-            
+
+
         fetch('data/stats.json')
             .then(res => { if (!res.ok) throw new Error('stats.json not found'); return res.json(); })
             .then(data => {
