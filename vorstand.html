@@ -111,21 +111,6 @@
             background: #a0aec0;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 0 5%;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--bg-nav);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, background 0.4s, box-shadow 0.4s;
-        }
 
         .nav-logo {
             display: flex;
@@ -693,7 +678,9 @@
 
 <body>
 
-
+    <div class="domain-banner">
+        Unsere eigene Domain ist in Kürze verfügbar. Vielen Dank für deine Geduld!
+    </div>
 
     <nav id="navbar">
         <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
@@ -966,6 +953,15 @@
             if (!path || path.endsWith('.svg')) return path; // SVGs no se tocan
             return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
         }
+
+        const domainBanner = document.querySelector('.domain-banner');
+function adjustNavForBanner() {
+    if (domainBanner) {
+        document.documentElement.style.setProperty('--banner-h', domainBanner.offsetHeight + 'px');
+    }
+}
+adjustNavForBanner();
+window.addEventListener('resize', adjustNavForBanner, { passive: true });
     </script>
 </body>
 

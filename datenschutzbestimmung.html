@@ -21,21 +21,6 @@
     <link rel="stylesheet" href="css/site.css">
     <style>
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 0 5%;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--bg-nav);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
 
         .nav-cta {
             background: linear-gradient(135deg, var(--red) 0%, #ff3333 100%) !important;
@@ -288,6 +273,9 @@
 
 <body>
 
+    <div class="domain-banner">
+        Unsere eigene Domain ist in Kürze verfügbar. Vielen Dank für deine Geduld!
+    </div>
 
     <nav>
         <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
@@ -641,6 +629,15 @@
                 toggle.closest('.mobile-nav-group').classList.toggle('open');
             });
         });
+
+        const domainBanner = document.querySelector('.domain-banner');
+function adjustNavForBanner() {
+    if (domainBanner) {
+        document.documentElement.style.setProperty('--banner-h', domainBanner.offsetHeight + 'px');
+    }
+}
+adjustNavForBanner();
+window.addEventListener('resize', adjustNavForBanner, { passive: true });
     </script>
 
 </body>
