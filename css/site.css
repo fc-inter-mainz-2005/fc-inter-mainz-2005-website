@@ -75,19 +75,27 @@ body {
     background: #a0aec0;
 }
 
-/* ---------- NAV (solo estructura; el fondo/color se define en cada página) ---------- */
-nav {
+/* ---------- TOP BAR (banner + nav envueltos juntos: se ocultan como una sola unidad) ---------- */
+.top-bar {
     position: fixed;
-    top: var(--banner-h, 40px);
+    top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+/* ---------- NAV (fondo blanco sólido por defecto; index.html lo anula para el efecto hero transparente) ---------- */
+nav {
+    position: relative;
     padding: 0 5%;
     height: 72px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: transform 0.3s ease, background 0.4s, box-shadow 0.4s;
+    background: var(--bg-nav);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background 0.4s, box-shadow 0.4s;
 }
 
 .nav-logo {
@@ -374,7 +382,7 @@ nav {
         display: none;
     }
 
-    nav.nav-hidden {
+    .top-bar.nav-hidden {
         transform: translateY(-100%);
     }
 
@@ -597,11 +605,6 @@ footer {
 }
 
 .domain-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 110;
     background: var(--blue);
     color: #fff;
     text-align: center;

@@ -750,12 +750,13 @@
 
 <body>
 
-    <div class="domain-banner">
-        Unsere eigene Domain ist in Kürze verfügbar. Vielen Dank für deine Geduld!
-    </div>
+    <div class="top-bar" id="topBar">
+        <div class="domain-banner">
+            Unsere eigene Domain ist in Kürze verfügbar. Vielen Dank für deine Geduld!
+        </div>
 
-    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
-    <nav id="navbar">
+        <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+        <nav id="navbar">
         <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
             aria-label="Online-Shop">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -800,6 +801,7 @@
             <span></span><span></span><span></span>
         </button>
     </nav>
+    </div>
 
     <div class="mobile-nav" id="mobile-nav">
         <button class="mobile-nav-close" id="mobile-close" aria-label="Menü schließen">
@@ -891,7 +893,7 @@
                     <p><a href="mailto:info@fc-inter-mainz.de"
                             style="color:inherit; text-decoration:none;">info@fc-inter-mainz.de</a></p>
                     <br>
-                    <p>+49 06131 000000</p>
+                    <p><a href="kontakt.html">Kontakt</a></p>
                 </div>
                 <div class="footer-col">
                     <h4>Social Media</h4>
@@ -925,12 +927,13 @@
 
     <script>
         const navbar = document.getElementById('navbar');
+        const topBar = document.getElementById('topBar');
         let lastScroll = window.scrollY;
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.scrollY;
 
-            navbar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
+            topBar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
 
             navbar.classList.toggle('scrolled', currentScroll > 20);
 
@@ -1029,14 +1032,7 @@
             })
             .catch(err => console.warn('Downloads nicht verfügbar:', err));
 
-            const domainBanner = document.querySelector('.domain-banner');
-function adjustNavForBanner() {
-    if (domainBanner) {
-        document.documentElement.style.setProperty('--banner-h', domainBanner.offsetHeight + 'px');
-    }
-}
-adjustNavForBanner();
-window.addEventListener('resize', adjustNavForBanner, { passive: true });
+            
     </script>
 </body>
 
