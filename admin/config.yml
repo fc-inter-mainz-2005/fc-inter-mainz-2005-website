@@ -178,3 +178,30 @@ collections:
         file: "content/datenschutz.json"
         fields:
           - {label: "Text (Markdown)", name: "content", widget: "markdown"}
+
+  - name: "banner"
+    label: "Ankündigungsbanner"
+    files:
+      - label: "Banner"
+        name: "banner_content"
+        file: "data/banner.json"
+        fields:
+          - {label: "Banner anzeigen?", name: "show_banner", widget: "boolean", default: true}
+          - {label: "Text", name: "banner_text", widget: "string", required: false}
+
+  - name: "footer"
+    label: "Footer"
+    files:
+      - label: "Footer-Inhalte"
+        name: "footer_content"
+        file: "data/footer.json"
+        fields:
+          - {label: "Vereinsbeschreibung", name: "brand_description", widget: "text"}
+          - {label: "Adresse – Straße & Hausnummer", name: "address_line1", widget: "string"}
+          - {label: "Adresse – PLZ & Ort", name: "address_line2", widget: "string"}
+          - label: "Zusätzliche Kontaktzeilen (optional)"
+            name: "extra_contact"
+            widget: "list"
+            required: false
+            field: {label: "Zeile", name: "line", widget: "string"}
+          - {label: "Copyright-Text", name: "copyright_text", widget: "string"}

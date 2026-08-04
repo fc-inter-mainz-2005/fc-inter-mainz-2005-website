@@ -402,6 +402,21 @@ nav {
     }
 }
 
+@media (max-width: 1200px) {
+    html,
+    body {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+}
+
 /* ---------- FOOTER ---------- */
 footer {
     position: relative;
@@ -622,4 +637,12 @@ footer {
         font-size: 0.68rem;
         padding: 8px 12px;
     }
+}
+
+.footer-extra-contact {
+    margin: 8px 0;
+}
+
+.footer-extra-contact:empty {
+    display: none;
 }

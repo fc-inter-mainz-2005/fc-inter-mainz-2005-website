@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/site.css">
 
+    <script src="js/downloadcenter.js" defer></script>
+
     <style>
         @font-face {
             font-family: 'Inter';
@@ -751,56 +753,58 @@
 <body>
 
     <div class="top-bar" id="topBar">
-        <div class="domain-banner">
+        <div class="domain-banner" id="domain-banner">
             Unsere eigene Domain ist in Kürze verfügbar. Vielen Dank für deine Geduld!
         </div>
 
         <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
         <nav id="navbar">
-        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
-            aria-label="Online-Shop">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        </a>
-        <a href="index.html" class="nav-logo">
-            <img src="fotos/logo.png" alt="Inter Mainz Wappen">
-            <span>FC Inter Mainz</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Startseite</a></li>
-            <li class="has-dropdown">
-                <a href="#" class="dropdown-toggle">
-                    Verein
-                    <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M1 1l5 5 5-5" />
-                    </svg>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="teams.html">Teams</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
-                </ul>
-            </li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-            <li><a href="probetraining.html">Probetraining</a></li>
-            <li><a href="downloadcenter.html">Downloadcenter</a></li>
-            <li>
-                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Online-Shop
-                </a>
-            </li>
-        </ul>
-        <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
+                aria-label="Online-Shop">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </a>
+            <a href="index.html" class="nav-logo">
+                <img src="fotos/logo.png" alt="Inter Mainz Wappen">
+                <span>FC Inter Mainz</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Startseite</a></li>
+                <li class="has-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Verein
+                        <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M1 1l5 5 5-5" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="geschichte.html">Geschichte</a></li>
+                        <li><a href="teams.html">Teams</a></li>
+                        <li><a href="vorstand.html">Vorstand</a></li>
+                    </ul>
+                </li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="probetraining.html">Probetraining</a></li>
+                <li><a href="downloadcenter.html">Downloadcenter</a></li>
+                <li>
+                    <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank"
+                        rel="noopener noreferrer">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Online-Shop
+                    </a>
+                </li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
     </div>
 
     <div class="mobile-nav" id="mobile-nav">
@@ -869,7 +873,7 @@
                 <div class="footer-brand">
                     <img src="fotos/logo.png" alt="Inter Mainz Wappen">
                     <div class="footer-brand-name">FC Inter Mainz</div>
-                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                    <p class="footer-brand-desc" id="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
                 <div class="footer-col">
@@ -888,9 +892,9 @@
                 </div>
                 <div class="footer-col">
                     <h4>Kontakt</h4>
-                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
-                    <br>
-                    
+                    <p id="footer-address">Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                    <div id="footer-extra-contact" class="footer-extra-contact"></div>
+
                     <p><a href="kontakt.html">Kontakt</a></p>
                 </div>
                 <div class="footer-col">
@@ -914,7 +918,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 FC Inter Mainz 2005. Alle Rechte vorbehalten.</span>
+                <span id="footer-copyright">© 2026 FC Inter Mainz 2005. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
@@ -923,115 +927,6 @@
         </div>
     </footer>
 
-    <script>
-        const navbar = document.getElementById('navbar');
-        const topBar = document.getElementById('topBar');
-        let lastScroll = window.scrollY;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-
-            topBar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
-
-            navbar.classList.toggle('scrolled', currentScroll > 20);
-
-            lastScroll = currentScroll;
-        }, { passive: true });
-
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-        const mobileClose = document.getElementById('mobile-close');
-        hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-        mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
-
-        document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const parent = toggle.closest('li');
-                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => {
-                    if (li !== parent) li.classList.remove('open');
-                });
-                parent.classList.toggle('open');
-            });
-        });
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-links li.has-dropdown')) {
-                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => li.classList.remove('open'));
-            }
-        });
-
-        document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                toggle.closest('.mobile-nav-group').classList.toggle('open');
-            });
-        });
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        async function downloadFile(url, suggestedName) {
-            if (window.showSaveFilePicker) {
-                try {
-                    const handle = await window.showSaveFilePicker({
-                        suggestedName,
-                        types: [{ description: 'PDF', accept: { 'application/pdf': ['.pdf'] } }]
-                    });
-                    const response = await fetch(url);
-                    const blob = await response.blob();
-                    const writable = await handle.createWritable();
-                    await writable.write(blob);
-                    await writable.close();
-                } catch (err) {
-                    if (err.name !== 'AbortError') console.error(err);
-                }
-            } else {
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = suggestedName;
-                a.click();
-            }
-        }
-
-        fetch('data/downloads.json')
-            .then(res => { if (!res.ok) throw new Error('downloads.json not found'); return res.json(); })
-            .then(data => {
-                const grid = document.getElementById('download-grid');
-                data.cards.forEach((card, i) => {
-                    const div = document.createElement('div');
-                    div.className = 'download-card reveal' + (i > 0 ? ' reveal-delay-' + Math.min(i, 3) : '');
-                    div.innerHTML = `
-                <div class="download-icon">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                    </svg>
-                </div>
-                <div class="download-title"></div>
-                <p class="download-desc"></p>
-                <button class="download-btn" aria-label="Datei herunterladen">
-                    <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
-                    </svg>
-                    <span class="download-btn-text">Datei herunterladen</span>
-                </button>`;
-                    div.querySelector('.download-title').textContent = card.title;
-                    div.querySelector('.download-desc').textContent = card.description;
-                    div.querySelector('.download-btn').addEventListener('click', () => downloadFile(card.file, card.filename));
-                    grid.appendChild(div);
-                    revealObserver.observe(div);
-                });
-            })
-            .catch(err => console.warn('Downloads nicht verfügbar:', err));
-
-            
-    </script>
 </body>
 
 </html>

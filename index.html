@@ -21,12 +21,14 @@
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="data/hero.json" as="fetch" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/site.css">
 
-    <style>
+    <script src="js/index.js" defer></script>
 
+    <style>
         .nav-logo span,
         .hero-title,
         .stat-num,
@@ -136,6 +138,15 @@
         .hero-slide.active {
             opacity: 1;
             transform: scale(1);
+        }
+
+        .hero-slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .hero-slide::after {
@@ -253,12 +264,11 @@
         }
 
         .hero-indicators {
-            position: absolute;
-            bottom: 36px;
-            left: 8%;
+            position: static;
             display: flex;
             gap: 8px;
             z-index: 2;
+            margin-top: 40px;
         }
 
         .hero-dot {
@@ -810,7 +820,7 @@
         @media(max-width:1200px) {
 
             .hero-content {
-                padding: 0 6%;
+                padding: 130px 6% 40px;
             }
 
             .hero-title {
@@ -821,10 +831,11 @@
                 height: 100vh;
                 height: 100dvh;
                 min-height: 560px;
+                align-items: flex-start;
             }
 
-            .hero-slide {
-                background-position: center 25%;
+            .hero-slide img {
+                object-position: center 25%;
             }
 
             .hero-slide::after {
@@ -878,7 +889,7 @@
                 justify-content: center;
             }
 
-            
+
 
         }
     </style>
@@ -887,55 +898,57 @@
 <body>
 
     <div class="top-bar" id="topBar">
-        <div class="domain-banner">
+        <div class="domain-banner" id="domain-banner">
             Unsere eigene Domain ist in Kürze verfügbar. Vielen Dank für deine Geduld!
         </div>
 
         <nav id="navbar">
-        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
-            aria-label="Online-Shop">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        </a>
-        <a href="index.html" class="nav-logo">
-            <img src="fotos/logo.png" alt="Inter Mainz Wappen">
-            <span>FC Inter Mainz</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Startseite</a></li>
-            <li class="has-dropdown">
-                <a href="#" class="dropdown-toggle">
-                    Verein
-                    <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M1 1l5 5 5-5" />
-                    </svg>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="teams.html">Teams</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
-                </ul>
-            </li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-            <li><a href="probetraining.html">Probetraining</a></li>
-            <li><a href="downloadcenter.html">Downloadcenter</a></li>
-            <li>
-                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Online-Shop
-                </a>
-            </li>
-        </ul>
-        <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
+                aria-label="Online-Shop">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </a>
+            <a href="index.html" class="nav-logo">
+                <img src="fotos/logo.png" alt="Inter Mainz Wappen">
+                <span>FC Inter Mainz</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Startseite</a></li>
+                <li class="has-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Verein
+                        <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M1 1l5 5 5-5" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="geschichte.html">Geschichte</a></li>
+                        <li><a href="teams.html">Teams</a></li>
+                        <li><a href="vorstand.html">Vorstand</a></li>
+                    </ul>
+                </li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="probetraining.html">Probetraining</a></li>
+                <li><a href="downloadcenter.html">Downloadcenter</a></li>
+                <li>
+                    <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank"
+                        rel="noopener noreferrer">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Online-Shop
+                    </a>
+                </li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
     </div>
 
     <div class="cookie-banner" id="cookie-banner">
@@ -1004,9 +1017,9 @@
                     </svg>
                 </a>
             </div>
-        </div>
 
-        <div class="hero-indicators" id="heroIndicators"></div>
+            <div class="hero-indicators" id="heroIndicators"></div>
+        </div>
     </header>
 
     <div class="stats-bar">
@@ -1091,7 +1104,7 @@
             </div>
             <div class="about-grid reveal reveal-delay-1">
                 <a href="geschichte.html" class="about-card">
-                    <img class="about-card-img"
+                    <img class="about-card-img" loading="lazy" decoding="async"
                         src="/.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=900&fm=webp&q=85" alt="Geschichte">
                     <div class="about-card-content">
                         <div class="about-card-title">Geschichte</div>
@@ -1105,7 +1118,7 @@
                     </div>
                 </a>
                 <a href="teams.html" class="about-card">
-                    <img class="about-card-img" src="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=85"
+                    <img class="about-card-img" loading="lazy" decoding="async" src="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=85"
                         alt="Teams">
                     <div class="about-card-content">
                         <div class="about-card-title">Teams</div>
@@ -1119,7 +1132,7 @@
                     </div>
                 </a>
                 <a href="vorstand.html" class="about-card">
-                    <img class="about-card-img" src="/.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=85"
+                    <img class="about-card-img" loading="lazy" decoding="async" src="/.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=85"
                         alt="Vorstand">
                     <div class="about-card-content">
                         <div class="about-card-title">Vorstand</div>
@@ -1159,7 +1172,7 @@
                 <div class="footer-brand">
                     <img src="fotos/logo.png" alt="Inter Mainz Wappen">
                     <div class="footer-brand-name">FC Inter Mainz</div>
-                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                    <p class="footer-brand-desc" id="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
                 <div class="footer-col">
@@ -1178,9 +1191,9 @@
                 </div>
                 <div class="footer-col">
                     <h4>Kontakt</h4>
-                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
-                    <br>
-                    
+                    <p id="footer-address">Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                    <div id="footer-extra-contact" class="footer-extra-contact"></div>
+
                     <p><a href="kontakt.html">Kontakt</a></p>
                 </div>
                 <div class="footer-col">
@@ -1204,7 +1217,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.</span>
+                <span id="footer-copyright">© 2026 FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
@@ -1212,255 +1225,6 @@
             </div>
     </footer>
 
-    <script>
-        const navbar = document.getElementById('navbar');
-        const topBar = document.getElementById('topBar');
-        let lastScroll = window.scrollY;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-            navbar.classList.toggle('scrolled', currentScroll > 20);
-            topBar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
-            lastScroll = currentScroll;
-        }, { passive: true });
-
-        fetch('data/hero.json')
-            .then(res => { if (!res.ok) throw new Error('hero.json not found'); return res.json(); })
-            .then(data => {
-                const slidesWrap = document.getElementById('heroSlides');
-                const dotsWrap = document.getElementById('heroIndicators');
-                data.slides.forEach((s, i) => {
-                    const div = document.createElement('div');
-                    div.className = 'hero-slide' + (i === 0 ? ' active' : '');
-                    div.style.backgroundImage = `url('${netlifyImg(s.image, 1920)}')`;
-                    slidesWrap.appendChild(div);
-                    const dot = document.createElement('div');
-                    dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
-                    dot.dataset.idx = i;
-                    dotsWrap.appendChild(dot);
-                });
-                const slides = document.querySelectorAll('.hero-slide');
-                const dots = document.querySelectorAll('.hero-dot');
-                let current = 0, timer;
-                function goTo(idx) {
-                    slides[current].classList.remove('active'); dots[current].classList.remove('active');
-                    current = idx;
-                    slides[current].classList.add('active'); dots[current].classList.add('active');
-                }
-                function next() { goTo((current + 1) % slides.length); }
-                function startTimer() { clearInterval(timer); timer = setInterval(next, 5500); }
-                dots.forEach(dot => dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.idx)); startTimer(); }));
-                if (slides.length > 1) startTimer();
-            })
-
-
-        fetch('data/stats.json')
-            .then(res => { if (!res.ok) throw new Error('stats.json not found'); return res.json(); })
-            .then(data => {
-                const el = document.getElementById('stat-mitglieder');
-                if (el && data.mitglieder) el.textContent = data.mitglieder;
-            })
-            .catch(err => console.warn('Stats nicht verfügbar:', err));
-
-        (function () {
-            const CONSENT_KEY = 'im_cookie_consent';
-            const banner = document.getElementById('cookie-banner');
-            const placeholder = document.getElementById('fupa-placeholder');
-            const fupaCards = document.querySelectorAll('.fupa-card');
-            let fupaScriptLoaded = false;
-
-            function loadFupaScript() {
-                if (fupaScriptLoaded) return;
-                fupaScriptLoaded = true;
-                const s = document.createElement('script');
-                s.async = true;
-                s.src = 'https://widget-api.fupa.net/vendor/widget.js?v1';
-                document.body.appendChild(s);
-            }
-
-            function showFupaWidgets() {
-                if (placeholder) placeholder.style.display = 'none';
-                fupaCards.forEach(c => c.style.display = '');
-                loadFupaScript();
-            }
-
-            function getConsent() {
-                try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
-            }
-            function setConsent(value) {
-                try { localStorage.setItem(CONSENT_KEY, value); } catch (e) { }
-            }
-
-            const consent = getConsent();
-            if (consent === 'accepted') {
-                showFupaWidgets();
-            } else if (!consent) {
-                if (banner) banner.classList.add('open');
-            }
-
-            const acceptBtn = document.getElementById('cookie-accept-btn');
-            const rejectBtn = document.getElementById('cookie-reject-btn');
-            if (acceptBtn) acceptBtn.addEventListener('click', () => {
-                setConsent('accepted');
-                if (banner) banner.classList.remove('open');
-                showFupaWidgets();
-            });
-            if (rejectBtn) rejectBtn.addEventListener('click', () => {
-                setConsent('rejected');
-                if (banner) banner.classList.remove('open');
-            });
-
-            const fupaLoadBtn = document.getElementById('fupa-load-btn');
-            if (fupaLoadBtn) fupaLoadBtn.addEventListener('click', () => {
-                setConsent('accepted');
-                if (banner) banner.classList.remove('open');
-                showFupaWidgets();
-            });
-        })();
-
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-        const mobileClose = document.getElementById('mobile-close');
-        hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-        mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
-
-        (function () {
-            const els = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-            els.forEach(el => observer.observe(el));
-        })();
-
-
-        fetch('data/events.json')
-            .then(res => {
-                if (!res.ok) throw new Error('events.json not found');
-                return res.json();
-            })
-            .then(data => {
-                const list = document.getElementById('event-list');
-
-                const dynamicObserver = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.12 });
-
-                const safeUrl = (url) => {
-                    if (!url) return '';
-                    try {
-                        const u = new URL(url, window.location.origin);
-                        return ['http:', 'https:'].includes(u.protocol) ? u.href : '';
-                    } catch {
-                        return '';
-                    }
-                };
-
-                data.events.forEach((event, index) => {
-                    const card = document.createElement('div');
-                    card.className = `news-card reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}`;
-
-                    if (event.image) {
-                        const media = document.createElement('div');
-                        media.className = 'news-card-media';
-                        const img = document.createElement('img');
-                        img.src = event.image;
-                        img.alt = event.name || '';
-                        img.loading = 'lazy';
-                        media.appendChild(img);
-                        card.appendChild(media);
-                    }
-
-                    const content = document.createElement('div');
-                    content.className = 'news-card-content';
-                    content.innerHTML = `
-                        <div class="news-card-title"></div>
-                        <div class="news-card-meta"></div>
-                        <p class="news-card-desc"></p>`;
-                    content.querySelector('.news-card-title').textContent = event.name || '';
-                    content.querySelector('.news-card-meta').textContent = event.meta || '';
-                    content.querySelector('.news-card-desc').textContent = event.description || '';
-
-                    const linkUrl = safeUrl(event.link_url);
-                    if (linkUrl) {
-                        const a = document.createElement('a');
-                        a.className = 'news-card-link';
-                        a.href = linkUrl;
-                        a.target = '_blank';
-                        a.rel = 'noopener';
-                        a.textContent = event.link_text || 'Fotos ansehen';
-                        content.appendChild(a);
-                    }
-
-                    card.appendChild(content);
-                    list.appendChild(card);
-                    dynamicObserver.observe(card);
-                });
-            })
-            .catch(err => console.warn('Events not loaded:', err));
-
-        fetch('data/sponsors.json')
-            .then(res => {
-                if (!res.ok) throw new Error('sponsors.json not found');
-                return res.json();
-            })
-            .then(data => {
-                const track = document.getElementById('sponsors-track');
-                data.sponsors.forEach(s => {
-                    const a = document.createElement('a');
-                    a.href = /^https?:\/\//i.test(s.link) ? s.link : '#';
-                    a.target = '_blank';
-                    a.rel = 'noopener';
-                    a.className = 'sponsor-item';
-                    const img = document.createElement('img');
-                    img.src = netlifyImg(s.image, 220, 90);
-                    img.alt = s.name;
-                    img.title = s.name;
-                    img.loading = 'lazy';
-                    a.appendChild(img);
-                    track.appendChild(a);
-                });
-            }).catch(err => console.warn('Sponsors not available:', err));
-
-
-        document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const parent = toggle.closest('li');
-                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => {
-                    if (li !== parent) li.classList.remove('open');
-                });
-                parent.classList.toggle('open');
-            });
-        });
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-links li.has-dropdown')) {
-                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => li.classList.remove('open'));
-            }
-        });
-
-        document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                toggle.closest('.mobile-nav-group').classList.toggle('open');
-            });
-        });
-
-        function netlifyImg(path, width, quality = 85) {
-            if (!path || path.endsWith('.svg')) return path;
-            return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
-        }
-
-
-    </script>
 </body>
 
 </html>

@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/site.css">
 
+    <script src="js/probetraining.js" defer></script>
+
     <style>
         @font-face {
             font-family: 'Inter';
@@ -118,7 +120,7 @@
             background: #a0aec0;
         }
 
- 
+
         nav.scrolled {
             background: var(--bg-nav);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -636,55 +638,57 @@
 <body>
 
     <div class="top-bar" id="topBar">
-        <div class="domain-banner">
+        <div class="domain-banner" id="domain-banner">
             Unsere eigene Domain ist in Kürze verfügbar. Vielen Dank für deine Geduld!
         </div>
 
         <nav id="navbar">
-        <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
-            aria-label="Online-Shop">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        </a>
-        <a href="index.html" class="nav-logo">
-            <img src="fotos/logo.png" alt="Inter Mainz Wappen">
-            <span>FC Inter Mainz</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Startseite</a></li>
-            <li class="has-dropdown">
-                <a href="#" class="dropdown-toggle">
-                    Verein
-                    <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M1 1l5 5 5-5" />
-                    </svg>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="geschichte.html">Geschichte</a></li>
-                    <li><a href="teams.html">Teams</a></li>
-                    <li><a href="vorstand.html">Vorstand</a></li>
-                </ul>
-            </li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-            <li><a href="probetraining.html">Probetraining</a></li>
-            <li><a href="downloadcenter.html">Downloadcenter</a></li>
-            <li>
-                <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank" rel="noopener noreferrer">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Online-Shop
-                </a>
-            </li>
-        </ul>
-        <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+            <a href="https://fc-inter-mainz.fan12.de/" class="nav-cart-mobile" target="_blank" rel="noopener noreferrer"
+                aria-label="Online-Shop">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </a>
+            <a href="index.html" class="nav-logo">
+                <img src="fotos/logo.png" alt="Inter Mainz Wappen">
+                <span>FC Inter Mainz</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Startseite</a></li>
+                <li class="has-dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Verein
+                        <svg width="10" height="10" viewBox="0 0 12 8" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M1 1l5 5 5-5" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="geschichte.html">Geschichte</a></li>
+                        <li><a href="teams.html">Teams</a></li>
+                        <li><a href="vorstand.html">Vorstand</a></li>
+                    </ul>
+                </li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="probetraining.html">Probetraining</a></li>
+                <li><a href="downloadcenter.html">Downloadcenter</a></li>
+                <li>
+                    <a href="https://fc-inter-mainz.fan12.de/" class="nav-cta" target="_blank"
+                        rel="noopener noreferrer">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Online-Shop
+                    </a>
+                </li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
     </div>
 
     <div class="mobile-nav" id="mobile-nav">
@@ -750,14 +754,16 @@
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="vorname"class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Vorname
+                        <label for="vorname"
+                            class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Vorname
                             *</label>
                         <input type="text" name="vorname" id="vorname" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
                             placeholder="Dein Vorname">
                     </div>
                     <div>
-                        <label for="name" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Nachname
+                        <label for="name"
+                            class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Nachname
                             *</label>
                         <input type="text" name="name" id="name" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
@@ -767,14 +773,16 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="alter" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Alter
+                        <label for="alter"
+                            class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Alter
                             *</label>
                         <input type="number" name="alter" id="alter" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
                             placeholder="z.B. 25">
                     </div>
                     <div>
-                        <label for="geburtsdatum" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Geburtsdatum
+                        <label for="geburtsdatum"
+                            class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Geburtsdatum
                             *</label>
                         <input type="date" name="geburtsdatum" id="geburtsdatum" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900">
@@ -782,7 +790,8 @@
                 </div>
 
                 <div>
-                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">E-Mail Adresse
+                    <label for="email"
+                        class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">E-Mail Adresse
                         *</label>
                     <input type="email" name="email" id="email" required
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
@@ -790,7 +799,8 @@
                 </div>
 
                 <div>
-                    <label for="telefon" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Handynummer
+                    <label for="telefon"
+                        class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">Handynummer
                         *</label>
                     <input type="tel" name="telefon" id="telefon" required
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
@@ -837,7 +847,7 @@
                 <div class="footer-brand">
                     <img src="fotos/logo.png" alt="Inter Mainz Wappen">
                     <div class="footer-brand-name">FC Inter Mainz</div>
-                    <p class="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                    <p class="footer-brand-desc" id="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
                 <div class="footer-col">
@@ -856,9 +866,9 @@
                 </div>
                 <div class="footer-col">
                     <h4>Kontakt</h4>
-                    <p>Albert-Stohr-Straße 50<br>55128 Mainz</p>
-                    <br>
-                    
+                    <p id="footer-address">Albert-Stohr-Straße 50<br>55128 Mainz</p>
+                    <div id="footer-extra-contact" class="footer-extra-contact"></div>
+
                     <p><a href="kontakt.html">Kontakt</a></p>
                 </div>
                 <div class="footer-col">
@@ -882,7 +892,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.</span>
+                <span id="footer-copyright">© 2026 FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.</span>
                 <div style="display:flex;gap:20px">
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
@@ -891,111 +901,6 @@
         </div>
     </footer>
 
-    <script>
-        const navbar = document.getElementById('navbar');
-        const topBar = document.getElementById('topBar');
-        let lastScroll = window.scrollY;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-            topBar.classList.toggle('nav-hidden', currentScroll > lastScroll && currentScroll > 80);
-            lastScroll = currentScroll;
-        }, { passive: true });
-
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-        const mobileClose = document.getElementById('mobile-close');
-        hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-        mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
-
-        const privacyCheck = document.getElementById('privacy-check');
-        const submitBtn = document.getElementById('submit-btn');
-        const form = document.getElementById('contact-form');
-
-        privacyCheck.addEventListener('change', function () {
-            submitBtn.disabled = !this.checked;
-        });
-
-        const recaptchaWrap = document.getElementById('recaptcha-wrap');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            if (!recaptchaWrap.classList.contains('visible')) {
-                recaptchaWrap.classList.add('visible');
-                recaptchaWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return;
-            }
-
-            if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse().length) {
-                alert('Bitte bestätige das reCAPTCHA, bevor du das Formular absendest.');
-                return;
-            }
-
-            const formData = new FormData(form);
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `Wird gesendet…`;
-
-            fetch('/', { method: 'POST', body: formData })
-                .then(res => { if (!res.ok) throw new Error('rejected'); })
-                .then(() => {
-                    submitBtn.innerHTML = `✓ Erfolgreich gesendet`;
-                    submitBtn.style.background = '#166534';
-                    form.reset();
-                    setTimeout(() => {
-                        submitBtn.innerHTML = `Anfrage senden`;
-                        submitBtn.style.background = '';
-                        submitBtn.disabled = true;
-                    }, 4000);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Es gab ein Problem beim Senden der Anfrage.');
-                    submitBtn.disabled = false;
-                });
-        });
-
-
-        fetch('data/probetraining.json')
-            .then(res => res.json())
-            .then(data => {
-                const box = document.getElementById('hinweis-box');
-                if (!data.show_hinweis || !data.hinweis_text) {
-                    box.style.display = 'none';
-                } else {
-                    document.getElementById('hinweis-text').textContent = data.hinweis_text;
-                }
-            });
-
-        document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const parent = toggle.closest('li');
-                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => {
-                    if (li !== parent) li.classList.remove('open');
-                });
-                parent.classList.toggle('open');
-            });
-        });
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-links li.has-dropdown')) {
-                document.querySelectorAll('.nav-links li.has-dropdown').forEach(li => li.classList.remove('open'));
-            }
-        });
-
-        document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                toggle.closest('.mobile-nav-group').classList.toggle('open');
-            });
-        });
-
-        
-    </script>
 </body>
 
 </html>
