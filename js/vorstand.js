@@ -122,10 +122,11 @@ imgEl.decoding = 'async';
             .then(data => {
                 const banner = document.getElementById('domain-banner');
                 if (!banner) return;
-                if (!data.show_banner) {
-                    banner.style.display = 'none';
-                } else if (data.banner_text) {
-                    banner.textContent = data.banner_text;
+                if (data.show_banner) {
+                    banner.style.display = 'block';
+                    if (data.banner_text) {
+                        banner.textContent = data.banner_text;
+                    }
                 }
             })
             .catch(err => console.warn('Banner nicht verfügbar:', err));
