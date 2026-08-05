@@ -90,7 +90,14 @@ const navbar = document.getElementById('navbar');
 
                     const img = section.querySelector('img');
                     img.src = netlifyImg(team.photo, 1200);
+                    img.srcset = [480, 800, 1200, 1600]
+                        .map(w => `${netlifyImg(team.photo, w)} ${w}w`)
+                        .join(', ');
+                    img.sizes = '(min-width: 1024px) 900px, 100vw';
                     img.alt = 'Mannschaftsfoto ' + team.name;
+                    img.loading = i === 0 ? 'eager' : 'lazy';
+                    img.fetchPriority = i === 0 ? 'high' : 'low';
+                    img.decoding = i === 0 ? 'sync' : 'async';
                     img.onerror = function () {
                         const wrap = document.createElement('div');
                         wrap.className = 'w-full h-72 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-[var(--text-muted)]';

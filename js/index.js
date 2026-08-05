@@ -21,6 +21,8 @@ const navbar = document.getElementById('navbar');
                     img.src = netlifyImg(s.image, 1920);
                     img.srcset = `${netlifyImg(s.image, 800)} 800w, ${netlifyImg(s.image, 1920)} 1920w`;
                     img.sizes = '100vw';
+                    img.width = 1920;
+                    img.height = 1080;
                     img.alt = '';
                     if (i === 0) {
                         img.loading = 'eager';
@@ -125,9 +127,12 @@ const navbar = document.getElementById('navbar');
                         const media = document.createElement('div');
                         media.className = 'news-card-media';
                         const img = document.createElement('img');
-                        img.src = event.image;
+                        img.src = netlifyImg(event.image, 144, 80);
+                        img.width = 72;
+                        img.height = 72;
                         img.alt = event.name || '';
                         img.loading = 'lazy';
+                        img.decoding = 'async';
                         media.appendChild(img);
                         card.appendChild(media);
                     }

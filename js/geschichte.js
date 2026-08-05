@@ -50,9 +50,18 @@ const navbar = document.getElementById('navbar');
         fetch('data/geschichte.json')
             .then(res => { if (!res.ok) throw new Error('geschichte.json not found'); return res.json(); })
             .then(data => {
-                document.getElementById('img-gruendung').src = netlifyImg(data.gruendung, 1200);
-                document.getElementById('img-aufstieg').src = netlifyImg(data.aufstieg, 1200);
-                document.getElementById('img-heute').src = netlifyImg(data.heute, 1200);
+                const applyImg = (id, path, eager) => {
+                    const img = document.getElementById(id);
+                    img.src = netlifyImg(path, 1200);
+                    img.srcset = netlifySrcset(path, [480, 800, 1200, 1600]);
+                    img.sizes = '(min-width: 1024px) 58vw, 100vw';
+                    img.loading = eager ? 'eager' : 'lazy';
+                    img.fetchPriority = eager ? 'high' : 'low';
+                    img.decoding = eager ? 'sync' : 'async';
+                };
+                applyImg('img-gruendung', data.gruendung, true);
+                applyImg('img-aufstieg', data.aufstieg, false);
+                applyImg('img-heute', data.heute, false);
             })
             .catch(err => console.warn('Geschichte-Fotos nicht verfügbar:', err));
 
@@ -83,7 +92,10 @@ const navbar = document.getElementById('navbar');
             return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
         }
 
-
+        function netlifySrcset(path, widths, quality = 85) {
+            if (!path || path.endsWith('.svg')) return '';
+            return widths.map(w => `${netlifyImg(path, w, quality)} ${w}w`).join(', ');
+        }
     
         fetch('data/banner.json')
             .then(res => { if (!res.ok) throw new Error('banner.json not found'); return res.json(); })
