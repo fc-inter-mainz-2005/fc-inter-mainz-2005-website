@@ -61,60 +61,11 @@ const navbar = document.getElementById('navbar');
             })
             .catch(err => console.warn('Stats nicht verfügbar:', err));
 
-        (function () {
-            const CONSENT_KEY = 'im_cookie_consent';
-            const banner = document.getElementById('cookie-banner');
-            const placeholder = document.getElementById('fupa-placeholder');
-            const fupaCards = document.querySelectorAll('.fupa-card');
-            let fupaScriptLoaded = false;
-
-            function loadFupaScript() {
-                if (fupaScriptLoaded) return;
-                fupaScriptLoaded = true;
-                const s = document.createElement('script');
-                s.async = true;
-                s.src = 'https://widget-api.fupa.net/vendor/widget.js?v1';
-                document.body.appendChild(s);
-            }
-
-            function showFupaWidgets() {
-                if (placeholder) placeholder.style.display = 'none';
-                fupaCards.forEach(c => c.style.display = '');
-                loadFupaScript();
-            }
-
-            function getConsent() {
-                try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
-            }
-            function setConsent(value) {
-                try { localStorage.setItem(CONSENT_KEY, value); } catch (e) { }
-            }
-
-            const consent = getConsent();
-            if (consent === 'accepted') {
-                showFupaWidgets();
-            } else if (!consent) {
-                if (banner) banner.classList.add('open');
-            }
-
-            const acceptBtn = document.getElementById('cookie-accept-btn');
-            const rejectBtn = document.getElementById('cookie-reject-btn');
-            if (acceptBtn) acceptBtn.addEventListener('click', () => {
-                setConsent('accepted');
-                if (banner) banner.classList.remove('open');
-                showFupaWidgets();
-            });
-            if (rejectBtn) rejectBtn.addEventListener('click', () => {
-                setConsent('rejected');
-                if (banner) banner.classList.remove('open');
-            });
-
-            const fupaLoadBtn = document.getElementById('fupa-load-btn');
-            if (fupaLoadBtn) fupaLoadBtn.addEventListener('click', () => {
-                setConsent('accepted');
-                if (banner) banner.classList.remove('open');
-                showFupaWidgets();
-            });
+        (function loadFupaScript() {
+            const s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://widget-api.fupa.net/vendor/widget.js?v1';
+            document.body.appendChild(s);
         })();
 
         const hamburger = document.getElementById('hamburger');

@@ -685,79 +685,6 @@
             max-width: 100%;
         }
 
-        .cookie-banner {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 500;
-            background: var(--blue);
-            color: white;
-            padding: 20px 24px;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            flex-wrap: wrap;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
-        }
-
-        .cookie-banner.open {
-            display: flex;
-        }
-
-        .cookie-banner p {
-            font-size: 0.82rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 640px;
-            margin: 0;
-        }
-
-        .cookie-banner p a {
-            color: white;
-            text-decoration: underline;
-        }
-
-        .cookie-banner-actions {
-            display: flex;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .cookie-btn {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 0.78rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 11px 20px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .cookie-btn-reject {
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .cookie-btn-reject:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .cookie-btn-accept {
-            background: var(--red);
-            color: white;
-        }
-
-        .cookie-btn-accept:hover {
-            background: var(--red-bright);
-            transform: translateY(-1px);
-        }
-
         .widget-placeholder {
             display: flex;
             flex-direction: column;
@@ -867,31 +794,6 @@
             }
         }
 
-        @media (max-width: 500px) {
-            .cookie-banner {
-                padding: 16px;
-                gap: 16px;
-            }
-
-            .cookie-banner-actions {
-                width: 100%;
-                flex-direction: row;
-                gap: 8px;
-            }
-
-            .cookie-btn {
-                flex: 1;
-                padding: 12px 6px;
-                font-size: 0.68rem;
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-
-
-        }
     </style>
 </head>
 
@@ -949,18 +851,6 @@
                 <span></span><span></span><span></span>
             </button>
         </nav>
-    </div>
-
-    <div class="cookie-banner" id="cookie-banner">
-        <p>
-            Wir binden auf dieser Seite optional Live-Ergebnisse von <strong>FuPa</strong> ein. Dabei können vom
-            Anbieter Cookies gesetzt werden. Weitere Informationen findest du in unserer
-            <a href="datenschutzbestimmung.html#fupa">Datenschutzerklärung</a>.
-        </p>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn cookie-btn-reject" id="cookie-reject-btn">Nur notwendige</button>
-            <button class="cookie-btn cookie-btn-accept" id="cookie-accept-btn">Alle akzeptieren</button>
-        </div>
     </div>
 
     <div class="mobile-nav" id="mobile-nav">
@@ -1051,14 +941,7 @@
 
             <div class="widget-grid reveal reveal-delay-1">
 
-                <div class="widget-placeholder" id="fupa-placeholder">
-                    <p>Die Live-Ergebnisse werden vom externen Anbieter <strong>FuPa</strong> geladen. Dabei können
-                        Cookies gesetzt werden. Mehr dazu in unserer <a href="datenschutzbestimmung.html#fupa"
-                            style="color:var(--red);">Datenschutzerklärung</a>.</p>
-                    <button class="widget-placeholder-btn" id="fupa-load-btn">Ergebnisse laden</button>
-                </div>
-
-                <div class="widget-card fupa-card" style="display:none">
+                <div class="widget-card fupa-card" >
                     <h3 class="widget-title">FC Inter Mainz</h3>
                     <div id="fp-widget_root-3H3VDqsfqhC9UagnvObtyRxyqqv">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter
@@ -1066,7 +949,7 @@
                     </div>
                 </div>
 
-                <div class="widget-card fupa-card" style="display:none">
+                <div class="widget-card fupa-card" >
                     <h3 class="widget-title">FC Inter Mainz II</h3>
                     <div id="fp-widget_root-3H86m7DAQODYtcqZ0DSyRxT1sR4">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter
@@ -1074,7 +957,7 @@
                     </div>
                 </div>
 
-                <div class="widget-card fupa-card" style="display:none">
+                <div class="widget-card fupa-card" >
                     <h3 class="widget-title">FC Inter Mainz Ü32</h3>
                     <div id="fp-widget_root-3H3W8BQ9dKsBBPN7l8GxRiO7NtF">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz
