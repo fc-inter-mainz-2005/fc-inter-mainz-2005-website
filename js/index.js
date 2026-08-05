@@ -252,5 +252,13 @@ const navbar = document.getElementById('navbar');
 
                 const copy = document.getElementById('footer-copyright');
                 if (copy && data.copyright_text) copy.textContent = data.copyright_text;
+
+                const emailWrap = document.getElementById('footer-email-wrap');
+                const emailLink = document.getElementById('footer-email');
+                if (emailWrap && emailLink && data.email) {
+                    emailLink.href = 'mailto:' + data.email;
+                    emailLink.textContent = data.email;
+                    emailWrap.style.display = 'block';
+                }
             })
             .catch(err => console.warn('Footer-Daten nicht verfügbar:', err));

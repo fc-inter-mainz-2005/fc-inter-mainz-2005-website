@@ -204,4 +204,5 @@ collections:
             widget: "list"
             required: false
             field: {label: "Zeile", name: "line", widget: "string"}
+          - {label: "E-Mail Adresse", name: "email", widget: "string", required: false}
           - {label: "Copyright-Text", name: "copyright_text", widget: "string"}
