@@ -22,13 +22,14 @@ const navbar = document.getElementById('navbar');
                     img.srcset = `${netlifyImg(s.image, 800)} 800w, ${netlifyImg(s.image, 1920)} 1920w`;
                     img.sizes = '100vw';
                     img.alt = '';
-                    img.decoding = 'async';
                     if (i === 0) {
                         img.loading = 'eager';
                         img.fetchPriority = 'high';
+                        img.decoding = 'sync';
                     } else {
                         img.loading = 'lazy';
                         img.fetchPriority = 'low';
+                        img.decoding = 'async';
                     }
                     div.appendChild(img);
 

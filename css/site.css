@@ -653,3 +653,12 @@ footer {
     object-fit: cover;
     display: block;
 }
+
+.lightbox-img, .vorstand-photo img, .hero-slide img {
+    animation: fadeInImg 0.4s ease-in-out;
+}
+
+@keyframes fadeInImg {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
