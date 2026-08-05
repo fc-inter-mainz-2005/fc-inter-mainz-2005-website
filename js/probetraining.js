@@ -22,6 +22,26 @@ const navbar = document.getElementById('navbar');
             submitBtn.disabled = !this.checked;
         });
 
+        const vereinWrap = document.getElementById('verein-name-wrap');
+        const vereinInput = document.getElementById('verein_name');
+        const anderVereinRadios = document.querySelectorAll('input[name="anderer_verein"]');
+
+        function toggleVereinField() {
+            const jaChecked = document.getElementById('anderer_verein_ja').checked;
+            if (jaChecked) {
+                vereinWrap.style.display = 'block';
+                vereinInput.setAttribute('required', 'required');
+            } else {
+                vereinWrap.style.display = 'none';
+                vereinInput.removeAttribute('required');
+                vereinInput.value = '';
+            }
+        }
+
+        anderVereinRadios.forEach(radio => {
+            radio.addEventListener('change', toggleVereinField);
+        });
+
         const recaptchaWrap = document.getElementById('recaptcha-wrap');
 
         form.addEventListener('submit', function (e) {
