@@ -51,27 +51,13 @@ const navbar = document.getElementById('navbar');
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        async function downloadFile(url, suggestedName) {
-            if (window.showSaveFilePicker) {
-                try {
-                    const handle = await window.showSaveFilePicker({
-                        suggestedName,
-                        types: [{ description: 'PDF', accept: { 'application/pdf': ['.pdf'] } }]
-                    });
-                    const response = await fetch(url);
-                    const blob = await response.blob();
-                    const writable = await handle.createWritable();
-                    await writable.write(blob);
-                    await writable.close();
-                } catch (err) {
-                    if (err.name !== 'AbortError') console.error(err);
-                }
-            } else {
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = suggestedName;
-                a.click();
-            }
+        function downloadFile(url, suggestedName) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = suggestedName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a); 
         }
 
         fetch('data/downloads.json')

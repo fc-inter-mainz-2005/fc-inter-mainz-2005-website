@@ -18,7 +18,7 @@ exports.handler = async (event) => {
       const betreff = data.betreff || 'Allgemeine Anfrage';
       const nachricht = data.message || '';
 
-      subject = `[Web] Kontaktformular: ${betreff}`;
+      subject = `Kontaktformular: ${betreff}`;
       html = `
         <h2>Neue Nachricht über das Kontaktformular</h2>
         <p><strong>Name:</strong> ${vorname} ${nachname}</p>
@@ -38,7 +38,7 @@ exports.handler = async (event) => {
       const vereinName = data.verein_name || '';
       const nachricht = data.nachricht || '';
 
-      subject = `[Web] Neue Anmeldung Probetraining: ${vorname} ${nachname}`;
+      subject = `Neue Anmeldung Probetraining: ${vorname} ${nachname}`;
       html = `
         <h2>Neue Anmeldung zum Probetraining</h2>
         <p><strong>Name:</strong> ${vorname} ${nachname}</p>
