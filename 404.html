@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seite nicht gefunden – FC Inter Mainz 2005 e.V.</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="fotos/logo.png">
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        .error-wrap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 6%;
+            background: var(--bg-body);
+        }
+        .error-code {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: clamp(5rem, 15vw, 10rem);
+            color: var(--red);
+            line-height: 0.9;
+        }
+        .error-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            color: var(--blue);
+            margin: 12px 0 16px;
+        }
+        .error-text {
+            color: var(--text-muted);
+            max-width: 420px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        .error-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 14px 32px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(204,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+        .error-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(204,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-wrap">
+        <img src="fotos/logo.png" alt="FC Inter Mainz Wappen" style="height:64px;margin-bottom:20px;">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Diese Seite gibt's bei uns nicht</h1>
+        <p class="error-text">Der Link ist entweder falsch oder die Seite wurde verschoben. Aber keine Sorge — der Weg zurück ins Spiel ist ganz einfach.</p>
+        <a href="/index.html" class="error-btn">Zur Startseite</a>
+    </div>
+</body>
+</html>
