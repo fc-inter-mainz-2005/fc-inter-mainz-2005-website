@@ -182,10 +182,10 @@ fetch('data/sponsors.json')
             a.rel = 'noopener';
             a.className = 'sponsor-item';
             const img = document.createElement('img');
-            img.src = netlifyImg(s.image, 220, 90);
+            img.src = netlifyImg(s.image, 140, 75);
             img.alt = s.name;
-            img.width = 220;
-            img.height = 90;
+            img.width = 70;
+            img.height = 70;
             img.title = s.name;
             img.loading = 'lazy';
             a.appendChild(img);
@@ -216,7 +216,7 @@ document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
     });
 });
 
-function netlifyImg(path, width, quality = 85) {
+function netlifyImg(path, width, quality = 75) {
     if (!path || path.endsWith('.svg')) return path;
     return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
 }
