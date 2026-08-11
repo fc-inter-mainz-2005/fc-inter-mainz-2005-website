@@ -95,6 +95,8 @@ const navbar = document.getElementById('navbar');
                         .join(', ');
                     img.sizes = '(min-width: 1024px) 900px, 100vw';
                     img.alt = 'Mannschaftsfoto ' + team.name;
+                    img.width = 1200;
+                    img.height = 800;
                     img.loading = i === 0 ? 'eager' : 'lazy';
                     img.fetchPriority = i === 0 ? 'high' : 'low';
                     img.decoding = i === 0 ? 'sync' : 'async';

@@ -22,12 +22,10 @@
     <link rel="icon" type="image/png" href="fotos/logo.png">
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-    
-    <link rel="preload" as="image"
-      href="/.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=1920&fm=webp&q=85"
-      imagesrcset="/.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=800&fm=webp&q=85 800w, /.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=1920&fm=webp&q=85 1920w"
-      imagesizes="100vw"
-      fetchpriority="high">
+
+    <link rel="preload" as="image" href="/.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=1920&fm=webp&q=85"
+        imagesrcset="/.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=800&fm=webp&q=85 800w, /.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=1920&fm=webp&q=85 1920w"
+        imagesizes="100vw" fetchpriority="high">
 
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/site.css">
@@ -821,7 +819,6 @@
                 padding: 10px;
             }
         }
-
     </style>
 </head>
 
@@ -909,7 +906,13 @@
     </div>
 
     <header class="hero">
-        <div class="hero-slides" id="heroSlides"></div>
+        <div class="hero-slides" id="heroSlides">
+            <div class="hero-slide active">
+                <img src="/.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=1920&fm=webp&q=85"
+                    srcset="/.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=800&fm=webp&q=85 800w, /.netlify/images?url=%2Ffotos%2FInterMainz1.jpeg&w=1920&fm=webp&q=85 1920w"
+                    sizes="100vw" width="1920" height="1080" alt="" fetchpriority="high" decoding="sync">
+            </div>
+        </div>
 
         <div class="hero-content">
             <h1 class="hero-title">
@@ -969,7 +972,7 @@
 
             <div class="widget-grid reveal reveal-delay-1">
 
-                <div class="widget-card fupa-card" >
+                <div class="widget-card fupa-card">
                     <h3 class="widget-title">FC Inter Mainz</h3>
                     <div id="fp-widget_root-3H3VDqsfqhC9UagnvObtyRxyqqv">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter
@@ -977,7 +980,7 @@
                     </div>
                 </div>
 
-                <div class="widget-card fupa-card" >
+                <div class="widget-card fupa-card">
                     <h3 class="widget-title">FC Inter Mainz II</h3>
                     <div id="fp-widget_root-3H86m7DAQODYtcqZ0DSyRxT1sR4">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter
@@ -985,7 +988,7 @@
                     </div>
                 </div>
 
-                <div class="widget-card fupa-card" >
+                <div class="widget-card fupa-card">
                     <h3 class="widget-title">FC Inter Mainz Ü32</h3>
                     <div id="fp-widget_root-3H3W8BQ9dKsBBPN7l8GxRiO7NtF">
                         <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener">FC Inter Mainz
@@ -1015,8 +1018,10 @@
             </div>
             <div class="about-grid reveal reveal-delay-1">
                 <a href="geschichte.html" class="about-card">
-                    <img class="about-card-img" loading="lazy" decoding="async"
-                        src="/.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=900&fm=webp&q=85" alt="Geschichte">
+                    <img class="about-card-img" loading="lazy" decoding="async" width="900" height="380"
+                        src="/.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=900&fm=webp&q=75"
+                        srcset="/.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=500&fm=webp&q=75 500w, /.netlify/images?url=/fotos/InterMainzGrundung.jpg&w=900&fm=webp&q=75 900w"
+                        sizes="(min-width: 900px) 420px, 100vw" alt="Geschichte">
                     <div class="about-card-content">
                         <div class="about-card-title">Geschichte</div>
                         <span class="about-card-btn">
@@ -1029,8 +1034,10 @@
                     </div>
                 </a>
                 <a href="teams.html" class="about-card">
-                    <img class="about-card-img" loading="lazy" decoding="async" src="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=85"
-                        alt="Teams">
+                    <img class="about-card-img" loading="lazy" decoding="async" width="900" height="380"
+                        src="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=75"
+                        srcset="/.netlify/images?url=/fotos/TeamsIndex.jpg&w=500&fm=webp&q=75 500w, /.netlify/images?url=/fotos/TeamsIndex.jpg&w=900&fm=webp&q=75 900w"
+                        sizes="(min-width: 900px) 420px, 100vw" alt="Teams">
                     <div class="about-card-content">
                         <div class="about-card-title">Teams</div>
                         <span class="about-card-btn">
@@ -1043,8 +1050,10 @@
                     </div>
                 </a>
                 <a href="vorstand.html" class="about-card">
-                    <img class="about-card-img" loading="lazy" decoding="async" src="/.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=85"
-                        alt="Vorstand">
+                    <img class="about-card-img" loading="lazy" decoding="async" width="900" height="380"
+                        src="/.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=75"
+                        srcset="/.netlify/images?url=/fotos/InterMainz4.jpg&w=500&fm=webp&q=75 500w, /.netlify/images?url=/fotos/InterMainz4.jpg&w=900&fm=webp&q=75 900w"
+                        sizes="(min-width: 900px) 420px, 100vw" alt="Vorstand">
                     <div class="about-card-content">
                         <div class="about-card-title">Vorstand</div>
                         <span class="about-card-btn">
@@ -1083,7 +1092,8 @@
                 <div class="footer-brand">
                     <img src="fotos/logo.png" alt="Inter Mainz Wappen">
                     <div class="footer-brand-name">FC Inter Mainz</div>
-                    <p class="footer-brand-desc" id="footer-brand-desc">Dein Fußballverein für alle Generationen in der Landeshauptstadt Mainz.
+                    <p class="footer-brand-desc" id="footer-brand-desc">Dein Fußballverein für alle Generationen in der
+                        Landeshauptstadt Mainz.
                         Gegründet 2005 mit Leidenschaft.</p>
                 </div>
                 <div class="footer-col">
@@ -1136,6 +1146,7 @@
                     <a href="datenschutzbestimmung.html">Datenschutzerklärung</a>
                 </div>
             </div>
+        </div>
     </footer>
 
 </body>

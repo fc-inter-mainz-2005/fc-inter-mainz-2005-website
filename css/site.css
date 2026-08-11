@@ -3,7 +3,7 @@
     src: url('../fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
 }
 
 @font-face {
@@ -11,7 +11,7 @@
     src: url('../fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: italic;
-    font-display: block;
+    font-display: swap;
 }
 
 :root {
@@ -20,7 +20,7 @@
     --bg-nav: rgba(255, 255, 255, 0.98);
     --bg-footer: #f0f4f8;
     --text-main: #1a202c;
-    --text-muted: #4a5568;
+    --text-muted: #334155;
     --blue: #0a1f44;
     --blue-mid: #2b4c7e;
     --blue-light: #e2e8f0;
@@ -31,7 +31,7 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --white: #ffffff;
-    --gray: #8899bb;
+    --gray: #64748b;
     --card-bg: #ffffff;
 }
 
