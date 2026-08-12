@@ -819,26 +819,9 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal">
                 <div class="relative order-2 lg:order-1 lg:col-span-5">
-                    <div class="bg-year-watermark">2005</div>
-                    <h2 class="history-title">Die Gründung</h2>
-                    <p class="text-[var(--gray)] leading-relaxed text-sm md:text-base">Jeden Samstag trafen sich etwa 30
-                        Personen
-                        auf einem Naturrasenplatz hinter den Tennisplätzen der Johannes-Gutenberg-Universität in Mainz.
-                        Es war eine
-                        bunte Gruppe aus Studierenden, Lehrenden und anderen Menschen aus der gesamten
-                        Rhein-Main-Region: von Mainz
-                        bis Wiesbaden und Frankfurt. Damals hatte der Verein noch keinen Namen, es war einfach eine
-                        Gruppe von
-                        Gleichgesinnten, die ihre Leidenschaft für den Sport teilten.
-
-                        Im Jahr 2005 beschlossen einige Mitglieder dieser Kerngruppe, neue Grundlagen für diesen
-                        Zusammenhalt zu
-                        schaffen. Sie gründeten den FC Inter Mainz 2005, meldeten ihn offiziell als Amateurverein an
-                        und trugen
-                        sich in die Regionalliga ein.
-
-                        Damals diente als Eisbeutel für den Verbandskasten nicht das klassische Eis, sondern ein kühles
-                        Bier.</p>
+                    <div class="bg-year-watermark" id="jahr-gruendung">2005</div>
+                    <h2 class="history-title" id="titel-gruendung">Die Gründung</h2>
+                    <div class="text-[var(--gray)] leading-relaxed text-sm md:text-base" id="text-gruendung"></div>
                 </div>
                 <div
                     class="order-1 lg:order-2 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
@@ -858,31 +841,17 @@
                         style="background-color: var(--blue-light);">
                 </div>
                 <div class="relative order-2 lg:col-span-5">
-                    <div class="bg-year-watermark">2023</div>
-                    <h2 class="history-title">Aufstieg & Wachstum</h2>
-                    <p class="text-[var(--gray)] leading-relaxed text-sm md:text-base mb-4">In den ersten Jahren spielte
-                        der Verein in der untersten Liga und baute Schritt für Schritt eine treue Gemeinschaft von
-                        Spielern, Familien und Fans auf. Die Klasse C wurde zur sportlichen Heimat, in der der Inter
-                        Mainz von Saison zu Saison Erfahrung und Identität sammelte.</p>
-                    <p class="text-[var(--gray)] leading-relaxed text-sm md:text-base">Im Jahr 2023 gelang dem Verein
-                        der Aufstieg in die Klasse B, und seit diesem Jahr hat er sich als Team in beiden Ligen
-                        etabliert, was zu einer neuen Mannschaft und einer neuen Struktur führte.</p>
+                    <div class="bg-year-watermark" id="jahr-aufstieg">2023</div>
+                    <h2 class="history-title" id="titel-aufstieg">Aufstieg & Wachstum</h2>
+                    <div class="text-[var(--gray)] leading-relaxed text-sm md:text-base" id="text-aufstieg"></div>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal">
                 <div class="relative order-2 lg:order-1 lg:col-span-5">
-                    <div class="bg-year-watermark" style="font-size: 6rem; top:-30px;">HEUTE</div>
-                    <h2 class="history-title">Der moderne Verein</h2>
-                    <p class="text-[var(--gray)] leading-relaxed text-sm md:text-base mb-4">Mit dem sportlichen Erfolg
-                        stieg auch der Zulauf von neuen Spielern rasant an. Das wachsende Interesse machte es notwendig,
-                        eine zweite Mannschaft ins Leben zu rufen: der Inter Mainz II war geboren und sichert seither
-                        allen Spielern die Möglichkeit, aktiv am Vereinsleben teilzunehmen.</p>
-                    <p class="text-[var(--gray)] leading-relaxed text-sm md:text-base">Kurze Zeit später ergänzte die
-                        Alte Herren (Ü32) das sportliche Angebot des Vereins. Diese Mannschaft brachte eine neue
-                        Generation erfahrener Spieler zusammen und bewies, dass Fußball keine Altersgrenze kennt. Im
-                        Jahr 2026 krönte die Alte Herren ihre noch junge Geschichte mit dem Einzug in ihr erstes Finale
-                        – ein unvergesslicher Moment, der die gesamte Verein mit Stolz erfüllte.</p>
+                    <div class="bg-year-watermark" id="jahr-heute" style="font-size: 6rem; top:-30px;">HEUTE</div>
+                    <h2 class="history-title" id="titel-heute">Der moderne Verein</h2>
+                    <div class="text-[var(--gray)] leading-relaxed text-sm md:text-base" id="text-heute"></div>
                 </div>
                 <div
                     class="order-1 lg:order-2 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
@@ -933,15 +902,16 @@
                 <div class="footer-col">
                     <h4>Social Media</h4>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/p/FC-Inter-Mainz-2005-eV-100063568061273/" target="_blank"
+                        <a id="footer-facebook"
+                            href="https://www.facebook.com/p/FC-Inter-Mainz-2005-eV-100063568061273/" target="_blank"
                             rel="noopener" aria-label="Facebook">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/fc_inter_mainz/" target="_blank" rel="noopener"
-                            aria-label="Instagram">
+                        <a id="footer-instagram" href="https://www.instagram.com/fc_inter_mainz/" target="_blank"
+                            rel="noopener" aria-label="Instagram">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />

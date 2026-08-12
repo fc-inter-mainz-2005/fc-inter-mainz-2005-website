@@ -5,12 +5,16 @@ media_folder: "fotos"
 public_folder: "/fotos"
 collections:
   - name: "hero"
-    label: "Startseite – Titelbilder (Slideshow)"
+    label: "Startseite – Titelbereich"
     files:
-      - label: "Fotos"
+      - label: "Titelbereich"
         name: "slides"
         file: "data/hero.json"
         fields:
+          - {label: "Titel Zeile 1", name: "title_line1", widget: "string", default: "Leidenschaft."}
+          - {label: "Titel Zeile 2 (Akzentfarbe)", name: "title_accent", widget: "string", default: "Gemeinschaft."}
+          - {label: "Titel Zeile 3", name: "title_line3", widget: "string", default: "Fussball."}
+          - {label: "Untertitel", name: "subtitle", widget: "text"}
           - label: "Bilder"
             name: "slides"
             widget: "list"
@@ -103,15 +107,36 @@ collections:
               - {label: "Link zu FuPa (kompletter Kader)", name: "fupa_link", widget: "string", required: false}
 
   - name: "geschichte"
-    label: "Geschichte – Fotos"
+    label: "Geschichte"
     files:
-      - label: "Fotos"
-        name: "fotos"
+      - label: "Inhalte"
+        name: "inhalt"
         file: "data/geschichte.json"
         fields:
-          - {label: "Foto: Die Gründung (2005)", name: "gruendung", widget: "image"}
-          - {label: "Foto: Aufstieg & Wachstum (2023)", name: "aufstieg", widget: "image"}
-          - {label: "Foto: Der moderne Verein (Heute)", name: "heute", widget: "image"}
+          - label: "Die Gründung (2005)"
+            name: "gruendung"
+            widget: "object"
+            fields:
+              - {label: "Foto", name: "photo", widget: "image"}
+              - {label: "Jahr", name: "jahr", widget: "string", default: "2005"}
+              - {label: "Titel", name: "titel", widget: "string", default: "Die Gründung"}
+              - {label: "Text (Absätze durch Leerzeile trennen)", name: "text", widget: "text"}
+          - label: "Aufstieg & Wachstum (2023)"
+            name: "aufstieg"
+            widget: "object"
+            fields:
+              - {label: "Foto", name: "photo", widget: "image"}
+              - {label: "Jahr", name: "jahr", widget: "string", default: "2023"}
+              - {label: "Titel", name: "titel", widget: "string", default: "Aufstieg & Wachstum"}
+              - {label: "Text (Absätze durch Leerzeile trennen)", name: "text", widget: "text"}
+          - label: "Der moderne Verein (Heute)"
+            name: "heute"
+            widget: "object"
+            fields:
+              - {label: "Foto", name: "photo", widget: "image"}
+              - {label: "Jahr", name: "jahr", widget: "string", default: "HEUTE"}
+              - {label: "Titel", name: "titel", widget: "string", default: "Der moderne Verein"}
+              - {label: "Text (Absätze durch Leerzeile trennen)", name: "text", widget: "text"}
 
   - name: "kontakt"
     label: "Kontaktdaten"
@@ -126,13 +151,16 @@ collections:
           - {label: "E-Mail Adresse", name: "email", widget: "string"}
 
   - name: "statistiken"
-    label: "Statistik-Leiste (Mitgliederzahl)"
+    label: "Statistik-Leiste (Startseite)"
     files:
       - label: "Werte"
         name: "werte"
         file: "data/stats.json"
         fields:
+          - {label: "Gegründet (Jahr)", name: "gegruendet", widget: "string"}
+          - {label: "Mannschaften", name: "mannschaften", widget: "string"}
           - {label: "Mitglieder (z.B. 90+)", name: "mitglieder", widget: "string"}
+          - {label: "Nationen", name: "nationen", widget: "string"}
 
   - name: "downloads"
     label: "Downloadcenter"
@@ -205,4 +233,6 @@ collections:
             required: false
             field: {label: "Zeile", name: "line", widget: "string"}
           - {label: "E-Mail Adresse", name: "email", widget: "string", required: false}
+          - {label: "Facebook-Link", name: "facebook_url", widget: "string", required: false}
+          - {label: "Instagram-Link", name: "instagram_url", widget: "string", required: false}
           - {label: "Copyright-Text", name: "copyright_text", widget: "string"}

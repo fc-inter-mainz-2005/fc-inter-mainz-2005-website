@@ -11,6 +11,17 @@ window.addEventListener('scroll', () => {
 fetch('data/hero.json')
     .then(res => { if (!res.ok) throw new Error('hero.json not found'); return res.json(); })
     .then(data => {
+        const titleEl = document.getElementById('hero-title');
+        if (titleEl && data.title_line1) {
+            titleEl.replaceChildren(
+                document.createTextNode(data.title_line1 + ' '),
+                Object.assign(document.createElement('span'), { className: 'accent', textContent: data.title_accent || '' }),
+                document.createTextNode(' ' + (data.title_line3 || ''))
+            );
+        }
+        const subEl = document.getElementById('hero-sub');
+        if (subEl && data.subtitle) subEl.textContent = data.subtitle;
+
         const slidesWrap = document.getElementById('heroSlides');
         const dotsWrap = document.getElementById('heroIndicators');
         data.slides.forEach((s, i) => {
@@ -54,8 +65,14 @@ fetch('data/hero.json')
 fetch('data/stats.json')
     .then(res => { if (!res.ok) throw new Error('stats.json not found'); return res.json(); })
     .then(data => {
-        const el = document.getElementById('stat-mitglieder');
-        if (el && data.mitglieder) el.textContent = data.mitglieder;
+        const setStat = (id, val) => {
+            const el = document.getElementById(id);
+            if (el && val) el.textContent = val;
+        };
+        setStat('stat-gegruendet', data.gegruendet);
+        setStat('stat-mannschaften', data.mannschaften);
+        setStat('stat-mitglieder', data.mitglieder);
+        setStat('stat-nationen', data.nationen);
     })
     .catch(err => console.warn('Stats nicht verfügbar:', err));
 
@@ -272,5 +289,10 @@ fetch('data/footer.json')
             emailLink.textContent = data.email;
             emailWrap.style.display = 'block';
         }
+
+        const fbLink = document.getElementById('footer-facebook');
+        if (fbLink && data.facebook_url) fbLink.href = data.facebook_url;
+        const igLink = document.getElementById('footer-instagram');
+        if (igLink && data.instagram_url) igLink.href = data.instagram_url;
     })
     .catch(err => console.warn('Footer-Daten nicht verfügbar:', err));

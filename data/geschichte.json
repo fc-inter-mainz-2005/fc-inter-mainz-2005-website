@@ -1,5 +1,20 @@
 {
-  "gruendung": "fotos/InterMainzGrundung.jpg",
-  "aufstieg": "fotos/Aufstieg.jpeg",
-  "heute": "fotos/InterMainzAll.jpeg"
+  "gruendung": {
+    "photo": "fotos/InterMainzGrundung.jpg",
+    "jahr": "2005",
+    "titel": "Die Gründung",
+    "text": "Jeden Samstag trafen sich etwa 30 Personen auf einem Naturrasenplatz hinter den Tennisplätzen der Johannes-Gutenberg-Universität in Mainz. Es war eine bunte Gruppe aus Studierenden, Lehrenden und anderen Menschen aus der gesamten Rhein-Main-Region: von Mainz bis Wiesbaden und Frankfurt. Damals hatte der Verein noch keinen Namen, es war einfach eine Gruppe von Gleichgesinnten, die ihre Leidenschaft für den Sport teilten.\n\nIm Jahr 2005 beschlossen einige Mitglieder dieser Kerngruppe, neue Grundlagen für diesen Zusammenhalt zu schaffen. Sie gründeten den FC Inter Mainz 2005, meldeten ihn offiziell als Amateurverein an und trugen sich in die Regionalliga ein.\n\nDamals diente als Eisbeutel für den Verbandskasten nicht das klassische Eis, sondern ein kühles Bier."
+  },
+  "aufstieg": {
+    "photo": "fotos/Aufstieg.jpeg",
+    "jahr": "2023",
+    "titel": "Aufstieg & Wachstum",
+    "text": "In den ersten Jahren spielte der Verein in der untersten Liga und baute Schritt für Schritt eine treue Gemeinschaft von Spielern, Familien und Fans auf. Die Klasse C wurde zur sportlichen Heimat, in der der Inter Mainz von Saison zu Saison Erfahrung und Identität sammelte.\n\nIm Jahr 2023 gelang dem Verein der Aufstieg in die Klasse B, und seit diesem Jahr hat er sich als Team in beiden Ligen etabliert, was zu einer neuen Mannschaft und einer neuen Struktur führte."
+  },
+  "heute": {
+    "photo": "fotos/InterMainzAll.jpeg",
+    "jahr": "HEUTE",
+    "titel": "Der moderne Verein",
+    "text": "Mit dem sportlichen Erfolg stieg auch der Zulauf von neuen Spielern rasant an. Das wachsende Interesse machte es notwendig, eine zweite Mannschaft ins Leben zu rufen: der Inter Mainz II war geboren und sichert seither allen Spielern die Möglichkeit, aktiv am Vereinsleben teilzunehmen.\n\nKurze Zeit später ergänzte die Alte Herren (Ü32) das sportliche Angebot des Vereins. Diese Mannschaft brachte eine neue Generation erfahrener Spieler zusammen und bewies, dass Fußball keine Altersgrenze kennt. Im Jahr 2026 krönte die Alte Herren ihre noch junge Geschichte mit dem Einzug in ihr erstes Finale – ein unvergesslicher Moment, der die gesamte Verein mit Stolz erfüllte."
+  }
 }
