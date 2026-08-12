@@ -70,7 +70,7 @@
     "queue-microtask": "^1.2.3",
     "read-cache": "^1.0.0",
     "readdirp": "^3.6.0",
-    "resend": "^6.18.1",
+    "resend": "^6.19.0",
     "resolve": "^1.22.12",
     "reusify": "^1.1.0",
     "run-parallel": "^1.2.0",
