@@ -111,6 +111,12 @@ fetch('data/kontakt.json')
         const emailLink = document.getElementById('email-link');
         emailLink.href = 'mailto:' + data.email;
         emailLink.textContent = data.email;
+
+        const mapFrame = document.getElementById('map-iframe');
+        if (mapFrame) {
+            const query = encodeURIComponent(`${data.strasse}, ${data.plz_ort}`);
+            mapFrame.src = `https://www.google.com/maps?q=${query}&output=embed`;
+        }
     })
     .catch(err => console.warn('Kontaktdaten nicht verfügbar:', err));
 

@@ -480,6 +480,18 @@
             color: var(--red);
         }
 
+        .map-card {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .map-card iframe {
+            display: block;
+            width: 100%;
+            height: 220px;
+            border: 0;
+        }
+
         .hint-card p {
             font-size: 0.78rem;
             color: rgba(240, 195, 195, 0.9);
@@ -1000,14 +1012,22 @@
                         <p class="info-card-text" id="anschrift-text"></p>
                     </div>
 
-                    <div class="info-card reveal reveal-delay-1">
+                    <div class="info-card map-card reveal reveal-delay-1">
+                        <iframe id="map-iframe"
+                            src="https://www.google.com/maps?q=Albert-Stohr-Stra%C3%9Fe+50,+55128+Mainz&output=embed"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+                            title="Standort FC Inter Mainz auf Google Maps">
+                        </iframe>
+                    </div>
+
+                    <div class="info-card reveal reveal-delay-2">
                         <div class="info-card-title">E-Mail</div>
                         <p class="info-card-text">
                             <a href="#" id="email-link"></a>
                         </p>
                     </div>
 
-                    <div class="info-card reveal reveal-delay-2">
+                    <div class="info-card reveal reveal-delay-3">
                         <div class="info-card-title">Social Media</div>
                         <p class="info-card-text" style="margin-bottom:14px;">Folgt uns auf Instagram für aktuelle News
                             und Spielberichte.</p>
@@ -1111,9 +1131,7 @@
                     <img src="/.netlify/images?url=%2Ffotos%2Flogo.png&w=104&fm=webp&q=80" width="52" height="52"
                         alt="Inter Mainz Wappen" loading="lazy" decoding="async">
                     <div class="footer-brand-name">FC Inter Mainz</div>
-                    <p class="footer-brand-desc" id="footer-brand-desc">Dein Fußballverein für alle Generationen in der
-                        Landeshauptstadt Mainz.
-                        Gegründet 2005 mit Leidenschaft.</p>
+                    <p class="footer-brand-desc" id="footer-brand-desc">Dein Fußballverein in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Navigation</h4>

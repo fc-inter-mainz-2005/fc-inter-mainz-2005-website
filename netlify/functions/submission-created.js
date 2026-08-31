@@ -107,16 +107,19 @@ exports.handler = async (event) => {
       return { statusCode: 200, body: JSON.stringify({ message: 'Formular ignoriert' }) };
     }
 
-    const emailsToSend = [
-      resend.emails.send({
-        from: 'FC Inter Mainz Website <no-reply@intermainz.de>',
-        to: process.env.RECIPIENT_EMAIL,
-        reply_to: submitterEmail || undefined,
-        subject,
-        html,
-        attachments
-      })
-    ];
+    const clubEmailConfig = {
+      from: 'FC Inter Mainz Website <no-reply@intermainz.de>',
+      to: process.env.RECIPIENT_EMAIL,
+      reply_to: submitterEmail || undefined,
+      subject,
+      html
+    };
+
+    if (attachments.length > 0) {
+      clubEmailConfig.attachments = attachments;
+    }
+
+    const emailsToSend = [ resend.emails.send(clubEmailConfig) ];
 
     if (submitterEmail) {
       emailsToSend.push(
