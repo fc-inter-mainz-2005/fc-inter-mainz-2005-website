@@ -5,3 +5,11 @@ php/
 .php
 node_modules/
 css/tailwind.css
+.env
+/env
+env/
+.env/
+
+# Local Netlify folder
+.netlify
+deno.lock

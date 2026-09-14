@@ -53,6 +53,7 @@ fetch('data/teams.json')
     .then(data => {
         const nav = document.getElementById('teams-nav');
         const container = document.getElementById('teams-container');
+        if (container && container.children.length > 0) return;
 
         data.teams.forEach((team, i) => {
             const slug = 'team-' + i;
@@ -79,7 +80,9 @@ fetch('data/teams.json')
                     <span class="ml-4 md:ml-8 text-xs font-bold px-3 py-1 rounded tracking-widest uppercase liga-badge"></span>
                 </div>
                 <div class="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
-                    <img class="w-full h-auto object-cover rounded-xl lightbox-img" alt="">
+                    <div class="team-photo-wrap">
+                        <img class="w-full h-full object-cover rounded-xl lightbox-img" alt="">
+                    </div>
                     <div class="fupa-link-wrap"></div>
                 </div>`;
             section.querySelector('.team-title').textContent = team.name;
@@ -152,7 +155,8 @@ document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
 
 function netlifyImg(path, width, quality = 85) {
     if (!path || path.endsWith('.svg')) return path;
-    return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
+    const cleanPath = path.replace(/^\/+/, '');
+    return `/.netlify/images?url=${encodeURIComponent('/' + cleanPath)}&w=${width}&fm=webp&q=${quality}`;
 }
 
 

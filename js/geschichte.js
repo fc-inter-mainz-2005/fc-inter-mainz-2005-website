@@ -50,6 +50,9 @@ document.querySelectorAll('.lightbox-img').forEach(img => {
 fetch('data/geschichte.json')
     .then(res => { if (!res.ok) throw new Error('geschichte.json not found'); return res.json(); })
     .then(data => {
+        const textGruendung = document.getElementById('text-gruendung');
+        if (textGruendung && textGruendung.children.length > 0) return;
+
         const applyImg = (id, path, eager) => {
             const img = document.getElementById(id);
             img.src = netlifyImg(path, 1200);
@@ -108,7 +111,8 @@ document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
 
 function netlifyImg(path, width, quality = 85) {
     if (!path || path.endsWith('.svg')) return path;
-    return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
+    const cleanPath = path.replace(/^\/+/, '');
+    return `/.netlify/images?url=${encodeURIComponent('/' + cleanPath)}&w=${width}&fm=webp&q=${quality}`;
 }
 
 function netlifySrcset(path, widths, quality = 85) {
