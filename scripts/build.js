@@ -54,6 +54,19 @@ function readJson(relPath) {
     }
 }
 
+// Helper: Replace content between slot markers idempotently
+function replaceSlot(html, startMarker, endMarker, content) {
+    const s = html.indexOf(startMarker);
+    const e = html.indexOf(endMarker);
+    if (s === -1 || e === -1) {
+        console.warn(`[build] Warning: markers ${startMarker} ... ${endMarker} not found.`);
+        return html;
+    }
+    const lineStart = html.lastIndexOf('\n', e);
+    const indent = lineStart !== -1 ? html.substring(lineStart + 1, e) : '';
+    return html.substring(0, s + startMarker.length) + '\n' + content.trimEnd() + '\n' + indent + html.substring(e);
+}
+
 // ==========================================
 // 1. Build index.html
 // ==========================================
@@ -101,21 +114,15 @@ function buildIndex() {
                 }
             }).join('\n');
 
-            html = html.replace(
-                /<div\s+class="hero-slides"\s+id="heroSlides">[\s\S]*?<\/div>(?=\s*<div\s+class="hero-content">)/s,
-                `<div class="hero-slides" id="heroSlides">\n${slidesHtml}\n        </div>`
-            );
+            html = replaceSlot(html, '<!-- HERO_SLIDES_START -->', '<!-- HERO_SLIDES_END -->', slidesHtml);
 
             // Update hero indicators
             const dotsHtml = hero.slides.map((_, idx) => {
                 const isActive = idx === 0 ? ' active' : '';
-                return `            <div class="hero-dot${isActive}" data-idx="${idx}"></div>`;
+                return `                <div class="hero-dot${isActive}" data-idx="${idx}"></div>`;
             }).join('\n');
 
-            html = html.replace(
-                /<div\s+class="hero-indicators"\s+id="heroIndicators">[\s\S]*?<\/div>(?=\s*<\/div>\s*<\/header>)/s,
-                `<div class="hero-indicators" id="heroIndicators">\n${dotsHtml}\n        </div>`
-            );
+            html = replaceSlot(html, '<!-- HERO_INDICATORS_START -->', '<!-- HERO_INDICATORS_END -->', dotsHtml);
         }
 
         // Update hero title
@@ -153,10 +160,7 @@ function buildIndex() {
                 </a>`;
         }).join('\n');
 
-        html = html.replace(
-            /<div\s+class="sponsors-grid"\s+id="sponsors-track">[\s\S]*?<\/div>(?=\s*<\/div>\s*<\/section>)/s,
-            `<div class="sponsors-grid" id="sponsors-track">\n${sponsorsHtml}\n            </div>`
-        );
+        html = replaceSlot(html, '<!-- SPONSORS_START -->', '<!-- SPONSORS_END -->', sponsorsHtml);
     }
 
     // Update events
@@ -176,10 +180,7 @@ function buildIndex() {
                         </div>`;
         }).join('\n');
 
-        html = html.replace(
-            /<div\s+id="event-list"\s+class="space-y-4">[\s\S]*?<\/div>(?=\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>)/s,
-            `<div id="event-list" class="space-y-4">\n${eventsHtml}\n                    </div>`
-        );
+        html = replaceSlot(html, '<!-- EVENTS_START -->', '<!-- EVENTS_END -->', eventsHtml);
     }
 
     // Update footer brand description
@@ -231,13 +232,10 @@ function buildTeams() {
     const navItems = teamsData.teams.map((team, i) => {
         const slug = 'team-' + i;
         const sep = i > 0 ? `<span class="text-gray-300">|</span>` : '';
-        return `${sep}<a href="#${slug}" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition">${escapeHtml(team.name)}</a>`;
-    }).join('\n                ');
+        return `                ${sep}<a href="#${slug}" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition">${escapeHtml(team.name)}</a>`;
+    }).join('\n');
 
-    html = html.replace(
-        /<div\s+class="mt-10[^"]*"\s+id="teams-nav">[\s\S]*?<\/div>(?=\s*<\/div>\s*<\/header>)/s,
-        `<div class="mt-10 flex flex-wrap justify-center gap-x-3 md:gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest reveal reveal-delay-3" id="teams-nav">\n                ${navItems}\n            </div>`
-    );
+    html = replaceSlot(html, '<!-- TEAMS_NAV_START -->', '<!-- TEAMS_NAV_END -->', navItems);
 
     // Teams container sections
     const sections = teamsData.teams.map((team, i) => {
@@ -271,10 +269,7 @@ function buildTeams() {
                 </section>`;
     }).join('\n\n');
 
-    html = html.replace(
-        /<div\s+id="teams-container"\s+class="space-y-28">[\s\S]*?<\/div>(?=\s*<\/div>\s*<\/main>)/s,
-        `<div id="teams-container" class="space-y-28">\n${sections}\n            </div>`
-    );
+    html = replaceSlot(html, '<!-- TEAMS_START -->', '<!-- TEAMS_END -->', sections);
 
     fs.writeFileSync(htmlPath, html, 'utf8');
     console.log('[build] teams.html pre-rendered successfully.');
@@ -301,10 +296,7 @@ function buildVorstand() {
                 </div>`;
         }).join('\n');
 
-        html = html.replace(
-            /<div\s+class="vorstand-grid"\s+id="vorstand-grid">[\s\S]*?<\/div>(?=\s*<\/section>)/s,
-            `<div class="vorstand-grid" id="vorstand-grid">\n${membersHtml}\n            </div>`
-        );
+        html = replaceSlot(html, '<!-- VORSTAND_START -->', '<!-- VORSTAND_END -->', membersHtml);
     }
 
     if (abteilung && Array.isArray(abteilung.members)) {
@@ -316,10 +308,7 @@ function buildVorstand() {
                 </div>`;
         }).join('\n');
 
-        html = html.replace(
-            /<div\s+class="vorstand-grid\s+vorstand-grid-4"\s+id="vorstand-grid-abteilung">[\s\S]*?<\/div>(?=\s*<\/section>)/s,
-            `<div class="vorstand-grid vorstand-grid-4" id="vorstand-grid-abteilung">\n${abteilungHtml}\n            </div>`
-        );
+        html = replaceSlot(html, '<!-- VORSTAND_ABTEILUNG_START -->', '<!-- VORSTAND_ABTEILUNG_END -->', abteilungHtml);
     }
 
     fs.writeFileSync(htmlPath, html, 'utf8');
