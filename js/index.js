@@ -8,159 +8,170 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 }, { passive: true });
 
-fetch('data/hero.json')
-    .then(res => { if (!res.ok) throw new Error('hero.json not found'); return res.json(); })
-    .then(data => {
-        const titleEl = document.getElementById('hero-title');
-        if (titleEl && data.title_line1) {
-            titleEl.replaceChildren(
-                document.createTextNode(data.title_line1 + ' '),
-                Object.assign(document.createElement('span'), { className: 'accent', textContent: data.title_accent || '' }),
-                document.createTextNode(' ' + (data.title_line3 || ''))
-            );
-        }
-        const subEl = document.getElementById('hero-sub');
-        if (subEl && data.subtitle) subEl.textContent = data.subtitle;
-
-        const slidesWrap = document.getElementById('heroSlides');
-        const dotsWrap = document.getElementById('heroIndicators');
-
-        if (!slidesWrap.querySelector('.hero-slide:nth-child(2)')) {
-            dotsWrap.replaceChildren();
-            data.slides.forEach((s, i) => {
-                const dot = document.createElement('div');
-                dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
-                dot.dataset.idx = i;
-                dotsWrap.appendChild(dot);
-
-                if (i === 0) return;
-
-                const div = document.createElement('div');
-                div.className = 'hero-slide';
-                const img = document.createElement('img');
-                const heroSrcsetStr = `${netlifyImg(s.image, 640)} 640w, ${netlifyImg(s.image, 960)} 960w, ${netlifyImg(s.image, 1200)} 1200w, ${netlifyImg(s.image, 1600)} 1600w, ${netlifyImg(s.image, 1920)} 1920w`;
-                img.setAttribute('data-src', netlifyImg(s.image, 1200));
-                img.setAttribute('data-srcset', heroSrcsetStr);
-                img.sizes = '100vw';
-                img.width = 1920;
-                img.height = 1080;
-                img.alt = '';
-                img.loading = 'lazy';
-                img.fetchPriority = 'low';
-                img.decoding = 'async';
-                div.appendChild(img);
-                slidesWrap.appendChild(div);
-            });
-        }
-
-        function sanitizeImageUrl(urlValue) {
-            if (!urlValue) return null;
-            const value = urlValue.trim();
-            try {
-                const parsed = new URL(value, window.location.origin);
-                if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
-            } catch (_) {
-                return null;
-            }
+function initHeroCarousel() {
+    function sanitizeImageUrl(urlValue) {
+        if (!urlValue) return null;
+        const value = urlValue.trim();
+        try {
+            const parsed = new URL(value, window.location.origin);
+            if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
+        } catch (_) {
             return null;
         }
+        return null;
+    }
 
-        function sanitizeSrcset(srcsetValue) {
-            if (!srcsetValue) return null;
-            const parts = srcsetValue.split(',').map(part => part.trim()).filter(Boolean);
-            if (!parts.length) return null;
+    function sanitizeSrcset(srcsetValue) {
+        if (!srcsetValue) return null;
+        const parts = srcsetValue.split(',').map(part => part.trim()).filter(Boolean);
+        if (!parts.length) return null;
 
-            const sanitizedParts = [];
-            for (const part of parts) {
-                const match = part.match(/^(\S+)(?:\s+(.+))?$/);
-                if (!match) return null;
-                const safeUrl = sanitizeImageUrl(match[1]);
-                if (!safeUrl) return null;
-                sanitizedParts.push(match[2] ? `${safeUrl} ${match[2]}` : safeUrl);
+        const sanitizedParts = [];
+        for (const part of parts) {
+            const match = part.match(/^(\S+)(?:\s+(.+))?$/);
+            if (!match) return null;
+            const safeUrl = sanitizeImageUrl(match[1]);
+            if (!safeUrl) return null;
+            sanitizedParts.push(match[2] ? `${safeUrl} ${match[2]}` : safeUrl);
+        }
+        return sanitizedParts.join(', ');
+    }
+
+    function activateSlideImage(slideEl) {
+        if (!slideEl) return;
+        const img = slideEl.querySelector('img[data-src]');
+        if (img) {
+            const safeSrc = sanitizeImageUrl(img.getAttribute('data-src'));
+            if (safeSrc) {
+                img.src = safeSrc;
             }
-            return sanitizedParts.join(', ');
-        }
-
-        function activateSlideImage(slideEl) {
-            if (!slideEl) return;
-            const img = slideEl.querySelector('img[data-src]');
-            if (img) {
-                const safeSrc = sanitizeImageUrl(img.getAttribute('data-src'));
-                if (safeSrc) {
-                    img.src = safeSrc;
+            const rawSrcset = img.getAttribute('data-srcset');
+            if (rawSrcset) {
+                const safeSrcset = sanitizeSrcset(rawSrcset);
+                if (safeSrcset) {
+                    img.srcset = safeSrcset;
                 }
-                const rawSrcset = img.getAttribute('data-srcset');
-                if (rawSrcset) {
-                    const safeSrcset = sanitizeSrcset(rawSrcset);
-                    if (safeSrcset) {
-                        img.srcset = safeSrcset;
-                    }
-                }
-                img.removeAttribute('data-src');
-                img.removeAttribute('data-srcset');
             }
+            img.removeAttribute('data-src');
+            img.removeAttribute('data-srcset');
         }
+    }
 
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.hero-dot');
-        let current = 0;
-        let timer = null;
-        let preloadTimer = null;
-        const SLIDE_DURATION = 5500;
-        const PRELOAD_OFFSET = 1000;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    let current = 0;
+    let timer = null;
+    let preloadTimer = null;
+    const SLIDE_DURATION = 5500;
+    const PRELOAD_OFFSET = 1000;
 
-        function scheduleNextPreload() {
-            clearTimeout(preloadTimer);
-            const nextIdx = (current + 1) % slides.length;
-            preloadTimer = setTimeout(() => {
-                activateSlideImage(slides[nextIdx]);
-            }, SLIDE_DURATION - PRELOAD_OFFSET);
-        }
+    function scheduleNextPreload() {
+        clearTimeout(preloadTimer);
+        const nextIdx = (current + 1) % slides.length;
+        preloadTimer = setTimeout(() => {
+            activateSlideImage(slides[nextIdx]);
+        }, SLIDE_DURATION - PRELOAD_OFFSET);
+    }
 
-        function goTo(idx) {
-            slides[current].classList.remove('active');
-            dots[current].classList.remove('active');
-            current = idx;
-            activateSlideImage(slides[current]);
-            slides[current].classList.add('active');
-            dots[current].classList.add('active');
-            scheduleNextPreload();
-        }
+    function goTo(idx) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = idx;
+        activateSlideImage(slides[current]);
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        scheduleNextPreload();
+    }
 
-        function next() {
-            goTo((current + 1) % slides.length);
-        }
+    function next() {
+        goTo((current + 1) % slides.length);
+    }
 
-        function startTimer() {
-            clearInterval(timer);
-            timer = setInterval(next, SLIDE_DURATION);
-            scheduleNextPreload();
-        }
+    function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, SLIDE_DURATION);
+        scheduleNextPreload();
+    }
 
-        dots.forEach(dot => dot.addEventListener('click', () => {
-            goTo(parseInt(dot.dataset.idx, 10));
-            startTimer();
-        }));
+    dots.forEach(dot => dot.addEventListener('click', () => {
+        goTo(parseInt(dot.dataset.idx, 10));
+        startTimer();
+    }));
 
-        if (slides.length > 1) {
-            startTimer();
-        }
-    })
+    if (slides.length > 1) {
+        startTimer();
+    }
+}
+
+const slidesWrap = document.getElementById('heroSlides');
+if (slidesWrap && slidesWrap.querySelector('.hero-slide:nth-child(2)')) {
+    initHeroCarousel();
+} else if (slidesWrap) {
+    fetch('data/hero.json')
+        .then(res => { if (!res.ok) throw new Error('hero.json not found'); return res.json(); })
+        .then(data => {
+            const titleEl = document.getElementById('hero-title');
+            if (titleEl && data.title_line1) {
+                titleEl.replaceChildren(
+                    document.createTextNode(data.title_line1 + ' '),
+                    Object.assign(document.createElement('span'), { className: 'accent', textContent: data.title_accent || '' }),
+                    document.createTextNode(' ' + (data.title_line3 || ''))
+                );
+            }
+            const subEl = document.getElementById('hero-sub');
+            if (subEl && data.subtitle) subEl.textContent = data.subtitle;
+
+            const dotsWrap = document.getElementById('heroIndicators');
+            if (dotsWrap) {
+                dotsWrap.replaceChildren();
+                data.slides.forEach((s, i) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+                    dot.dataset.idx = i;
+                    dotsWrap.appendChild(dot);
+
+                    if (i === 0) return;
+
+                    const div = document.createElement('div');
+                    div.className = 'hero-slide';
+                    const img = document.createElement('img');
+                    const heroSrcsetStr = `${netlifyImg(s.image, 640)} 640w, ${netlifyImg(s.image, 960)} 960w, ${netlifyImg(s.image, 1200)} 1200w, ${netlifyImg(s.image, 1600)} 1600w, ${netlifyImg(s.image, 1920)} 1920w`;
+                    img.setAttribute('data-src', netlifyImg(s.image, 1200));
+                    img.setAttribute('data-srcset', heroSrcsetStr);
+                    img.sizes = '100vw';
+                    img.width = 1920;
+                    img.height = 1080;
+                    img.alt = '';
+                    img.loading = 'lazy';
+                    img.fetchPriority = 'low';
+                    img.decoding = 'async';
+                    div.appendChild(img);
+                    slidesWrap.appendChild(div);
+                });
+            }
+
+            initHeroCarousel();
+        })
+        .catch(err => console.warn('Hero nicht verfügbar:', err));
+}
 
 
-fetch('data/stats.json')
-    .then(res => { if (!res.ok) throw new Error('stats.json not found'); return res.json(); })
-    .then(data => {
-        const setStat = (id, val) => {
-            const el = document.getElementById(id);
-            if (el && val) el.textContent = val;
-        };
-        setStat('stat-gegruendet', data.gegruendet);
-        setStat('stat-mannschaften', data.mannschaften);
-        setStat('stat-mitglieder', data.mitglieder);
-        setStat('stat-nationen', data.nationen);
-    })
-    .catch(err => console.warn('Stats nicht verfügbar:', err));
+const statGegruendetEl = document.getElementById('stat-gegruendet');
+if (!statGegruendetEl || !statGegruendetEl.textContent.trim()) {
+    fetch('data/stats.json')
+        .then(res => { if (!res.ok) throw new Error('stats.json not found'); return res.json(); })
+        .then(data => {
+            const setStat = (id, val) => {
+                const el = document.getElementById(id);
+                if (el && val) el.textContent = val;
+            };
+            setStat('stat-gegruendet', data.gegruendet);
+            setStat('stat-mannschaften', data.mannschaften);
+            setStat('stat-mitglieder', data.mitglieder);
+            setStat('stat-nationen', data.nationen);
+        })
+        .catch(err => console.warn('Stats nicht verfügbar:', err));
+}
 
 (function loadFupaScript() {
     const matchesSection = document.querySelector('.matches-section');
@@ -193,110 +204,116 @@ mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => m
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: '200px 0px' });
     els.forEach(el => observer.observe(el));
 })();
 
+const eventListEl = document.getElementById('event-list');
+if (!eventListEl || eventListEl.children.length === 0) {
+    fetch('data/events.json')
+        .then(res => {
+            if (!res.ok) throw new Error('events.json not found');
+            return res.json();
+        })
+        .then(data => {
+            const list = document.getElementById('event-list');
+            if (list && list.children.length > 0) return;
 
-fetch('data/events.json')
-    .then(res => {
-        if (!res.ok) throw new Error('events.json not found');
-        return res.json();
-    })
-    .then(data => {
-        const list = document.getElementById('event-list');
-        if (list && list.children.length > 0) return;
+            const dynamicObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '200px 0px' });
 
-        const dynamicObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    obs.unobserve(entry.target);
+            const safeUrl = (url) => {
+                if (!url) return '';
+                try {
+                    const u = new URL(url, window.location.origin);
+                    return ['http:', 'https:'].includes(u.protocol) ? u.href : '';
+                } catch {
+                    return '';
                 }
+            };
+
+            data.events.forEach((event, index) => {
+                const card = document.createElement('div');
+                card.className = `news-card reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}`;
+
+                if (event.image) {
+                    const media = document.createElement('div');
+                    media.className = 'news-card-media';
+                    const img = document.createElement('img');
+                    img.src = netlifyImg(event.image, 144, 80);
+                    img.width = 72;
+                    img.height = 72;
+                    img.alt = event.name || '';
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                    media.appendChild(img);
+                    card.appendChild(media);
+                }
+
+                const content = document.createElement('div');
+                content.className = 'news-card-content';
+                content.innerHTML = `
+                            <div class="news-card-title"></div>
+                            <div class="news-card-meta"></div>
+                            <p class="news-card-desc"></p>`;
+                content.querySelector('.news-card-title').textContent = event.name || '';
+                content.querySelector('.news-card-meta').textContent = event.meta || '';
+                content.querySelector('.news-card-desc').textContent = event.description || '';
+
+                const linkUrl = safeUrl(event.link_url);
+                if (linkUrl) {
+                    const a = document.createElement('a');
+                    a.className = 'news-card-link';
+                    a.href = linkUrl;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.textContent = event.link_text || 'Fotos ansehen';
+                    content.appendChild(a);
+                }
+
+                card.appendChild(content);
+                list.appendChild(card);
+                dynamicObserver.observe(card);
             });
-        }, { threshold: 0.12 });
+        })
+        .catch(err => console.warn('Events not loaded:', err));
+}
 
-        const safeUrl = (url) => {
-            if (!url) return '';
-            try {
-                const u = new URL(url, window.location.origin);
-                return ['http:', 'https:'].includes(u.protocol) ? u.href : '';
-            } catch {
-                return '';
-            }
-        };
-
-        data.events.forEach((event, index) => {
-            const card = document.createElement('div');
-            card.className = `news-card reveal ${index === 0 ? 'reveal-delay-1' : 'reveal-delay-2'}`;
-
-            if (event.image) {
-                const media = document.createElement('div');
-                media.className = 'news-card-media';
-                const img = document.createElement('img');
-                img.src = netlifyImg(event.image, 144, 80);
-                img.width = 72;
-                img.height = 72;
-                img.alt = event.name || '';
-                img.loading = 'lazy';
-                img.decoding = 'async';
-                media.appendChild(img);
-                card.appendChild(media);
-            }
-
-            const content = document.createElement('div');
-            content.className = 'news-card-content';
-            content.innerHTML = `
-                        <div class="news-card-title"></div>
-                        <div class="news-card-meta"></div>
-                        <p class="news-card-desc"></p>`;
-            content.querySelector('.news-card-title').textContent = event.name || '';
-            content.querySelector('.news-card-meta').textContent = event.meta || '';
-            content.querySelector('.news-card-desc').textContent = event.description || '';
-
-            const linkUrl = safeUrl(event.link_url);
-            if (linkUrl) {
+const sponsorsTrackEl = document.getElementById('sponsors-track');
+if (!sponsorsTrackEl || sponsorsTrackEl.children.length === 0) {
+    fetch('data/sponsors.json')
+        .then(res => {
+            if (!res.ok) throw new Error('sponsors.json not found');
+            return res.json();
+        })
+        .then(data => {
+            const track = document.getElementById('sponsors-track');
+            if (track && track.children.length > 0) return;
+            data.sponsors.forEach(s => {
                 const a = document.createElement('a');
-                a.className = 'news-card-link';
-                a.href = linkUrl;
+                a.href = /^https?:\/\//i.test(s.link) ? s.link : '#';
                 a.target = '_blank';
                 a.rel = 'noopener';
-                a.textContent = event.link_text || 'Fotos ansehen';
-                content.appendChild(a);
-            }
-
-            card.appendChild(content);
-            list.appendChild(card);
-            dynamicObserver.observe(card);
-        });
-    })
-    .catch(err => console.warn('Events not loaded:', err));
-
-fetch('data/sponsors.json')
-    .then(res => {
-        if (!res.ok) throw new Error('sponsors.json not found');
-        return res.json();
-    })
-    .then(data => {
-        const track = document.getElementById('sponsors-track');
-        if (track && track.children.length > 0) return;
-        data.sponsors.forEach(s => {
-            const a = document.createElement('a');
-            a.href = /^https?:\/\//i.test(s.link) ? s.link : '#';
-            a.target = '_blank';
-            a.rel = 'noopener';
-            a.className = 'sponsor-item';
-            const img = document.createElement('img');
-            img.src = netlifyImg(s.image, 140, 75);
-            img.alt = s.name;
-            img.width = 70;
-            img.height = 70;
-            img.title = s.name;
-            img.loading = 'lazy';
-            a.appendChild(img);
-            track.appendChild(a);
-        });
-    }).catch(err => console.warn('Sponsors not available:', err));
+                a.className = 'sponsor-item';
+                const img = document.createElement('img');
+                img.src = netlifyImg(s.image, 140, 75);
+                img.alt = s.name;
+                img.width = 70;
+                img.height = 70;
+                img.title = s.name;
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                a.appendChild(img);
+                track.appendChild(a);
+            });
+        }).catch(err => console.warn('Sponsors not available:', err));
+}
 
 
 document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {

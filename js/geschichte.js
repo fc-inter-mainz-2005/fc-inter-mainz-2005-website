@@ -23,7 +23,7 @@ mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => m
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: '200px 0px' });
     els.forEach(el => observer.observe(el));
 })();
 
@@ -47,45 +47,48 @@ document.querySelectorAll('.lightbox-img').forEach(img => {
     img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
 });
 
-fetch('data/geschichte.json')
-    .then(res => { if (!res.ok) throw new Error('geschichte.json not found'); return res.json(); })
-    .then(data => {
-        const textGruendung = document.getElementById('text-gruendung');
-        if (textGruendung && textGruendung.children.length > 0) return;
+const textGruendungEl = document.getElementById('text-gruendung');
+if (!textGruendungEl || textGruendungEl.children.length === 0) {
+    fetch('data/geschichte.json')
+        .then(res => { if (!res.ok) throw new Error('geschichte.json not found'); return res.json(); })
+        .then(data => {
+            const textGruendung = document.getElementById('text-gruendung');
+            if (textGruendung && textGruendung.children.length > 0) return;
 
-        const applyImg = (id, path, eager) => {
-            const img = document.getElementById(id);
-            img.src = netlifyImg(path, 1200);
-            img.srcset = netlifySrcset(path, [480, 800, 1200, 1600]);
-            img.sizes = '(min-width: 1024px) 58vw, 100vw';
-            img.loading = eager ? 'eager' : 'lazy';
-            img.fetchPriority = eager ? 'high' : 'low';
-            img.decoding = eager ? 'sync' : 'async';
-        };
-        const applyEra = (key, eager) => {
-            const era = data[key];
-            if (!era) return;
-            applyImg('img-' + key, era.photo, eager);
-            const jahrEl = document.getElementById('jahr-' + key);
-            if (jahrEl && era.jahr) jahrEl.textContent = era.jahr;
-            const titelEl = document.getElementById('titel-' + key);
-            if (titelEl && era.titel) titelEl.textContent = era.titel;
-            const textEl = document.getElementById('text-' + key);
-            if (textEl && era.text) {
-                textEl.replaceChildren();
-                era.text.split('\n\n').forEach(absatz => {
-                    const p = document.createElement('p');
-                    p.className = 'mb-4';
-                    p.textContent = absatz;
-                    textEl.appendChild(p);
-                });
-            }
-        };
-        applyEra('gruendung', true);
-        applyEra('aufstieg', false);
-        applyEra('heute', false);
-    })
-    .catch(err => console.warn('Geschichte-Inhalte nicht verfügbar:', err));
+            const applyImg = (id, path, eager) => {
+                const img = document.getElementById(id);
+                img.src = netlifyImg(path, 1200);
+                img.srcset = netlifySrcset(path, [480, 800, 1200, 1600]);
+                img.sizes = '(min-width: 1024px) 58vw, 100vw';
+                img.loading = eager ? 'eager' : 'lazy';
+                img.fetchPriority = eager ? 'high' : 'low';
+                img.decoding = eager ? 'sync' : 'async';
+            };
+            const applyEra = (key, eager) => {
+                const era = data[key];
+                if (!era) return;
+                applyImg('img-' + key, era.photo, eager);
+                const jahrEl = document.getElementById('jahr-' + key);
+                if (jahrEl && era.jahr) jahrEl.textContent = era.jahr;
+                const titelEl = document.getElementById('titel-' + key);
+                if (titelEl && era.titel) titelEl.textContent = era.titel;
+                const textEl = document.getElementById('text-' + key);
+                if (textEl && era.text) {
+                    textEl.replaceChildren();
+                    era.text.split('\n\n').forEach(absatz => {
+                        const p = document.createElement('p');
+                        p.className = 'mb-4';
+                        p.textContent = absatz;
+                        textEl.appendChild(p);
+                    });
+                }
+            };
+            applyEra('gruendung', true);
+            applyEra('aufstieg', false);
+            applyEra('heute', false);
+        })
+        .catch(err => console.warn('Geschichte-Inhalte nicht verfügbar:', err));
+}
 
 document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
     toggle.addEventListener('click', (e) => {

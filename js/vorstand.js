@@ -23,72 +23,77 @@ mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => m
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: '200px 0px' });
     els.forEach(el => observer.observe(el));
 })();
 
-fetch('data/vorstand.json')
-    .then(res => {
-        if (!res.ok) throw new Error('vorstand.json not found');
-        return res.json();
-    })
-    .then(data => {
-        const grid = document.getElementById('vorstand-grid');
-        if (grid && grid.children.length > 0) return;
-        data.members.forEach(m => {
-            const card = document.createElement('div');
-            card.className = 'vorstand-card';
-            card.innerHTML = `
-                <div class="vorstand-photo"><img alt="" class="w-full h-full object-cover"></div>
-                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
-                <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>
-                <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>`;
-            card.querySelector('img').src = netlifyImg(m.photo, 300, 90);
-            card.querySelector('img').alt = m.name;
-            card.querySelector('img').width = 300;
-            card.querySelector('img').height = 300;
-            card.querySelector('img').loading = 'lazy';
-            card.querySelector('img').decoding = 'async';
-            card.querySelector('h3').textContent = m.name;
-            card.querySelector('p').textContent = m.role;
-            grid.appendChild(card);
-        });
-    }).catch(err => console.warn('Vorstand not available:', err));
+const vorstandGrid = document.getElementById('vorstand-grid');
+if (!vorstandGrid || vorstandGrid.children.length === 0) {
+    fetch('data/vorstand.json')
+        .then(res => {
+            if (!res.ok) throw new Error('vorstand.json not found');
+            return res.json();
+        })
+        .then(data => {
+            const grid = document.getElementById('vorstand-grid');
+            if (grid && grid.children.length > 0) return;
+            data.members.forEach(m => {
+                const card = document.createElement('div');
+                card.className = 'vorstand-card';
+                card.innerHTML = `
+                    <div class="vorstand-photo"><img alt="" class="w-full h-full object-cover"></div>
+                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
+                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>
+                    <a href="kontakt.html" class="inline-block bg-transparent hover:bg-[var(--red)] border border-[var(--card-border)] hover:border-[var(--red)] text-[var(--blue)] hover:text-white font-bold py-3 px-8 rounded-lg transition">Kontaktieren</a>`;
+                card.querySelector('img').src = netlifyImg(m.photo, 300, 90);
+                card.querySelector('img').alt = m.name;
+                card.querySelector('img').width = 300;
+                card.querySelector('img').height = 300;
+                card.querySelector('img').loading = 'lazy';
+                card.querySelector('img').decoding = 'async';
+                card.querySelector('h3').textContent = m.name;
+                card.querySelector('p').textContent = m.role;
+                grid.appendChild(card);
+            });
+        }).catch(err => console.warn('Vorstand not available:', err));
+}
 
-
-fetch('data/vorstand_abteilung.json')
-    .then(res => { if (!res.ok) throw new Error('vorstand_abteilung.json not found'); return res.json(); })
-    .then(data => {
-        const grid = document.getElementById('vorstand-grid-abteilung');
-        if (grid && grid.children.length > 0) return;
-        data.members.forEach(m => {
-            const initials = m.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-            const card = document.createElement('div');
-            card.className = 'vorstand-card';
-            card.innerHTML = `
-                <div class="vorstand-photo">
-                    <img alt="" class="w-full h-full object-cover">
-                </div>
-                <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
-                <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>`;
-            const imgEl = card.querySelector('img');
-            imgEl.src = netlifyImg(m.photo, 300, 90);
-            imgEl.alt = m.name;
-            imgEl.width = 300;
-            imgEl.height = 300;
-            imgEl.loading = 'lazy';
-            imgEl.decoding = 'async';
-            imgEl.onerror = function () {
-                const fallback = document.createElement('div');
-                fallback.className = 'w-full h-full bg-blue-900/20 flex items-center justify-center text-blue-500 text-4xl font-black';
-                fallback.textContent = initials;
-                this.parentElement.replaceChildren(fallback);
-            };
-            card.querySelector('h3').textContent = m.name;
-            card.querySelector('p').textContent = m.role;
-            grid.appendChild(card);
-        });
-    }).catch(err => console.warn('Abteilungsverantwortliche nicht verfügbar:', err));
+const vorstandGridAbteilung = document.getElementById('vorstand-grid-abteilung');
+if (!vorstandGridAbteilung || vorstandGridAbteilung.children.length === 0) {
+    fetch('data/vorstand_abteilung.json')
+        .then(res => { if (!res.ok) throw new Error('vorstand_abteilung.json not found'); return res.json(); })
+        .then(data => {
+            const grid = document.getElementById('vorstand-grid-abteilung');
+            if (grid && grid.children.length > 0) return;
+            data.members.forEach(m => {
+                const initials = m.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+                const card = document.createElement('div');
+                card.className = 'vorstand-card';
+                card.innerHTML = `
+                    <div class="vorstand-photo">
+                        <img alt="" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 text-[var(--blue)]"></h3>
+                    <p class="text-[var(--red)] font-bold text-xs uppercase tracking-widest mb-6"></p>`;
+                const imgEl = card.querySelector('img');
+                imgEl.src = netlifyImg(m.photo, 300, 90);
+                imgEl.alt = m.name;
+                imgEl.width = 300;
+                imgEl.height = 300;
+                imgEl.loading = 'lazy';
+                imgEl.decoding = 'async';
+                imgEl.onerror = function () {
+                    const fallback = document.createElement('div');
+                    fallback.className = 'w-full h-full bg-blue-900/20 flex items-center justify-center text-blue-500 text-4xl font-black';
+                    fallback.textContent = initials;
+                    this.parentElement.replaceChildren(fallback);
+                };
+                card.querySelector('h3').textContent = m.name;
+                card.querySelector('p').textContent = m.role;
+                grid.appendChild(card);
+            });
+        }).catch(err => console.warn('Abteilungsverantwortliche nicht verfügbar:', err));
+}
 
 document.querySelectorAll('.nav-links li.has-dropdown > .dropdown-toggle').forEach(toggle => {
     toggle.addEventListener('click', (e) => {

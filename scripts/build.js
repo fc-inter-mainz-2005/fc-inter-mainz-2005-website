@@ -156,7 +156,7 @@ function buildIndex() {
         const sponsorsHtml = sponsors.sponsors.map(s => {
             const href = /^https?:\/\//i.test(s.link) ? s.link : '#';
             return `                <a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="sponsor-item">
-                    <img src="${netlifyImg(s.image, 140, 75)}" alt="${escapeHtml(s.name)}" width="70" height="70" title="${escapeHtml(s.name)}" loading="lazy">
+                    <img src="${netlifyImg(s.image, 140, 75)}" alt="${escapeHtml(s.name)}" width="70" height="70" title="${escapeHtml(s.name)}" loading="lazy" decoding="async">
                 </a>`;
         }).join('\n');
 
