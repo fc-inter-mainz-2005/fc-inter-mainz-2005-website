@@ -22,6 +22,10 @@
 
     <link rel="preload" href="fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
+    <link rel="preload" as="image" href="/.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1024&fm=webp&q=80"
+        imagesrcset="/.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=480&fm=webp&q=80 480w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=768&fm=webp&q=80 768w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1024&fm=webp&q=80 1024w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1280&fm=webp&q=80 1280w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1600&fm=webp&q=80 1600w"
+        imagesizes="(min-width: 1024px) 900px, 100vw" fetchpriority="high">
+
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/site.css">
 
@@ -831,15 +835,93 @@
                 Unsere<br class="force-break"> <span class="text-[var(--red)]">Mannschaften</span></h1>
             <div class="h-1 w-24 bg-[var(--red)] mx-auto reveal reveal-delay-2"></div>
 
-            <div class="mt-10 flex flex-wrap justify-center gap-x-3 md:gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest reveal reveal-delay-3"
-                id="teams-nav"></div>
+            <div class="mt-10 flex flex-wrap justify-center gap-x-3 md:gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest reveal reveal-delay-3" id="teams-nav">
+                <a href="#team-0" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition">Inter Mainz</a>
+                <span class="text-gray-300">|</span><a href="#team-1" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition">Inter Mainz II</a>
+                <span class="text-gray-300">|</span><a href="#team-2" class="text-[var(--text-muted)] hover:text-[var(--text-main)] transition">Alte Herren (Ü32)</a>
+            </div>
         </div>
     </header>
 
     <main class="relative z-10 pb-24">
         <div class="section-inner space-y-28">
 
-            <div id="teams-container" class="space-y-28"></div>
+            <div id="teams-container" class="space-y-28">
+                <section id="team-0" class="reveal">
+                    <div class="flex items-center mb-8">
+                        <h2 class="team-title">Inter Mainz</h2>
+                        <div class="flex-grow h-px bg-gray-200 ml-4 md:ml-8"></div>
+                        <span class="ml-4 md:ml-8 text-xs font-bold px-3 py-1 rounded tracking-widest uppercase liga-badge" style="background: var(--red); color: white;">B-Klasse</span>
+                    </div>
+                    <div class="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
+                        <div class="team-photo-wrap">
+                            <img class="w-full h-full object-cover rounded-xl lightbox-img"
+                                 src="/.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1024&fm=webp&q=80"
+                                 srcset="/.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=480&fm=webp&q=80 480w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=768&fm=webp&q=80 768w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1024&fm=webp&q=80 1024w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1280&fm=webp&q=80 1280w, /.netlify/images?url=%2Ffotos%2FInterMainzI.jpg&w=1600&fm=webp&q=80 1600w"
+                                 sizes="(min-width: 1024px) 900px, 100vw"
+                                 alt="Mannschaftsfoto Inter Mainz"
+                                 width="1200" height="750"
+                                 loading="eager" fetchpriority="high" decoding="sync">
+                        </div>
+                        <div class="fupa-link-wrap">
+                    <a href="https://www.fupa.net/team/fc-inter-mainz-m1-2026-27" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 mt-4 text-sm font-bold uppercase tracking-wider text-[var(--red)] hover:text-[var(--blue)] transition">
+                        Kompletten Kader ansehen
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a></div>
+                    </div>
+                </section>
+
+                <section id="team-1" class="reveal">
+                    <div class="flex items-center mb-8">
+                        <h2 class="team-title">Inter Mainz II</h2>
+                        <div class="flex-grow h-px bg-gray-200 ml-4 md:ml-8"></div>
+                        <span class="ml-4 md:ml-8 text-xs font-bold px-3 py-1 rounded tracking-widest uppercase liga-badge" style="background: var(--blue-mid); color: white;">C-Klasse</span>
+                    </div>
+                    <div class="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
+                        <div class="team-photo-wrap">
+                            <img class="w-full h-full object-cover rounded-xl lightbox-img"
+                                 src="/.netlify/images?url=%2Ffotos%2FInterMainzII.jpg&w=1024&fm=webp&q=80"
+                                 srcset="/.netlify/images?url=%2Ffotos%2FInterMainzII.jpg&w=480&fm=webp&q=80 480w, /.netlify/images?url=%2Ffotos%2FInterMainzII.jpg&w=768&fm=webp&q=80 768w, /.netlify/images?url=%2Ffotos%2FInterMainzII.jpg&w=1024&fm=webp&q=80 1024w, /.netlify/images?url=%2Ffotos%2FInterMainzII.jpg&w=1280&fm=webp&q=80 1280w, /.netlify/images?url=%2Ffotos%2FInterMainzII.jpg&w=1600&fm=webp&q=80 1600w"
+                                 sizes="(min-width: 1024px) 900px, 100vw"
+                                 alt="Mannschaftsfoto Inter Mainz II"
+                                 width="1200" height="750"
+                                 loading="lazy" fetchpriority="low" decoding="async">
+                        </div>
+                        <div class="fupa-link-wrap">
+                    <a href="https://www.fupa.net/team/fc-inter-mainz-m2-2026-27" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 mt-4 text-sm font-bold uppercase tracking-wider text-[var(--red)] hover:text-[var(--blue)] transition">
+                        Kompletten Kader ansehen
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a></div>
+                    </div>
+                </section>
+
+                <section id="team-2" class="reveal">
+                    <div class="flex items-center mb-8">
+                        <h2 class="team-title">Alte Herren (Ü32)</h2>
+                        <div class="flex-grow h-px bg-gray-200 ml-4 md:ml-8"></div>
+                        <span class="ml-4 md:ml-8 text-xs font-bold px-3 py-1 rounded tracking-widest uppercase liga-badge" style="background: #e2e8f0; color: var(--blue);">Ü32</span>
+                    </div>
+                    <div class="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
+                        <div class="team-photo-wrap">
+                            <img class="w-full h-full object-cover rounded-xl lightbox-img"
+                                 src="/.netlify/images?url=%2Ffotos%2FAlteHerren.jpg&w=1024&fm=webp&q=80"
+                                 srcset="/.netlify/images?url=%2Ffotos%2FAlteHerren.jpg&w=480&fm=webp&q=80 480w, /.netlify/images?url=%2Ffotos%2FAlteHerren.jpg&w=768&fm=webp&q=80 768w, /.netlify/images?url=%2Ffotos%2FAlteHerren.jpg&w=1024&fm=webp&q=80 1024w, /.netlify/images?url=%2Ffotos%2FAlteHerren.jpg&w=1280&fm=webp&q=80 1280w, /.netlify/images?url=%2Ffotos%2FAlteHerren.jpg&w=1600&fm=webp&q=80 1600w"
+                                 sizes="(min-width: 1024px) 900px, 100vw"
+                                 alt="Mannschaftsfoto Alte Herren (Ü32)"
+                                 width="1200" height="750"
+                                 loading="lazy" fetchpriority="low" decoding="async">
+                        </div>
+                        <div class="fupa-link-wrap">
+                    <a href="https://www.fupa.net/club/fc-inter-mainz" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 mt-4 text-sm font-bold uppercase tracking-wider text-[var(--red)] hover:text-[var(--blue)] transition">
+                        Kompletten Kader ansehen
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a></div>
+                    </div>
+                </section>
+            </div>
 
         </div>
     </main>

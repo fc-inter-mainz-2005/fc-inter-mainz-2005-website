@@ -34,6 +34,7 @@ fetch('data/vorstand.json')
     })
     .then(data => {
         const grid = document.getElementById('vorstand-grid');
+        if (grid && grid.children.length > 0) return;
         data.members.forEach(m => {
             const card = document.createElement('div');
             card.className = 'vorstand-card';
@@ -59,6 +60,7 @@ fetch('data/vorstand_abteilung.json')
     .then(res => { if (!res.ok) throw new Error('vorstand_abteilung.json not found'); return res.json(); })
     .then(data => {
         const grid = document.getElementById('vorstand-grid-abteilung');
+        if (grid && grid.children.length > 0) return;
         data.members.forEach(m => {
             const initials = m.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
             const card = document.createElement('div');
@@ -112,7 +114,8 @@ document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
 
 function netlifyImg(path, width, quality = 85) {
     if (!path || path.endsWith('.svg')) return path; // SVGs no se tocan
-    return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
+    const cleanPath = path.replace(/^\/+/, '');
+    return `/.netlify/images?url=${encodeURIComponent('/' + cleanPath)}&w=${width}&fm=webp&q=${quality}`;
 }
 
 

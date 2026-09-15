@@ -24,41 +24,127 @@ fetch('data/hero.json')
 
         const slidesWrap = document.getElementById('heroSlides');
         const dotsWrap = document.getElementById('heroIndicators');
-        data.slides.forEach((s, i) => {
-            const dot = document.createElement('div');
-            dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
-            dot.dataset.idx = i;
-            dotsWrap.appendChild(dot);
 
-            if (i === 0) return;
+        if (!slidesWrap.querySelector('.hero-slide:nth-child(2)')) {
+            dotsWrap.replaceChildren();
+            data.slides.forEach((s, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+                dot.dataset.idx = i;
+                dotsWrap.appendChild(dot);
 
-            const div = document.createElement('div');
-            div.className = 'hero-slide';
-            const img = document.createElement('img');
-            img.src = netlifyImg(s.image, 1920);
-            img.srcset = `${netlifyImg(s.image, 800)} 800w, ${netlifyImg(s.image, 1920)} 1920w`;
-            img.sizes = '100vw';
-            img.width = 1920;
-            img.height = 1080;
-            img.alt = '';
-            img.loading = 'lazy';
-            img.fetchPriority = 'low';
-            img.decoding = 'async';
-            div.appendChild(img);
-            slidesWrap.appendChild(div);
-        });
+                if (i === 0) return;
+
+                const div = document.createElement('div');
+                div.className = 'hero-slide';
+                const img = document.createElement('img');
+                const heroSrcsetStr = `${netlifyImg(s.image, 640)} 640w, ${netlifyImg(s.image, 960)} 960w, ${netlifyImg(s.image, 1200)} 1200w, ${netlifyImg(s.image, 1600)} 1600w, ${netlifyImg(s.image, 1920)} 1920w`;
+                img.setAttribute('data-src', netlifyImg(s.image, 1200));
+                img.setAttribute('data-srcset', heroSrcsetStr);
+                img.sizes = '100vw';
+                img.width = 1920;
+                img.height = 1080;
+                img.alt = '';
+                img.loading = 'lazy';
+                img.fetchPriority = 'low';
+                img.decoding = 'async';
+                div.appendChild(img);
+                slidesWrap.appendChild(div);
+            });
+        }
+
+        function sanitizeImageUrl(urlValue) {
+            if (!urlValue) return null;
+            const value = urlValue.trim();
+            try {
+                const parsed = new URL(value, window.location.origin);
+                if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
+            } catch (_) {
+                return null;
+            }
+            return null;
+        }
+
+        function sanitizeSrcset(srcsetValue) {
+            if (!srcsetValue) return null;
+            const parts = srcsetValue.split(',').map(part => part.trim()).filter(Boolean);
+            if (!parts.length) return null;
+
+            const sanitizedParts = [];
+            for (const part of parts) {
+                const match = part.match(/^(\S+)(?:\s+(.+))?$/);
+                if (!match) return null;
+                const safeUrl = sanitizeImageUrl(match[1]);
+                if (!safeUrl) return null;
+                sanitizedParts.push(match[2] ? `${safeUrl} ${match[2]}` : safeUrl);
+            }
+            return sanitizedParts.join(', ');
+        }
+
+        function activateSlideImage(slideEl) {
+            if (!slideEl) return;
+            const img = slideEl.querySelector('img[data-src]');
+            if (img) {
+                const safeSrc = sanitizeImageUrl(img.getAttribute('data-src'));
+                if (safeSrc) {
+                    img.src = safeSrc;
+                }
+                const rawSrcset = img.getAttribute('data-srcset');
+                if (rawSrcset) {
+                    const safeSrcset = sanitizeSrcset(rawSrcset);
+                    if (safeSrcset) {
+                        img.srcset = safeSrcset;
+                    }
+                }
+                img.removeAttribute('data-src');
+                img.removeAttribute('data-srcset');
+            }
+        }
+
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-dot');
-        let current = 0, timer;
-        function goTo(idx) {
-            slides[current].classList.remove('active'); dots[current].classList.remove('active');
-            current = idx;
-            slides[current].classList.add('active'); dots[current].classList.add('active');
+        let current = 0;
+        let timer = null;
+        let preloadTimer = null;
+        const SLIDE_DURATION = 5500;
+        const PRELOAD_OFFSET = 1000;
+
+        function scheduleNextPreload() {
+            clearTimeout(preloadTimer);
+            const nextIdx = (current + 1) % slides.length;
+            preloadTimer = setTimeout(() => {
+                activateSlideImage(slides[nextIdx]);
+            }, SLIDE_DURATION - PRELOAD_OFFSET);
         }
-        function next() { goTo((current + 1) % slides.length); }
-        function startTimer() { clearInterval(timer); timer = setInterval(next, 5500); }
-        dots.forEach(dot => dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.idx)); startTimer(); }));
-        if (slides.length > 1) startTimer();
+
+        function goTo(idx) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = idx;
+            activateSlideImage(slides[current]);
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+            scheduleNextPreload();
+        }
+
+        function next() {
+            goTo((current + 1) % slides.length);
+        }
+
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(next, SLIDE_DURATION);
+            scheduleNextPreload();
+        }
+
+        dots.forEach(dot => dot.addEventListener('click', () => {
+            goTo(parseInt(dot.dataset.idx, 10));
+            startTimer();
+        }));
+
+        if (slides.length > 1) {
+            startTimer();
+        }
     })
 
 
@@ -119,6 +205,7 @@ fetch('data/events.json')
     })
     .then(data => {
         const list = document.getElementById('event-list');
+        if (list && list.children.length > 0) return;
 
         const dynamicObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
@@ -192,6 +279,7 @@ fetch('data/sponsors.json')
     })
     .then(data => {
         const track = document.getElementById('sponsors-track');
+        if (track && track.children.length > 0) return;
         data.sponsors.forEach(s => {
             const a = document.createElement('a');
             a.href = /^https?:\/\//i.test(s.link) ? s.link : '#';
@@ -235,7 +323,8 @@ document.querySelectorAll('.mobile-nav-group-toggle').forEach(toggle => {
 
 function netlifyImg(path, width, quality = 75) {
     if (!path || path.endsWith('.svg')) return path;
-    return `/.netlify/images?url=${encodeURIComponent('/' + path)}&w=${width}&fm=webp&q=${quality}`;
+    const cleanPath = path.replace(/^\/+/, '');
+    return `/.netlify/images?url=${encodeURIComponent('/' + cleanPath)}&w=${width}&fm=webp&q=${quality}`;
 }
 
 
