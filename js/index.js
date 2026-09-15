@@ -53,13 +53,49 @@ fetch('data/hero.json')
             });
         }
 
+        function sanitizeImageUrl(urlValue) {
+            if (!urlValue) return null;
+            const value = urlValue.trim();
+            try {
+                const parsed = new URL(value, window.location.origin);
+                if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
+                if (parsed.protocol === 'data:' && /^data:image\//i.test(value)) return value;
+            } catch (_) {
+                return null;
+            }
+            return null;
+        }
+
+        function sanitizeSrcset(srcsetValue) {
+            if (!srcsetValue) return null;
+            const parts = srcsetValue.split(',').map(part => part.trim()).filter(Boolean);
+            if (!parts.length) return null;
+
+            const sanitizedParts = [];
+            for (const part of parts) {
+                const match = part.match(/^(\S+)(?:\s+(.+))?$/);
+                if (!match) return null;
+                const safeUrl = sanitizeImageUrl(match[1]);
+                if (!safeUrl) return null;
+                sanitizedParts.push(match[2] ? `${safeUrl} ${match[2]}` : safeUrl);
+            }
+            return sanitizedParts.join(', ');
+        }
+
         function activateSlideImage(slideEl) {
             if (!slideEl) return;
             const img = slideEl.querySelector('img[data-src]');
             if (img) {
-                img.src = img.getAttribute('data-src');
-                if (img.getAttribute('data-srcset')) {
-                    img.srcset = img.getAttribute('data-srcset');
+                const safeSrc = sanitizeImageUrl(img.getAttribute('data-src'));
+                if (safeSrc) {
+                    img.src = safeSrc;
+                }
+                const rawSrcset = img.getAttribute('data-srcset');
+                if (rawSrcset) {
+                    const safeSrcset = sanitizeSrcset(rawSrcset);
+                    if (safeSrcset) {
+                        img.srcset = safeSrcset;
+                    }
                 }
                 img.removeAttribute('data-src');
                 img.removeAttribute('data-srcset');
