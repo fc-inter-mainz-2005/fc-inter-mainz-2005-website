@@ -59,7 +59,6 @@ fetch('data/hero.json')
             try {
                 const parsed = new URL(value, window.location.origin);
                 if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
-                if (parsed.protocol === 'data:' && /^data:image\//i.test(value)) return value;
             } catch (_) {
                 return null;
             }
