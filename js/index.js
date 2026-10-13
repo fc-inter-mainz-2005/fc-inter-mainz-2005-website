@@ -296,11 +296,14 @@ if (!sponsorsTrackEl || sponsorsTrackEl.children.length === 0) {
             const track = document.getElementById('sponsors-track');
             if (track && track.children.length > 0) return;
             data.sponsors.forEach(s => {
-                const a = document.createElement('a');
-                a.href = /^https?:\/\//i.test(s.link) ? s.link : '#';
-                a.target = '_blank';
-                a.rel = 'noopener';
-                a.className = 'sponsor-item';
+                const href = /^https?:\/\//i.test(s.link) ? s.link : '';
+                const el = href ? document.createElement('a') : document.createElement('div');
+                if (href) {
+                    el.href = href;
+                    el.target = '_blank';
+                    el.rel = 'noopener';
+                }
+                el.className = 'sponsor-item';
                 const img = document.createElement('img');
                 img.src = netlifyImg(s.image, 140, 75);
                 img.alt = s.name;
@@ -309,10 +312,48 @@ if (!sponsorsTrackEl || sponsorsTrackEl.children.length === 0) {
                 img.title = s.name;
                 img.loading = 'lazy';
                 img.decoding = 'async';
-                a.appendChild(img);
-                track.appendChild(a);
+                el.appendChild(img);
+                track.appendChild(el);
             });
         }).catch(err => console.warn('Sponsors not available:', err));
+}
+
+const collabTrackEl = document.getElementById('collab-track');
+if (!collabTrackEl || collabTrackEl.children.length === 0) {
+    fetch('data/kooperationspartner.json')
+        .then(res => {
+            if (!res.ok) throw new Error('kooperationspartner.json not found');
+            return res.json();
+        })
+        .then(data => {
+            const track = document.getElementById('collab-track');
+            if (!track || track.children.length > 0) return;
+            if (!Array.isArray(data.partners) || data.partners.length === 0) {
+                const block = document.getElementById('collab-block');
+                if (block) block.style.display = 'none';
+                return;
+            }
+            data.partners.forEach(p => {
+                const href = /^https?:\/\//i.test(p.link) ? p.link : '';
+                const el = href ? document.createElement('a') : document.createElement('div');
+                if (href) {
+                    el.href = href;
+                    el.target = '_blank';
+                    el.rel = 'noopener';
+                }
+                el.className = 'sponsor-item';
+                const img = document.createElement('img');
+                img.src = netlifyImg(p.image, 140, 75);
+                img.alt = p.name;
+                img.width = 70;
+                img.height = 70;
+                img.title = p.name;
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                el.appendChild(img);
+                track.appendChild(el);
+            });
+        }).catch(err => console.warn('Kooperationspartner nicht verfügbar:', err));
 }
 
 

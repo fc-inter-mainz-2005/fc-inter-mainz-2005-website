@@ -87,7 +87,23 @@ collections:
             fields:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Logo", name: "image", widget: "image"}
-              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Link (optional)", name: "link", widget: "string", required: false}
+
+  - name: "kooperationspartner"
+    label: "Kooperationspartner"
+    files:
+      - label: "Liste"
+        name: "liste"
+        file: "data/kooperationspartner.json"
+        fields:
+          - label: "Kooperationspartner"
+            name: "partners"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Logo", name: "image", widget: "image"}
+              - {label: "Link (optional)", name: "link", widget: "string", required: false}
 
   - name: "teams"
     label: "Mannschaften"

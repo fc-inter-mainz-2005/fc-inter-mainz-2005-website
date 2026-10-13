@@ -80,6 +80,7 @@ function buildIndex() {
     const sponsors = readJson('data/sponsors.json');
     const events = readJson('data/events.json');
     const footer = readJson('data/footer.json');
+    const partners = readJson('data/kooperationspartner.json');
 
     const heroWidths = [640, 960, 1200, 1600, 1920];
 
@@ -154,13 +155,37 @@ function buildIndex() {
     // Update sponsors
     if (sponsors && Array.isArray(sponsors.sponsors)) {
         const sponsorsHtml = sponsors.sponsors.map(s => {
-            const href = /^https?:\/\//i.test(s.link) ? s.link : '#';
-            return `                <a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="sponsor-item">
+            const href = safeUrl(s.link);
+            if (href) {
+                return `                <a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="sponsor-item">
                     <img src="${netlifyImg(s.image, 140, 75)}" alt="${escapeHtml(s.name)}" width="70" height="70" title="${escapeHtml(s.name)}" loading="lazy" decoding="async">
                 </a>`;
+            } else {
+                return `                <div class="sponsor-item">
+                    <img src="${netlifyImg(s.image, 140, 75)}" alt="${escapeHtml(s.name)}" width="70" height="70" title="${escapeHtml(s.name)}" loading="lazy" decoding="async">
+                </div>`;
+            }
         }).join('\n');
 
         html = replaceSlot(html, '<!-- SPONSORS_START -->', '<!-- SPONSORS_END -->', sponsorsHtml);
+    }
+
+    // Update kooperationspartner
+    if (partners && Array.isArray(partners.partners) && partners.partners.length > 0) {
+        const partnersHtml = partners.partners.map(p => {
+            const href = safeUrl(p.link);
+            if (href) {
+                return `                <a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="sponsor-item">
+                    <img src="${netlifyImg(p.image, 140, 75)}" alt="${escapeHtml(p.name)}" width="70" height="70" title="${escapeHtml(p.name)}" loading="lazy" decoding="async">
+                </a>`;
+            } else {
+                return `                <div class="sponsor-item">
+                    <img src="${netlifyImg(p.image, 140, 75)}" alt="${escapeHtml(p.name)}" width="70" height="70" title="${escapeHtml(p.name)}" loading="lazy" decoding="async">
+                </div>`;
+            }
+        }).join('\n');
+
+        html = replaceSlot(html, '<!-- PARTNERS_START -->', '<!-- PARTNERS_END -->', partnersHtml);
     }
 
     // Update events
