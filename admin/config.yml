@@ -176,7 +176,7 @@ collections:
           - {label: "Gegründet (Jahr)", name: "gegruendet", widget: "string"}
           - {label: "Mannschaften", name: "mannschaften", widget: "string"}
           - {label: "Mitglieder (z.B. 90+)", name: "mitglieder", widget: "string"}
-          - {label: "Nationen", name: "nationen", widget: "string"}
+          - {label: "Nationen (z.B. 30+)", name: "nationen", widget: "string", default: "30+"}
 
   - name: "downloads"
     label: "Downloadcenter"
