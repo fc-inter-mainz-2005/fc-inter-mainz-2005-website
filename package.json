@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/alexricardo02/InterMainzWebsite#readme",
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.16.4",
     "tailwindcss": "^3.4.19"
   },
   "dependencies": {
