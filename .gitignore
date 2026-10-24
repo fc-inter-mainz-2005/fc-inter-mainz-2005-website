@@ -42,3 +42,8 @@ includes/php/db.inc.php
 php/
 /php
 *.php
+
+# IDE y credenciales locales
+.vscode/
+*sftp.json
+sftp.json
