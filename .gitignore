@@ -1,19 +1,44 @@
-includes/php/db.inc.php
-.DS_Store
-php/
-/php
-.php
-node_modules/
-css/tailwind.css
+# Dependencias
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Entornos y Secretos (Crítico para Sanity y Workspace)
 .env
-/env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 env/
+/env
 .env/
 
-# Local Netlify folder
-.netlify
-deno.lock
-
-# Next.js
+# Build outputs de Next.js
 .next/
 out/
+build/
+dist/
+
+# Netlify local & cache
+.netlify/
+
+# Configuración y logs de paquetes / OS
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.DS_Store
+*.pem
+Thumbs.db
+
+# TypeScript & Linter cache
+*.tsbuildinfo
+next-env.d.ts
+
+# Legacy PHP / XAMPP (por si quedan restos locales)
+includes/php/db.inc.php
+php/
+/php
+*.php
