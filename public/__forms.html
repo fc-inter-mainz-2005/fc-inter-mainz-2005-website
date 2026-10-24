@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Netlify Forms Definitions</title>
+</head>
+<body>
+  <!-- Form definition for kontakt -->
+  <form name="kontakt" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="kontakt" />
+    <input name="bot-field" />
+    <input type="text" name="vorname" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <select name="betreff">
+      <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+      <option value="Mitgliedschaft">Mitgliedschaft</option>
+      <option value="Sponsoring">Sponsoring</option>
+      <option value="Social Media">Social Media</option>
+      <option value="Spielbetrieb">Spielbetrieb</option>
+      <option value="Sonstiges">Sonstiges</option>
+    </select>
+    <textarea name="message"></textarea>
+    <input type="file" name="anhang" />
+  </form>
+
+  <!-- Form definition for probetraining -->
+  <form name="probetraining" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="probetraining" />
+    <input name="bot-field" />
+    <input type="text" name="vorname" />
+    <input type="text" name="name" />
+    <input type="date" name="geburtsdatum" />
+    <input type="email" name="email" />
+    <input type="tel" name="telefon" />
+    <input type="radio" name="anderer_verein" value="Ja" />
+    <input type="radio" name="anderer_verein" value="Nein" />
+    <input type="text" name="verein_name" />
+    <textarea name="nachricht"></textarea>
+  </form>
+</body>
+</html>
