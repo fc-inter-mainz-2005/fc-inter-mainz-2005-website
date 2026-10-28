@@ -23,7 +23,7 @@
   "homepage": "https://github.com/alexricardo02/InterMainzWebsite#readme",
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.16.4",
-    "tailwindcss": "^3.4.19"
+    "tailwindcss": "^4.3.3"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
@@ -76,8 +76,8 @@
     "postcss-import": "^15.1.0",
     "postcss-js": "^4.1.0",
     "postcss-load-config": "^6.0.1",
-    "postcss-nested": "^6.2.0",
-    "postcss-selector-parser": "^6.1.4",
+    "postcss-nested": "^9.0.1",
+    "postcss-selector-parser": "^7.1.7",
     "postcss-value-parser": "^4.2.0",
     "queue-microtask": "^1.2.3",
     "react": "^19.3.1",
