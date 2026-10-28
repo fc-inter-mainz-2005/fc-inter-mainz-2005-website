@@ -1,12 +1,24 @@
 import { dataset, projectId } from '../env';
 
 /**
+ * Normalizes an image source path or URL.
+ * Preserves external URLs and existing root-relative paths,
+ * only prepending a leading slash if needed.
+ */
+export const normalizeSrc = (src?: string | null): string => {
+  if (!src) return '';
+  return src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/')
+    ? src
+    : `/${src}`;
+};
+
+/**
  * Builds direct CDN URL for Sanity image asset references
  */
 export function urlForImage(source: any): string {
   if (!source) return '';
   if (typeof source === 'string') {
-    return source.startsWith('/') || source.startsWith('http') ? source : `/${source}`;
+    return normalizeSrc(source);
   }
   if (source.asset?.url) {
     return source.asset.url;
@@ -34,24 +46,18 @@ export function urlForImage(source: any): string {
 export function resolveImageUrl(source: any, fallbackPath: string = ''): string {
   if (!source) {
     if (!fallbackPath) return '';
-    return fallbackPath.startsWith('/') || fallbackPath.startsWith('http')
-      ? fallbackPath
-      : `/${fallbackPath}`;
+    return normalizeSrc(fallbackPath);
   }
 
   if (typeof source === 'string') {
-    return source.startsWith('/') || source.startsWith('http')
-      ? source
-      : `/${source}`;
+    return normalizeSrc(source);
   }
 
   const sanityUrl = urlForImage(source);
   if (sanityUrl) return sanityUrl;
 
   if (fallbackPath) {
-    return fallbackPath.startsWith('/') || fallbackPath.startsWith('http')
-      ? fallbackPath
-      : `/${fallbackPath}`;
+    return normalizeSrc(fallbackPath);
   }
 
   return '';
@@ -63,15 +69,11 @@ export function resolveImageUrl(source: any, fallbackPath: string = ''): string 
 export function resolveFileUrl(source: any, fallbackPath: string = ''): string {
   if (!source) {
     if (!fallbackPath) return '';
-    return fallbackPath.startsWith('/') || fallbackPath.startsWith('http')
-      ? fallbackPath
-      : `/${fallbackPath}`;
+    return normalizeSrc(fallbackPath);
   }
 
   if (typeof source === 'string') {
-    return source.startsWith('/') || source.startsWith('http')
-      ? source
-      : `/${source}`;
+    return normalizeSrc(source);
   }
 
   if (source.asset?.url) {
@@ -79,9 +81,7 @@ export function resolveFileUrl(source: any, fallbackPath: string = ''): string {
   }
 
   if (fallbackPath) {
-    return fallbackPath.startsWith('/') || fallbackPath.startsWith('http')
-      ? fallbackPath
-      : `/${fallbackPath}`;
+    return normalizeSrc(fallbackPath);
   }
 
   return '';

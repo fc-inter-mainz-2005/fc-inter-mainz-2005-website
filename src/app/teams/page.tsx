@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTeams } from '@/sanity/lib/fetch';
+import { normalizeSrc } from '@/sanity/lib/image';
 
 export const metadata: Metadata = {
   title: 'Unsere Mannschaften',
@@ -76,7 +77,7 @@ export default async function TeamsPage() {
                   <div className="bg-[var(--bg-surface)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] shadow-md transform transition hover:scale-[1.02] duration-500">
                     <div className="team-photo-wrap">
                       <Image
-                        src={team.photo}
+                        src={normalizeSrc(team.photo)}
                         alt={`Mannschaftsfoto ${team.name}`}
                         fill
                         sizes="(min-width: 1024px) 900px, 100vw"

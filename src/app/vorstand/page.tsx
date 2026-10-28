@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getBoardMembers, type BoardMember } from '@/sanity/lib/fetch';
+import { normalizeSrc } from '@/sanity/lib/image';
 
 export const metadata: Metadata = {
   title: 'Unser Vorstand',
@@ -55,7 +56,7 @@ function BoardMemberCard({ member }: { member: BoardMember }) {
     <div className="vorstand-card">
       <div className="vorstand-photo relative">
         <Image
-          src={member.photo}
+          src={normalizeSrc(member.photo)}
           alt={member.name}
           width={140}
           height={140}

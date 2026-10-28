@@ -4,6 +4,11 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const normalizeSrc = (src: string) =>
+  src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/')
+    ? src
+    : `/${src}`;
+
 interface Slide {
   image: string;
 }
@@ -32,9 +37,7 @@ export default function HeroSlider({ data }: { data: HeroData }) {
     <header className="hero">
       <div className="hero-slides" id="heroSlides">
         {slides.map((slide, idx) => {
-          const imgPath = slide.image.startsWith('/')
-            ? slide.image
-            : `/${slide.image}`;
+          const imgPath = normalizeSrc(slide.image);
           const isActive = idx === currentSlide;
 
           return (
