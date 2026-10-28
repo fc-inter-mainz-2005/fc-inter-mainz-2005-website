@@ -224,7 +224,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
     copyright_text:
       sanitySettings?.copyright_text ??
       footerData.copyright_text ??
-      '© 2026 FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.',
+      `© ${new Date().getFullYear()} FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.`,
   };
 
   return { banner, hero, stats, footer };

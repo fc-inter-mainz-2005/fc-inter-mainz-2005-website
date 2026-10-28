@@ -100,11 +100,11 @@ export default function Navbar({ banner }: { banner?: BannerData }) {
               src="/fotos/logo.png"
               width={46}
               height={46}
-              alt="Inter Mainz Wappen"
+              alt="FC Inter Mainz 2005 Wappen"
               priority
             />
             <span style={isTransparent ? { color: 'white', textShadow: '0 0 20px rgba(0,0,0,0.8)' } : undefined}>
-              FC Inter Mainz
+              FC Inter Mainz 2005
             </span>
           </Link>
 
