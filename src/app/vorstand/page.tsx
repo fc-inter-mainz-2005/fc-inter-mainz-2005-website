@@ -26,8 +26,8 @@ function getMemberContactHref(member: BoardMember): string | null {
   }
   if (
     member.name.includes('Fernando') ||
-    member.name.includes('José Luis') ||
-    member.name.includes('Fuente')
+    member.name.includes('José') ||
+    member.name.includes('Fernández')
   ) {
     return '/kontakt?betreff=Vorstand';
   }
