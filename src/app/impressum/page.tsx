@@ -66,7 +66,7 @@ export default async function ImpressumPage() {
             <strong style={{ color: 'var(--text-main)' }}>
               3. Vorsitzender:
             </strong>{' '}
-            José Luis Fuente Fernández
+            José Fernández
           </p>
         </div>
 

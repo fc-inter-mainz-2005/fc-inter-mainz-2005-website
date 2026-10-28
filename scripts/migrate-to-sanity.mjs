@@ -220,10 +220,13 @@ async function migrate() {
   console.log('\n📦 5. Migriere Rechtliche Seiten (legalPages)...');
   const impressum = readJson('content/impressum.json') || {};
   const datenschutz = readJson('content/datenschutz.json') || {};
+  const impressumContent = (impressum.content || '')
+    .replaceAll('José Luis Fuente Fernández', 'José Fernández')
+    .replaceAll('José Luis Fuente', 'José Fernández');
   await client.createOrReplace({
     _id: 'legalPages',
     _type: 'legalPages',
-    impressum_content: impressum.content || '',
+    impressum_content: impressumContent,
     datenschutz_content: datenschutz.content || '',
   });
   console.log('  ✅ legalPages erfolgreich angelegt.');
@@ -252,10 +255,13 @@ async function migrate() {
   const vorstandData = readJson('data/vorstand.json') || { members: [] };
   for (let i = 0; i < vorstandData.members.length; i++) {
     const m = vorstandData.members[i];
+    const memberName = (m.name || '')
+      .replace('José Luis Fuente Fernández', 'José Fernández')
+      .replace('José Luis Fuente', 'José Fernández');
     const doc = {
       _id: `boardMember-vorstand-${i}`,
       _type: 'boardMember',
-      name: m.name,
+      name: memberName,
       role: m.role,
       category: 'vorstand',
       order: i,
@@ -264,7 +270,7 @@ async function migrate() {
     const photoId = await uploadFileAsset(m.photo, 'image');
     if (photoId) doc.photo = { _type: 'image', asset: { _type: 'reference', _ref: photoId } };
     await client.createOrReplace(doc);
-    console.log(`  ✅ Vorstand angelegt: ${m.name} (${m.role})`);
+    console.log(`  ✅ Vorstand angelegt: ${memberName} (${m.role})`);
   }
 
   const abteilungData = readJson('data/vorstand_abteilung.json') || { members: [] };
