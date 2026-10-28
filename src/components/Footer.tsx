@@ -37,6 +37,10 @@ export default function Footer({ data }: { data?: FooterData }) {
               width={52}
               height={52}
               alt="FC Inter Mainz 2005 Wappen"
+              priority={true}
+              unoptimized={true}
+              className="h-10 w-auto object-contain"
+              style={{ imageRendering: 'auto' }}
             />
             <div className="footer-brand-name">FC Inter Mainz 2005</div>
             <p className="footer-brand-desc" id="footer-brand-desc">
