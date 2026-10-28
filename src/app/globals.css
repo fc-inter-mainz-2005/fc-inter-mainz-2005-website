@@ -144,24 +144,30 @@ nav.transparent .nav-logo span {
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
-nav.transparent .nav-links a,
-nav.transparent .nav-links .dropdown-toggle {
+nav.transparent .nav-links > li > a,
+nav.transparent .nav-links > li > .dropdown-toggle {
   color: rgba(255, 255, 255, 0.85);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-nav.transparent .nav-links a:hover,
-nav.transparent .nav-links .dropdown-toggle:hover {
+nav.transparent .nav-links > li > a:hover,
+nav.transparent .nav-links > li > .dropdown-toggle:hover {
   color: white;
 }
 
-nav.transparent .nav-links a.active,
-nav.transparent .nav-links .dropdown-toggle.active {
+nav.transparent .nav-links > li > a.active,
+nav.transparent .nav-links > li > .dropdown-toggle.active {
   color: white;
 }
 
-nav.transparent .nav-links a::after {
+nav.transparent .nav-links > li > a::after {
   display: none;
+}
+
+nav.transparent .dropdown-menu a,
+nav.transparent .dropdown-menu a:hover,
+nav.transparent .dropdown-menu a.active {
+  text-shadow: none !important;
 }
 
 nav.transparent .nav-hamburger span {
@@ -204,7 +210,7 @@ nav.transparent .nav-cart-mobile {
   list-style: none;
 }
 
-.nav-links a {
+.nav-links > li > a {
   text-decoration: none;
   color: var(--text-muted);
   font-size: 0.85rem;
@@ -219,7 +225,7 @@ nav.transparent .nav-cart-mobile {
   align-items: center;
 }
 
-.nav-links a::after {
+.nav-links > li > a::after {
   content: '';
   position: absolute;
   bottom: 4px;
@@ -232,16 +238,16 @@ nav.transparent .nav-cart-mobile {
   border-radius: 2px;
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
+.nav-links > li > a:hover::after,
+.nav-links > li > a.active::after {
   transform: scaleX(1);
 }
 
-.nav-links a:hover {
+.nav-links > li > a:hover {
   color: var(--blue);
 }
 
-.nav-links a.active {
+.nav-links > li > a.active {
   color: var(--red);
 }
 
@@ -362,22 +368,30 @@ nav.transparent .nav-cart-mobile {
 .dropdown-menu li a {
   display: block;
   padding: 10px 14px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: normal;
   text-transform: none;
-  color: var(--text-muted);
+  color: #1f2937;
+  text-shadow: none !important;
   border-radius: 6px;
   white-space: nowrap;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .dropdown-menu li a::after {
-  display: none;
+  display: none !important;
 }
 
 .dropdown-menu li a:hover {
-  background: rgba(204, 0, 0, 0.08);
-  color: var(--red);
+  background: #f9fafb;
+  color: #dc2626 !important;
+}
+
+.dropdown-menu li a.active {
+  color: #dc2626 !important;
+  background: #fef2f2;
+  font-weight: 600;
 }
 
 /* Mobile Nav Structure */
@@ -1549,10 +1563,19 @@ footer {
    Vorstand (Board) Grid & Cards
    ========================================================================== */
 .vorstand-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 32px;
+  max-width: 1040px;
+  margin: 0 auto;
+  justify-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .vorstand-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .vorstand-card {
@@ -1562,8 +1585,11 @@ footer {
   padding: 32px;
   text-align: center;
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-  flex: 0 1 280px;
+  width: 100%;
   max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .vorstand-card:hover {
@@ -1574,13 +1600,7 @@ footer {
 
 @media (min-width: 1024px) {
   .vorstand-grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .vorstand-grid-4 .vorstand-card {
-    max-width: none;
-    flex: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

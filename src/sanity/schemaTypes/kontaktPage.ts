@@ -27,7 +27,7 @@ export const kontaktPage = defineType({
       name: 'email',
       title: 'Kontakt E-Mail',
       type: 'string',
-      initialValue: 'kontakt@intermainz.de',
+      initialValue: 'intermainz@gmail.com',
     }),
     defineField({
       name: 'maps_query',

@@ -57,6 +57,7 @@ export const boardMembersQuery = groq`
     _id,
     name,
     role,
+    secondaryRole,
     category,
     email,
     order,
