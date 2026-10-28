@@ -13,6 +13,7 @@ import {
   getSponsors,
   getPartners,
 } from '@/sanity/lib/fetch';
+import { normalizeSrc } from '@/sanity/lib/image';
 
 export const metadata: Metadata = {
   title: 'FC Inter Mainz 2005 e.V. – Fußballverein in Mainz',
@@ -55,7 +56,7 @@ export default async function HomePage() {
                 title={sponsor.name}
               >
                 <Image
-                  src={sponsor.image}
+                  src={normalizeSrc(sponsor.image)}
                   alt={sponsor.name}
                   width={140}
                   height={70}
@@ -79,7 +80,7 @@ export default async function HomePage() {
                     title={partner.name}
                   >
                     <Image
-                      src={partner.image}
+                      src={normalizeSrc(partner.image)}
                       alt={partner.name}
                       width={140}
                       height={70}

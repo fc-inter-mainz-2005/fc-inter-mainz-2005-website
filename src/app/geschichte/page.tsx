@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getGeschichtePage } from '@/sanity/lib/fetch';
+import { normalizeSrc } from '@/sanity/lib/image';
 
 export const metadata: Metadata = {
   title: 'Vereinsgeschichte',
@@ -48,7 +49,7 @@ export default async function GeschichtePage() {
             <div className="order-1 lg:order-2 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
               <div className="history-photo-wrap">
                 <Image
-                  src={gruendung.photo}
+                  src={normalizeSrc(gruendung.photo)}
                   alt={gruendung.titel}
                   fill
                   priority
@@ -64,7 +65,7 @@ export default async function GeschichtePage() {
             <div className="order-1 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
               <div className="history-photo-wrap">
                 <Image
-                  src={aufstieg.photo}
+                  src={normalizeSrc(aufstieg.photo)}
                   alt={aufstieg.titel}
                   fill
                   sizes="(min-width: 1024px) 58vw, 100vw"
@@ -115,7 +116,7 @@ export default async function GeschichtePage() {
             <div className="order-1 lg:order-2 lg:col-span-7 bg-[var(--card-bg)] p-3 md:p-4 rounded-2xl border border-[var(--card-border)] transform transition hover:scale-105 duration-500 shadow-2xl">
               <div className="history-photo-wrap">
                 <Image
-                  src={heute.photo}
+                  src={normalizeSrc(heute.photo)}
                   alt={heute.titel}
                   fill
                   sizes="(min-width: 1024px) 58vw, 100vw"
