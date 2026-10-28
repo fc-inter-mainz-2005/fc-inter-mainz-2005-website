@@ -9,7 +9,7 @@ export default function Footer({ data }: { data?: FooterData }) {
     'Dein Fußballverein in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.';
   const addressLine1 = data?.address_line1 || 'Albert-Stohr-Straße 50';
   const addressLine2 = data?.address_line2 || '55128 Mainz';
-  const email = data?.email || 'kontakt@intermainz.de';
+  const email = data?.email || 'intermainz@gmail.com';
   const extraContact = data?.extra_contact || [];
   const facebookUrl =
     data?.facebook_url ||

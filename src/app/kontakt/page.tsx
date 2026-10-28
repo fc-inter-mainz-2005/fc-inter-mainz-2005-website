@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import KontaktForm from '@/components/KontaktForm';
 import { getKontaktPage } from '@/sanity/lib/fetch';
@@ -14,7 +14,7 @@ export default async function KontaktPage() {
   const anschriftName = kontakt.anschrift_name;
   const strasse = kontakt.strasse;
   const plzOrt = kontakt.plz_ort;
-  const email = kontakt.email || 'kontakt@intermainz.de';
+  const email = kontakt.email || 'intermainz@gmail.com';
   const mapsQuery = encodeURIComponent(
     kontakt.maps_query || `${strasse}, ${plzOrt}`
   );
@@ -122,7 +122,15 @@ export default async function KontaktPage() {
 
             {/* Form */}
             <div className="md:col-span-2">
-              <KontaktForm />
+              <Suspense
+                fallback={
+                  <div className="form-card text-center py-12 text-[var(--gray)]">
+                    Wird geladen…
+                  </div>
+                }
+              >
+                <KontaktForm />
+              </Suspense>
             </div>
           </div>
         </div>

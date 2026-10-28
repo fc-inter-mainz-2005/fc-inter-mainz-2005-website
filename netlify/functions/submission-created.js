@@ -40,6 +40,85 @@ function confirmationEmailHtml(vorname, mensaje) {
 </html>`;
 }
 
+/**
+ * Dynamic Google Workspace Email Routing based on form name and subject (Anliegen / Betreff)
+ */
+function getDepartmentRecipients(formName, betreff) {
+  const fallbackEmail = process.env.RECIPIENT_EMAIL || 'intermainz@gmail.com';
+
+  // Sport & Trainer: when form-name === 'probetraining'
+  if (formName === 'probetraining') {
+    const to = [fallbackEmail, 'martinubilla@intermainz.de', 'erik@intermainz.de'];
+    return { to, cc: [] };
+  }
+
+  const normalized = (betreff || '').toLowerCase().trim();
+
+  let to = [];
+  if (
+    normalized.includes('vorstand') ||
+    normalized.includes('vereinsführung')
+  ) {
+    // Vorstand (Vorstand / Vorstand & Vereinsführung)
+    to = [
+      fallbackEmail,
+      'santiagoballabriga@intermainz.de',
+      'fernandotrochez@intermainz.de',
+      'josefernandez@intermainz.de',
+    ];
+  } else if (
+    normalized.includes('sponsoring') ||
+    normalized.includes('partner')
+  ) {
+    // Sponsoring (Sponsoring & Partnerschaften)
+    to = [
+      fallbackEmail,
+      'santiagoballabriga@intermainz.de',
+      'fernandotrochez@intermainz.de',
+    ];
+  } else if (
+    normalized.includes('sportliche leitung') ||
+    normalized.includes('spielbetrieb') ||
+    normalized.includes('sport')
+  ) {
+    // Sport & Trainer (Sportliche Leitung / Sportliche Leitung & Spielbetrieb)
+    to = [fallbackEmail, 'martinubilla@intermainz.de', 'erik@intermainz.de'];
+  } else if (
+    normalized.includes('finanz') ||
+    normalized.includes('mitgliedsbeitr') ||
+    normalized.includes('schatzmeister') ||
+    normalized.includes('kassenwart') ||
+    normalized.includes('beitrag')
+  ) {
+    // Finanzen & Schatzmeister (Finanzen & Mitgliedsbeiträge)
+    to = [fallbackEmail, 'jaimeperez@intermainz.de', 'admin@intermainz.de'];
+  } else if (
+    normalized.includes('presse') ||
+    normalized.includes('social media') ||
+    normalized.includes('social') ||
+    normalized.includes('marketing')
+  ) {
+    // Marketing & Social Media (Presse & Social Media)
+    to = [fallbackEmail, 'presse@intermainz.de'];
+  } else {
+    // Default / Allgemeine Anfrage
+    to = [fallbackEmail, 'santiagoballabriga@intermainz.de'];
+  }
+
+  // Always ensure fallbackEmail is included in recipients
+  if (!to.includes(fallbackEmail)) {
+    to.unshift(fallbackEmail);
+  }
+
+  const ccSet = new Set();
+  if (process.env.RECIPIENT_EMAIL && !to.includes(process.env.RECIPIENT_EMAIL)) {
+    ccSet.add(process.env.RECIPIENT_EMAIL);
+  }
+  const cc = Array.from(ccSet);
+
+  return { to, cc };
+}
+
 exports.handler = async (event) => {
   try {
     const body = JSON.parse(event.body);
@@ -52,6 +131,7 @@ exports.handler = async (event) => {
     let submitterName = '';
     let confirmationMsg = '';
     let attachments = [];
+    let betreffField = '';
 
     if (formName === 'kontakt') {
       const vorname = data.vorname || '';
@@ -59,11 +139,12 @@ exports.handler = async (event) => {
       const email = data.email || '';
       const betreff = data.betreff || 'Allgemeine Anfrage';
       const nachricht = data.message || '';
+      betreffField = betreff;
 
       if (data.anhang && data.anhang.url) {
         attachments.push({
           filename: data.anhang.filename || 'Anhang-Kontakt',
-          path: data.anhang.url
+          path: data.anhang.url,
         });
       }
 
@@ -107,28 +188,37 @@ exports.handler = async (event) => {
       return { statusCode: 200, body: JSON.stringify({ message: 'Formular ignoriert' }) };
     }
 
+    const { to: toRecipients, cc: ccRecipients } = getDepartmentRecipients(
+      formName,
+      betreffField
+    );
+
     const clubEmailConfig = {
       from: 'FC Inter Mainz Website <no-reply@intermainz.de>',
-      to: process.env.RECIPIENT_EMAIL,
+      to: toRecipients,
       reply_to: submitterEmail || undefined,
       subject,
-      html
+      html,
     };
+
+    if (ccRecipients && ccRecipients.length > 0) {
+      clubEmailConfig.cc = ccRecipients;
+    }
 
     if (attachments.length > 0) {
       clubEmailConfig.attachments = attachments;
     }
 
-    const emailsToSend = [ resend.emails.send(clubEmailConfig) ];
+    const emailsToSend = [resend.emails.send(clubEmailConfig)];
 
     if (submitterEmail) {
       emailsToSend.push(
         resend.emails.send({
           from: 'FC Inter Mainz <no-reply@intermainz.de>',
           to: submitterEmail,
-          reply_to: process.env.RECIPIENT_EMAIL,
+          reply_to: process.env.RECIPIENT_EMAIL || 'intermainz@gmail.com',
           subject: 'Wir haben deine Nachricht erhalten – FC Inter Mainz',
-          html: confirmationEmailHtml(submitterName, confirmationMsg)
+          html: confirmationEmailHtml(submitterName, confirmationMsg),
         })
       );
     }

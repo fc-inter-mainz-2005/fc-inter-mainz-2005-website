@@ -153,7 +153,7 @@ async function migrate() {
     brand_description: footer.brand_description || '',
     address_line1: footer.address_line1 || 'Albert-Stohr-Straße 50',
     address_line2: footer.address_line2 || '55128 Mainz',
-    email: footer.email || 'kontakt@intermainz.de',
+    email: footer.email || 'intermainz@gmail.com',
     facebook_url: footer.facebook_url || '',
     instagram_url: footer.instagram_url || '',
     copyright_text: footer.copyright_text || '',
@@ -260,6 +260,7 @@ async function migrate() {
       category: 'vorstand',
       order: i,
     };
+    if (m.secondaryRole) doc.secondaryRole = m.secondaryRole;
     const photoId = await uploadFileAsset(m.photo, 'image');
     if (photoId) doc.photo = { _type: 'image', asset: { _type: 'reference', _ref: photoId } };
     await client.createOrReplace(doc);
@@ -277,10 +278,20 @@ async function migrate() {
       category: 'abteilung',
       order: 10 + i,
     };
+    if (m.secondaryRole) doc.secondaryRole = m.secondaryRole;
     const photoId = await uploadFileAsset(m.photo, 'image');
     if (photoId) doc.photo = { _type: 'image', asset: { _type: 'reference', _ref: photoId } };
     await client.createOrReplace(doc);
     console.log(`  ✅ Abteilung angelegt: ${m.name} (${m.role})`);
+  }
+
+  // Lösche eventuell veraltete Einträge aus früherer Migration (z.B. der ehemalige 4. Eintrag)
+  for (let i = abteilungData.members.length; i < 10; i++) {
+    try {
+      await client.delete(`boardMember-abteilung-${i}`);
+    } catch {
+      // Ignorieren falls nicht vorhanden
+    }
   }
 
   // 8. Events Collection

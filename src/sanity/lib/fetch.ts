@@ -96,6 +96,10 @@ export interface BoardMember {
   category: string;
   photo: string;
   email?: string;
+  secondaryRole?: string;
+  contactHref?: string;
+  contactBetreff?: string;
+  showContactButton?: boolean;
 }
 
 export interface EventItem {
@@ -207,7 +211,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       'Dein Fußballverein in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.',
     address_line1: sanitySettings?.address_line1 ?? footerData.address_line1 ?? 'Albert-Stohr-Straße 50',
     address_line2: sanitySettings?.address_line2 ?? footerData.address_line2 ?? '55128 Mainz',
-    email: sanitySettings?.email ?? footerData.email ?? 'kontakt@intermainz.de',
+    email: sanitySettings?.email ?? footerData.email ?? 'intermainz@gmail.com',
     extra_contact: (footerData.extra_contact || []) as ExtraContact[],
     facebook_url:
       sanitySettings?.facebook_url ??
@@ -270,9 +274,13 @@ export async function getBoardMembers(): Promise<{
       .map((m) => ({
         name: m.name,
         role: m.role,
+        secondaryRole: m.secondaryRole || '',
         category: 'vorstand',
         photo: resolveImageUrl(m.photo, '/fotos/placeholder.jpg'),
         email: m.email || '',
+        contactHref: m.contactHref || '',
+        contactBetreff: m.contactBetreff || '',
+        showContactButton: m.showContactButton !== false,
       }));
 
     const abteilung = sanityMembers
@@ -280,9 +288,13 @@ export async function getBoardMembers(): Promise<{
       .map((m) => ({
         name: m.name,
         role: m.role,
+        secondaryRole: m.secondaryRole || '',
         category: 'abteilung',
         photo: resolveImageUrl(m.photo, '/fotos/placeholder.jpg'),
         email: m.email || '',
+        contactHref: m.contactHref || '',
+        contactBetreff: m.contactBetreff || '',
+        showContactButton: m.showContactButton !== false,
       }));
 
     return { vorstand, abteilung };
@@ -292,16 +304,24 @@ export async function getBoardMembers(): Promise<{
     vorstand: (vorstandData.members || []).map((m: any) => ({
       name: m.name,
       role: m.role,
+      secondaryRole: m.secondaryRole || '',
       category: 'vorstand',
       photo: resolveImageUrl(m.photo),
       email: m.email || '',
+      contactHref: m.contactHref || '',
+      contactBetreff: m.contactBetreff || '',
+      showContactButton: m.showContactButton !== false,
     })),
     abteilung: (abteilungData.members || []).map((m: any) => ({
       name: m.name,
       role: m.role,
+      secondaryRole: m.secondaryRole || '',
       category: 'abteilung',
       photo: resolveImageUrl(m.photo),
       email: m.email || '',
+      contactHref: m.contactHref || '',
+      contactBetreff: m.contactBetreff || '',
+      showContactButton: m.showContactButton !== false,
     })),
   };
 }
@@ -490,7 +510,7 @@ export async function getKontaktPage(): Promise<KontaktData> {
         sanityKontakt.anschrift_name || kontaktData.anschrift_name || 'Bezirkssportanlage Mainz',
       strasse: sanityKontakt.strasse || kontaktData.strasse || 'Albert-Stohr-Straße 50',
       plz_ort: sanityKontakt.plz_ort || kontaktData.plz_ort || '55128 Mainz, Deutschland',
-      email: sanityKontakt.email || kontaktData.email || 'kontakt@intermainz.de',
+      email: sanityKontakt.email || kontaktData.email || 'intermainz@gmail.com',
       maps_query:
         sanityKontakt.maps_query ||
         `${kontaktData.strasse || 'Albert-Stohr-Straße 50'}, ${kontaktData.plz_ort || '55128 Mainz'}`,
@@ -501,7 +521,7 @@ export async function getKontaktPage(): Promise<KontaktData> {
     anschrift_name: kontaktData.anschrift_name || 'Bezirkssportanlage Mainz',
     strasse: kontaktData.strasse || 'Albert-Stohr-Straße 50',
     plz_ort: kontaktData.plz_ort || '55128 Mainz, Deutschland',
-    email: kontaktData.email || 'kontakt@intermainz.de',
+    email: kontaktData.email || 'intermainz@gmail.com',
     maps_query: `${kontaktData.strasse || 'Albert-Stohr-Straße 50'}, ${kontaktData.plz_ort || '55128 Mainz'}`,
   };
 }
