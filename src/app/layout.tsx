@@ -74,7 +74,7 @@ const sportsClubJsonLd = {
     addressLocality: 'Mainz',
     addressCountry: 'DE',
   },
-  email: 'kontakt@intermainz.de',
+  email: 'intermainz@gmail.com',
   sameAs: [
     'https://www.facebook.com/p/FC-Inter-Mainz-2005-eV-100063568061273/',
     'https://www.instagram.com/fc_inter_mainz/',

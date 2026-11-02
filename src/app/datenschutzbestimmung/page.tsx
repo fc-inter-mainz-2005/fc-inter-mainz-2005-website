@@ -87,7 +87,7 @@ export default async function DatenschutzPage() {
             <br />
             Albert-Stohr-Straße 50 · 55128 Mainz
             <br />
-            <a href="mailto:kontakt@intermainz.de">kontakt@intermainz.de</a>
+            <a href="mailto:intermainz@gmail.com">intermainz@gmail.com</a>
           </p>
         </div>
 

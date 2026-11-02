@@ -4,6 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Avoid hardcoding insecure protocol literal (DevSkim DS137138).
+// Pass through absolute URLs (any scheme) and root-relative paths as-is;
+// prepend '/' only for bare relative paths that contain no scheme.
+const normalizeSrc = (src: string) =>
+  src.startsWith('/') || src.includes('://') ? src : `/${src}`;
+
 interface Slide {
   image: string;
 }
@@ -32,9 +38,7 @@ export default function HeroSlider({ data }: { data: HeroData }) {
     <header className="hero">
       <div className="hero-slides" id="heroSlides">
         {slides.map((slide, idx) => {
-          const imgPath = slide.image.startsWith('/')
-            ? slide.image
-            : `/${slide.image}`;
+          const imgPath = normalizeSrc(slide.image);
           const isActive = idx === currentSlide;
 
           return (

@@ -100,11 +100,14 @@ export default function Navbar({ banner }: { banner?: BannerData }) {
               src="/fotos/logo.png"
               width={46}
               height={46}
-              alt="Inter Mainz Wappen"
-              priority
+              alt="FC Inter Mainz 2005 Wappen"
+              priority={true}
+              unoptimized={true}
+              className="h-10 w-auto object-contain"
+              style={{ imageRendering: 'auto' }}
             />
             <span style={isTransparent ? { color: 'white', textShadow: '0 0 20px rgba(0,0,0,0.8)' } : undefined}>
-              FC Inter Mainz
+              FC Inter Mainz 2005
             </span>
           </Link>
 
@@ -150,7 +153,11 @@ export default function Navbar({ banner }: { banner?: BannerData }) {
                 <li>
                   <Link
                     href="/geschichte"
-                    className={pathname === '/geschichte' ? 'active' : ''}
+                    className={`block px-4 py-2.5 text-sm font-medium rounded-md transition-colors duration-150 [text-shadow:none] ${
+                      pathname === '/geschichte'
+                        ? 'active text-red-600 bg-red-50 font-semibold'
+                        : 'text-gray-800 hover:text-red-600 hover:bg-gray-50'
+                    }`}
                   >
                     Geschichte
                   </Link>
@@ -158,7 +165,11 @@ export default function Navbar({ banner }: { banner?: BannerData }) {
                 <li>
                   <Link
                     href="/teams"
-                    className={pathname === '/teams' ? 'active' : ''}
+                    className={`block px-4 py-2.5 text-sm font-medium rounded-md transition-colors duration-150 [text-shadow:none] ${
+                      pathname === '/teams'
+                        ? 'active text-red-600 bg-red-50 font-semibold'
+                        : 'text-gray-800 hover:text-red-600 hover:bg-gray-50'
+                    }`}
                   >
                     Teams
                   </Link>
@@ -166,7 +177,11 @@ export default function Navbar({ banner }: { banner?: BannerData }) {
                 <li>
                   <Link
                     href="/vorstand"
-                    className={pathname === '/vorstand' ? 'active' : ''}
+                    className={`block px-4 py-2.5 text-sm font-medium rounded-md transition-colors duration-150 [text-shadow:none] ${
+                      pathname === '/vorstand'
+                        ? 'active text-red-600 bg-red-50 font-semibold'
+                        : 'text-gray-800 hover:text-red-600 hover:bg-gray-50'
+                    }`}
                   >
                     Vorstand
                   </Link>

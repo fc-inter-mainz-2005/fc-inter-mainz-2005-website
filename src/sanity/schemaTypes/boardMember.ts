@@ -15,8 +15,14 @@ export const boardMember = defineType({
       name: 'role',
       title: 'Funktion / Position',
       type: 'string',
-      description: 'z.B. 1. Vorsitzender, Kassenwart, Sportdirektor',
+      description: 'z.B. 1. Vorsitzender, Kassenwart, Sportdirektor (kann mehrzeilig sein)',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'secondaryRole',
+      title: 'Zusatzfunktion / Operative Rolle (optional)',
+      type: 'string',
+      description: 'z.B. Sponsoring & Partnerschaften',
     }),
     defineField({
       name: 'category',

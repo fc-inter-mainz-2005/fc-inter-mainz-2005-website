@@ -95,14 +95,14 @@ export default async function DownloadcenterPage() {
           >
             Hinweis: Ausgefüllte Formulare bitte per E-Mail an{' '}
             <a
-              href="mailto:kontakt@intermainz.de"
+              href="mailto:intermainz@gmail.com"
               className="font-bold underline"
               style={{
                 color: 'var(--text-main)',
                 textDecorationColor: 'rgba(204,0,0,0.4)',
               }}
             >
-              kontakt@intermainz.de
+              intermainz@gmail.com
             </a>{' '}
             senden oder direkt bei der sportlichen Leitung bzw. beim Vorstand
             abgeben.

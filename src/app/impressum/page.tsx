@@ -66,14 +66,14 @@ export default async function ImpressumPage() {
             <strong style={{ color: 'var(--text-main)' }}>
               3. Vorsitzender:
             </strong>{' '}
-            José Luis Fuente Fernández
+            José Fernández
           </p>
         </div>
 
         <div className="legal-card">
           <h2>Kontakt</h2>
           <p>
-            E-Mail: <a href="mailto:kontakt@intermainz.de">kontakt@intermainz.de</a>
+            E-Mail: <a href="mailto:intermainz@gmail.com">intermainz@gmail.com</a>
             <br />
             Website: <a href="https://www.intermainz.de">www.intermainz.de</a>
           </p>

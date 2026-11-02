@@ -9,16 +9,22 @@ export default function Footer({ data }: { data?: FooterData }) {
     'Dein Fußballverein in der Landeshauptstadt Mainz. Gegründet 2005 mit Leidenschaft.';
   const addressLine1 = data?.address_line1 || 'Albert-Stohr-Straße 50';
   const addressLine2 = data?.address_line2 || '55128 Mainz';
-  const email = data?.email || 'kontakt@intermainz.de';
+  const email = data?.email || 'intermainz@gmail.com';
   const extraContact = data?.extra_contact || [];
   const facebookUrl =
     data?.facebook_url ||
     'https://www.facebook.com/p/FC-Inter-Mainz-2005-eV-100063568061273/';
   const instagramUrl =
     data?.instagram_url || 'https://www.instagram.com/fc_inter_mainz/';
-  const copyrightText =
-    data?.copyright_text ||
-    '© 2026 FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.';
+  const currentYear = new Date().getFullYear();
+  const defaultCopyright = `© ${currentYear} FC Inter Mainz 2005 e.V. Alle Rechte vorbehalten.`;
+  const copyrightText = data?.copyright_text
+    ? data.copyright_text
+        .replace('{new Date().getFullYear()}', String(currentYear))
+        .replace('{year}', String(currentYear))
+        .replace(/©\s*\d{4}/, `© ${currentYear}`)
+        .replace(/FC Inter Mainz(?!\s*2005)/g, 'FC Inter Mainz 2005')
+    : defaultCopyright;
 
   return (
     <footer>
@@ -30,9 +36,13 @@ export default function Footer({ data }: { data?: FooterData }) {
               src="/fotos/logo.png"
               width={52}
               height={52}
-              alt="Inter Mainz Wappen"
+              alt="FC Inter Mainz 2005 Wappen"
+              priority={true}
+              unoptimized={true}
+              className="h-10 w-auto object-contain"
+              style={{ imageRendering: 'auto' }}
             />
-            <div className="footer-brand-name">FC Inter Mainz</div>
+            <div className="footer-brand-name">FC Inter Mainz 2005</div>
             <p className="footer-brand-desc" id="footer-brand-desc">
               {brandDescription}
             </p>

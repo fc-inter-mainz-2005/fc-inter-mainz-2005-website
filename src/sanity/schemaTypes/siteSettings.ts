@@ -136,7 +136,7 @@ export const siteSettings = defineType({
       title: 'Kontakt E-Mail',
       type: 'string',
       fieldset: 'footer',
-      initialValue: 'kontakt@intermainz.de',
+      initialValue: 'intermainz@gmail.com',
     }),
     defineField({
       name: 'facebook_url',
