@@ -1,78 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 
-export const BETREFF_OPTIONS = [
-  'Allgemeine Anfrage',
-  'Vorstand & Vereinsführung',
-  'Sportliche Leitung & Spielbetrieb',
-  'Sponsoring & Partnerschaften',
-  'Finanzen & Mitgliedsbeiträge',
-  'Presse & Social Media',
-] as const;
-
-export type BetreffOption = (typeof BETREFF_OPTIONS)[number];
-
-export function resolveBetreff(param: string | null): BetreffOption {
-  if (!param) return 'Allgemeine Anfrage';
-  const decoded = decodeURIComponent(param).trim().toLowerCase();
-
-  // 1. Direct match (case-insensitive)
-  const exact = BETREFF_OPTIONS.find((opt) => opt.toLowerCase() === decoded);
-  if (exact) return exact;
-
-  // 2. Keyword / Alias matching for URLs like ?betreff=Vorstand or ?betreff=Sportliche Leitung
-  if (decoded.includes('vorstand') || decoded.includes('vereinsführung')) {
-    return 'Vorstand & Vereinsführung';
-  }
-  if (
-    decoded.includes('sport') ||
-    decoded.includes('spielbetrieb') ||
-    decoded.includes('leitung')
-  ) {
-    return 'Sportliche Leitung & Spielbetrieb';
-  }
-  if (decoded.includes('sponsor') || decoded.includes('partner')) {
-    return 'Sponsoring & Partnerschaften';
-  }
-  if (
-    decoded.includes('finanz') ||
-    decoded.includes('beitrag') ||
-    decoded.includes('kasse') ||
-    decoded.includes('schatzmeister') ||
-    decoded.includes('mitglied')
-  ) {
-    return 'Finanzen & Mitgliedsbeiträge';
-  }
-  if (
-    decoded.includes('presse') ||
-    decoded.includes('social') ||
-    decoded.includes('media') ||
-    decoded.includes('marketing')
-  ) {
-    return 'Presse & Social Media';
-  }
-
-  return 'Allgemeine Anfrage';
-}
-
-function KontaktFormContent() {
-  const searchParams = useSearchParams();
-  const queryBetreff = searchParams.get('betreff');
-
+export default function KontaktForm() {
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [selectedBetreff, setSelectedBetreff] = useState<string>(() =>
-    resolveBetreff(queryBetreff)
-  );
-
-  useEffect(() => {
-    if (queryBetreff) {
-      setSelectedBetreff(resolveBetreff(queryBetreff));
-    }
-  }, [queryBetreff]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -103,27 +37,32 @@ function KontaktFormContent() {
     }
 
     setStatus('loading');
+    setErrorMessage(null);
     const formData = new FormData(form);
 
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         body: formData,
       });
 
-      if (!res.ok) throw new Error('Rejected');
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || data?.message || 'Fehler beim Senden');
+      }
 
       setStatus('success');
       form.reset();
-      setSelectedBetreff(resolveBetreff(queryBetreff));
       setPrivacyAgreed(false);
 
       setTimeout(() => {
         setStatus('idle');
       }, 4000);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert('Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.');
+      const msg = err?.message || 'Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.';
+      setErrorMessage(msg);
+      alert(msg);
       setStatus('error');
     }
   };
@@ -191,18 +130,13 @@ function KontaktFormContent() {
           <label className="form-label" htmlFor="betreff">
             Anliegen / Betreff
           </label>
-          <select
-            id="betreff"
-            name="betreff"
-            className="form-select"
-            value={selectedBetreff}
-            onChange={(e) => setSelectedBetreff(e.target.value)}
-          >
-            {BETREFF_OPTIONS.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
+          <select id="betreff" name="betreff" className="form-select">
+            <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+            <option value="Mitgliedschaft">Mitgliedschaft</option>
+            <option value="Sponsoring">Sponsoring</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Spielbetrieb">Spielbetrieb</option>
+            <option value="Sonstiges">Sonstiges</option>
           </select>
         </div>
 
@@ -266,21 +200,16 @@ function KontaktFormContent() {
             ? '✓ Erfolgreich gesendet'
             : 'Nachricht absenden'}
         </button>
+
+        {status === 'error' && errorMessage && (
+          <div
+            className="mt-4 p-3 rounded-lg text-sm bg-red-50 border border-red-200 text-red-700 text-center"
+            role="alert"
+          >
+            {errorMessage}
+          </div>
+        )}
       </form>
     </div>
-  );
-}
-
-export default function KontaktForm() {
-  return (
-    <Suspense
-      fallback={
-        <div className="form-card text-center py-12 text-[var(--gray)]">
-          Wird geladen…
-        </div>
-      }
-    >
-      <KontaktFormContent />
-    </Suspense>
   );
 }
