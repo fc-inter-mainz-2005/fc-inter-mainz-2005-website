@@ -6,6 +6,7 @@ import Link from 'next/link';
 export default function KontaktForm() {
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,15 +37,19 @@ export default function KontaktForm() {
     }
 
     setStatus('loading');
+    setErrorMessage(null);
     const formData = new FormData(form);
 
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         body: formData,
       });
 
-      if (!res.ok) throw new Error('Rejected');
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || data?.message || 'Fehler beim Senden');
+      }
 
       setStatus('success');
       form.reset();
@@ -53,9 +58,11 @@ export default function KontaktForm() {
       setTimeout(() => {
         setStatus('idle');
       }, 4000);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert('Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.');
+      const msg = err?.message || 'Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.';
+      setErrorMessage(msg);
+      alert(msg);
       setStatus('error');
     }
   };
@@ -193,6 +200,15 @@ export default function KontaktForm() {
             ? '✓ Erfolgreich gesendet'
             : 'Nachricht absenden'}
         </button>
+
+        {status === 'error' && errorMessage && (
+          <div
+            className="mt-4 p-3 rounded-lg text-sm bg-red-50 border border-red-200 text-red-700 text-center"
+            role="alert"
+          >
+            {errorMessage}
+          </div>
+        )}
       </form>
     </div>
   );

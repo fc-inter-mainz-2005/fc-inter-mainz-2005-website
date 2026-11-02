@@ -7,28 +7,27 @@ export default function ProbetrainingForm() {
   const [hasOtherClub, setHasOtherClub] = useState(false);
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!privacyAgreed) return;
 
     setStatus('loading');
+    setErrorMessage(null);
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const body = new URLSearchParams();
-    formData.forEach((value, key) => {
-      body.append(key, value.toString());
-    });
-
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/api/probetraining', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
+        body: formData,
       });
 
-      if (!res.ok) throw new Error('Network error');
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || data?.message || 'Fehler beim Senden');
+      }
 
       setStatus('success');
       form.reset();
@@ -38,9 +37,13 @@ export default function ProbetrainingForm() {
       setTimeout(() => {
         setStatus('idle');
       }, 4000);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert('Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.');
+      const msg =
+        err?.message ||
+        'Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.';
+      setErrorMessage(msg);
+      alert(msg);
       setStatus('error');
     }
   };
@@ -244,6 +247,14 @@ export default function ProbetrainingForm() {
             ? '✓ Erfolgreich gesendet'
             : 'Anfrage senden'}
         </button>
+        {status === 'error' && errorMessage && (
+          <div
+            className="mt-4 p-3 rounded-lg text-sm bg-red-50 border border-red-200 text-red-700 text-center"
+            role="alert"
+          >
+            {errorMessage}
+          </div>
+        )}
         <p className="text-xs text-gray-500 mt-4 text-center">
           * Pflichtfelder müssen ausgefüllt werden.
         </p>
