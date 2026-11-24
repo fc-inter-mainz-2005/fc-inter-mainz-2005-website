@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getLegalPages } from '@/sanity/lib/fetch';
+import FupaConsentRevoke from '@/components/FupaConsentRevoke';
 
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung',
@@ -62,6 +63,9 @@ export default async function DatenschutzPage() {
             </li>
             <li>
               <a href="#fupa">FuPa-Widgets</a>
+            </li>
+            <li>
+              <a href="#google-maps">Google Maps</a>
             </li>
             <li>
               <a href="#instagram">Instagram</a>
@@ -146,6 +150,12 @@ export default async function DatenschutzPage() {
             Sie haben das Recht, Ihre bereitgestellten Daten in einem
             strukturierten, maschinenlesbaren Format zu erhalten.
           </p>
+          <h3>Recht auf Widerruf einer Einwilligung (Art. 7 Abs. 3 DSGVO)</h3>
+          <p>
+            Sie haben das Recht, eine erteilte Einwilligung jederzeit mit
+            Wirkung für die Zukunft zu widerrufen. Die Rechtmäßigkeit der bis
+            zum Widerruf erfolgten Verarbeitung bleibt davon unberührt.
+          </p>
           <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
           <p>
             Sie haben das Recht, jederzeit der Verarbeitung Ihrer Daten zu
@@ -176,9 +186,34 @@ export default async function DatenschutzPage() {
             Bearbeitung Ihres Anliegens bei uns gespeichert.
           </p>
           <p>
-            Die Übermittlung der Formulardaten erfolgt technisch über den Dienst
-            „Netlify Forms“ unseres Hosting-Anbieters Netlify, Inc. Es werden
-            dabei keine zusätzlichen Cookies gesetzt.
+            Die Formulardaten werden von unserer Website (Hosting siehe
+            Abschnitt 5) entgegengenommen und nicht in einer Datenbank
+            gespeichert, sondern per E-Mail weitergeleitet. Für den E-Mail-Versand
+            nutzen wir den Dienst <strong>Resend</strong> der Plus Five Five,
+            Inc. (Resend), 2261 Market Street #5039, San Francisco, CA 94114,
+            USA, als Auftragsverarbeiter. Über
+            Resend werden zwei E-Mails versendet: eine Nachricht mit Ihren
+            Angaben (einschließlich eines etwaigen Datei-Anhangs) an das
+            Vereinspostfach sowie eine automatische Eingangsbestätigung an die
+            von Ihnen angegebene E-Mail-Adresse. Es werden dabei keine Cookies
+            gesetzt.
+          </p>
+          <p>
+            Das Vereinspostfach ist ein Gmail-Konto, das von der Google Ireland
+            Limited, Gordon House, Barrow Street, Dublin 4, Irland,
+            bereitgestellt wird. Google verarbeitet die in diesem Postfach
+            eingehenden Daten als eigener Verantwortlicher nach seinen eigenen
+            Bedingungen. Eine Übermittlung von Daten an die Google LLC in den
+            USA kann nicht ausgeschlossen werden. Die Google LLC ist nach dem
+            EU-US Data Privacy Framework zertifiziert. Weitere Informationen
+            finden Sie in der Datenschutzerklärung von Google:{' '}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              policies.google.com/privacy
+            </a>
           </p>
 
           <h3 style={{ marginTop: '12px', fontSize: '0.85rem' }}>
@@ -252,8 +287,25 @@ export default async function DatenschutzPage() {
             Aufbewahrungspflichten entgegenstehen.
           </p>
           <p>
-            Ihre Daten werden nicht an Dritte weitergegeben und ausschließlich
-            für den genannten Zweck (Vereinsorganisation) genutzt.
+            <strong style={{ color: 'var(--text-main)' }}>
+              Empfänger und Auftragsverarbeitung:
+            </strong>{' '}
+            Ihre Daten werden ausschließlich für den genannten Zweck
+            (Vereinsorganisation) genutzt. Empfänger sind neben dem Verein nur
+            die oben genannten Stellen (Resend als
+            E-Mail-Versanddienst, Google als Anbieter des Vereinspostfachs
+            sowie unser Hosting-Anbieter). Mit Plus Five Five, Inc. (Resend)
+            besteht ein Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO.
+          </p>
+          <p>
+            <strong style={{ color: 'var(--text-main)' }}>
+              Übermittlung in die USA:
+            </strong>{' '}
+            Beim Versand über Resend werden Ihre Daten in die USA übermittelt.
+            Plus Five Five, Inc. (Resend) ist nach dem EU-US Data Privacy
+            Framework zertifiziert. Die Übermittlung erfolgt auf Grundlage des
+            Angemessenheitsbeschlusses der Europäischen Kommission zum EU-US
+            Data Privacy Framework (Art. 45 DSGVO).
           </p>
         </div>
 
@@ -294,11 +346,23 @@ export default async function DatenschutzPage() {
           <h2>6. Cookies</h2>
           <p>
             Unsere Website selbst verwendet keine eigenen Tracking- oder
-            Analyse-Cookies. Durch die Einbindung des FuPa-Widgets (siehe
-            Abschnitt 7) können jedoch Cookies des Anbieters FuPa GmbH gesetzt
-            werden, auf deren Inhalt und Speicherdauer wir keinen Einfluss
-            haben. Nähere Informationen hierzu entnehmen Sie bitte der
-            Datenschutzerklärung von FuPa.
+            Analyse-Cookies. Inhalte von Drittanbietern (FuPa-Widgets, siehe
+            Abschnitt 7, und Google Maps, siehe Abschnitt 8) werden erst
+            geladen, nachdem Sie dies durch einen Klick ausdrücklich erlaubt
+            haben. Erst dann können diese Anbieter Cookies oder ähnliche
+            Technologien auf Ihrem Endgerät einsetzen, auf deren Inhalt und
+            Speicherdauer wir keinen Einfluss haben.
+          </p>
+          <p>
+            Wenn Sie dem Laden der FuPa-Inhalte zustimmen, speichern wir diese
+            Entscheidung im lokalen Speicher Ihres Browsers (localStorage,
+            Eintrag „intermainz-fupa-consent“), damit Sie bei späteren Besuchen
+            nicht erneut zustimmen müssen. Dieser Eintrag enthält keine
+            personenbezogenen Daten, wird nicht an uns übertragen und ist zur
+            Speicherung der von Ihnen ausdrücklich gewünschten Einstellung
+            unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Sie können ihn
+            jederzeit über den Widerruf in Abschnitt 7 oder durch Löschen der
+            Website-Daten in Ihrem Browser entfernen.
           </p>
         </div>
 
@@ -313,9 +377,11 @@ export default async function DatenschutzPage() {
             94538 Fürstenstein).
           </p>
           <p>
-            Beim Aufruf von Seiten unserer Website, auf denen diese Widgets
-            eingebunden sind, baut Ihr Webbrowser automatisch eine direkte
-            Verbindung zu den Servern der FuPa GmbH auf. Hierdurch wird Ihre
+            Die Widgets werden nicht automatisch geladen. Zunächst sehen Sie
+            nur einfache Links zu unseren Mannschaftsseiten auf FuPa. Erst
+            wenn Sie auf „FuPa-Inhalte laden“ klicken, baut Ihr Webbrowser eine
+            direkte Verbindung zu den Servern der FuPa GmbH auf. Hierdurch wird
+            Ihre
             IP-Adresse sowie die Information, welche spezifische Unterseite
             unserer Internetpräsenz Sie aufgerufen haben, an den Betreiber (FuPa
             GmbH) übermittelt. FuPa kann dabei auch Cookies auf Ihrem Endgerät
@@ -325,12 +391,23 @@ export default async function DatenschutzPage() {
             <strong style={{ color: 'var(--text-main)' }}>
               Rechtsgrundlage:
             </strong>{' '}
-            Die Einbindung dieses Dienstes erfolgt auf Grundlage unseres
-            berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. Unser
-            Interesse liegt darin, den Besuchern unserer Website aktuelle
-            sportliche Informationen und Spielpläne direkt und
-            benutzerfreundlich zur Verfügung zu stellen.
+            Die Einbindung der FuPa-Widgets erfolgt ausschließlich auf
+            Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und
+            § 25 Abs. 1 TDDDG.
           </p>
+          <p>
+            <strong style={{ color: 'var(--text-main)' }}>
+              Speicherung und Widerruf:
+            </strong>{' '}
+            Ihre Einwilligung wird im lokalen Speicher Ihres Browsers vermerkt
+            (siehe Abschnitt 6), sodass die FuPa-Inhalte bei späteren Besuchen
+            direkt geladen werden. Sie können Ihre Einwilligung jederzeit mit
+            Wirkung für die Zukunft widerrufen. Danach werden die FuPa-Inhalte
+            erst nach einem erneuten Klick wieder geladen. Bereits von FuPa
+            gesetzte Cookies können Sie in den Einstellungen Ihres Browsers
+            löschen.
+          </p>
+          <FupaConsentRevoke />
           <p>
             Weitere Informationen über den Zweck und Umfang der Datenverarbeitung
             durch den Anbieter sowie Ihre diesbezüglichen Rechte entnehmen Sie
@@ -345,9 +422,61 @@ export default async function DatenschutzPage() {
           </p>
         </div>
 
-        {/* 8. Instagram */}
+        {/* 8. Google Maps */}
+        <div className="legal-card" id="google-maps">
+          <h2>8. Google Maps</h2>
+          <p>
+            Auf unserer Kontaktseite können Sie eine Karte des Kartendienstes{' '}
+            <strong>Google Maps</strong> anzeigen lassen. Anbieter ist die
+            Google Ireland Limited, Gordon House, Barrow Street, Dublin 4,
+            Irland.
+          </p>
+          <p>
+            Die Karte wird nicht automatisch geladen. Zunächst sehen Sie nur
+            einen Platzhalter mit unserer Anschrift. Erst wenn Sie auf „Karte
+            laden“ klicken, baut Ihr Webbrowser eine direkte Verbindung zu den
+            Servern von Google auf. Dabei werden insbesondere Ihre IP-Adresse,
+            die aufgerufene Seite sowie technische Informationen zu Ihrem
+            Browser an Google übermittelt, und Google kann Cookies oder
+            ähnliche Technologien auf Ihrem Endgerät einsetzen. Eine Übertragung
+            von Daten an die Google LLC in den USA kann nicht ausgeschlossen
+            werden. Google LLC ist nach dem EU-US Data Privacy Framework
+            zertifiziert, auf dessen Grundlage ein Angemessenheitsbeschluss der
+            EU-Kommission besteht (Art. 45 DSGVO).
+          </p>
+          <p>
+            Über den Link „In Google Maps öffnen“ können Sie die Karte
+            alternativ direkt bei Google aufrufen, ohne dass sie auf unserer
+            Website geladen wird.
+          </p>
+          <p>
+            <strong style={{ color: 'var(--text-main)' }}>
+              Rechtsgrundlage:
+            </strong>{' '}
+            Die Einbindung von Google Maps erfolgt ausschließlich auf Grundlage
+            Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1
+            TDDDG. Die Einwilligung gilt nur für den jeweiligen Seitenaufruf und
+            wird nicht gespeichert. Beim nächsten Aufruf der Kontaktseite wird
+            die Karte erst nach einem erneuten Klick geladen. Sie können die
+            Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen,
+            indem Sie die Seite verlassen oder neu laden.
+          </p>
+          <p>
+            Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der
+            Datenschutzerklärung von Google:{' '}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              policies.google.com/privacy
+            </a>
+          </p>
+        </div>
+
+        {/* 9. Instagram */}
         <div className="legal-card" id="instagram">
-          <h2>8. Instagram</h2>
+          <h2>9. Instagram</h2>
           <p>
             Wir unterhalten eine Präsenz auf Instagram (Meta Platforms Ireland
             Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2,
@@ -373,9 +502,9 @@ export default async function DatenschutzPage() {
           </p>
         </div>
 
-        {/* 9. Änderungen */}
+        {/* 10. Änderungen */}
         <div className="legal-card" id="aenderungen">
-          <h2>9. Änderungen dieser Erklärung</h2>
+          <h2>10. Änderungen dieser Erklärung</h2>
           <p>
             Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit
             sie stets den aktuellen rechtlichen Anforderungen entspricht oder um
@@ -384,8 +513,8 @@ export default async function DatenschutzPage() {
             Datenschutzerklärung.
           </p>
           <p>
-            <strong style={{ color: 'var(--text-main)' }}>Stand:</strong> Juli
-            2026
+            <strong style={{ color: 'var(--text-main)' }}>Stand:</strong>{' '}
+            November 2026
           </p>
         </div>
       </div>
