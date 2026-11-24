@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import KontaktForm from '@/components/KontaktForm';
+import MapConsent from '@/components/MapConsent';
 import { getKontaktPage } from '@/sanity/lib/fetch';
 
 export const metadata: Metadata = {
@@ -64,13 +65,9 @@ export default async function KontaktPage() {
               </div>
 
               <div className="info-card map-card">
-                <iframe
-                  id="map-iframe"
-                  src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                  title="Standort FC Inter Mainz auf Google Maps"
+                <MapConsent
+                  mapsQuery={mapsQuery}
+                  addressLine={[strasse, plzOrt].filter(Boolean).join(', ')}
                 />
               </div>
 
