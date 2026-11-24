@@ -60,7 +60,7 @@ export default async function HomePage() {
                   alt={sponsor.name}
                   width={140}
                   height={70}
-                  className="max-h-[88px] w-auto h-auto object-contain rounded-lg"
+                  className="max-h-[88px] w-auto h-auto object-contain"
                 />
               </a>
             ))}
@@ -84,7 +84,7 @@ export default async function HomePage() {
                       alt={partner.name}
                       width={140}
                       height={70}
-                      className="max-h-[88px] w-auto h-auto object-contain rounded-lg"
+                      className="max-h-[88px] w-auto h-auto object-contain"
                     />
                   </a>
                 ))}

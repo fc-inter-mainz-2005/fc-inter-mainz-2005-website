@@ -1335,7 +1335,6 @@ footer {
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 8px;
 }
 
 @media (max-width: 768px) {
