@@ -1,5 +1,6 @@
 {
   "sponsors": [
+    { "name": "Rheinhessen Sparkasse", "image": "fotos/sparkasse.png", "link": "https://www.rheinhessen-sparkasse.de/de/home.html" },
     { "name": "El Burro Restaurant & Bar", "image": "fotos/elburro.png", "link": "https://el-burro.de/" },
     { "name": "Ziberi Projekt- & Wohnbau", "image": "fotos/ziberi.png", "link": "https://ziberi.eu/" },
     { "name": "Deutsches Vermögensberatung", "image": "fotos/dvblogo.svg", "link": "https://www.dvag.de/jascha.mecking/index.html" },
