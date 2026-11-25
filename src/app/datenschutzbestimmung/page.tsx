@@ -234,7 +234,7 @@ export default async function DatenschutzPage() {
             Für allgemeine Anfragen erheben wir: Vorname, Nachname,
             E-Mail-Adresse, Anliegen und Ihre Nachricht. Als Anliegen können Sie
             zwischen „Allgemeine Anfrage“, „Mitgliedschaft“, „Sponsoring“,
-            „Social Media“ und „Sonstiges“ wählen. Für eine Anmeldung zum
+            „Social Media“, „Spielbetrieb“ und „Sonstiges“ wählen. Für eine Anmeldung zum
             Probetraining nutzen Sie bitte ausschließlich das separate
             Anmeldeformular auf unserer Seite „Probetraining“.
           </p>
