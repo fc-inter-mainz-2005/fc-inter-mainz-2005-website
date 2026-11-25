@@ -215,6 +215,17 @@ export default async function DatenschutzPage() {
               policies.google.com/privacy
             </a>
           </p>
+          <p>
+            <strong>Schutz vor Spam:</strong> Zum Schutz unserer Formulare vor
+            automatisierten Anfragen verwenden wir die Open-Source-Software
+            ALTCHA, die vollständig auf unserem eigenen Server (Hosting siehe
+            Abschnitt 5) betrieben wird. Dabei löst Ihr Browser im Hintergrund
+            eine kleine Rechenaufgabe; es werden keine Cookies gesetzt, keine
+            Daten auf Ihrem Endgerät gespeichert und keine Daten an Dritte
+            übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+            (berechtigtes Interesse an der Abwehr von Spam und Missbrauch unserer
+            Formulare).
+          </p>
 
           <h3 style={{ marginTop: '12px', fontSize: '0.85rem' }}>
             Kontaktformular
@@ -223,7 +234,7 @@ export default async function DatenschutzPage() {
             Für allgemeine Anfragen erheben wir: Vorname, Nachname,
             E-Mail-Adresse, Anliegen und Ihre Nachricht. Als Anliegen können Sie
             zwischen „Allgemeine Anfrage“, „Mitgliedschaft“, „Sponsoring“,
-            „Social Media“ und „Sonstiges“ wählen. Für eine Anmeldung zum
+            „Social Media“, „Spielbetrieb“ und „Sonstiges“ wählen. Für eine Anmeldung zum
             Probetraining nutzen Sie bitte ausschließlich das separate
             Anmeldeformular auf unserer Seite „Probetraining“.
           </p>

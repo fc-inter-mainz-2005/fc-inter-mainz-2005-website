@@ -1,12 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
+import AltchaWidget, { type AltchaWidgetHandle } from '@/components/AltchaWidget';
+import { HONEYPOT_FIELD, KONTAKT_BETREFF, MAX_LENGTH } from '@/lib/form-fields';
 
 export default function KontaktForm() {
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const altchaRef = useRef<AltchaWidgetHandle>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,7 +55,7 @@ export default function KontaktForm() {
       }
 
       setStatus('success');
-      form.reset();
+      form.reset(); // also resets the ALTCHA widget (it listens to the form's reset event)
       setPrivacyAgreed(false);
 
       setTimeout(() => {
@@ -61,6 +64,8 @@ export default function KontaktForm() {
     } catch (err: any) {
       console.error(err);
       const msg = err?.message || 'Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.';
+      // A challenge can only be used once, so get a fresh one for the next attempt.
+      altchaRef.current?.reset();
       setErrorMessage(msg);
       alert(msg);
       setStatus('error');
@@ -76,12 +81,12 @@ export default function KontaktForm() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <input type="hidden" name="form-name" value="kontakt" />
-        <p style={{ display: 'none' }}>
+        <div className="hp-field" aria-hidden="true">
           <label>
-            Nicht ausfüllen: <input name="bot-field" />
+            Website (bitte leer lassen)
+            <input name={HONEYPOT_FIELD} type="text" tabIndex={-1} autoComplete="off" />
           </label>
-        </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
           <div>
@@ -93,6 +98,8 @@ export default function KontaktForm() {
               type="text"
               name="vorname"
               required
+              maxLength={MAX_LENGTH.personName}
+              autoComplete="given-name"
               className="form-input"
               placeholder="Max"
             />
@@ -106,6 +113,8 @@ export default function KontaktForm() {
               type="text"
               name="name"
               required
+              maxLength={MAX_LENGTH.personName}
+              autoComplete="family-name"
               className="form-input"
               placeholder="Mustermann"
             />
@@ -121,6 +130,8 @@ export default function KontaktForm() {
             type="email"
             name="email"
             required
+            maxLength={MAX_LENGTH.email}
+            autoComplete="email"
             className="form-input"
             placeholder="ihre@mail.de"
           />
@@ -131,12 +142,11 @@ export default function KontaktForm() {
             Anliegen / Betreff
           </label>
           <select id="betreff" name="betreff" className="form-select">
-            <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
-            <option value="Mitgliedschaft">Mitgliedschaft</option>
-            <option value="Sponsoring">Sponsoring</option>
-            <option value="Social Media">Social Media</option>
-            <option value="Spielbetrieb">Spielbetrieb</option>
-            <option value="Sonstiges">Sonstiges</option>
+            {KONTAKT_BETREFF.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -148,6 +158,7 @@ export default function KontaktForm() {
             id="message"
             name="message"
             required
+            maxLength={MAX_LENGTH.message}
             className="form-textarea"
             placeholder="Wie können wir Ihnen helfen?"
           />
@@ -165,6 +176,8 @@ export default function KontaktForm() {
             className="form-input"
           />
         </div>
+
+        <AltchaWidget ref={altchaRef} />
 
         <div className="privacy-box mb-6">
           <input

@@ -1893,17 +1893,22 @@ footer {
   box-shadow: none;
 }
 
-.recaptcha-wrap {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+/* ALTCHA bot check (src/components/AltchaWidget.tsx) */
+altcha-widget {
+  color-scheme: light;
+  --altcha-color-primary: var(--blue);
+  --altcha-border-radius: 10px;
+  --altcha-max-width: 100%;
 }
 
-.recaptcha-wrap.visible {
-  max-height: 100px;
-  opacity: 1;
-  margin-bottom: 24px;
+/* Honeypot: off-screen instead of display:none, so simple bots still fill it in */
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 /* ==========================================================================
