@@ -1893,6 +1893,24 @@ footer {
   box-shadow: none;
 }
 
+/* ALTCHA bot check (src/components/AltchaWidget.tsx) */
+altcha-widget {
+  color-scheme: light;
+  --altcha-color-primary: var(--blue);
+  --altcha-border-radius: 10px;
+  --altcha-max-width: 100%;
+}
+
+/* Honeypot: off-screen instead of display:none, so simple bots still fill it in */
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* ==========================================================================
    Download Center
    ========================================================================== */

@@ -1,6 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { serverError } from '@/lib/api-error';
+import { checkAltcha } from '@/lib/altcha';
+import { KONTAKT_BETREFF, MAX_LENGTH } from '@/lib/form-fields';
+import {
+  BOT_CHECK_FAILED,
+  badRequest,
+  checkEmail,
+  checkPersonName,
+  cleanName,
+  fakeSuccess,
+  field,
+  forbiddenOrigin,
+  honeypotFilled,
+  isAllowedOrigin,
+} from '@/lib/form-guard';
 
 function escapeHtml(str: string): string {
   return str
@@ -138,34 +152,42 @@ function renderConfirmationHtml(vorname: string): string {
 
 export async function POST(req: NextRequest) {
   try {
+    if (!isAllowedOrigin(req)) {
+      return forbiddenOrigin();
+    }
+
     const formData = await req.formData();
 
-    // Anti-spam (Honeypot) check
-    const botField = formData.get('bot-field');
-    if (botField && typeof botField === 'string' && botField.trim() !== '') {
-      return NextResponse.json({ message: 'Spam detected' }, { status: 400 });
+    // Honeypot: pretend success so the bot learns nothing
+    if (honeypotFilled(formData)) {
+      return fakeSuccess();
     }
 
     // Required fields validation
-    const vorname = formData.get('vorname')?.toString().trim();
-    const name = formData.get('name')?.toString().trim();
-    const email = formData.get('email')?.toString().trim();
-    const betreff = formData.get('betreff')?.toString().trim();
-    const message = formData.get('message')?.toString().trim();
+    const vorname = field(formData, 'vorname');
+    const name = field(formData, 'name');
+    const email = field(formData, 'email');
+    const betreff = field(formData, 'betreff');
+    const message = field(formData, 'message');
 
     if (!vorname || !name || !email || !betreff || !message) {
-      return NextResponse.json(
-        { error: 'Bitte fülle alle Pflichtfelder aus (Vorname, Nachname, E-Mail, Betreff, Nachricht).' },
-        { status: 400 }
+      return badRequest(
+        'Bitte fülle alle Pflichtfelder aus (Vorname, Nachname, E-Mail, Betreff, Nachricht).'
       );
     }
 
-    // Basic email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json(
-        { error: 'Bitte gib eine gültige E-Mail-Adresse ein.' },
-        { status: 400 }
-      );
+    const fieldError =
+      checkPersonName(vorname, 'Vorname') ??
+      checkPersonName(name, 'Nachname') ??
+      checkEmail(email) ??
+      (!(KONTAKT_BETREFF as readonly string[]).includes(betreff)
+        ? 'Bitte wähle ein gültiges Anliegen aus.'
+        : null) ??
+      (message.length > MAX_LENGTH.message
+        ? `Die Nachricht darf höchstens ${MAX_LENGTH.message} Zeichen lang sein.`
+        : null);
+    if (fieldError) {
+      return badRequest(fieldError);
     }
 
     // Attachment handling (anhang)
@@ -199,6 +221,13 @@ export async function POST(req: NextRequest) {
           content: Buffer.from(arrayBuffer),
         });
       }
+    }
+
+    // Bot check last, so a valid challenge is not used up by a simple input error
+    const altchaFailure = await checkAltcha(formData.get('altcha'));
+    if (altchaFailure) {
+      console.warn('[api:contact:altcha]', altchaFailure);
+      return badRequest(BOT_CHECK_FAILED);
     }
 
     const apiKey = process.env.RESEND_API_KEY;
@@ -238,7 +267,7 @@ export async function POST(req: NextRequest) {
         to: email,
         replyTo: recipient,
         subject: 'Wir haben deine Nachricht erhalten – FC Inter Mainz 2005',
-        html: renderConfirmationHtml(vorname),
+        html: renderConfirmationHtml(cleanName(vorname)),
       });
 
       if (autoResult.error) {

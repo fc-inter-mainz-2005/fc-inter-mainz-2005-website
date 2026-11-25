@@ -1,13 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
+import AltchaWidget, { type AltchaWidgetHandle } from '@/components/AltchaWidget';
+import { HONEYPOT_FIELD, MAX_LENGTH } from '@/lib/form-fields';
 
 export default function ProbetrainingForm() {
   const [hasOtherClub, setHasOtherClub] = useState(false);
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const altchaRef = useRef<AltchaWidgetHandle>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,7 +33,7 @@ export default function ProbetrainingForm() {
       }
 
       setStatus('success');
-      form.reset();
+      form.reset(); // also resets the ALTCHA widget (it listens to the form's reset event)
       setPrivacyAgreed(false);
       setHasOtherClub(false);
 
@@ -42,6 +45,8 @@ export default function ProbetrainingForm() {
       const msg =
         err?.message ||
         'Es gab ein Problem beim Senden der Anfrage. Bitte versuche es erneut.';
+      // A challenge can only be used once, so get a fresh one for the next attempt.
+      altchaRef.current?.reset();
       setErrorMessage(msg);
       alert(msg);
       setStatus('error');
@@ -56,12 +61,12 @@ export default function ProbetrainingForm() {
       onSubmit={handleSubmit}
       className="p-8 space-y-6"
     >
-      <input type="hidden" name="form-name" value="probetraining" />
-      <p style={{ display: 'none' }}>
+      <div className="hp-field" aria-hidden="true">
         <label>
-          Nicht ausfüllen: <input name="bot-field" />
+          Website (bitte leer lassen)
+          <input name={HONEYPOT_FIELD} type="text" tabIndex={-1} autoComplete="off" />
         </label>
-      </p>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -76,6 +81,8 @@ export default function ProbetrainingForm() {
             name="vorname"
             id="vorname"
             required
+            maxLength={MAX_LENGTH.personName}
+            autoComplete="given-name"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
             placeholder="Dein Vorname"
           />
@@ -92,6 +99,8 @@ export default function ProbetrainingForm() {
             name="name"
             id="name"
             required
+            maxLength={MAX_LENGTH.personName}
+            autoComplete="family-name"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
             placeholder="Dein Nachname"
           />
@@ -126,6 +135,8 @@ export default function ProbetrainingForm() {
           name="email"
           id="email"
           required
+          maxLength={MAX_LENGTH.email}
+          autoComplete="email"
           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
           placeholder="beispiel@mail.de"
         />
@@ -143,6 +154,8 @@ export default function ProbetrainingForm() {
           name="telefon"
           id="telefon"
           required
+          maxLength={MAX_LENGTH.telefon}
+          autoComplete="tel"
           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
           placeholder="+49 123 4567890"
         />
@@ -193,6 +206,7 @@ export default function ProbetrainingForm() {
             name="verein_name"
             id="verein_name"
             required={hasOtherClub}
+            maxLength={MAX_LENGTH.vereinName}
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
             placeholder="Name des aktuellen Vereins"
           />
@@ -210,10 +224,13 @@ export default function ProbetrainingForm() {
           name="nachricht"
           id="nachricht"
           rows={4}
+          maxLength={MAX_LENGTH.nachricht}
           className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0a1f44] focus:border-transparent outline-none transition bg-gray-50 text-gray-900"
           placeholder="Deine Frage oder Anmerkung..."
         />
       </div>
+
+      <AltchaWidget ref={altchaRef} className="" />
 
       <div className="privacy-box mb-6">
         <input

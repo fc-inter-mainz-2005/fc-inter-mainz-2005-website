@@ -1,6 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { serverError } from '@/lib/api-error';
+import { checkAltcha } from '@/lib/altcha';
+import { MAX_LENGTH } from '@/lib/form-fields';
+import {
+  BOT_CHECK_FAILED,
+  badRequest,
+  checkEmail,
+  checkPersonName,
+  cleanName,
+  fakeSuccess,
+  field,
+  forbiddenOrigin,
+  honeypotFilled,
+  isAllowedOrigin,
+} from '@/lib/form-guard';
 
 function escapeHtml(str: string): string {
   return str
@@ -146,47 +160,66 @@ function renderConfirmationHtml(vorname: string): string {
 
 export async function POST(req: NextRequest) {
   try {
+    if (!isAllowedOrigin(req)) {
+      return forbiddenOrigin();
+    }
+
     const formData = await req.formData();
 
-    // Anti-spam (Honeypot) check
-    const botField = formData.get('bot-field');
-    if (botField && typeof botField === 'string' && botField.trim() !== '') {
-      return NextResponse.json({ message: 'Spam detected' }, { status: 400 });
+    // Honeypot: pretend success so the bot learns nothing
+    if (honeypotFilled(formData)) {
+      return fakeSuccess();
     }
 
     // Required fields validation
-    const vorname = formData.get('vorname')?.toString().trim();
-    const name = formData.get('name')?.toString().trim();
-    const geburtsdatum = formData.get('geburtsdatum')?.toString().trim();
-    const email = formData.get('email')?.toString().trim();
-    const telefon = formData.get('telefon')?.toString().trim();
-    const andererVerein = formData.get('anderer_verein')?.toString().trim();
-    const vereinName = formData.get('verein_name')?.toString().trim();
-    const nachricht = formData.get('nachricht')?.toString().trim();
+    const vorname = field(formData, 'vorname');
+    const name = field(formData, 'name');
+    const geburtsdatum = field(formData, 'geburtsdatum');
+    const email = field(formData, 'email');
+    const telefon = field(formData, 'telefon');
+    const andererVerein = field(formData, 'anderer_verein');
+    const vereinName = field(formData, 'verein_name');
+    const nachricht = field(formData, 'nachricht');
 
     if (!vorname || !name || !geburtsdatum || !email || !telefon || !andererVerein) {
-      return NextResponse.json(
-        {
-          error:
-            'Bitte fülle alle Pflichtfelder aus (Vorname, Nachname, Geburtsdatum, E-Mail, Telefon, Aktueller Verein).',
-        },
-        { status: 400 }
+      return badRequest(
+        'Bitte fülle alle Pflichtfelder aus (Vorname, Nachname, Geburtsdatum, E-Mail, Telefon, Aktueller Verein).'
       );
+    }
+
+    if (andererVerein !== 'Ja' && andererVerein !== 'Nein') {
+      return badRequest('Bitte gib an, ob du aktuell in einem anderen Verein spielst.');
     }
 
     if (andererVerein === 'Ja' && !vereinName) {
-      return NextResponse.json(
-        { error: 'Bitte gib den Namen deines aktuellen Vereins an.' },
-        { status: 400 }
-      );
+      return badRequest('Bitte gib den Namen deines aktuellen Vereins an.');
     }
 
-    // Basic email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json(
-        { error: 'Bitte gib eine gültige E-Mail-Adresse ein.' },
-        { status: 400 }
-      );
+    const fieldError =
+      checkPersonName(vorname, 'Vorname') ??
+      checkPersonName(name, 'Nachname') ??
+      checkEmail(email) ??
+      (!/^\d{4}-\d{2}-\d{2}$/.test(geburtsdatum)
+        ? 'Bitte gib ein gültiges Geburtsdatum ein.'
+        : null) ??
+      (telefon.length > MAX_LENGTH.telefon || !/^[0-9 +()/.-]+$/.test(telefon)
+        ? 'Bitte gib eine gültige Telefonnummer ein (nur Ziffern, Leerzeichen und + ( ) / - .).'
+        : null) ??
+      (vereinName.length > MAX_LENGTH.vereinName
+        ? `Der Vereinsname darf höchstens ${MAX_LENGTH.vereinName} Zeichen lang sein.`
+        : null) ??
+      (nachricht.length > MAX_LENGTH.nachricht
+        ? `Deine Anmerkung darf höchstens ${MAX_LENGTH.nachricht} Zeichen lang sein.`
+        : null);
+    if (fieldError) {
+      return badRequest(fieldError);
+    }
+
+    // Bot check last, so a valid challenge is not used up by a simple input error
+    const altchaFailure = await checkAltcha(formData.get('altcha'));
+    if (altchaFailure) {
+      console.warn('[api:probetraining:altcha]', altchaFailure);
+      return badRequest(BOT_CHECK_FAILED);
     }
 
     const apiKey = process.env.RESEND_API_KEY;
@@ -227,7 +260,7 @@ export async function POST(req: NextRequest) {
         to: email,
         replyTo: recipient,
         subject: 'Wir haben deine Nachricht erhalten – FC Inter Mainz 2005',
-        html: renderConfirmationHtml(vorname),
+        html: renderConfirmationHtml(cleanName(vorname)),
       });
 
       if (autoResult.error) {
