@@ -13,14 +13,9 @@ const inter = localFont({
       weight: '100 900',
       style: 'normal',
     },
-    {
-      path: '../../fonts/Inter-Italic-VariableFont_opsz,wght.woff2',
-      weight: '100 900',
-      style: 'italic',
-    },
   ],
   variable: '--font-inter',
-  display: 'swap',
+  display: 'fallback',
 });
 
 export const metadata: Metadata = {
