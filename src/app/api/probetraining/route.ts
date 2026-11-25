@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { serverError } from '@/lib/api-error';
 
 function escapeHtml(str: string): string {
   return str
@@ -190,11 +191,7 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      console.error('RESEND_API_KEY ist nicht konfiguriert.');
-      return NextResponse.json(
-        { error: 'E-Mail-Dienst ist derzeit nicht konfiguriert.' },
-        { status: 500 }
-      );
+      return serverError('probetraining:config', 'RESEND_API_KEY ist nicht konfiguriert.');
     }
 
     const resend = new Resend(apiKey);
@@ -220,11 +217,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (clubResult.error) {
-      console.error('Resend Fehler beim Senden an Verein:', clubResult.error);
-      return NextResponse.json(
-        { error: clubResult.error.message || 'Fehler beim Senden der E-Mail.' },
-        { status: 500 }
-      );
+      return serverError('probetraining:resend-club', clubResult.error);
     }
 
     // 2. Send auto-responder to Submitter
@@ -248,13 +241,7 @@ export async function POST(req: NextRequest) {
       success: true,
       message: 'Anmeldung erfolgreich gesendet.',
     });
-  } catch (error: any) {
-    console.error('Fehler in /api/probetraining:', error);
-    return NextResponse.json(
-      {
-        error: error?.message || 'Interner Serverfehler beim Verarbeiten der Anfrage.',
-      },
-      { status: 500 }
-    );
+  } catch (error) {
+    return serverError('probetraining:unhandled', error);
   }
 }
