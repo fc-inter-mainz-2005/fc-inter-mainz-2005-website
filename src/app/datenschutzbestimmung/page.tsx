@@ -215,6 +215,17 @@ export default async function DatenschutzPage() {
               policies.google.com/privacy
             </a>
           </p>
+          <p>
+            <strong>Schutz vor Spam:</strong> Zum Schutz unserer Formulare vor
+            automatisierten Anfragen verwenden wir die Open-Source-Software
+            ALTCHA, die vollständig auf unserem eigenen Server (Hosting siehe
+            Abschnitt 5) betrieben wird. Dabei löst Ihr Browser im Hintergrund
+            eine kleine Rechenaufgabe; es werden keine Cookies gesetzt, keine
+            Daten auf Ihrem Endgerät gespeichert und keine Daten an Dritte
+            übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+            (berechtigtes Interesse an der Abwehr von Spam und Missbrauch unserer
+            Formulare).
+          </p>
 
           <h3 style={{ marginTop: '12px', fontSize: '0.85rem' }}>
             Kontaktformular
